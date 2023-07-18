@@ -81,6 +81,7 @@ void lineTraceFlip(void)
 		line_following_term += exceeded;
 		*/
 
+		//soiya
 		float motor_l = velocity_control_term + line_following_term;
 		float motor_r = velocity_control_term - line_following_term;
 
