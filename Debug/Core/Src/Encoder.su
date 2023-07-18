@@ -1,0 +1,3 @@
+Encoder.c:34:6:initEncoder	8	static
+Encoder.c:42:6:updateEncoderCnt	16	static
+Encoder.c:61:6:resetEncoderCnt	4	static
