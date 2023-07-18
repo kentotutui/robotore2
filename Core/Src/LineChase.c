@@ -31,7 +31,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.12, ki = 0.00, kd = 0.012;
+	float kp = 0.125, ki = 0.00, kd = 0.012;
 
 	float diff = 0.;
 	static float pre_diff = 0.;

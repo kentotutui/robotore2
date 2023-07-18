@@ -262,19 +262,6 @@ int main(void)
 
 	          case 2:
 	        	  setLED('Y');
-	        	  for(int16_t i = 0; i <= MAX_COUNTER_PERIOD; i++){
-	        		  setMotor(i, i);
-	        		  HAL_Delay(10);
-
-	        	  }
-	        	  for(int16_t i = MAX_COUNTER_PERIOD; i >= MIN_COUNTER_PERIOD; i--){
-	        		  setMotor(i, i);
-	        		  HAL_Delay(10);
-	        	  }
-	        	  for(int16_t i = MIN_COUNTER_PERIOD; i <= 0; i++){
-					  setMotor(i, i);
-					  HAL_Delay(10);
-				  }
 	        	  break;
 
 	          case 3:
