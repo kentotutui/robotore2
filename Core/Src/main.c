@@ -288,24 +288,6 @@ int main(void)
           cnt = 0;
 	  }
 
-	  /*switch(cnt2){
-	         case 0:
-		            setLED('R');
-		            break;
-
-	         case 1:
-	        	    setLED('G');
-	        	    break;
-
-	         case 2:
-	        	    setLED('B');
-	        	    break;
-
-	         default:
-	        	    setLED('N');
-	        	    break;
-	  }
-
 	  //printf("sensor: %d, %d, %d, %d, %d, %d, %d, %d, %d, %d\r\n", sensor[0], sensor[1], sensor[2], sensor[3], sensor[4], sensor[7], sensor[8], sensor[9], sensor[10], sensor[11]);
 
     /* USER CODE END WHILE */
