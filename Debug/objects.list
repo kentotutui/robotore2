@@ -4,6 +4,7 @@
 "Core/Src/LineSensor.o"
 "Core/Src/main.o"
 "Core/Src/motor.o"
+"Core/Src/sideSensor.o"
 "Core/Src/stm32f4xx_hal_msp.o"
 "Core/Src/stm32f4xx_it.o"
 "Core/Src/switch.o"

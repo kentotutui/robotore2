@@ -9,14 +9,13 @@
 #include "LineChase.h"
 
 #define DELTA_T 0.001
-#define SENSOR_ALL_DARK 50
 
 static int8_t line_trace_enable_flag;
 static uint8_t i_clear_flag;
 static float line_following_term;
 static int8_t dark_flag = 0;
 
-static float velocity_control_term = 400;
+static float velocity_control_term = 500;
 
 static float motor_l_Deb;
 static float motor_r_Deb;
@@ -31,8 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.125, ki = 0.00, kd = 0.012;
-
+	float kp = 0.25, ki = 0.00, kd = 0.015;
 	float diff = 0.;
 	static float pre_diff = 0.;
 
@@ -81,7 +79,6 @@ void lineTraceFlip(void)
 		line_following_term += exceeded;
 		*/
 
-		//soiya
 		float motor_l = velocity_control_term + line_following_term;
 		float motor_r = velocity_control_term - line_following_term;
 

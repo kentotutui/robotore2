@@ -7,7 +7,7 @@
 
 #include "switch.h"
 
-void getSwitchStatus(uint8_t position)
+uint16_t getSwitchStatus(uint8_t position)
 {
 
 	uint16_t ret = 0;
@@ -18,5 +18,7 @@ void getSwitchStatus(uint8_t position)
 	else if (position == 'R' && HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_8) == 0){                 //sw2
 		ret = 1;
 	}
+
+	return ret;
 
 }

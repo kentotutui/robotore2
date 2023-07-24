@@ -1,5 +1,5 @@
-Core/Src/stm32f4xx_hal_msp.o: ../Core/Src/stm32f4xx_hal_msp.c \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/sideSensor.o: ../Core/Src/sideSensor.c ../Core/Inc/sideSensor.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -32,10 +32,10 @@ Core/Src/stm32f4xx_hal_msp.o: ../Core/Src/stm32f4xx_hal_msp.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Inc/LineChase.h ../Core/Inc/Motor.h ../Core/Inc/LineSensor.h \
- ../Core/Inc/switch.h ../Core/Inc/main.h ../Core/Inc/sideSensor.h
+ ../Core/Inc/LineSensor.h ../Core/Inc/LineChase.h ../Core/Inc/Motor.h \
+ ../Core/Inc/main.h ../Core/Inc/sideSensor.h ../Core/Inc/switch.h
 
-../Core/Inc/main.h:
+../Core/Inc/sideSensor.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -103,14 +103,14 @@ Core/Src/stm32f4xx_hal_msp.o: ../Core/Src/stm32f4xx_hal_msp.c \
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
+../Core/Inc/LineSensor.h:
+
 ../Core/Inc/LineChase.h:
 
 ../Core/Inc/Motor.h:
 
-../Core/Inc/LineSensor.h:
-
-../Core/Inc/switch.h:
-
 ../Core/Inc/main.h:
 
 ../Core/Inc/sideSensor.h:
+
+../Core/Inc/switch.h:

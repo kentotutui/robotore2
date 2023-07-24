@@ -33,7 +33,7 @@ Core/Src/LineChase.o: ../Core/Src/LineChase.c ../Core/Inc/LineChase.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/Motor.h ../Core/Inc/LineSensor.h ../Core/Inc/LineChase.h \
- ../Core/Inc/switch.h ../Core/Inc/main.h
+ ../Core/Inc/switch.h ../Core/Inc/main.h ../Core/Inc/sideSensor.h
 
 ../Core/Inc/LineChase.h:
 
@@ -112,3 +112,5 @@ Core/Src/LineChase.o: ../Core/Src/LineChase.c ../Core/Inc/LineChase.h \
 ../Core/Inc/switch.h:
 
 ../Core/Inc/main.h:
+
+../Core/Inc/sideSensor.h:

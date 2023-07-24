@@ -73,8 +73,6 @@ UART_HandleTypeDef huart1;
 
 uint32_t timer, timer1;
 
-int soiya;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -121,11 +119,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       calculateLineFollowingTermFlip();
       lineTraceFlip();
       motorCtrlFlip();
+      updateSideSensorStatus();
       checkCourseOut();
 
    }
 
-   if(htim->Instance == TIM7){
+   if(htim->Instance == TIM7){//0.1ms
 	   timer1++;
 
 	   storeAnalogSensorBuffer();
@@ -198,6 +197,8 @@ int main(void)
 
   init();
 
+  bool running_flag = false;
+
 
   /* USER CODE END 2 */
 
@@ -205,50 +206,58 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(getSwitchStatus('L') == 0 && sw == 0){     //D5         sw3チャタリング防止
+	  if(getSwitchStatus('L') == 1 && sw == 0){     //D5         sw3チャタリング防止
 		  timer = 0;
 		  sw = 1;
 	  }
-	  if(getSwitchStatus('L') == 0 && timer > 20 && sw == 1){
+	  if(getSwitchStatus('L') == 1 && timer > 20 && sw == 1){
 		  sw = 2;
 	  }
 	  if(timer > 40 && sw == 1){
 		  sw = 0;
 	  }
-	  if(getSwitchStatus('L') == 1 && sw == 2){
+	  if(getSwitchStatus('L') == 0 && sw == 2){
 		  mode_selector++;
 		  sw = 0;
 	  }
 
-	  if(getSwitchStatus('R') == 0 && sw2 == 0){     //D4         sw2チャタリング防止
+	  if(getSwitchStatus('R') == 1 && sw2 == 0){     //D4         sw2チャタリング防止
 	  	  timer = 0;
 	  	  sw2 = 1;
 	  }
-	  if(getSwitchStatus('R') == 0 && timer > 20 && sw2 == 1){
+	  if(getSwitchStatus('R') == 1 && timer > 20 && sw2 == 1){
 	  	  sw2 = 2;
 	  }
 	  if(timer > 40 && sw2 == 1){
 	  	  sw2 = 0;
 	  }
-	  if(getSwitchStatus('R') == 1 && sw2 == 2){
+	  if(getSwitchStatus('R') == 0 && sw2 == 2){
 	  	  cnt++;
 	  	  sw2 = 0;
-	  }
-
-	  if(cnt >= 1){
-		  HAL_Delay(1000);
-		  startLineTrace();
-		  setLED2('Y');
-	  }
-
-	  if(cnt == 0){
-		  stopLineTrace();
-		  setLED2('C');
 	  }
 
 	  if(cnt >= 2){
 		  cnt = 0;
 	  }
+
+
+	  if(cnt >= 1){
+		  HAL_Delay(1000);
+		  //startLineTrace();
+		  running_flag = true;
+		  cnt = 0;
+		  setLED2('Y');
+	  }
+
+	  if(running_flag == true){
+		  //startLineTrace();
+		  running();
+	  }
+	  if(running_flag == false){
+		  stopLineTrace();
+		  setLED2('C');
+	  }
+
 
 	  switch(mode_selector){
 
@@ -286,6 +295,10 @@ int main(void)
 
 	  if(getCouseOutFlag() == true){
           cnt = 0;
+	  }
+
+	  if(getgoalStatus() == true){
+		  running_flag = false;
 	  }
 
 	  //printf("sensor: %d, %d, %d, %d, %d, %d, %d, %d, %d, %d\r\n", sensor[0], sensor[1], sensor[2], sensor[3], sensor[4], sensor[7], sensor[8], sensor[9], sensor[10], sensor[11]);

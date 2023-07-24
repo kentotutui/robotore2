@@ -38,8 +38,8 @@ static int16_t side_sensorL_buffer[10];
 
 void initADC()
 {
-	HAL_ADC_Start_DMA(&hadc1, (uint16_t *) side_adc_value, SIDE_LINESENSOR_ADC_NUM);
-	HAL_ADC_Start_DMA(&hadc2, (uint16_t *) adc_value, LINESENSOR_ADC_NUM);
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t *) side_adc_value, SIDE_LINESENSOR_ADC_NUM);
+	HAL_ADC_Start_DMA(&hadc2, (uint32_t *) adc_value, LINESENSOR_ADC_NUM);
 }
 
 void storeAnalogSensorBuffer(void)
@@ -114,7 +114,7 @@ void sensorCalibration()
 		side_max_values[i] = 2000;
 	}
 
-	while(getSwitchStatus('L') != 1){                       //sw3
+	while(getSwitchStatus('L') == 1){                       //sw3
 
 		for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
 			max_values_buffer[i] = adc_value[i];
