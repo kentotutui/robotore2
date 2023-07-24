@@ -15,7 +15,7 @@ static uint8_t i_clear_flag;
 static float line_following_term;
 static int8_t dark_flag = 0;
 
-static float velocity_control_term = 500;
+static float velocity_control_term = 550;
 
 static float motor_l_Deb;
 static float motor_r_Deb;
@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.25, ki = 0.00, kd = 0.015;
+	float kp = 0.55, ki = 0.001, kd = 0.02;
 	float diff = 0.;
 	static float pre_diff = 0.;
 
