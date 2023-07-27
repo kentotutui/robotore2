@@ -15,7 +15,7 @@ static uint8_t i_clear_flag;
 static float line_following_term;
 static int8_t dark_flag = 0;
 
-static float velocity_control_term = 550;
+static float velocity_control_term;
 
 static float motor_l_Deb;
 static float motor_r_Deb;
@@ -24,15 +24,16 @@ static float p_Deb;
 static float d_Deb;
 static double i_Deb;
 
+static float pre_diff;
+
 float mon_velo_term;
 
 void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.55, ki = 0.001, kd = 0.02;
+	float kp = 0.55, ki = 0.003, kd = 0.02;
 	float diff = 0.;
-	static float pre_diff = 0.;
 
 	if(line_trace_enable_flag == 1){
 		if(i_clear_flag == 1){
@@ -54,6 +55,9 @@ void calculateLineFollowingTermFlip(void){
 		i_Deb = i;
 
 		pre_diff = diff;
+
+		if(pre_diff >= 1750 || pre_diff <= -1750) velocity_control_term = 600;
+		else velocity_control_term = 520;
 	}
 }
 
@@ -111,7 +115,7 @@ void checkCourseOut(void){
 	static uint16_t dark_cnt;
 
 	all_sensor = (sensor[0] + sensor[1] + sensor[2] + sensor[3] + sensor[4] + sensor[5] + sensor[6] + sensor[7] + sensor[8] + sensor[9] + sensor[10] + sensor[11]) / 12;
-	if(all_sensor > 2500){
+	if(all_sensor > 2000){
 		dark_cnt++;
 	}
 	else dark_cnt = 0;
