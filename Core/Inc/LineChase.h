@@ -8,7 +8,7 @@
 #ifndef INC_LINECHASE_H_
 #define INC_LINECHASE_H_
 
-#define SENSOR_ALL_DARK 30
+#define SENSOR_ALL_DARK 20
 
 #include "stm32f4xx_hal.h"
 #include "Motor.h"

@@ -1708,7 +1708,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.55, ki = 0.003, kd = 0.02;
+	float kp = 0.55, ki = 0.003, kd = 0.05;
  80012d0:	4bc9      	ldr	r3, [pc, #804]	; (80015f8 <calculateLineFollowingTermFlip+0x330>)
  80012d2:	617b      	str	r3, [r7, #20]
  80012d4:	4bc9      	ldr	r3, [pc, #804]	; (80015fc <calculateLineFollowingTermFlip+0x334>)
@@ -2000,7 +2000,7 @@ void calculateLineFollowingTermFlip(void){
  8001594:	68bb      	ldr	r3, [r7, #8]
  8001596:	6013      	str	r3, [r2, #0]
 
-		if(pre_diff >= 1750 || pre_diff <= -1750) velocity_control_term = 600;
+		if(pre_diff >= 600 || pre_diff <= -600) velocity_control_term = 780;
  8001598:	4b20      	ldr	r3, [pc, #128]	; (800161c <calculateLineFollowingTermFlip+0x354>)
  800159a:	edd3 7a00 	vldr	s15, [r3]
  800159e:	ed9f 7a24 	vldr	s14, [pc, #144]	; 8001630 <calculateLineFollowingTermFlip+0x368>
@@ -2016,11 +2016,11 @@ void calculateLineFollowingTermFlip(void){
  80015c0:	4b1d      	ldr	r3, [pc, #116]	; (8001638 <calculateLineFollowingTermFlip+0x370>)
  80015c2:	4a1e      	ldr	r2, [pc, #120]	; (800163c <calculateLineFollowingTermFlip+0x374>)
  80015c4:	601a      	str	r2, [r3, #0]
-		else velocity_control_term = 520;
+		else velocity_control_term = 550;
 	}
 }
  80015c6:	e002      	b.n	80015ce <calculateLineFollowingTermFlip+0x306>
-		else velocity_control_term = 520;
+		else velocity_control_term = 550;
  80015c8:	4b1b      	ldr	r3, [pc, #108]	; (8001638 <calculateLineFollowingTermFlip+0x370>)
  80015ca:	4a1d      	ldr	r2, [pc, #116]	; (8001640 <calculateLineFollowingTermFlip+0x378>)
  80015cc:	601a      	str	r2, [r3, #0]
@@ -2039,7 +2039,7 @@ void calculateLineFollowingTermFlip(void){
  80015f4:	3f50624d 	.word	0x3f50624d
  80015f8:	3f0ccccd 	.word	0x3f0ccccd
  80015fc:	3b449ba6 	.word	0x3b449ba6
- 8001600:	3ca3d70a 	.word	0x3ca3d70a
+ 8001600:	3d4ccccd 	.word	0x3d4ccccd
  8001604:	200001fc 	.word	0x200001fc
  8001608:	200001fd 	.word	0x200001fd
  800160c:	2000022c 	.word	0x2000022c
@@ -2051,11 +2051,11 @@ void calculateLineFollowingTermFlip(void){
  8001624:	20000214 	.word	0x20000214
  8001628:	20000218 	.word	0x20000218
  800162c:	20000220 	.word	0x20000220
- 8001630:	44dac000 	.word	0x44dac000
- 8001634:	c4dac000 	.word	0xc4dac000
+ 8001630:	44160000 	.word	0x44160000
+ 8001634:	c4160000 	.word	0xc4160000
  8001638:	20000208 	.word	0x20000208
- 800163c:	44160000 	.word	0x44160000
- 8001640:	44020000 	.word	0x44020000
+ 800163c:	44430000 	.word	0x44430000
+ 8001640:	44098000 	.word	0x44098000
 
 08001644 <lineTraceFlip>:
 
@@ -2257,7 +2257,7 @@ void checkCourseOut(void){
 	if(dark_cnt >= SENSOR_ALL_DARK) dark_flag = true;
  80017b8:	4b0a      	ldr	r3, [pc, #40]	; (80017e4 <checkCourseOut+0xbc>)
  80017ba:	881b      	ldrh	r3, [r3, #0]
- 80017bc:	2b1d      	cmp	r3, #29
+ 80017bc:	2b13      	cmp	r3, #19
  80017be:	d903      	bls.n	80017c8 <checkCourseOut+0xa0>
  80017c0:	4b09      	ldr	r3, [pc, #36]	; (80017e8 <checkCourseOut+0xc0>)
  80017c2:	2201      	movs	r2, #1

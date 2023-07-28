@@ -32,7 +32,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.55, ki = 0.003, kd = 0.02;
+	float kp = 0.55, ki = 0.003, kd = 0.05;
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -56,8 +56,8 @@ void calculateLineFollowingTermFlip(void){
 
 		pre_diff = diff;
 
-		if(pre_diff >= 1750 || pre_diff <= -1750) velocity_control_term = 600;
-		else velocity_control_term = 520;
+		if(pre_diff >= 600 || pre_diff <= -600) velocity_control_term = 780;
+		else velocity_control_term = 550;
 	}
 }
 
