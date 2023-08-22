@@ -11,11 +11,15 @@
 #include "stm32f4xx_hal.h"
 #include "stdbool.h"
 #include "LineSensor.h"
+#include "VelocityCtrl.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();
 bool getSideSensorStatusR();
+bool getgoalStatus();
 
 void running();
+
+void setVelocityRange(float, float);
 
 #endif /* INC_SIDESENSOR_H_ */

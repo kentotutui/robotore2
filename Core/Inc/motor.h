@@ -13,6 +13,7 @@
 
 #define MAX_COUNTER_PERIOD 1679
 #define MIN_COUNTER_PERIOD -1679
+#define STOP_COUNTER_PERIOD 0
 
 void initMotor(void);
 void motorCtrlFlip(void);

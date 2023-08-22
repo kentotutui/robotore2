@@ -8,6 +8,7 @@ C_SRCS += \
 ../Core/Src/LED.c \
 ../Core/Src/LineChase.c \
 ../Core/Src/LineSensor.c \
+../Core/Src/Velocity_Ctrl.c \
 ../Core/Src/main.c \
 ../Core/Src/motor.c \
 ../Core/Src/sideSensor.c \
@@ -23,6 +24,7 @@ C_DEPS += \
 ./Core/Src/LED.d \
 ./Core/Src/LineChase.d \
 ./Core/Src/LineSensor.d \
+./Core/Src/Velocity_Ctrl.d \
 ./Core/Src/main.d \
 ./Core/Src/motor.d \
 ./Core/Src/sideSensor.d \
@@ -38,6 +40,7 @@ OBJS += \
 ./Core/Src/LED.o \
 ./Core/Src/LineChase.o \
 ./Core/Src/LineSensor.o \
+./Core/Src/Velocity_Ctrl.o \
 ./Core/Src/main.o \
 ./Core/Src/motor.o \
 ./Core/Src/sideSensor.o \
@@ -58,6 +61,8 @@ Core/Src/LineChase.o: ../Core/Src/LineChase.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/LineChase.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/LineSensor.o: ../Core/Src/LineSensor.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/LineSensor.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/Velocity_Ctrl.o: ../Core/Src/Velocity_Ctrl.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Velocity_Ctrl.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/main.o: ../Core/Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/motor.o: ../Core/Src/motor.c

@@ -45,7 +45,8 @@ void initADC()
 void storeAnalogSensorBuffer(void)
 {
 	static uint8_t index = 0;
-/*
+
+	/*
 	sensor0_buffer[index] = adc_value[1];
 	sensor1_buffer[index] = adc_value[0];
 	sensor2_buffer[index] = adc_value[2];
@@ -57,23 +58,26 @@ void storeAnalogSensorBuffer(void)
 	sensor8_buffer[index] = adc_value[8];
 	sensor9_buffer[index] = adc_value[9];
 	sensor10_buffer[index] = adc_value[10];
-	sensor11_buffer[index] = adc_value[11];*/
+	sensor11_buffer[index] = adc_value[11];
 
-	sensor0_buffer[index] = sensor_coefficient[1] * (adc_value[1] - offset_values[1]);
-	sensor1_buffer[index] = sensor_coefficient[0] * (adc_value[0] - offset_values[0]);
-	sensor2_buffer[index] = sensor_coefficient[2] * (adc_value[2] - offset_values[2]);
-	sensor3_buffer[index] = sensor_coefficient[3] * (adc_value[3] - offset_values[3]);
-	sensor4_buffer[index] = sensor_coefficient[4] * (adc_value[4] - offset_values[4]);
-	sensor5_buffer[index] = sensor_coefficient[5] * (adc_value[5] - offset_values[5]);
-	sensor6_buffer[index] = sensor_coefficient[6] * (adc_value[6] - offset_values[6]);
-	sensor7_buffer[index] = sensor_coefficient[7] * (adc_value[7] - offset_values[7]);
-	sensor8_buffer[index] = sensor_coefficient[8] * (adc_value[8] - offset_values[8]);
-	sensor9_buffer[index] = sensor_coefficient[9] * (adc_value[9] - offset_values[9]);
-	sensor10_buffer[index] = sensor_coefficient[10] * (adc_value[10] - offset_values[10]);
-	sensor11_buffer[index] = sensor_coefficient[11] * (adc_value[11] - offset_values[11]);
+	side_sensorR_buffer[index] = side_adc_value[1];
+	side_sensorL_buffer[index] = side_adc_value[0];*/
 
-	side_sensorR_buffer[index] = side_sensor_coefficient[1] * (side_adc_value[1] - side_offset_values[1]) ;
-	side_sensorL_buffer[index] = side_sensor_coefficient[0] * (side_adc_value[0] - side_offset_values[0]) ;
+	sensor0_buffer[index] = sensor_coefficient[1] * (adc_value[1] - offset_values[1]) * (-1);
+	sensor1_buffer[index] = sensor_coefficient[0] * (adc_value[0] - offset_values[0]) * (-1);
+	sensor2_buffer[index] = sensor_coefficient[2] * (adc_value[2] - offset_values[2]) * (-1);
+	sensor3_buffer[index] = sensor_coefficient[3] * (adc_value[3] - offset_values[3]) * (-1);
+	sensor4_buffer[index] = sensor_coefficient[4] * (adc_value[4] - offset_values[4]) * (-1);
+	sensor5_buffer[index] = sensor_coefficient[5] * (adc_value[5] - offset_values[5]) * (-1);
+	sensor6_buffer[index] = sensor_coefficient[6] * (adc_value[6] - offset_values[6]) * (-1);
+	sensor7_buffer[index] = sensor_coefficient[7] * (adc_value[7] - offset_values[7]) * (-1);
+	sensor8_buffer[index] = sensor_coefficient[8] * (adc_value[8] - offset_values[8]) * (-1);
+	sensor9_buffer[index] = sensor_coefficient[9] * (adc_value[9] - offset_values[9]) * (-1);
+	sensor10_buffer[index] = sensor_coefficient[10] * (adc_value[10] - offset_values[10]) * (-1);
+	sensor11_buffer[index] = sensor_coefficient[11] * (adc_value[11] - offset_values[11]) * (-1);
+
+	side_sensorR_buffer[index] = side_sensor_coefficient[1] * (side_adc_value[1] - side_offset_values[1]) * (-1);
+	side_sensorL_buffer[index] = side_sensor_coefficient[0] * (side_adc_value[0] - side_offset_values[0]) * (-1);
 
 	index++;
 	if(index >= 10){
@@ -107,11 +111,11 @@ void sensorCalibration()
     float side_min_values_buffer[SIDE_LINESENSOR_ADC_NUM];
 
 	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
-		max_values[i] = 2000;
+		max_values[i] = 3000;
 	}
 
 	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
-		side_max_values[i] = 2000;
+		side_max_values[i] = 3000;
 	}
 
 	while(getSwitchStatus('L') == 1){                       //sw3
@@ -145,13 +149,13 @@ void sensorCalibration()
 		sensor_coefficient[i] = 3000 / (min_values[i] - max_values[i]);
 	}
 	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
-		offset_values[i] = max_values[i];
+		offset_values[i] = min_values[i];
 	}
 
 	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
 		side_sensor_coefficient[i] = 3000 / (side_min_values[i] - side_max_values[i]);
 	}
 	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
-		side_offset_values[i] = side_max_values[i];
+		side_offset_values[i] = side_min_values[i];
 	}
 }

@@ -14,6 +14,7 @@
 #include "Motor.h"
 #include "LineSensor.h"
 #include "main.h"
+#include "VelocityCtrl.h"
 
 void calculateLineFollowingTermFlip(void);
 void lineTraceFlip(void);
@@ -25,5 +26,7 @@ void stopLineTrace();
 
 void checkCourseOut(void);
 bool getCouseOutFlag(void);
+
+void debugmotor(float, float);
 
 #endif /* INC_LINECHASE_H_ */

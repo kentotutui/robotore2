@@ -13,6 +13,8 @@ static bool goal_flag = false;
 static bool goal_judge_flag = false;
 static uint8_t start_goal_line_cnt;
 
+static float min_velocity, max_velocity;
+
 //white <= 1700 black >= 1700
 
 void updateSideSensorStatus(){
@@ -41,6 +43,8 @@ void running(void)
 {
 	uint16_t pattern = 0;
 	startLineTrace();
+	startVelocityControl();
+	//setTargetVelocity(min_velocity);
 
 	while(goal_flag == false){
 		switch(pattern){
@@ -84,6 +88,7 @@ void running(void)
 					  //stopLineTrace();
 
 					  //running_flag = false;
+
 					  goal_flag = true;
 
 					  break;
@@ -104,4 +109,10 @@ bool getSideSensorStatusR()
 bool getgoalStatus()
 {
 	return goal_flag;
+}
+
+void setVelocityRange(float min_vel, float max_vel)
+{
+	min_velocity = min_vel;
+	max_velocity = max_vel;
 }
