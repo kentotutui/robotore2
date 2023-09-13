@@ -94,6 +94,8 @@ void running(void)
 					  break;
 		}
 	}
+	//HAL_Delay(2000);
+	//goal_flag = false;
 }
 
 bool getSideSensorStatusL()

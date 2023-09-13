@@ -251,6 +251,7 @@ int main(void)
 		  //setLED2('Y');
 	  }
 
+	  /*
 	  if(running_flag == true){
 		  //setVelocityRange(0, 0);
 		  //startLineTrace();
@@ -261,11 +262,12 @@ int main(void)
 		  running();
 		  //setMotor(500, 500);
 		  //while(1);
+	  }*/
 
-	  }
 	  if(running_flag == false){
 		  stopLineTrace();
 		  stopVelocityControl();
+		  //cnt = 0;
 		  //setLED2('C');
 	  }
 
@@ -275,6 +277,8 @@ int main(void)
 
 	  if(getgoalStatus() == true){
 		  running_flag = false;
+		  cnt = 0;
+		  //getgoalStatus() == false;
 	  }
 
 	  if(soiya >= 6){
@@ -286,29 +290,103 @@ int main(void)
 			  case 0:
 				  setLED2('R');
 
+				  if(running_flag == true){
+				  		  //setVelocityRange(0, 0);
+				  		  //startLineTrace();
+
+				  		  setTargetVelocity(0.5);
+				  		  //startVelocityControl();
+
+				  		  running();
+				  		  //setMotor(500, 500);
+				  		  //while(1);
+				  }
+
 				  break;
 
 			  case 1:
 				  setLED2('G');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  setTargetVelocity(0.6);
+						  //startVelocityControl();
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
 
 				  break;
 
 			  case 2:
 				  setLED2('B');
 
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  setTargetVelocity(0.7);
+						  //startVelocityControl();
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
 				  break;
 
 			  case 3:
 				  setLED2('W');
 
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  setTargetVelocity(0.8);
+						  //startVelocityControl();
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
 				  break;
 
 			  case 4:
 				  setLED2('Y');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  setTargetVelocity(0.9);
+						  //startVelocityControl();
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
 				  break;
 
 			  case 5:
 				  setLED2('X');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  setTargetVelocity(1.0);
+						  //startVelocityControl();
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
 				  break;
 
 			  default:

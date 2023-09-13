@@ -55,7 +55,6 @@ void updateEncoderCnt(void)
 	side_line_judge_distance += distance_1ms;
 	distance_cross_line_ignore += distance_1ms;
 	distance_side_line_ignore += distance_1ms;
-	//15.73カウントで1ｍｍ
 }
 
 void getEncoderCnt(int16_t *cnt_l, int16_t *cnt_r)

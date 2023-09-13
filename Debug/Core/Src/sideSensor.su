@@ -1,6 +1,6 @@
 sideSensor.c:20:6:updateSideSensorStatus	4	static
 sideSensor.c:42:6:running	16	static
-sideSensor.c:99:6:getSideSensorStatusL	4	static
-sideSensor.c:104:6:getSideSensorStatusR	4	static
-sideSensor.c:109:6:getgoalStatus	4	static
-sideSensor.c:114:6:setVelocityRange	16	static
+sideSensor.c:101:6:getSideSensorStatusL	4	static
+sideSensor.c:106:6:getSideSensorStatusR	4	static
+sideSensor.c:111:6:getgoalStatus	4	static
+sideSensor.c:116:6:setVelocityRange	16	static

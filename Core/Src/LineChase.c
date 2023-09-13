@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.3, ki = 0, kd = 0.003;
+	float kp = 0.16, ki = 0, kd = 0.008;
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -39,7 +39,8 @@ void calculateLineFollowingTermFlip(void){
 			i_clear_flag = 0;
 		}
 
-		diff = ( ( sensor[0] * 3.2 + sensor[1] * 2.8 + sensor[2] * 2.4 + sensor[3] * 2.0 + sensor[4] * 1.6 + sensor[5] * 1.2 ) / 6 ) - ( ( sensor[6] * 1.2 + sensor[7] * 1.6 + sensor[8] * 2.0 + sensor[9] * 2.4 + sensor[10] * 2.8 + sensor[11] * 3.2 ) / 6 );
+		//diff = ( ( sensor[0] * 3.2 + sensor[1] * 2.8 + sensor[2] * 2.4 + sensor[3] * 2.0 + sensor[4] * 1.6 + sensor[5] * 1.2 ) / 6 ) - ( ( sensor[6] * 1.2 + sensor[7] * 1.6 + sensor[8] * 2.0 + sensor[9] * 2.4 + sensor[10] * 2.8 + sensor[11] * 3.2 ) / 6 );
+		diff = ( ( sensor[0] * 3.2 + sensor[1] * 2.8 + sensor[2] * 2.4 + sensor[3] * 2.0 + sensor[4] * 1.6 + sensor[5] * 1.4 ) / 6 ) - ( ( sensor[6] * 1.4 + sensor[7] * 1.6 + sensor[8] * 2.0 + sensor[9] * 2.4 + sensor[10] * 2.8 + sensor[11] * 3.2 ) / 6 );
 		//diff = ( ( sensor[0] * 2.8 + sensor[1] * 2.4 + sensor[2] * 2.0 + sensor[3] * 1.6 + sensor[4] * 1.2 ) / 5 ) - ( (sensor[7] * 1.2 + sensor[8] * 1.6 + sensor[9] * 2.0 + sensor[10] * 2.4 + sensor[11] * 2.8 ) / 5 );
 
 		p = kp * diff; //P制御
@@ -121,6 +122,7 @@ void stopLineTrace()
 {
 	line_trace_enable_flag = 0;
 	line_following_term = 0;
+	//setMotor(0, 0);
 }
 
 void checkCourseOut(void){
