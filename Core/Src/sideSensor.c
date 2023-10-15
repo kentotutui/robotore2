@@ -24,14 +24,14 @@ void updateSideSensorStatus(){
 		goal_timer = 10000;
 	}
 
-	if(side_sensorL <= 2500){
+	if(side_sensorL <= 1000){
 		side_sensor_l = true;
 	}
 	else{
 		side_sensor_l = false;
 	}
 
-	if(side_sensorR <= 2500){
+	if(side_sensorR <= 1000){
 		side_sensor_r = true;
 	}
 	else{

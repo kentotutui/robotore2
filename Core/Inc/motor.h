@@ -13,13 +13,17 @@
 
 #define MAX_COUNTER_PERIOD 1679
 #define MIN_COUNTER_PERIOD -1679
+
+#define SUCTION_MOTOR_PERIOD 839
+
 #define STOP_COUNTER_PERIOD 0
 
 void initMotor(void);
 void motorCtrlFlip(void);
 void droneMotorCtrlFlip(void);
+void suctionmotorCtrlFlip(void);
 void setMotor(int16_t, int16_t);
-void setDroneMotor(int16_t, int16_t);
+void setsuctionMotor(int16_t);
 
 
 #endif /* INC_MOTOR_H_ */

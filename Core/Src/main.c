@@ -121,6 +121,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       calculateLineFollowingTermFlip();
       lineTraceFlip();
       motorCtrlFlip();
+      suctionmotorCtrlFlip();
       updateSideSensorStatus();
 
       checkCourseOut();
@@ -273,11 +274,15 @@ int main(void)
 
 	  if(getCouseOutFlag() == true){
           cnt = 0;
+          HAL_Delay(500);
+          setsuctionMotor(0);
 	  }
 
-	  if(getgoalStatus() == true){
+	  if(getgoalStatus() == true){  //goal判定
 		  running_flag = false;
 		  cnt = 0;
+		  //HAL_Delay(500);
+		  setsuctionMotor(0);
 		  //getgoalStatus() == false;
 	  }
 
@@ -288,16 +293,21 @@ int main(void)
 	  switch(soiya){
 
 			  case 0:
+				  setLED('W');
 				  setLED2('R');
 
 				  if(running_flag == true){
 				  		  //setVelocityRange(0, 0);
 				  		  //startLineTrace();
 
-				  		  setTargetVelocity(0.5);
+				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
 
-				  		  running();
+				  		  setsuctionMotor(500);
+
+				  		  //HAL_Delay(1000);
+
+				  		  //running();
 				  		  //setMotor(500, 500);
 				  		  //while(1);
 				  }
@@ -305,14 +315,19 @@ int main(void)
 				  break;
 
 			  case 1:
+				  setLED('G');
 				  setLED2('G');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(0.6);
+						  setTargetVelocity(1.0);
 						  //startVelocityControl();
+
+						  setsuctionMotor(500);
+
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -322,14 +337,19 @@ int main(void)
 				  break;
 
 			  case 2:
+				  setLED('B');
 				  setLED2('B');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(0.7);
+						  setTargetVelocity(1.2);
 						  //startVelocityControl();
+
+						  setsuctionMotor(550);
+
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -339,14 +359,19 @@ int main(void)
 				  break;
 
 			  case 3:
+				  setLED('M');
 				  setLED2('W');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(0.8);
+						  setTargetVelocity(1.4);
 						  //startVelocityControl();
+
+						  setsuctionMotor(600);
+
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -356,14 +381,19 @@ int main(void)
 				  break;
 
 			  case 4:
+				  setLED('Y');
 				  setLED2('Y');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(0.9);
+						  setTargetVelocity(1.6);
 						  //startVelocityControl();
+
+						  setsuctionMotor(650);
+
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -373,14 +403,19 @@ int main(void)
 				  break;
 
 			  case 5:
+				  setLED('C');
 				  setLED2('X');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(1.0);
+						  setTargetVelocity(1.8);
 						  //startVelocityControl();
+
+						  setsuctionMotor(700);
+
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -733,9 +768,9 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 0;
+  htim1.Init.Prescaler = 9;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 65535;
+  htim1.Init.Period = 839;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;

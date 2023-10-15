@@ -12,7 +12,7 @@
 
 #define WHEEL_RADIUS 12 //[mm] ホイール半径
 #define PI 3.1415926535
-#define ENCODER_RESOLUTION 4096
+#define ENCODER_RESOLUTION 2048
 
 #define REDUCTION_RATIO 0.4 //Gear reduction ratio 減速比
 

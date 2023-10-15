@@ -1,3 +1,5 @@
-motor.c:17:6:initMotor	8	static
-motor.c:25:6:motorCtrlFlip	16	static
-motor.c:58:6:setMotor	16	static
+motor.c:19:6:initMotor	8	static
+motor.c:29:6:motorCtrlFlip	16	static
+motor.c:62:6:suctionmotorCtrlFlip	4	static
+motor.c:67:6:setMotor	16	static
+motor.c:79:6:setsuctionMotor	16	static

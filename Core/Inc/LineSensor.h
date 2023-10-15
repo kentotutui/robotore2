@@ -14,6 +14,7 @@
 #include "LineChase.h"
 #include "switch.h"
 #include "main.h"
+#include "LED.h"
 
 #define LINESENSOR_ADC_NUM 12
 #define SIDE_LINESENSOR_ADC_NUM 2

@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.16, ki = 0, kd = 0.008;
+	float kp = 0.75, ki = 0, kd = 0.012;
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -130,7 +130,7 @@ void checkCourseOut(void){
 	static uint16_t dark_cnt;
 
 	all_sensor = (sensor[0] + sensor[1] + sensor[2] + sensor[3] + sensor[4] + sensor[5] + sensor[6] + sensor[7] + sensor[8] + sensor[9] + sensor[10] + sensor[11]) / 12;
-	if(all_sensor > 3000){
+	if(all_sensor > 1500){
 		dark_cnt++;
 	}
 	else dark_cnt = 0;
