@@ -24,14 +24,14 @@ void updateSideSensorStatus(){
 		goal_timer = 10000;
 	}
 
-	if(side_sensorL <= 1000){
+	if(side_sensorL <= 500){
 		side_sensor_l = true;
 	}
 	else{
 		side_sensor_l = false;
 	}
 
-	if(side_sensorR <= 1000){
+	if(side_sensorR <= 500){
 		side_sensor_r = true;
 	}
 	else{
@@ -52,7 +52,7 @@ void running(void)
 
 					  if(getSideSensorStatusR() == true){
 						  start_goal_line_cnt++;
-						  goal_timer = 0;
+						  clearGoalJudgeDistance();
 						  pattern = 5;
 					  }
 					  break;
@@ -63,18 +63,18 @@ void running(void)
 				  case 10:
 					  if(getSideSensorStatusL() == true){ //Leght side line detect
 						  goal_judge_flag = false;
-						  goal_timer = 0;
+						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true && goal_timer >= 60){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 70){
 						  goal_judge_flag = true;
-						  goal_timer = 0;
+						  clearGoalJudgeDistance();
 					  }
 
-					  else if(goal_judge_flag == true && goal_timer >= 60){
+					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 70){
 						  start_goal_line_cnt++;
 						  goal_judge_flag = false;
-						  goal_timer = 0;
+						  clearGoalJudgeDistance();
 					  }
 
 					  if(start_goal_line_cnt >= 2){

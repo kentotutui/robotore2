@@ -248,6 +248,7 @@ int main(void)
 	  if(cnt >= 1){
 		  HAL_Delay(1000);
 		  running_flag = true;
+		  timer2 = 0;
 		  cnt = 0;
 		  //setLED2('Y');
 	  }
@@ -272,11 +273,11 @@ int main(void)
 		  //setLED2('C');
 	  }
 
-	  if(getCouseOutFlag() == true){
+	  /*if(getCouseOutFlag() == true){
           cnt = 0;
           HAL_Delay(500);
           setsuctionMotor(0);
-	  }
+	  }*/
 
 	  if(getgoalStatus() == true){  //goal判定
 		  running_flag = false;
@@ -322,14 +323,16 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(1.0);
+						  setTargetVelocity(0.8);
 						  //startVelocityControl();
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(350);
 
 						  HAL_Delay(1000);
 
 						  running();
+
+						  //running();
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
