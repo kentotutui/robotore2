@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 0.6, ki = 0, kd = 0.005;
+	float kp = 0.58, ki = 0, kd = 0.012;
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -94,15 +94,12 @@ void lineTraceFlip(void)
 		float motor_r = velocity_control_term ;
 		*/
 
-
 		mon_velo_term = velocity_control_term;
 
 		//motor_l_Deb = motor_l;
 		//motor_r_Deb = motor_r;
 
 		setMotor(motor_l, motor_r);
-
-		//setMotor(motor_l_Deb, motor_r_Deb);
 
 		//setMotor(500, 500);
 	}
@@ -125,7 +122,8 @@ void stopLineTrace()
 	//setMotor(0, 0);
 }
 
-void checkCourseOut(void){
+void checkCourseOut(void)
+{
 	uint16_t all_sensor;
 	static uint16_t dark_cnt;
 
@@ -140,7 +138,8 @@ void checkCourseOut(void){
 
 }
 
-void debugmotor(float mon_deb_l, float mon_deb_r){
+void debugmotor(float mon_deb_l, float mon_deb_r)
+{
 	motor_l_Deb = mon_deb_l;
 	motor_r_Deb = mon_deb_r;
 }

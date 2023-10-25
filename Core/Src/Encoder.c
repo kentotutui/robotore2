@@ -30,6 +30,7 @@ static float goal_judge_distance;
 static float side_line_judge_distance;
 static float distance_cross_line_ignore;
 static float distance_side_line_ignore;
+static float speed_cnt;
 
 void initEncoder(void)
 {
@@ -124,4 +125,16 @@ float getDistance10mm(void){
 
 void clearDistance10mm(void){
 	distance_10mm = 0;
+}
+
+float getspeedcount(void){
+	if(distance_10mm >= 10){
+		speed_cnt += 0.1;
+		distance_10mm = 0;
+	}
+	return speed_cnt;
+}
+
+void clearspeedcount(void){
+	speed_cnt = 0.0;
 }

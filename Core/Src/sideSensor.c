@@ -48,8 +48,8 @@ void running(void)
 
 	while(goal_flag == false){
 		switch(pattern){
-				  case 0:
 
+				  case 0:
 					  if(getSideSensorStatusR() == true){
 						  start_goal_line_cnt++;
 						  clearGoalJudgeDistance();
@@ -84,15 +84,16 @@ void running(void)
 					  break;
 
 				  case 20:
-					  //setLED('R');
-					  //stopLineTrace();
-
-					  //running_flag = false;
 
 					  goal_flag = true;
 
 					  break;
 		}
+
+		if(getCouseOutFlag() == true)
+		{
+		    pattern = 20;
+	    }
 	}
 	//HAL_Delay(2000);
 	//goal_flag = false;

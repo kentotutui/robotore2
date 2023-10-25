@@ -19,6 +19,7 @@ static uint8_t i_clear_flag;
 
 static float velocity_control_term;
 static float target_velocity;
+static float variable_speed;
 
 float mon_p,mon_i,mon_d = 0;
 
@@ -41,7 +42,7 @@ void calculateVelocityControlFlip(void)
 			i_clear_flag = 0;
 		}
 
-		diff = target_velocity - current_velocity;
+		diff = setvariablespeed() - current_velocity;
 		//mon_diff = diff;
 		p = kp * diff; //P制御
 		i += ki * diff * DELTA_T; //I制御
@@ -49,7 +50,7 @@ void calculateVelocityControlFlip(void)
 
 		mon_p = p;
 		mon_i = i;
-		mon_d = d;
+		//mon_d = d;
 
 		//if(i >= 1000) i = 1000;
 		//if(i <= -1000) i = -1000;
@@ -72,6 +73,18 @@ float getVelocityControlTerm(void)
 void setTargetVelocity(float velocity)
 {
 	target_velocity = velocity;
+}
+
+float setvariablespeed(void)
+{
+	if(getspeedcount() >= target_velocity){
+		variable_speed = target_velocity;
+	}
+	else if(getspeedcount() < target_velocity){
+		variable_speed = getspeedcount();
+	}
+
+	return variable_speed;
 }
 
 float getCurrentVelocity(void)

@@ -21,6 +21,8 @@ float getSideLineIgnoreDistance(void);
 float getTotalDistance();
 float getGoalJudgeDistance();
 float getSideLineJudgeDistance();
+float getspeedcount();
+void clearspeedcount(void);
 
 void setTotalDistance(float);
 

@@ -12,6 +12,7 @@
 #include "stdbool.h"
 #include "LineSensor.h"
 #include "VelocityCtrl.h"
+#include "LineChase.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();

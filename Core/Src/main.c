@@ -47,6 +47,7 @@ uint16_t sw,sw2 = 0;
 uint16_t mode_selector;
 uint16_t flag = 0;
 uint16_t soiya = 0;
+float enc_cnt;
 
 /* USER CODE END PM */
 
@@ -269,8 +270,6 @@ int main(void)
 	  if(running_flag == false){
 		  stopLineTrace();
 		  stopVelocityControl();
-		  //cnt = 0;
-		  //setLED2('C');
 	  }
 
 	  /*if(getCouseOutFlag() == true){
@@ -284,8 +283,13 @@ int main(void)
 		  cnt = 0;
 		  //HAL_Delay(500);
 		  setsuctionMotor(0);
-		  //getgoalStatus() == false;
+		  //getgoalStatus() = false;
 	  }
+
+	  /*if(getDistance10mm() >= 10){
+		  enc_cnt++;
+	  	  clearDistance10mm();
+	  }*/
 
 	  if(soiya >= 6){
 		  soiya = 0;
@@ -323,10 +327,12 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-						  setTargetVelocity(0.8);
+					      clearspeedcount();
+
+						  setTargetVelocity(1.2);
 						  //startVelocityControl();
 
-						  setsuctionMotor(350);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
