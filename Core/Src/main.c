@@ -272,12 +272,6 @@ int main(void)
 		  stopVelocityControl();
 	  }
 
-	  /*if(getCouseOutFlag() == true){
-          cnt = 0;
-          HAL_Delay(500);
-          setsuctionMotor(0);
-	  }*/
-
 	  if(getgoalStatus() == true){  //goal判定
 		  running_flag = false;
 		  cnt = 0;
@@ -285,11 +279,6 @@ int main(void)
 		  setsuctionMotor(0);
 		  //getgoalStatus() = false;
 	  }
-
-	  /*if(getDistance10mm() >= 10){
-		  enc_cnt++;
-	  	  clearDistance10mm();
-	  }*/
 
 	  if(soiya >= 6){
 		  soiya = 0;
@@ -308,7 +297,7 @@ int main(void)
 				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
 
-				  		  setsuctionMotor(500);
+				  		  setsuctionMotor(400);
 
 				  		  //HAL_Delay(1000);
 
@@ -353,6 +342,8 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
+					      clearspeedcount();
+
 						  setTargetVelocity(1.2);
 						  //startVelocityControl();
 
@@ -374,6 +365,8 @@ int main(void)
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
+
+					      clearspeedcount();
 
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
@@ -397,6 +390,8 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
+					      clearspeedcount();
+
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
 
@@ -418,6 +413,8 @@ int main(void)
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
+
+					      clearspeedcount();
 
 						  setTargetVelocity(1.8);
 						  //startVelocityControl();
