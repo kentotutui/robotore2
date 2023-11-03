@@ -116,6 +116,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       timer2++;
 
       updateEncoderCnt();
+      updateIMUValue();
       updateAnalogSensor();
 
       calculateVelocityControlFlip();
@@ -272,7 +273,7 @@ int main(void)
 		  stopVelocityControl();
 	  }
 
-	  if(getgoalStatus() == true){  //goal判定
+	  if(getgoalStatus() == true){  //goal判?��?
 		  running_flag = false;
 		  cnt = 0;
 		  //HAL_Delay(500);
@@ -297,7 +298,7 @@ int main(void)
 				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
 
-				  		  setsuctionMotor(400);
+				  		  setsuctionMotor(500);
 
 				  		  //HAL_Delay(1000);
 
@@ -318,10 +319,10 @@ int main(void)
 
 					      clearspeedcount();
 
-						  setTargetVelocity(1.2);
+						  setTargetVelocity(1.3);
 						  //startVelocityControl();
 
-						  setsuctionMotor(400);
+						  setsuctionMotor(500);
 
 						  HAL_Delay(1000);
 
@@ -739,7 +740,7 @@ static void MX_SPI3_Init(void)
   hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi3.Init.NSS = SPI_NSS_SOFT;
-  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
   hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -774,7 +775,7 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 9;
+  htim1.Init.Prescaler = 0;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = 839;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
