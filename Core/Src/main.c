@@ -276,7 +276,6 @@ int main(void)
 	  if(getgoalStatus() == true){  //goal判?��?
 		  running_flag = false;
 		  cnt = 0;
-		  HAL_Delay(500);
 		  setsuctionMotor(0);
 		  //getgoalStatus() = false;
 	  }
@@ -298,7 +297,7 @@ int main(void)
 				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
 
-				  		  setsuctionMotor(500);
+				  		  setsuctionMotor(400);
 
 				  		  //HAL_Delay(1000);
 
@@ -322,9 +321,9 @@ int main(void)
 						  setTargetVelocity(1.0);
 						  //startVelocityControl();
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(350);
 
-						  HAL_Delay(2000);
+						  HAL_Delay(5000);
 
 						  running();
 
@@ -348,7 +347,7 @@ int main(void)
 						  setTargetVelocity(1.2);
 						  //startVelocityControl();
 
-						  setsuctionMotor(550);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -372,7 +371,7 @@ int main(void)
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
 
-						  setsuctionMotor(600);
+						  setsuctionMotor(450);
 
 						  HAL_Delay(1000);
 
@@ -396,7 +395,7 @@ int main(void)
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
 
-						  setsuctionMotor(650);
+						  setsuctionMotor(500);
 
 						  HAL_Delay(1000);
 
@@ -420,7 +419,7 @@ int main(void)
 						  setTargetVelocity(1.8);
 						  //startVelocityControl();
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(600);
 
 						  HAL_Delay(1000);
 
