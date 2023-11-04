@@ -276,7 +276,7 @@ int main(void)
 	  if(getgoalStatus() == true){  //goal判?��?
 		  running_flag = false;
 		  cnt = 0;
-		  //HAL_Delay(500);
+		  HAL_Delay(500);
 		  setsuctionMotor(0);
 		  //getgoalStatus() = false;
 	  }
@@ -319,12 +319,12 @@ int main(void)
 
 					      clearspeedcount();
 
-						  setTargetVelocity(1.3);
+						  setTargetVelocity(1.0);
 						  //startVelocityControl();
 
 						  setsuctionMotor(500);
 
-						  HAL_Delay(1000);
+						  HAL_Delay(2000);
 
 						  running();
 
