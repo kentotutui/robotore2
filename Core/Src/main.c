@@ -370,7 +370,7 @@ int main(void)
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
 
-						  setsuctionMotor(300);
+						  setsuctionMotor(250);
 
 						  HAL_Delay(1000);
 
@@ -394,7 +394,7 @@ int main(void)
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
 
-						  setsuctionMotor(300);
+						  setsuctionMotor(250);
 
 						  HAL_Delay(1000);
 
@@ -418,7 +418,7 @@ int main(void)
 						  setTargetVelocity(1.8);
 						  //startVelocityControl();
 
-						  setsuctionMotor(600);
+						  setsuctionMotor(250);
 
 						  HAL_Delay(1000);
 
