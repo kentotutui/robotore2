@@ -69,8 +69,8 @@ void storeAnalogSensorBuffer(void)
 	side_sensorR_buffer[index] = side_adc_value[1];
 	side_sensorL_buffer[index] = side_adc_value[0];*/
 
-	sensor0_buffer[index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
-	sensor1_buffer[index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
+	sensor1_buffer[index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
+	sensor0_buffer[index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
 	sensor2_buffer[index] = ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
 	sensor3_buffer[index] = ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
 	sensor4_buffer[index] = ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
