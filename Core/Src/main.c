@@ -143,7 +143,7 @@ void init(void)
 {
 	  initADC();
 	  initEncoder();
-
+	  //sensorCalibration();
 	  HAL_TIM_Base_Start_IT(&htim6);
 	  HAL_TIM_Base_Start_IT(&htim7);
 
@@ -372,7 +372,7 @@ int main(void)
 
 						  setsuctionMotor(250);
 
-						  HAL_Delay(1000);
+						  HAL_Delay(2000);
 
 						  running();
 						  //setMotor(500, 500);

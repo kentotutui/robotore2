@@ -70,8 +70,8 @@ void storeAnalogSensorBuffer(void)
 	side_sensorL_buffer[index] = side_adc_value[0];*/
 
 	for(int j=0; j<=11; j++){
-		if(adc_value[j] >= max_values[j]) adc_value[j] = max_values[j];
-		if(adc_value[j] <= min_values[j]) adc_value[j] = min_values[j];
+		//if(adc_value[j] >= max_values[j]) adc_value[j] = max_values[j];
+		//if(adc_value[j] <= min_values[j]) adc_value[j] = min_values[j];
 	}
 	sensor1_buffer[index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
 	sensor0_buffer[index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
@@ -111,6 +111,7 @@ void storeAnalogSensorBuffer(void)
 }
 
 void updateAnalogSensor(void) {
+	/*
 	sensor[0] = ( sensor0_buffer[0] + sensor0_buffer[1] + sensor0_buffer[2] + sensor0_buffer[3] + sensor0_buffer[4] + sensor0_buffer[5] + sensor0_buffer[6] + sensor0_buffer[7] + sensor0_buffer[8] + sensor0_buffer[9] ) / index;
 	sensor[1] = ( sensor1_buffer[0] + sensor1_buffer[1] + sensor1_buffer[2] + sensor1_buffer[3] + sensor1_buffer[4] + sensor1_buffer[5] + sensor1_buffer[6] + sensor1_buffer[7] + sensor1_buffer[8] + sensor1_buffer[9] ) / index;
 	sensor[2] = ( sensor2_buffer[0] + sensor2_buffer[1] + sensor2_buffer[2] + sensor2_buffer[3] + sensor2_buffer[4] + sensor2_buffer[5] + sensor2_buffer[6] + sensor2_buffer[7] + sensor2_buffer[8] + sensor2_buffer[9] ) / index;
@@ -123,11 +124,24 @@ void updateAnalogSensor(void) {
 	sensor[9] = ( sensor9_buffer[0] + sensor9_buffer[1] + sensor9_buffer[2] + sensor9_buffer[3] + sensor9_buffer[4] + sensor9_buffer[5] + sensor9_buffer[6] + sensor9_buffer[7] + sensor9_buffer[8] + sensor9_buffer[9] ) / index;
 	sensor[10] = ( sensor10_buffer[0] + sensor10_buffer[1] + sensor10_buffer[2] + sensor10_buffer[3] + sensor10_buffer[4] + sensor10_buffer[5] + sensor10_buffer[6] + sensor10_buffer[7] + sensor10_buffer[8] + sensor10_buffer[9] ) / index;
 	sensor[11] = ( sensor11_buffer[0] + sensor11_buffer[1] + sensor11_buffer[2] + sensor11_buffer[3] + sensor11_buffer[4] + sensor11_buffer[5] + sensor11_buffer[6] + sensor11_buffer[7] + sensor11_buffer[8] + sensor11_buffer[9] ) / index;
+*/
+	sensor[0] =  ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
+	sensor[1] =  ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
+	sensor[2] =  ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
+	sensor[3] =  ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
+	sensor[4] =  ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
+	sensor[5] =  ((adc_value[5] - offset_values[5]) / sensor_coefficient[5]) * 1000;
+	sensor[6] =  ((adc_value[6] - offset_values[6]) / sensor_coefficient[6]) * 1000;
+	sensor[7] =  ((adc_value[7] - offset_values[7]) / sensor_coefficient[7]) * 1000;
+	sensor[8] =  ((adc_value[8] - offset_values[8]) / sensor_coefficient[8]) * 1000;
+	sensor[9] =  ((adc_value[9] - offset_values[9]) / sensor_coefficient[9]) * 1000;
+	sensor[10] = ((adc_value[10] - offset_values[10]) / sensor_coefficient[10]) * 1000;
+	sensor[11] = ((adc_value[11] - offset_values[11]) / sensor_coefficient[11]) * 1000;
 
 	side_sensorR = ( side_sensorR_buffer[0] + side_sensorR_buffer[1] + side_sensorR_buffer[2] + side_sensorR_buffer[3] + side_sensorR_buffer[4] + side_sensorR_buffer[5] + side_sensorR_buffer[6] + side_sensorR_buffer[7] + side_sensorR_buffer[8] + side_sensorR_buffer[9] ) / 10;
 	side_sensorL = ( side_sensorL_buffer[0] + side_sensorL_buffer[1] + side_sensorL_buffer[2] + side_sensorL_buffer[3] + side_sensorL_buffer[4] + side_sensorL_buffer[5] + side_sensorL_buffer[6] + side_sensorL_buffer[7] + side_sensorL_buffer[8] + side_sensorL_buffer[9] ) / 10;
 	for(int j=0; j<=11; j++){
-//		if(sensor[j] >= 1000) sensor[j] = 1000;
+		if(sensor[j] >= 1000) sensor[j] = 1000;
 		if(sensor[j] <= 0) sensor[j] = 0;
 	}
     index = 0;
@@ -144,6 +158,11 @@ void sensorCalibration()
 	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
 		max_values[i] = 00;
 		min_values[i] = 1500;
+		max_values_buffer[i] = 0;
+		min_values_buffer[i] = 1500;
+//		min_values[1] = 1500;
+//		min_values[2] = 1500;
+//		min_values[3] = 1500;
 	}
 
 	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
@@ -161,10 +180,13 @@ void sensorCalibration()
 			min_values_buffer[i] = adc_value[i];
 
 			if(max_values_buffer[i] > max_values[i]){
-				max_values[i] = adc_value[i];
+				max_values[i] = max_values_buffer[i];
 			}
-			if(min_values_buffer[i] < min_values[i]){
-				min_values[i] = adc_value[i];
+//			if(max_values_buffer[2] > max_values[2]){
+//				max_values[2] = max_values_buffer[2];
+//			}
+			if((min_values_buffer[i] < min_values[i]) ){
+				min_values[i] = min_values_buffer[i];
 			}
 		}
 

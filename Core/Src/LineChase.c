@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 1.3, ki = 0, kd = 0.006;   //kp = 0.7, kd = 0.01  //kp = 2.8, kd = 0.05 //kp = 1.5, kd = 0.0015
+	float kp = 4.0, ki = 0, kd = 0.01;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -39,11 +39,11 @@ void calculateLineFollowingTermFlip(void){
 			i_clear_flag = 0;
 		}
 
-		//diff = ( ( sensor[0] * 5.2 + sensor[1] * 4.4 + sensor[2] * 3.6 + sensor[3] * 2.8 + sensor[4] * 2.0 + sensor[5] * 1.4 ) / 6 ) - ( ( sensor[6] * 1.4 + sensor[7] * 2.0 + sensor[8] * 2.8 + sensor[9] * 3.6 + sensor[10] * 4.4 + sensor[11] * 5.2 ) / 6 );
-		diff = ( ( sensor[0] * 3.2 + sensor[1] * 2.8 + sensor[2] * 2.4 + sensor[3] * 2.0 + sensor[4] * 1.6 + sensor[5] * 1.4 ) / 6 ) - ( ( sensor[6] * 1.4 + sensor[7] * 1.6 + sensor[8] * 2.0 + sensor[9] * 2.4 + sensor[10] * 2.8 + sensor[11] * 3.2 ) / 6 );
+		//diff = ( ( sensor[0] * 3.2 + sensor[1] * 2.8 + sensor[2] * 2.4 + sensor[3] * 2.0 + sensor[4] * 1.6 + sensor[5] * 1.4 ) / 6 ) - ( ( sensor[6] * 1.4 + sensor[7] * 1.6 + sensor[8] * 2.0 + sensor[9] * 2.4 + sensor[10] * 2.8 + sensor[11] * 3.2 ) / 6 );
+		diff = ( ( sensor[0] + sensor[1] + sensor[2] + sensor[3] + sensor[4] + sensor[5] ) / 6 ) - ( ( sensor[6] + sensor[7] + sensor[8] + sensor[9] + sensor[10] + sensor[11] ) / 6 );
 
 		p = kp * diff; //P制御
-		i += ki * diff * DELTA_T; //I制御
+		//i += ki * diff * DELTA_T; //I制御
 		d = kd * (diff - pre_diff) / DELTA_T; //D制御
 
 		line_following_term = p + i + d;
