@@ -1,5 +1,5 @@
 LineChase.c:29:6:calculateLineFollowingTermFlip	40	static
-LineChase.c:59:6:lineTraceFlip	24	static
+LineChase.c:59:6:lineTraceFlip	32	static
 LineChase.c:111:6:startLineTrace	4	static
 LineChase.c:117:6:stopLineTrace	4	static
 LineChase.c:124:6:checkCourseOut	16	static

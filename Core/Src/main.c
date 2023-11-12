@@ -119,8 +119,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       updateIMUValue();
       updateAnalogSensor();
 
-      calculateVelocityControlFlip();
       calculateLineFollowingTermFlip();
+      calculateVelocityControlFlip();
       lineTraceFlip();
       motorCtrlFlip();
       suctionmotorCtrlFlip();
@@ -280,7 +280,7 @@ int main(void)
 		  //getgoalStatus() = false;
 	  }
 
-	  if(soiya >= 6){
+	  if(soiya >= 7){
 		  soiya = 0;
 	  }
 
@@ -344,7 +344,7 @@ int main(void)
 
 					      clearspeedcount();
 
-						  setTargetVelocity(1.0);
+						  setTargetVelocity(1.2);
 						  //startVelocityControl();
 
 						  setsuctionMotor(250);
@@ -370,9 +370,9 @@ int main(void)
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
+						  setsuctionMotor(200);
 
-						  HAL_Delay(2000);
+						  HAL_Delay(1000);
 
 						  running();
 						  //setMotor(500, 500);
@@ -394,7 +394,7 @@ int main(void)
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
+						  setsuctionMotor(200);
 
 						  HAL_Delay(1000);
 
@@ -416,6 +416,29 @@ int main(void)
 					      clearspeedcount();
 
 						  setTargetVelocity(1.8);
+						  //startVelocityControl();
+
+						  setsuctionMotor(250);
+
+						  HAL_Delay(1000);
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
+				  break;
+
+			  case 6:
+				  setLED('R');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  clearspeedcount();
+
+						  setTargetVelocity(1.2);
 						  //startVelocityControl();
 
 						  setsuctionMotor(250);
