@@ -2262,7 +2262,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 4.0, kd = 0.035;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 4.0, kd = 0.038;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
  8001786:	f04f 4381 	mov.w	r3, #1082130432	; 0x40800000
  800178a:	617b      	str	r3, [r7, #20]
  800178c:	4b4a      	ldr	r3, [pc, #296]	; (80018b8 <calculateLineFollowingTermFlip+0x138>)
@@ -2395,7 +2395,7 @@ void calculateLineFollowingTermFlip(void){
  80018ac:	f3af 8000 	nop.w
  80018b0:	d2f1a9fc 	.word	0xd2f1a9fc
  80018b4:	3f50624d 	.word	0x3f50624d
- 80018b8:	3d0f5c29 	.word	0x3d0f5c29
+ 80018b8:	3d1ba5e3 	.word	0x3d1ba5e3
  80018bc:	20000256 	.word	0x20000256
  80018c0:	20000257 	.word	0x20000257
  80018c4:	20000264 	.word	0x20000264
