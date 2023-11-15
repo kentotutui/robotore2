@@ -1,4 +1,5 @@
 "Core/Src/Encoder.o"
+"Core/Src/Flash_F405.o"
 "Core/Src/IMU.o"
 "Core/Src/LED.o"
 "Core/Src/LineChase.o"
