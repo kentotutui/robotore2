@@ -2262,7 +2262,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 4.0, kd = 0.038;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 4.0, kd = 0.04;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
  8001786:	f04f 4381 	mov.w	r3, #1082130432	; 0x40800000
  800178a:	617b      	str	r3, [r7, #20]
  800178c:	4b4a      	ldr	r3, [pc, #296]	; (80018b8 <calculateLineFollowingTermFlip+0x138>)
@@ -2395,7 +2395,7 @@ void calculateLineFollowingTermFlip(void){
  80018ac:	f3af 8000 	nop.w
  80018b0:	d2f1a9fc 	.word	0xd2f1a9fc
  80018b4:	3f50624d 	.word	0x3f50624d
- 80018b8:	3d1ba5e3 	.word	0x3d1ba5e3
+ 80018b8:	3d23d70a 	.word	0x3d23d70a
  80018bc:	20000256 	.word	0x20000256
  80018c0:	20000257 	.word	0x20000257
  80018c4:	20000264 	.word	0x20000264
@@ -2420,7 +2420,6 @@ void lineTraceFlip(void)
 		float velocity_control_term = getVelocityControlTerm();
  80018ea:	f001 f807 	bl	80028fc <getVelocityControlTerm>
  80018ee:	ed87 0a05 	vstr	s0, [r7, #20]
-
 
 		float limit = MAX_COUNTER_PERIOD * 0.8;
  80018f2:	4b4e      	ldr	r3, [pc, #312]	; (8001a2c <lineTraceFlip+0x154>)
@@ -4533,16 +4532,16 @@ int main(void)
  8002b6c:	4603      	mov	r3, r0
  8002b6e:	2b01      	cmp	r3, #1
  8002b70:	d109      	bne.n	8002b86 <main+0x6a>
- 8002b72:	4bba      	ldr	r3, [pc, #744]	; (8002e5c <main+0x340>)
+ 8002b72:	4bbb      	ldr	r3, [pc, #748]	; (8002e60 <main+0x344>)
  8002b74:	881b      	ldrh	r3, [r3, #0]
  8002b76:	2b00      	cmp	r3, #0
  8002b78:	d105      	bne.n	8002b86 <main+0x6a>
 		  timer = 0;
- 8002b7a:	4bb9      	ldr	r3, [pc, #740]	; (8002e60 <main+0x344>)
+ 8002b7a:	4bba      	ldr	r3, [pc, #744]	; (8002e64 <main+0x348>)
  8002b7c:	2200      	movs	r2, #0
  8002b7e:	601a      	str	r2, [r3, #0]
 		  sw = 1;
- 8002b80:	4bb6      	ldr	r3, [pc, #728]	; (8002e5c <main+0x340>)
+ 8002b80:	4bb7      	ldr	r3, [pc, #732]	; (8002e60 <main+0x344>)
  8002b82:	2201      	movs	r2, #1
  8002b84:	801a      	strh	r2, [r3, #0]
 	  }
@@ -4552,30 +4551,30 @@ int main(void)
  8002b8c:	4603      	mov	r3, r0
  8002b8e:	2b01      	cmp	r3, #1
  8002b90:	d10a      	bne.n	8002ba8 <main+0x8c>
- 8002b92:	4bb3      	ldr	r3, [pc, #716]	; (8002e60 <main+0x344>)
+ 8002b92:	4bb4      	ldr	r3, [pc, #720]	; (8002e64 <main+0x348>)
  8002b94:	681b      	ldr	r3, [r3, #0]
  8002b96:	2b14      	cmp	r3, #20
  8002b98:	d906      	bls.n	8002ba8 <main+0x8c>
- 8002b9a:	4bb0      	ldr	r3, [pc, #704]	; (8002e5c <main+0x340>)
+ 8002b9a:	4bb1      	ldr	r3, [pc, #708]	; (8002e60 <main+0x344>)
  8002b9c:	881b      	ldrh	r3, [r3, #0]
  8002b9e:	2b01      	cmp	r3, #1
  8002ba0:	d102      	bne.n	8002ba8 <main+0x8c>
 		  sw = 2;
- 8002ba2:	4bae      	ldr	r3, [pc, #696]	; (8002e5c <main+0x340>)
+ 8002ba2:	4baf      	ldr	r3, [pc, #700]	; (8002e60 <main+0x344>)
  8002ba4:	2202      	movs	r2, #2
  8002ba6:	801a      	strh	r2, [r3, #0]
 	  }
 	  if(timer > 40 && sw == 1){
- 8002ba8:	4bad      	ldr	r3, [pc, #692]	; (8002e60 <main+0x344>)
+ 8002ba8:	4bae      	ldr	r3, [pc, #696]	; (8002e64 <main+0x348>)
  8002baa:	681b      	ldr	r3, [r3, #0]
  8002bac:	2b28      	cmp	r3, #40	; 0x28
  8002bae:	d906      	bls.n	8002bbe <main+0xa2>
- 8002bb0:	4baa      	ldr	r3, [pc, #680]	; (8002e5c <main+0x340>)
+ 8002bb0:	4bab      	ldr	r3, [pc, #684]	; (8002e60 <main+0x344>)
  8002bb2:	881b      	ldrh	r3, [r3, #0]
  8002bb4:	2b01      	cmp	r3, #1
  8002bb6:	d102      	bne.n	8002bbe <main+0xa2>
 		  sw = 0;
- 8002bb8:	4ba8      	ldr	r3, [pc, #672]	; (8002e5c <main+0x340>)
+ 8002bb8:	4ba9      	ldr	r3, [pc, #676]	; (8002e60 <main+0x344>)
  8002bba:	2200      	movs	r2, #0
  8002bbc:	801a      	strh	r2, [r3, #0]
 	  }
@@ -4585,20 +4584,20 @@ int main(void)
  8002bc4:	4603      	mov	r3, r0
  8002bc6:	2b00      	cmp	r3, #0
  8002bc8:	d10c      	bne.n	8002be4 <main+0xc8>
- 8002bca:	4ba4      	ldr	r3, [pc, #656]	; (8002e5c <main+0x340>)
+ 8002bca:	4ba5      	ldr	r3, [pc, #660]	; (8002e60 <main+0x344>)
  8002bcc:	881b      	ldrh	r3, [r3, #0]
  8002bce:	2b02      	cmp	r3, #2
  8002bd0:	d108      	bne.n	8002be4 <main+0xc8>
 		  //mode_selector++;
 		  soiya++;
- 8002bd2:	4ba4      	ldr	r3, [pc, #656]	; (8002e64 <main+0x348>)
+ 8002bd2:	4ba5      	ldr	r3, [pc, #660]	; (8002e68 <main+0x34c>)
  8002bd4:	881b      	ldrh	r3, [r3, #0]
  8002bd6:	3301      	adds	r3, #1
  8002bd8:	b29a      	uxth	r2, r3
- 8002bda:	4ba2      	ldr	r3, [pc, #648]	; (8002e64 <main+0x348>)
+ 8002bda:	4ba3      	ldr	r3, [pc, #652]	; (8002e68 <main+0x34c>)
  8002bdc:	801a      	strh	r2, [r3, #0]
 		  sw = 0;
- 8002bde:	4b9f      	ldr	r3, [pc, #636]	; (8002e5c <main+0x340>)
+ 8002bde:	4ba0      	ldr	r3, [pc, #640]	; (8002e60 <main+0x344>)
  8002be0:	2200      	movs	r2, #0
  8002be2:	801a      	strh	r2, [r3, #0]
 	  }
@@ -4609,16 +4608,16 @@ int main(void)
  8002bea:	4603      	mov	r3, r0
  8002bec:	2b01      	cmp	r3, #1
  8002bee:	d109      	bne.n	8002c04 <main+0xe8>
- 8002bf0:	4b9d      	ldr	r3, [pc, #628]	; (8002e68 <main+0x34c>)
+ 8002bf0:	4b9e      	ldr	r3, [pc, #632]	; (8002e6c <main+0x350>)
  8002bf2:	881b      	ldrh	r3, [r3, #0]
  8002bf4:	2b00      	cmp	r3, #0
  8002bf6:	d105      	bne.n	8002c04 <main+0xe8>
 	  	  timer = 0;
- 8002bf8:	4b99      	ldr	r3, [pc, #612]	; (8002e60 <main+0x344>)
+ 8002bf8:	4b9a      	ldr	r3, [pc, #616]	; (8002e64 <main+0x348>)
  8002bfa:	2200      	movs	r2, #0
  8002bfc:	601a      	str	r2, [r3, #0]
 	  	  sw2 = 1;
- 8002bfe:	4b9a      	ldr	r3, [pc, #616]	; (8002e68 <main+0x34c>)
+ 8002bfe:	4b9b      	ldr	r3, [pc, #620]	; (8002e6c <main+0x350>)
  8002c00:	2201      	movs	r2, #1
  8002c02:	801a      	strh	r2, [r3, #0]
 	  }
@@ -4628,30 +4627,30 @@ int main(void)
  8002c0a:	4603      	mov	r3, r0
  8002c0c:	2b01      	cmp	r3, #1
  8002c0e:	d10a      	bne.n	8002c26 <main+0x10a>
- 8002c10:	4b93      	ldr	r3, [pc, #588]	; (8002e60 <main+0x344>)
+ 8002c10:	4b94      	ldr	r3, [pc, #592]	; (8002e64 <main+0x348>)
  8002c12:	681b      	ldr	r3, [r3, #0]
  8002c14:	2b14      	cmp	r3, #20
  8002c16:	d906      	bls.n	8002c26 <main+0x10a>
- 8002c18:	4b93      	ldr	r3, [pc, #588]	; (8002e68 <main+0x34c>)
+ 8002c18:	4b94      	ldr	r3, [pc, #592]	; (8002e6c <main+0x350>)
  8002c1a:	881b      	ldrh	r3, [r3, #0]
  8002c1c:	2b01      	cmp	r3, #1
  8002c1e:	d102      	bne.n	8002c26 <main+0x10a>
 	  	  sw2 = 2;
- 8002c20:	4b91      	ldr	r3, [pc, #580]	; (8002e68 <main+0x34c>)
+ 8002c20:	4b92      	ldr	r3, [pc, #584]	; (8002e6c <main+0x350>)
  8002c22:	2202      	movs	r2, #2
  8002c24:	801a      	strh	r2, [r3, #0]
 	  }
 	  if(timer > 40 && sw2 == 1){
- 8002c26:	4b8e      	ldr	r3, [pc, #568]	; (8002e60 <main+0x344>)
+ 8002c26:	4b8f      	ldr	r3, [pc, #572]	; (8002e64 <main+0x348>)
  8002c28:	681b      	ldr	r3, [r3, #0]
  8002c2a:	2b28      	cmp	r3, #40	; 0x28
  8002c2c:	d906      	bls.n	8002c3c <main+0x120>
- 8002c2e:	4b8e      	ldr	r3, [pc, #568]	; (8002e68 <main+0x34c>)
+ 8002c2e:	4b8f      	ldr	r3, [pc, #572]	; (8002e6c <main+0x350>)
  8002c30:	881b      	ldrh	r3, [r3, #0]
  8002c32:	2b01      	cmp	r3, #1
  8002c34:	d102      	bne.n	8002c3c <main+0x120>
 	  	  sw2 = 0;
- 8002c36:	4b8c      	ldr	r3, [pc, #560]	; (8002e68 <main+0x34c>)
+ 8002c36:	4b8d      	ldr	r3, [pc, #564]	; (8002e6c <main+0x350>)
  8002c38:	2200      	movs	r2, #0
  8002c3a:	801a      	strh	r2, [r3, #0]
 	  }
@@ -4661,37 +4660,37 @@ int main(void)
  8002c42:	4603      	mov	r3, r0
  8002c44:	2b00      	cmp	r3, #0
  8002c46:	d10c      	bne.n	8002c62 <main+0x146>
- 8002c48:	4b87      	ldr	r3, [pc, #540]	; (8002e68 <main+0x34c>)
+ 8002c48:	4b88      	ldr	r3, [pc, #544]	; (8002e6c <main+0x350>)
  8002c4a:	881b      	ldrh	r3, [r3, #0]
  8002c4c:	2b02      	cmp	r3, #2
  8002c4e:	d108      	bne.n	8002c62 <main+0x146>
 	  	  cnt++;
- 8002c50:	4b86      	ldr	r3, [pc, #536]	; (8002e6c <main+0x350>)
+ 8002c50:	4b87      	ldr	r3, [pc, #540]	; (8002e70 <main+0x354>)
  8002c52:	881b      	ldrh	r3, [r3, #0]
  8002c54:	3301      	adds	r3, #1
  8002c56:	b29a      	uxth	r2, r3
- 8002c58:	4b84      	ldr	r3, [pc, #528]	; (8002e6c <main+0x350>)
+ 8002c58:	4b85      	ldr	r3, [pc, #532]	; (8002e70 <main+0x354>)
  8002c5a:	801a      	strh	r2, [r3, #0]
 	  	  sw2 = 0;
- 8002c5c:	4b82      	ldr	r3, [pc, #520]	; (8002e68 <main+0x34c>)
+ 8002c5c:	4b83      	ldr	r3, [pc, #524]	; (8002e6c <main+0x350>)
  8002c5e:	2200      	movs	r2, #0
  8002c60:	801a      	strh	r2, [r3, #0]
 	  }
 
 	  if(cnt >= 2){
- 8002c62:	4b82      	ldr	r3, [pc, #520]	; (8002e6c <main+0x350>)
+ 8002c62:	4b83      	ldr	r3, [pc, #524]	; (8002e70 <main+0x354>)
  8002c64:	881b      	ldrh	r3, [r3, #0]
  8002c66:	2b01      	cmp	r3, #1
  8002c68:	d902      	bls.n	8002c70 <main+0x154>
 		  cnt = 0;
- 8002c6a:	4b80      	ldr	r3, [pc, #512]	; (8002e6c <main+0x350>)
+ 8002c6a:	4b81      	ldr	r3, [pc, #516]	; (8002e70 <main+0x354>)
  8002c6c:	2200      	movs	r2, #0
  8002c6e:	801a      	strh	r2, [r3, #0]
 	  }
 
 
 	  if(cnt >= 1){
- 8002c70:	4b7e      	ldr	r3, [pc, #504]	; (8002e6c <main+0x350>)
+ 8002c70:	4b7f      	ldr	r3, [pc, #508]	; (8002e70 <main+0x354>)
  8002c72:	881b      	ldrh	r3, [r3, #0]
  8002c74:	2b00      	cmp	r3, #0
  8002c76:	d00b      	beq.n	8002c90 <main+0x174>
@@ -4702,11 +4701,11 @@ int main(void)
  8002c80:	2301      	movs	r3, #1
  8002c82:	71fb      	strb	r3, [r7, #7]
 		  timer2 = 0;
- 8002c84:	4b7a      	ldr	r3, [pc, #488]	; (8002e70 <main+0x354>)
+ 8002c84:	4b7b      	ldr	r3, [pc, #492]	; (8002e74 <main+0x358>)
  8002c86:	2200      	movs	r2, #0
  8002c88:	601a      	str	r2, [r3, #0]
 		  cnt = 0;
- 8002c8a:	4b78      	ldr	r3, [pc, #480]	; (8002e6c <main+0x350>)
+ 8002c8a:	4b79      	ldr	r3, [pc, #484]	; (8002e70 <main+0x354>)
  8002c8c:	2200      	movs	r2, #0
  8002c8e:	801a      	strh	r2, [r3, #0]
 		  running();
@@ -4735,7 +4734,7 @@ int main(void)
  8002cae:	2300      	movs	r3, #0
  8002cb0:	71fb      	strb	r3, [r7, #7]
 		  cnt = 0;
- 8002cb2:	4b6e      	ldr	r3, [pc, #440]	; (8002e6c <main+0x350>)
+ 8002cb2:	4b6f      	ldr	r3, [pc, #444]	; (8002e70 <main+0x354>)
  8002cb4:	2200      	movs	r2, #0
  8002cb6:	801a      	strh	r2, [r3, #0]
 		  setsuctionMotor(0);
@@ -4745,21 +4744,21 @@ int main(void)
 	  }
 
 	  if(soiya >= 7){
- 8002cbe:	4b69      	ldr	r3, [pc, #420]	; (8002e64 <main+0x348>)
+ 8002cbe:	4b6a      	ldr	r3, [pc, #424]	; (8002e68 <main+0x34c>)
  8002cc0:	881b      	ldrh	r3, [r3, #0]
  8002cc2:	2b06      	cmp	r3, #6
  8002cc4:	d902      	bls.n	8002ccc <main+0x1b0>
 		  soiya = 0;
- 8002cc6:	4b67      	ldr	r3, [pc, #412]	; (8002e64 <main+0x348>)
+ 8002cc6:	4b68      	ldr	r3, [pc, #416]	; (8002e68 <main+0x34c>)
  8002cc8:	2200      	movs	r2, #0
  8002cca:	801a      	strh	r2, [r3, #0]
 	  }
 
 	  switch(soiya){
- 8002ccc:	4b65      	ldr	r3, [pc, #404]	; (8002e64 <main+0x348>)
+ 8002ccc:	4b66      	ldr	r3, [pc, #408]	; (8002e68 <main+0x34c>)
  8002cce:	881b      	ldrh	r3, [r3, #0]
  8002cd0:	2b06      	cmp	r3, #6
- 8002cd2:	f200 80b3 	bhi.w	8002e3c <main+0x320>
+ 8002cd2:	f200 80b5 	bhi.w	8002e40 <main+0x324>
  8002cd6:	a201      	add	r2, pc, #4	; (adr r2, 8002cdc <main+0x1c0>)
  8002cd8:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
  8002cdc:	08002cf9 	.word	0x08002cf9
@@ -4768,7 +4767,7 @@ int main(void)
  8002ce8:	08002d7b 	.word	0x08002d7b
  8002cec:	08002dad 	.word	0x08002dad
  8002cf0:	08002ddf 	.word	0x08002ddf
- 8002cf4:	08002e11 	.word	0x08002e11
+ 8002cf4:	08002e13 	.word	0x08002e13
 
 			  case 0:
 				  setLED('W');
@@ -4781,7 +4780,7 @@ int main(void)
 				  if(running_flag == true){
  8002d04:	79fb      	ldrb	r3, [r7, #7]
  8002d06:	2b00      	cmp	r3, #0
- 8002d08:	f000 809a 	beq.w	8002e40 <main+0x324>
+ 8002d08:	f000 809c 	beq.w	8002e44 <main+0x328>
 				  		  //startLineTrace();
 
 				  		  //setTargetVelocity(0.6);
@@ -4796,7 +4795,7 @@ int main(void)
 				  }
 
 				  break;
- 8002d12:	e095      	b.n	8002e40 <main+0x324>
+ 8002d12:	e097      	b.n	8002e44 <main+0x328>
 
 			  case 1:
 				  setLED('G');
@@ -4809,7 +4808,7 @@ int main(void)
 				  if(running_flag == true){
  8002d20:	79fb      	ldrb	r3, [r7, #7]
  8002d22:	2b00      	cmp	r3, #0
- 8002d24:	f000 808e 	beq.w	8002e44 <main+0x328>
+ 8002d24:	f000 8090 	beq.w	8002e48 <main+0x32c>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
@@ -4817,7 +4816,7 @@ int main(void)
  8002d28:	f7fe fa7e 	bl	8001228 <clearspeedcount>
 
 						  setTargetVelocity(0.0);
- 8002d2c:	ed9f 0a51 	vldr	s0, [pc, #324]	; 8002e74 <main+0x358>
+ 8002d2c:	ed9f 0a52 	vldr	s0, [pc, #328]	; 8002e78 <main+0x35c>
  8002d30:	f7ff fdf2 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
@@ -4837,7 +4836,7 @@ int main(void)
 				  }
 
 				  break;
- 8002d46:	e07d      	b.n	8002e44 <main+0x328>
+ 8002d46:	e07f      	b.n	8002e48 <main+0x32c>
 
 			  case 2:
 				  setLED('B');
@@ -4850,7 +4849,7 @@ int main(void)
 				  if(running_flag == true){
  8002d54:	79fb      	ldrb	r3, [r7, #7]
  8002d56:	2b00      	cmp	r3, #0
- 8002d58:	d076      	beq.n	8002e48 <main+0x32c>
+ 8002d58:	d078      	beq.n	8002e4c <main+0x330>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
@@ -4858,7 +4857,7 @@ int main(void)
  8002d5a:	f7fe fa65 	bl	8001228 <clearspeedcount>
 
 						  setTargetVelocity(1.2);
- 8002d5e:	ed9f 0a46 	vldr	s0, [pc, #280]	; 8002e78 <main+0x35c>
+ 8002d5e:	ed9f 0a47 	vldr	s0, [pc, #284]	; 8002e7c <main+0x360>
  8002d62:	f7ff fdd9 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
@@ -4876,7 +4875,7 @@ int main(void)
 				  }
 
 				  break;
- 8002d78:	e066      	b.n	8002e48 <main+0x32c>
+ 8002d78:	e068      	b.n	8002e4c <main+0x330>
 
 			  case 3:
 				  setLED('M');
@@ -4889,7 +4888,7 @@ int main(void)
 				  if(running_flag == true){
  8002d86:	79fb      	ldrb	r3, [r7, #7]
  8002d88:	2b00      	cmp	r3, #0
- 8002d8a:	d05f      	beq.n	8002e4c <main+0x330>
+ 8002d8a:	d061      	beq.n	8002e50 <main+0x334>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
@@ -4897,7 +4896,7 @@ int main(void)
  8002d8c:	f7fe fa4c 	bl	8001228 <clearspeedcount>
 
 						  setTargetVelocity(1.4);
- 8002d90:	ed9f 0a3a 	vldr	s0, [pc, #232]	; 8002e7c <main+0x360>
+ 8002d90:	ed9f 0a3b 	vldr	s0, [pc, #236]	; 8002e80 <main+0x364>
  8002d94:	f7ff fdc0 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
@@ -4916,7 +4915,7 @@ int main(void)
 				  }
 
 				  break;
- 8002daa:	e04f      	b.n	8002e4c <main+0x330>
+ 8002daa:	e051      	b.n	8002e50 <main+0x334>
 
 			  case 4:
 				  setLED('Y');
@@ -4929,7 +4928,7 @@ int main(void)
 				  if(running_flag == true){
  8002db8:	79fb      	ldrb	r3, [r7, #7]
  8002dba:	2b00      	cmp	r3, #0
- 8002dbc:	d048      	beq.n	8002e50 <main+0x334>
+ 8002dbc:	d04a      	beq.n	8002e54 <main+0x338>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
@@ -4937,12 +4936,12 @@ int main(void)
  8002dbe:	f7fe fa33 	bl	8001228 <clearspeedcount>
 
 						  setTargetVelocity(1.6);
- 8002dc2:	ed9f 0a2f 	vldr	s0, [pc, #188]	; 8002e80 <main+0x364>
+ 8002dc2:	ed9f 0a30 	vldr	s0, [pc, #192]	; 8002e84 <main+0x368>
  8002dc6:	f7ff fda7 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(200);
- 8002dca:	20c8      	movs	r0, #200	; 0xc8
+						  setsuctionMotor(250);
+ 8002dca:	20fa      	movs	r0, #250	; 0xfa
  8002dcc:	f000 fe7a 	bl	8003ac4 <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -4956,7 +4955,7 @@ int main(void)
 				  }
 
 				  break;
- 8002ddc:	e038      	b.n	8002e50 <main+0x334>
+ 8002ddc:	e03a      	b.n	8002e54 <main+0x338>
 
 			  case 5:
 				  setLED('C');
@@ -4969,76 +4968,73 @@ int main(void)
 				  if(running_flag == true){
  8002dea:	79fb      	ldrb	r3, [r7, #7]
  8002dec:	2b00      	cmp	r3, #0
- 8002dee:	d031      	beq.n	8002e54 <main+0x338>
+ 8002dee:	d033      	beq.n	8002e58 <main+0x33c>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
  8002df0:	f7fe fa1a 	bl	8001228 <clearspeedcount>
 
-						  setTargetVelocity(1.8);
- 8002df4:	ed9f 0a23 	vldr	s0, [pc, #140]	; 8002e84 <main+0x368>
+						  setTargetVelocity(2.0);
+ 8002df4:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8002df8:	f7ff fd8e 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
- 8002dfc:	20fa      	movs	r0, #250	; 0xfa
- 8002dfe:	f000 fe61 	bl	8003ac4 <setsuctionMotor>
+						  setsuctionMotor(350);
+ 8002dfc:	f44f 70af 	mov.w	r0, #350	; 0x15e
+ 8002e00:	f000 fe60 	bl	8003ac4 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 8002e02:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8002e06:	f001 fc73 	bl	80046f0 <HAL_Delay>
+ 8002e04:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8002e08:	f001 fc72 	bl	80046f0 <HAL_Delay>
 
 						  running();
- 8002e0a:	f000 feb5 	bl	8003b78 <running>
+ 8002e0c:	f000 feb4 	bl	8003b78 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8002e0e:	e021      	b.n	8002e54 <main+0x338>
+ 8002e10:	e022      	b.n	8002e58 <main+0x33c>
 
 			  case 6:
 				  setLED('R');
- 8002e10:	2052      	movs	r0, #82	; 0x52
- 8002e12:	f7fe fac5 	bl	80013a0 <setLED>
+ 8002e12:	2052      	movs	r0, #82	; 0x52
+ 8002e14:	f7fe fac4 	bl	80013a0 <setLED>
 
 				  if(running_flag == true){
- 8002e16:	79fb      	ldrb	r3, [r7, #7]
- 8002e18:	2b00      	cmp	r3, #0
- 8002e1a:	d01d      	beq.n	8002e58 <main+0x33c>
+ 8002e18:	79fb      	ldrb	r3, [r7, #7]
+ 8002e1a:	2b00      	cmp	r3, #0
+ 8002e1c:	d01e      	beq.n	8002e5c <main+0x340>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 						  clearspeedcount();
- 8002e1c:	f7fe fa04 	bl	8001228 <clearspeedcount>
+ 8002e1e:	f7fe fa03 	bl	8001228 <clearspeedcount>
 
-						  setTargetVelocity(1.2);
- 8002e20:	ed9f 0a15 	vldr	s0, [pc, #84]	; 8002e78 <main+0x35c>
- 8002e24:	f7ff fd78 	bl	8002918 <setTargetVelocity>
+						  setTargetVelocity(2.5);
+ 8002e22:	eeb0 0a04 	vmov.f32	s0, #4	; 0x40200000  2.5
+ 8002e26:	f7ff fd77 	bl	8002918 <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
- 8002e28:	20fa      	movs	r0, #250	; 0xfa
- 8002e2a:	f000 fe4b 	bl	8003ac4 <setsuctionMotor>
+						  setsuctionMotor(750);
+ 8002e2a:	f240 20ee 	movw	r0, #750	; 0x2ee
+ 8002e2e:	f000 fe49 	bl	8003ac4 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 8002e2e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8002e32:	f001 fc5d 	bl	80046f0 <HAL_Delay>
+ 8002e32:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8002e36:	f001 fc5b 	bl	80046f0 <HAL_Delay>
 
 						  running();
- 8002e36:	f000 fe9f 	bl	8003b78 <running>
+ 8002e3a:	f000 fe9d 	bl	8003b78 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8002e3a:	e00d      	b.n	8002e58 <main+0x33c>
+ 8002e3e:	e00d      	b.n	8002e5c <main+0x340>
 
 			  default:
-				  break;
- 8002e3c:	bf00      	nop
- 8002e3e:	e692      	b.n	8002b66 <main+0x4a>
 				  break;
  8002e40:	bf00      	nop
  8002e42:	e690      	b.n	8002b66 <main+0x4a>
@@ -5059,19 +5055,21 @@ int main(void)
  8002e56:	e686      	b.n	8002b66 <main+0x4a>
 				  break;
  8002e58:	bf00      	nop
-	  if(getSwitchStatus('L') == 1 && sw == 0){     //D5         sw3チャタリング防止
  8002e5a:	e684      	b.n	8002b66 <main+0x4a>
- 8002e5c:	20000804 	.word	0x20000804
- 8002e60:	200005e8 	.word	0x200005e8
- 8002e64:	200003ba 	.word	0x200003ba
- 8002e68:	200003b8 	.word	0x200003b8
- 8002e6c:	20000688 	.word	0x20000688
- 8002e70:	20000630 	.word	0x20000630
- 8002e74:	00000000 	.word	0x00000000
- 8002e78:	3f99999a 	.word	0x3f99999a
- 8002e7c:	3fb33333 	.word	0x3fb33333
- 8002e80:	3fcccccd 	.word	0x3fcccccd
- 8002e84:	3fe66666 	.word	0x3fe66666
+				  break;
+ 8002e5c:	bf00      	nop
+	  if(getSwitchStatus('L') == 1 && sw == 0){     //D5         sw3チャタリング防止
+ 8002e5e:	e682      	b.n	8002b66 <main+0x4a>
+ 8002e60:	20000804 	.word	0x20000804
+ 8002e64:	200005e8 	.word	0x200005e8
+ 8002e68:	200003ba 	.word	0x200003ba
+ 8002e6c:	200003b8 	.word	0x200003b8
+ 8002e70:	20000688 	.word	0x20000688
+ 8002e74:	20000630 	.word	0x20000630
+ 8002e78:	00000000 	.word	0x00000000
+ 8002e7c:	3f99999a 	.word	0x3f99999a
+ 8002e80:	3fb33333 	.word	0x3fb33333
+ 8002e84:	3fcccccd 	.word	0x3fcccccd
 
 08002e88 <SystemClock_Config>:
 /**
