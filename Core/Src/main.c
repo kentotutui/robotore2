@@ -438,7 +438,7 @@ int main(void)
 
 						  clearspeedcount();
 
-						  setTargetVelocity(2.0));
+						  setTargetVelocity(2.0);
 						  //startVelocityControl();
 
 						  setsuctionMotor(300);
