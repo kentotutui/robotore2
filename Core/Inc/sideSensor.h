@@ -13,6 +13,7 @@
 #include "LineSensor.h"
 #include "VelocityCtrl.h"
 #include "LineChase.h"
+#include "AngleCtrl.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();

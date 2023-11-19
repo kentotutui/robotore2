@@ -35,7 +35,8 @@ Core/Src/Velocity_Ctrl.o: ../Core/Src/Velocity_Ctrl.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/Encoder.h ../Core/Inc/Motor.h ../Core/Inc/sideSensor.h \
  ../Core/Inc/LineSensor.h ../Core/Inc/LineChase.h ../Core/Inc/main.h \
- ../Core/Inc/VelocityCtrl.h ../Core/Inc/switch.h ../Core/Inc/LED.h
+ ../Core/Inc/VelocityCtrl.h ../Core/Inc/AngleCtrl.h ../Core/Inc/IMU.h \
+ ../Core/Inc/MPU6500.h ../Core/Inc/LED.h ../Core/Inc/switch.h
 
 ../Core/Inc/VelocityCtrl.h:
 
@@ -119,6 +120,12 @@ Core/Src/Velocity_Ctrl.o: ../Core/Src/Velocity_Ctrl.c \
 
 ../Core/Inc/VelocityCtrl.h:
 
-../Core/Inc/switch.h:
+../Core/Inc/AngleCtrl.h:
+
+../Core/Inc/IMU.h:
+
+../Core/Inc/MPU6500.h:
 
 ../Core/Inc/LED.h:
+
+../Core/Inc/switch.h:

@@ -15,6 +15,7 @@
 #include "LineSensor.h"
 #include "main.h"
 #include "VelocityCtrl.h"
+#include "AngleCtrl.h"
 
 void calculateLineFollowingTermFlip(void);
 void lineTraceFlip(void);

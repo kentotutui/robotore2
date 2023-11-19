@@ -31,6 +31,7 @@
 #include "MPU6500.h"
 #include "IMU.h"
 #include "Logger.h"
+#include "AngleCtrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -124,6 +125,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
       calculateLineFollowingTermFlip();
       calculateVelocityControlFlip();
+      calculateAngleControlFlip();
       lineTraceFlip();
       motorCtrlFlip();
       suctionmotorCtrlFlip();
@@ -304,13 +306,15 @@ int main(void)
 				  setLED2('R');
 
 				  if(running_flag == true){
+					  setLED('G');
 				  		  //setVelocityRange(0, 0);
 				  		  //startLineTrace();
 
 				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
+					      startAngleControl();
 
-				  		  setsuctionMotor(250);
+				  		  //setsuctionMotor(250);
 
 				  		  //HAL_Delay(1000);
 

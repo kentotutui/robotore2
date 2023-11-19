@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/AngleCtrl.c \
 ../Core/Src/Encoder.c \
 ../Core/Src/Flash_F405.c \
 ../Core/Src/IMU.c \
@@ -24,6 +25,7 @@ C_SRCS += \
 ../Core/Src/system_stm32f4xx.c 
 
 C_DEPS += \
+./Core/Src/AngleCtrl.d \
 ./Core/Src/Encoder.d \
 ./Core/Src/Flash_F405.d \
 ./Core/Src/IMU.d \
@@ -44,6 +46,7 @@ C_DEPS += \
 ./Core/Src/system_stm32f4xx.d 
 
 OBJS += \
+./Core/Src/AngleCtrl.o \
 ./Core/Src/Encoder.o \
 ./Core/Src/Flash_F405.o \
 ./Core/Src/IMU.o \
@@ -65,6 +68,8 @@ OBJS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
+Core/Src/AngleCtrl.o: ../Core/Src/AngleCtrl.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/AngleCtrl.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/Encoder.o: ../Core/Src/Encoder.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Encoder.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/Flash_F405.o: ../Core/Src/Flash_F405.c

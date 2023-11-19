@@ -35,7 +35,8 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
  ../Core/Inc/LineChase.h ../Core/Inc/Motor.h ../Core/Inc/LineSensor.h \
  ../Core/Inc/switch.h ../Core/Inc/main.h ../Core/Inc/LED.h \
  ../Core/Inc/VelocityCtrl.h ../Core/Inc/Encoder.h \
- ../Core/Inc/sideSensor.h ../Core/Inc/stm32f4xx_it.h
+ ../Core/Inc/sideSensor.h ../Core/Inc/AngleCtrl.h ../Core/Inc/IMU.h \
+ ../Core/Inc/MPU6500.h ../Core/Inc/stm32f4xx_it.h
 
 ../Core/Inc/main.h:
 
@@ -122,5 +123,11 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
 ../Core/Inc/Encoder.h:
 
 ../Core/Inc/sideSensor.h:
+
+../Core/Inc/AngleCtrl.h:
+
+../Core/Inc/IMU.h:
+
+../Core/Inc/MPU6500.h:
 
 ../Core/Inc/stm32f4xx_it.h:
