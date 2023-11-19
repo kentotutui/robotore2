@@ -147,7 +147,16 @@ void init(void)
 	  initADC();
 	  initEncoder();
 	  initLog();
-	  //sensorCalibration();
+	  initGyro();
+	  if(initGyro() == 1){
+		  setLED('B');
+		  HAL_Delay(1000);
+	  }
+	  else{
+		  setLED('G');
+		  HAL_Delay(1000);
+	  }
+
 	  HAL_TIM_Base_Start_IT(&htim6);
 	  HAL_TIM_Base_Start_IT(&htim7);
 
