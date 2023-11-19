@@ -28,6 +28,9 @@
 #include "Encoder.h"
 #include "motor.h"
 #include "VelocityCtrl.h"
+#include "MPU6500.h"
+#include "IMU.h"
+#include "Logger.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -143,6 +146,7 @@ void init(void)
 {
 	  initADC();
 	  initEncoder();
+	  initLog();
 	  //sensorCalibration();
 	  HAL_TIM_Base_Start_IT(&htim6);
 	  HAL_TIM_Base_Start_IT(&htim7);
