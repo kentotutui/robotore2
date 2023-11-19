@@ -21,7 +21,7 @@ void calculateAngleControlFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 1000, ki = 0, kd = 0.0;
+	float kp = 6000, ki = 60000, kd = 1.0;
 
 	float diff = 0.;
 	static float pre_diff = 0.;
