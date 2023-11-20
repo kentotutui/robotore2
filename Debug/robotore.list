@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020210  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0001e7df  00000000  00000000  00020240  2**0
+ 12 .debug_info   0001f376  00000000  00000000  00020240  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00003e59  00000000  00000000  0003ea1f  2**0
+ 13 .debug_abbrev 00003e6f  00000000  00000000  0003f5b6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001670  00000000  00000000  00042878  2**3
+ 14 .debug_aranges 00001678  00000000  00000000  00043428  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000014c0  00000000  00000000  00043ee8  2**3
+ 15 .debug_ranges 000014c8  00000000  00000000  00044aa0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00022ed9  00000000  00000000  000453a8  2**0
+ 16 .debug_macro  00023153  00000000  00000000  00045f68  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0001470a  00000000  00000000  00068281  2**0
+ 17 .debug_line   000149e8  00000000  00000000  000690bb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000c8a2c  00000000  00000000  0007c98b  2**0
+ 18 .debug_str    000c8a43  00000000  00000000  0007daa3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  001453b7  2**0
+ 19 .comment      0000007b  00000000  00000000  001464e6  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000698c  00000000  00000000  00145434  2**2
+ 20 .debug_frame  000069a8  00000000  00000000  00146564  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1482,8 +1482,8 @@ void initEncoder(void)
 }
  8001114:	bf00      	nop
  8001116:	bd80      	pop	{r7, pc}
- 8001118:	200004c0 	.word	0x200004c0
- 800111c:	20000480 	.word	0x20000480
+ 8001118:	200004e8 	.word	0x200004e8
+ 800111c:	200004a8 	.word	0x200004a8
  8001120:	40000400 	.word	0x40000400
  8001124:	40000800 	.word	0x40000800
 
@@ -1993,11 +1993,11 @@ void updateIMUValue(){
  8001540:	d2f1a9fc 	.word	0xd2f1a9fc
  8001544:	3f50624d 	.word	0x3f50624d
  8001548:	2000060c 	.word	0x2000060c
- 800154c:	20000500 	.word	0x20000500
+ 800154c:	20000528 	.word	0x20000528
  8001550:	2000026c 	.word	0x2000026c
  8001554:	40668000 	.word	0x40668000
- 8001558:	2000050c 	.word	0x2000050c
- 800155c:	20000508 	.word	0x20000508
+ 8001558:	20000534 	.word	0x20000534
+ 800155c:	20000530 	.word	0x20000530
 
 08001560 <getTheta10mm>:
 float getOmega(){
@@ -2017,7 +2017,7 @@ float getTheta10mm()
  8001570:	46bd      	mov	sp, r7
  8001572:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001576:	4770      	bx	lr
- 8001578:	20000508 	.word	0x20000508
+ 8001578:	20000530 	.word	0x20000530
 
 0800157c <setLED>:
  */
@@ -2649,7 +2649,7 @@ void calculateLineFollowingTermFlip(void){
  8001aa0:	2000026e 	.word	0x2000026e
  8001aa4:	2000026f 	.word	0x2000026f
  8001aa8:	2000027c 	.word	0x2000027c
- 8001aac:	20000434 	.word	0x20000434
+ 8001aac:	20000454 	.word	0x20000454
  8001ab0:	2aaaaaab 	.word	0x2aaaaaab
  8001ab4:	20000278 	.word	0x20000278
  8001ab8:	20000270 	.word	0x20000270
@@ -2808,7 +2808,7 @@ void lineTraceFlip(void)
  8001c14:	20000270 	.word	0x20000270
  8001c18:	44d1e000 	.word	0x44d1e000
  8001c1c:	c4d1e000 	.word	0xc4d1e000
- 8001c20:	20000510 	.word	0x20000510
+ 8001c20:	20000538 	.word	0x20000538
 
 08001c24 <startLineTrace>:
 
@@ -2950,7 +2950,7 @@ void checkCourseOut(void)
  8001d18:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001d1c:	4770      	bx	lr
  8001d1e:	bf00      	nop
- 8001d20:	20000434 	.word	0x20000434
+ 8001d20:	20000454 	.word	0x20000454
  8001d24:	2aaaaaab 	.word	0x2aaaaaab
  8001d28:	20000280 	.word	0x20000280
  8001d2c:	20000274 	.word	0x20000274
@@ -2978,7 +2978,7 @@ bool getCouseOutFlag()
 08001d48 <initADC>:
 static int16_t side_sensorL_buffer[10];
 
-static uint8_t index = 1;
+static uint8_t L_index = 1;
 
 void initADC()
 {
@@ -2998,9 +2998,9 @@ void initADC()
  8001d60:	bf00      	nop
  8001d62:	bd80      	pop	{r7, pc}
  8001d64:	2000029c 	.word	0x2000029c
- 8001d68:	20000564 	.word	0x20000564
+ 8001d68:	2000058c 	.word	0x2000058c
  8001d6c:	20000284 	.word	0x20000284
- 8001d70:	20000514 	.word	0x20000514
+ 8001d70:	2000053c 	.word	0x2000053c
 
 08001d74 <storeAnalogSensorBuffer>:
 
@@ -3027,7 +3027,7 @@ void storeAnalogSensorBuffer(void)
 		//if(adc_value[j] >= max_values[j]) adc_value[j] = max_values[j];
 		//if(adc_value[j] <= min_values[j]) adc_value[j] = min_values[j];
 	}
-	sensor1_buffer[index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
+	sensor1_buffer[L_index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
  8001d8c:	4bc9      	ldr	r3, [pc, #804]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001d8e:	885b      	ldrh	r3, [r3, #2]
  8001d90:	ee07 3a90 	vmov	s15, r3
@@ -3048,7 +3048,7 @@ void storeAnalogSensorBuffer(void)
  8001dc2:	b219      	sxth	r1, r3
  8001dc4:	4bc0      	ldr	r3, [pc, #768]	; (80020c8 <storeAnalogSensorBuffer+0x354>)
  8001dc6:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor0_buffer[index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
+	sensor0_buffer[L_index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
  8001dca:	4bba      	ldr	r3, [pc, #744]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001dcc:	881b      	ldrh	r3, [r3, #0]
  8001dce:	ee07 3a90 	vmov	s15, r3
@@ -3069,7 +3069,7 @@ void storeAnalogSensorBuffer(void)
  8001e00:	b219      	sxth	r1, r3
  8001e02:	4bb2      	ldr	r3, [pc, #712]	; (80020cc <storeAnalogSensorBuffer+0x358>)
  8001e04:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor2_buffer[index] = ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
+	sensor2_buffer[L_index] = ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
  8001e08:	4baa      	ldr	r3, [pc, #680]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001e0a:	889b      	ldrh	r3, [r3, #4]
  8001e0c:	ee07 3a90 	vmov	s15, r3
@@ -3090,7 +3090,7 @@ void storeAnalogSensorBuffer(void)
  8001e3e:	b219      	sxth	r1, r3
  8001e40:	4ba3      	ldr	r3, [pc, #652]	; (80020d0 <storeAnalogSensorBuffer+0x35c>)
  8001e42:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor3_buffer[index] = ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
+	sensor3_buffer[L_index] = ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
  8001e46:	4b9b      	ldr	r3, [pc, #620]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001e48:	88db      	ldrh	r3, [r3, #6]
  8001e4a:	ee07 3a90 	vmov	s15, r3
@@ -3111,7 +3111,7 @@ void storeAnalogSensorBuffer(void)
  8001e7c:	b219      	sxth	r1, r3
  8001e7e:	4b95      	ldr	r3, [pc, #596]	; (80020d4 <storeAnalogSensorBuffer+0x360>)
  8001e80:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor4_buffer[index] = ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
+	sensor4_buffer[L_index] = ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
  8001e84:	4b8b      	ldr	r3, [pc, #556]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001e86:	891b      	ldrh	r3, [r3, #8]
  8001e88:	ee07 3a90 	vmov	s15, r3
@@ -3132,7 +3132,7 @@ void storeAnalogSensorBuffer(void)
  8001eba:	b219      	sxth	r1, r3
  8001ebc:	4b86      	ldr	r3, [pc, #536]	; (80020d8 <storeAnalogSensorBuffer+0x364>)
  8001ebe:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor5_buffer[index] = ((adc_value[5] - offset_values[5]) / sensor_coefficient[5]) * 1000;
+	sensor5_buffer[L_index] = ((adc_value[5] - offset_values[5]) / sensor_coefficient[5]) * 1000;
  8001ec2:	4b7c      	ldr	r3, [pc, #496]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001ec4:	895b      	ldrh	r3, [r3, #10]
  8001ec6:	ee07 3a90 	vmov	s15, r3
@@ -3153,7 +3153,7 @@ void storeAnalogSensorBuffer(void)
  8001ef8:	b219      	sxth	r1, r3
  8001efa:	4b78      	ldr	r3, [pc, #480]	; (80020dc <storeAnalogSensorBuffer+0x368>)
  8001efc:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor6_buffer[index] = ((adc_value[6] - offset_values[6]) / sensor_coefficient[6]) * 1000;
+	sensor6_buffer[L_index] = ((adc_value[6] - offset_values[6]) / sensor_coefficient[6]) * 1000;
  8001f00:	4b6c      	ldr	r3, [pc, #432]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001f02:	899b      	ldrh	r3, [r3, #12]
  8001f04:	ee07 3a90 	vmov	s15, r3
@@ -3174,7 +3174,7 @@ void storeAnalogSensorBuffer(void)
  8001f36:	b219      	sxth	r1, r3
  8001f38:	4b69      	ldr	r3, [pc, #420]	; (80020e0 <storeAnalogSensorBuffer+0x36c>)
  8001f3a:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor7_buffer[index] = ((adc_value[7] - offset_values[7]) / sensor_coefficient[7]) * 1000;
+	sensor7_buffer[L_index] = ((adc_value[7] - offset_values[7]) / sensor_coefficient[7]) * 1000;
  8001f3e:	4b5d      	ldr	r3, [pc, #372]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001f40:	89db      	ldrh	r3, [r3, #14]
  8001f42:	ee07 3a90 	vmov	s15, r3
@@ -3195,7 +3195,7 @@ void storeAnalogSensorBuffer(void)
  8001f74:	b219      	sxth	r1, r3
  8001f76:	4b5b      	ldr	r3, [pc, #364]	; (80020e4 <storeAnalogSensorBuffer+0x370>)
  8001f78:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor8_buffer[index] = ((adc_value[8] - offset_values[8]) / sensor_coefficient[8]) * 1000;
+	sensor8_buffer[L_index] = ((adc_value[8] - offset_values[8]) / sensor_coefficient[8]) * 1000;
  8001f7c:	4b4d      	ldr	r3, [pc, #308]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001f7e:	8a1b      	ldrh	r3, [r3, #16]
  8001f80:	ee07 3a90 	vmov	s15, r3
@@ -3216,7 +3216,7 @@ void storeAnalogSensorBuffer(void)
  8001fb2:	b219      	sxth	r1, r3
  8001fb4:	4b4c      	ldr	r3, [pc, #304]	; (80020e8 <storeAnalogSensorBuffer+0x374>)
  8001fb6:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor9_buffer[index] = ((adc_value[9] - offset_values[9]) / sensor_coefficient[9]) * 1000;
+	sensor9_buffer[L_index] = ((adc_value[9] - offset_values[9]) / sensor_coefficient[9]) * 1000;
  8001fba:	4b3e      	ldr	r3, [pc, #248]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001fbc:	8a5b      	ldrh	r3, [r3, #18]
  8001fbe:	ee07 3a90 	vmov	s15, r3
@@ -3237,7 +3237,7 @@ void storeAnalogSensorBuffer(void)
  8001ff0:	b219      	sxth	r1, r3
  8001ff2:	4b3e      	ldr	r3, [pc, #248]	; (80020ec <storeAnalogSensorBuffer+0x378>)
  8001ff4:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor10_buffer[index] = ((adc_value[10] - offset_values[10]) / sensor_coefficient[10]) * 1000;
+	sensor10_buffer[L_index] = ((adc_value[10] - offset_values[10]) / sensor_coefficient[10]) * 1000;
  8001ff8:	4b2e      	ldr	r3, [pc, #184]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8001ffa:	8a9b      	ldrh	r3, [r3, #20]
  8001ffc:	ee07 3a90 	vmov	s15, r3
@@ -3258,7 +3258,7 @@ void storeAnalogSensorBuffer(void)
  800202e:	b219      	sxth	r1, r3
  8002030:	4b2f      	ldr	r3, [pc, #188]	; (80020f0 <storeAnalogSensorBuffer+0x37c>)
  8002032:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
-	sensor11_buffer[index] = ((adc_value[11] - offset_values[11]) / sensor_coefficient[11]) * 1000;
+	sensor11_buffer[L_index] = ((adc_value[11] - offset_values[11]) / sensor_coefficient[11]) * 1000;
  8002036:	4b1f      	ldr	r3, [pc, #124]	; (80020b4 <storeAnalogSensorBuffer+0x340>)
  8002038:	8adb      	ldrh	r3, [r3, #22]
  800203a:	ee07 3a90 	vmov	s15, r3
@@ -3284,7 +3284,7 @@ void storeAnalogSensorBuffer(void)
 
 
 
-	side_sensorR_buffer[index] = ((side_adc_value[1] - side_offset_values[1]) / side_sensor_coefficient[1]) * 1000;
+	side_sensorR_buffer[L_index] = ((side_adc_value[1] - side_offset_values[1]) / side_sensor_coefficient[1]) * 1000;
  8002074:	4b20      	ldr	r3, [pc, #128]	; (80020f8 <storeAnalogSensorBuffer+0x384>)
  8002076:	885b      	ldrh	r3, [r3, #2]
  8002078:	ee07 3a90 	vmov	s15, r3
@@ -3307,8 +3307,8 @@ void storeAnalogSensorBuffer(void)
  80020ae:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
  80020b2:	e029      	b.n	8002108 <storeAnalogSensorBuffer+0x394>
  80020b4:	20000284 	.word	0x20000284
- 80020b8:	200003fc 	.word	0x200003fc
- 80020bc:	20000450 	.word	0x20000450
+ 80020b8:	20000414 	.word	0x20000414
+ 80020bc:	20000478 	.word	0x20000478
  80020c0:	447a0000 	.word	0x447a0000
  80020c4:	20000030 	.word	0x20000030
  80020c8:	200002b4 	.word	0x200002b4
@@ -3324,10 +3324,10 @@ void storeAnalogSensorBuffer(void)
  80020f0:	20000368 	.word	0x20000368
  80020f4:	2000037c 	.word	0x2000037c
  80020f8:	2000029c 	.word	0x2000029c
- 80020fc:	200003f4 	.word	0x200003f4
- 8002100:	2000042c 	.word	0x2000042c
+ 80020fc:	2000040c 	.word	0x2000040c
+ 8002100:	2000044c 	.word	0x2000044c
  8002104:	20000390 	.word	0x20000390
-	side_sensorL_buffer[index] = ((side_adc_value[0] - side_offset_values[0]) / side_sensor_coefficient[0]) * 1000;
+	side_sensorL_buffer[L_index] = ((side_adc_value[0] - side_offset_values[0]) / side_sensor_coefficient[0]) * 1000;
  8002108:	4b15      	ldr	r3, [pc, #84]	; (8002160 <storeAnalogSensorBuffer+0x3ec>)
  800210a:	881b      	ldrh	r3, [r3, #0]
  800210c:	ee07 3a90 	vmov	s15, r3
@@ -3349,16 +3349,13 @@ void storeAnalogSensorBuffer(void)
  8002140:	4b0c      	ldr	r3, [pc, #48]	; (8002174 <storeAnalogSensorBuffer+0x400>)
  8002142:	f823 1012 	strh.w	r1, [r3, r2, lsl #1]
 
-	index++;
+	L_index++;
  8002146:	4b0a      	ldr	r3, [pc, #40]	; (8002170 <storeAnalogSensorBuffer+0x3fc>)
  8002148:	781b      	ldrb	r3, [r3, #0]
  800214a:	3301      	adds	r3, #1
  800214c:	b2da      	uxtb	r2, r3
  800214e:	4b08      	ldr	r3, [pc, #32]	; (8002170 <storeAnalogSensorBuffer+0x3fc>)
  8002150:	701a      	strb	r2, [r3, #0]
-	if(index >= 10){
-		//index = 0;
-	}
 }
  8002152:	bf00      	nop
  8002154:	370c      	adds	r7, #12
@@ -3367,8 +3364,8 @@ void storeAnalogSensorBuffer(void)
  800215c:	4770      	bx	lr
  800215e:	bf00      	nop
  8002160:	2000029c 	.word	0x2000029c
- 8002164:	200003f4 	.word	0x200003f4
- 8002168:	2000042c 	.word	0x2000042c
+ 8002164:	2000040c 	.word	0x2000040c
+ 8002168:	2000044c 	.word	0x2000044c
  800216c:	447a0000 	.word	0x447a0000
  8002170:	20000030 	.word	0x20000030
  8002174:	200003a4 	.word	0x200003a4
@@ -3665,13 +3662,13 @@ void updateAnalogSensor(void) {
  80024a0:	e012      	b.n	80024c8 <updateAnalogSensor+0x350>
  80024a2:	bf00      	nop
  80024a4:	20000284 	.word	0x20000284
- 80024a8:	200003fc 	.word	0x200003fc
- 80024ac:	20000450 	.word	0x20000450
+ 80024a8:	20000414 	.word	0x20000414
+ 80024ac:	20000478 	.word	0x20000478
  80024b0:	447a0000 	.word	0x447a0000
- 80024b4:	20000434 	.word	0x20000434
+ 80024b4:	20000454 	.word	0x20000454
  80024b8:	20000390 	.word	0x20000390
  80024bc:	66666667 	.word	0x66666667
- 80024c0:	200003f0 	.word	0x200003f0
+ 80024c0:	200003f8 	.word	0x200003f8
  80024c4:	200003a4 	.word	0x200003a4
  80024c8:	4a1f      	ldr	r2, [pc, #124]	; (8002548 <updateAnalogSensor+0x3d0>)
  80024ca:	f9b2 200e 	ldrsh.w	r2, [r2, #14]
@@ -3722,7 +3719,7 @@ void updateAnalogSensor(void) {
  8002530:	2b0b      	cmp	r3, #11
  8002532:	dde1      	ble.n	80024f8 <updateAnalogSensor+0x380>
 	}
-    index = 0;
+    L_index = 0;
  8002534:	4b08      	ldr	r3, [pc, #32]	; (8002558 <updateAnalogSensor+0x3e0>)
  8002536:	2200      	movs	r2, #0
  8002538:	701a      	strb	r2, [r3, #0]
@@ -3736,8 +3733,8 @@ void updateAnalogSensor(void) {
  8002546:	bf00      	nop
  8002548:	200003a4 	.word	0x200003a4
  800254c:	66666667 	.word	0x66666667
- 8002550:	2000044c 	.word	0x2000044c
- 8002554:	20000434 	.word	0x20000434
+ 8002550:	20000470 	.word	0x20000470
+ 8002554:	20000454 	.word	0x20000454
  8002558:	20000030 	.word	0x20000030
 
 0800255c <sensorCalibration>:
@@ -4130,16 +4127,16 @@ void sensorCalibration()
  80028dc:	e027      	b.n	800292e <sensorCalibration+0x3d2>
  80028de:	bf00      	nop
  80028e0:	447a0000 	.word	0x447a0000
- 80028e4:	200005ac 	.word	0x200005ac
+ 80028e4:	200005d4 	.word	0x200005d4
  80028e8:	20000000 	.word	0x20000000
  80028ec:	44bb8000 	.word	0x44bb8000
- 80028f0:	2000055c 	.word	0x2000055c
- 80028f4:	200005dc 	.word	0x200005dc
+ 80028f0:	20000584 	.word	0x20000584
+ 80028f4:	20000604 	.word	0x20000604
  80028f8:	20000284 	.word	0x20000284
  80028fc:	2000029c 	.word	0x2000029c
- 8002900:	20000450 	.word	0x20000450
- 8002904:	200003fc 	.word	0x200003fc
- 8002908:	2000042c 	.word	0x2000042c
+ 8002900:	20000478 	.word	0x20000478
+ 8002904:	20000414 	.word	0x20000414
+ 8002908:	2000044c 	.word	0x2000044c
 		side_offset_values[i] = side_min_values[i];
  800290c:	f8b7 2070 	ldrh.w	r2, [r7, #112]	; 0x70
  8002910:	f8b7 3070 	ldrh.w	r3, [r7, #112]	; 0x70
@@ -4165,8 +4162,8 @@ void sensorCalibration()
  800293a:	46bd      	mov	sp, r7
  800293c:	bd80      	pop	{r7, pc}
  800293e:	bf00      	nop
- 8002940:	200005dc 	.word	0x200005dc
- 8002944:	200003f4 	.word	0x200003f4
+ 8002940:	20000604 	.word	0x20000604
+ 8002944:	2000040c 	.word	0x2000040c
 
 08002948 <initLog>:
 static float log_debug[12000];
@@ -4234,20 +4231,20 @@ void initLog(){
  80029a4:	4770      	bx	lr
  80029a6:	bf00      	nop
  80029a8:	0800c524 	.word	0x0800c524
- 80029ac:	200005e8 	.word	0x200005e8
+ 80029ac:	200003f4 	.word	0x200003f4
  80029b0:	0800c528 	.word	0x0800c528
- 80029b4:	20000600 	.word	0x20000600
+ 80029b4:	20000448 	.word	0x20000448
  80029b8:	0800c52c 	.word	0x0800c52c
- 80029bc:	200005f4 	.word	0x200005f4
+ 80029bc:	20000404 	.word	0x20000404
  80029c0:	0800c530 	.word	0x0800c530
- 80029c4:	200005e4 	.word	0x200005e4
+ 80029c4:	200003f0 	.word	0x200003f0
  80029c8:	0800c534 	.word	0x0800c534
- 80029cc:	200005f0 	.word	0x200005f0
- 80029d0:	200005ec 	.word	0x200005ec
- 80029d4:	200005f8 	.word	0x200005f8
- 80029d8:	20000608 	.word	0x20000608
- 80029dc:	20000604 	.word	0x20000604
- 80029e0:	200005fc 	.word	0x200005fc
+ 80029cc:	20000400 	.word	0x20000400
+ 80029d0:	200003fc 	.word	0x200003fc
+ 80029d4:	20000408 	.word	0x20000408
+ 80029d8:	20000474 	.word	0x20000474
+ 80029dc:	2000046c 	.word	0x2000046c
+ 80029e0:	20000444 	.word	0x20000444
 
 080029e4 <read_byte>:
 #include "mpu6500.h"
@@ -5815,7 +5812,7 @@ static void MX_ADC1_Init(void)
  800338e:	3710      	adds	r7, #16
  8003390:	46bd      	mov	sp, r7
  8003392:	bd80      	pop	{r7, pc}
- 8003394:	20000564 	.word	0x20000564
+ 8003394:	2000058c 	.word	0x2000058c
  8003398:	40012000 	.word	0x40012000
  800339c:	0f000001 	.word	0x0f000001
 
@@ -6156,7 +6153,7 @@ static void MX_ADC2_Init(void)
  8003566:	3710      	adds	r7, #16
  8003568:	46bd      	mov	sp, r7
  800356a:	bd80      	pop	{r7, pc}
- 800356c:	20000514 	.word	0x20000514
+ 800356c:	2000053c 	.word	0x2000053c
  8003570:	40012100 	.word	0x40012100
  8003574:	0f000001 	.word	0x0f000001
 
@@ -6609,7 +6606,7 @@ static void MX_TIM3_Init(void)
  80037de:	3730      	adds	r7, #48	; 0x30
  80037e0:	46bd      	mov	sp, r7
  80037e2:	bd80      	pop	{r7, pc}
- 80037e4:	200004c0 	.word	0x200004c0
+ 80037e4:	200004e8 	.word	0x200004e8
  80037e8:	40000400 	.word	0x40000400
 
 080037ec <MX_TIM4_Init>:
@@ -6732,7 +6729,7 @@ static void MX_TIM4_Init(void)
  8003886:	3730      	adds	r7, #48	; 0x30
  8003888:	46bd      	mov	sp, r7
  800388a:	bd80      	pop	{r7, pc}
- 800388c:	20000480 	.word	0x20000480
+ 800388c:	200004a8 	.word	0x200004a8
  8003890:	40000800 	.word	0x40000800
 
 08003894 <MX_TIM6_Init>:
@@ -7799,9 +7796,9 @@ void updateSideSensorStatus(){
  8003ee4:	4770      	bx	lr
  8003ee6:	bf00      	nop
  8003ee8:	200003dc 	.word	0x200003dc
- 8003eec:	2000044c 	.word	0x2000044c
+ 8003eec:	20000470 	.word	0x20000470
  8003ef0:	200003de 	.word	0x200003de
- 8003ef4:	200003f0 	.word	0x200003f0
+ 8003ef4:	200003f8 	.word	0x200003f8
  8003ef8:	200003df 	.word	0x200003df
 
 08003efc <isTargetDistance>:
@@ -8040,6 +8037,9 @@ void running(void)
  80040ac:	200003e0 	.word	0x200003e0
 
 080040b0 <getgoalStatus>:
+		saveTheta(getTheta10mm());
+	}
+}
 
 bool getgoalStatus()
 {

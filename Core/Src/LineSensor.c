@@ -36,7 +36,7 @@ static int16_t sensor11_buffer[10];
 static int16_t side_sensorR_buffer[10];
 static int16_t side_sensorL_buffer[10];
 
-static uint8_t index = 1;
+static uint8_t L_index = 1;
 
 void initADC()
 {
@@ -73,18 +73,18 @@ void storeAnalogSensorBuffer(void)
 		//if(adc_value[j] >= max_values[j]) adc_value[j] = max_values[j];
 		//if(adc_value[j] <= min_values[j]) adc_value[j] = min_values[j];
 	}
-	sensor1_buffer[index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
-	sensor0_buffer[index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
-	sensor2_buffer[index] = ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
-	sensor3_buffer[index] = ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
-	sensor4_buffer[index] = ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
-	sensor5_buffer[index] = ((adc_value[5] - offset_values[5]) / sensor_coefficient[5]) * 1000;
-	sensor6_buffer[index] = ((adc_value[6] - offset_values[6]) / sensor_coefficient[6]) * 1000;
-	sensor7_buffer[index] = ((adc_value[7] - offset_values[7]) / sensor_coefficient[7]) * 1000;
-	sensor8_buffer[index] = ((adc_value[8] - offset_values[8]) / sensor_coefficient[8]) * 1000;
-	sensor9_buffer[index] = ((adc_value[9] - offset_values[9]) / sensor_coefficient[9]) * 1000;
-	sensor10_buffer[index] = ((adc_value[10] - offset_values[10]) / sensor_coefficient[10]) * 1000;
-	sensor11_buffer[index] = ((adc_value[11] - offset_values[11]) / sensor_coefficient[11]) * 1000;
+	sensor1_buffer[L_index] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
+	sensor0_buffer[L_index] = ((adc_value[0] - offset_values[0]) / sensor_coefficient[0]) * 1000;
+	sensor2_buffer[L_index] = ((adc_value[2] - offset_values[2]) / sensor_coefficient[2]) * 1000;
+	sensor3_buffer[L_index] = ((adc_value[3] - offset_values[3]) / sensor_coefficient[3]) * 1000;
+	sensor4_buffer[L_index] = ((adc_value[4] - offset_values[4]) / sensor_coefficient[4]) * 1000;
+	sensor5_buffer[L_index] = ((adc_value[5] - offset_values[5]) / sensor_coefficient[5]) * 1000;
+	sensor6_buffer[L_index] = ((adc_value[6] - offset_values[6]) / sensor_coefficient[6]) * 1000;
+	sensor7_buffer[L_index] = ((adc_value[7] - offset_values[7]) / sensor_coefficient[7]) * 1000;
+	sensor8_buffer[L_index] = ((adc_value[8] - offset_values[8]) / sensor_coefficient[8]) * 1000;
+	sensor9_buffer[L_index] = ((adc_value[9] - offset_values[9]) / sensor_coefficient[9]) * 1000;
+	sensor10_buffer[L_index] = ((adc_value[10] - offset_values[10]) / sensor_coefficient[10]) * 1000;
+	sensor11_buffer[L_index] = ((adc_value[11] - offset_values[11]) / sensor_coefficient[11]) * 1000;
 
 //	sensor[0] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
 //	sensor[1] = ((adc_value[1] - offset_values[1]) / sensor_coefficient[1]) * 1000;
@@ -101,13 +101,10 @@ void storeAnalogSensorBuffer(void)
 
 
 
-	side_sensorR_buffer[index] = ((side_adc_value[1] - side_offset_values[1]) / side_sensor_coefficient[1]) * 1000;
-	side_sensorL_buffer[index] = ((side_adc_value[0] - side_offset_values[0]) / side_sensor_coefficient[0]) * 1000;
+	side_sensorR_buffer[L_index] = ((side_adc_value[1] - side_offset_values[1]) / side_sensor_coefficient[1]) * 1000;
+	side_sensorL_buffer[L_index] = ((side_adc_value[0] - side_offset_values[0]) / side_sensor_coefficient[0]) * 1000;
 
-	index++;
-	if(index >= 10){
-		//index = 0;
-	}
+	L_index++;
 }
 
 void updateAnalogSensor(void) {
@@ -144,7 +141,7 @@ void updateAnalogSensor(void) {
 		if(sensor[j] >= 1000) sensor[j] = 1000;
 		if(sensor[j] <= 0) sensor[j] = 0;
 	}
-    index = 0;
+    L_index = 0;
 
 }
 

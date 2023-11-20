@@ -12,6 +12,7 @@ static bool side_sensor_l, side_sensor_r;
 static bool goal_flag = false;
 static bool goal_judge_flag = false;
 static uint8_t start_goal_line_cnt;
+static bool logging_flag;
 
 static float min_velocity, max_velocity;
 
@@ -105,6 +106,13 @@ void running(void)
 	}
 	//HAL_Delay(2000);
 	//goal_flag = false;
+}
+
+void saveLog(){
+	if(logging_flag == true){
+		saveDistance(getDistance10mm());
+		saveTheta(getTheta10mm());
+	}
 }
 
 bool getgoalStatus()

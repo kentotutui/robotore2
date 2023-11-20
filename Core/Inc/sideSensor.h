@@ -15,6 +15,7 @@
 #include "LineChase.h"
 #include "AngleCtrl.h"
 #include "Encoder.h"
+#include "Logger.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();
@@ -24,6 +25,8 @@ bool getgoalStatus();
 bool isTargetDistance(float);
 
 void running();
+
+void saveLog();
 
 void setVelocityRange(float, float);
 

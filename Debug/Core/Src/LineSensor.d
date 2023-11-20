@@ -35,7 +35,8 @@ Core/Src/LineSensor.o: ../Core/Src/LineSensor.c ../Core/Inc/LineSensor.h \
  ../Core/Inc/LineChase.h ../Core/Inc/Motor.h ../Core/Inc/LineSensor.h \
  ../Core/Inc/main.h ../Core/Inc/sideSensor.h ../Core/Inc/VelocityCtrl.h \
  ../Core/Inc/Encoder.h ../Core/Inc/AngleCtrl.h ../Core/Inc/IMU.h \
- ../Core/Inc/MPU6500.h ../Core/Inc/LED.h ../Core/Inc/switch.h
+ ../Core/Inc/MPU6500.h ../Core/Inc/LED.h ../Core/Inc/Logger.h \
+ ../Core/Inc/Flash_F405.h ../Core/Inc/switch.h
 
 ../Core/Inc/LineSensor.h:
 
@@ -126,5 +127,9 @@ Core/Src/LineSensor.o: ../Core/Src/LineSensor.c ../Core/Inc/LineSensor.h \
 ../Core/Inc/MPU6500.h:
 
 ../Core/Inc/LED.h:
+
+../Core/Inc/Logger.h:
+
+../Core/Inc/Flash_F405.h:
 
 ../Core/Inc/switch.h:
