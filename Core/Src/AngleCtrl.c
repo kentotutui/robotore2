@@ -33,8 +33,6 @@ void calculateAngleControlFlip(void){
 			i_clear_flag = 0;
 		}
 
-		setLED("Y");
-
 		diff = setvariableAngle() - current_Angle;
 
 		Angle_diff = diff;

@@ -38,9 +38,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/sideSensor.h ../Core/Inc/AngleCtrl.h ../Core/Inc/IMU.h \
  ../Core/Inc/MPU6500.h ../Core/Inc/Logger.h ../Core/Inc/Flash_F405.h \
  ../Core/Inc/LED.h ../Core/Inc/switch.h ../Core/Inc/LineSensor.h \
- ../Core/Inc/Encoder.h ../Core/Inc/motor.h ../Core/Inc/VelocityCtrl.h \
- ../Core/Inc/MPU6500.h ../Core/Inc/IMU.h ../Core/Inc/Logger.h \
- ../Core/Inc/AngleCtrl.h
+ ../Core/Inc/sideSensor.h ../Core/Inc/Encoder.h ../Core/Inc/motor.h \
+ ../Core/Inc/VelocityCtrl.h ../Core/Inc/MPU6500.h ../Core/Inc/IMU.h \
+ ../Core/Inc/Logger.h ../Core/Inc/AngleCtrl.h
 
 ../Core/Inc/main.h:
 
@@ -143,6 +143,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/switch.h:
 
 ../Core/Inc/LineSensor.h:
+
+../Core/Inc/sideSensor.h:
 
 ../Core/Inc/Encoder.h:
 

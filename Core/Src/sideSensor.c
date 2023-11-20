@@ -7,6 +7,8 @@
 
 #include "sideSensor.h"
 
+uint16_t mode;
+
 static uint16_t goal_timer;
 static bool side_sensor_l, side_sensor_r;
 static bool goal_flag = false;
@@ -38,6 +40,10 @@ void updateSideSensorStatus(){
 	else{
 		side_sensor_r = false;
 	}
+}
+
+void setRunMode(uint16_t num){
+	mode = num;
 }
 
 bool isTargetDistance(float target){
@@ -113,6 +119,18 @@ void saveLog(){
 		saveDistance(getDistance10mm());
 		saveTheta(getTheta10mm());
 	}
+}
+
+void startLogging(){
+	clearDistance10mm();
+	clearTheta10mm();
+	clearTotalDistance();
+	logging_flag = true;
+}
+
+void stopLogging()
+{
+	logging_flag = false;
 }
 
 bool getgoalStatus()

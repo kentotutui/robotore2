@@ -25,6 +25,7 @@
 #include "LED.h"
 #include "switch.h"
 #include "LineSensor.h"
+#include "sideSensor.h"
 #include "Encoder.h"
 #include "motor.h"
 #include "VelocityCtrl.h"

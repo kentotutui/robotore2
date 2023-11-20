@@ -1,5 +1,5 @@
 AngleCtrl.c:20:6:calculateAngleControlFlip	48	static
-AngleCtrl.c:54:7:getAngleControlTerm	4	static
-AngleCtrl.c:59:7:setvariableAngle	4	static
-AngleCtrl.c:63:6:startAngleControl	4	static
-AngleCtrl.c:69:6:stopAngleControl	4	static
+AngleCtrl.c:52:7:getAngleControlTerm	4	static
+AngleCtrl.c:57:7:setvariableAngle	4	static
+AngleCtrl.c:61:6:startAngleControl	4	static
+AngleCtrl.c:67:6:stopAngleControl	4	static

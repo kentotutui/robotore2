@@ -22,11 +22,14 @@ bool getSideSensorStatusL();
 bool getSideSensorStatusR();
 bool getgoalStatus();
 
+void setRunMode(uint16_t);
 bool isTargetDistance(float);
 
 void running();
 
 void saveLog();
+void startLogging();
+void stopLogging();
 
 void setVelocityRange(float, float);
 
