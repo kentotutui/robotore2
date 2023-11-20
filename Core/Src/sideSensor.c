@@ -13,10 +13,13 @@ static uint16_t goal_timer;
 static bool side_sensor_l, side_sensor_r;
 static bool goal_flag = false;
 static bool goal_judge_flag = false;
+static bool run_flag = false;
 static uint8_t start_goal_line_cnt;
 static bool logging_flag;
 
 static float min_velocity, max_velocity;
+
+uint16_t tsutsui = 0;
 
 //white <= 1700 black >= 1700
 
@@ -57,6 +60,7 @@ bool isTargetDistance(float target){
 void running(void)
 {
 	uint16_t pattern = 0;
+	runningInit();
 	startLineTrace();
 	startVelocityControl();
 	//setTargetVelocity(min_velocity);
@@ -67,6 +71,9 @@ void running(void)
 				  case 0:
 					  if(getSideSensorStatusR() == true){
 						  start_goal_line_cnt++;
+
+						  if(mode == 1) startLogging();
+
 						  clearGoalJudgeDistance();
 						  pattern = 5;
 					  }
@@ -93,6 +100,7 @@ void running(void)
 					  }
 
 					  if(start_goal_line_cnt >= 2){
+						  stopLogging();
 						  pattern = 20;
 					  }
 
@@ -107,11 +115,38 @@ void running(void)
 
 		if(getCouseOutFlag() == true)
 		{
+			stopLogging();
 		    pattern = 20;
 	    }
 	}
 	//HAL_Delay(2000);
 	//goal_flag = false;
+}
+
+void runningFlip()
+{
+	if(run_flag == true){
+		setLED('G');
+		if(isTargetDistance(10) == true){
+			tsutsui++;
+			setLED2('B');
+			saveLog();
+
+			clearDistance10mm();
+			clearTheta10mm();
+		}
+	}
+}
+
+void runningInit()
+{
+	if(mode == 1){
+		setLED('W');
+		ereaseLog();
+	}
+	start_goal_line_cnt = 0;
+	goal_judge_flag = false;
+	run_flag = true;
 }
 
 void saveLog(){

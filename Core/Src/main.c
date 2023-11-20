@@ -128,6 +128,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       calculateVelocityControlFlip();
       calculateAngleControlFlip();
       lineTraceFlip();
+      runningFlip();
       motorCtrlFlip();
       suctionmotorCtrlFlip();
       updateSideSensorStatus();
@@ -151,14 +152,6 @@ void init(void)
 	  initEncoder();
 	  initLog();
 	  initGyro();
-	  if(initGyro() == 1){
-		  setLED('B');
-		  HAL_Delay(1000);
-	  }
-	  else{
-		  setLED('G');
-		  HAL_Delay(1000);
-	  }
 
 	  HAL_TIM_Base_Start_IT(&htim6);
 	  HAL_TIM_Base_Start_IT(&htim7);
@@ -296,12 +289,12 @@ int main(void)
 		  //getgoalStatus() = false;
 	  }
 
-	  if(isTargetDistance(10) == true){
+	  /*if(isTargetDistance(10) == true){
 		  cnt2++;
 		  clearDistance10mm();
-	  }
+	  }*/
 
-	  if(soiya >= 7){
+	  if(soiya >= 8){
 		  soiya = 0;
 	  }
 
@@ -310,6 +303,7 @@ int main(void)
 			  case 0:
 				  setLED('W');
 				  setLED2('R');
+				  printf("0\r\n");
 
 				  if(running_flag == true){
 					  setLED('G');
@@ -390,6 +384,8 @@ int main(void)
 
 					      clearspeedcount();
 
+					      setRunMode(1);
+
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
 
@@ -406,13 +402,15 @@ int main(void)
 
 			  case 4:
 				  setLED('Y');
-				  setLED2('Y');
+				  //setLED2('Y');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
+
+					      setRunMode(1);
 
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
@@ -471,6 +469,24 @@ int main(void)
 						  running();
 						  //setMotor(500, 500);
 						  //while(1);
+				  }
+
+				  break;
+
+			  case 7:
+				  setLED2('A');
+				  printf("7\r\n");
+
+				  if(running_flag == true){
+					  loadDistance();
+					  loadTheta();
+
+					  printf("Distance, Theta\r\n");
+					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
+						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
+					  }
+
+					  printf("9999, 9999\r\n");
 				  }
 
 				  break;

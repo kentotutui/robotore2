@@ -11,10 +11,12 @@
 #include "stm32f4xx_hal.h"
 #include "stdbool.h"
 #include "LineSensor.h"
+#include "LED.h"
 #include "VelocityCtrl.h"
 #include "LineChase.h"
 #include "AngleCtrl.h"
 #include "Encoder.h"
+#include "IMU.h"
 #include "Logger.h"
 
 void updateSideSensorStatus();
@@ -26,6 +28,8 @@ void setRunMode(uint16_t);
 bool isTargetDistance(float);
 
 void running();
+void runningFlip();
+void runningInit();
 
 void saveLog();
 void startLogging();
