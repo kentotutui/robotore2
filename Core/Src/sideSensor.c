@@ -39,6 +39,14 @@ void updateSideSensorStatus(){
 	}
 }
 
+bool isTargetDistance(float target){
+	bool ret = false;
+	if(getDistance10mm() >= target){
+		ret = true;
+	}
+	return ret;
+}
+
 void running(void)
 {
 	uint16_t pattern = 0;
@@ -99,16 +107,6 @@ void running(void)
 	//goal_flag = false;
 }
 
-bool getSideSensorStatusL()
-{
-	return side_sensor_l;
-}
-
-bool getSideSensorStatusR()
-{
-	return side_sensor_r;
-}
-
 bool getgoalStatus()
 {
 	return goal_flag;
@@ -118,4 +116,15 @@ void setVelocityRange(float min_vel, float max_vel)
 {
 	min_velocity = min_vel;
 	max_velocity = max_vel;
+}
+
+//↓sidesensorjob
+bool getSideSensorStatusL()
+{
+	return side_sensor_l;
+}
+
+bool getSideSensorStatusR()
+{
+	return side_sensor_r;
 }

@@ -14,11 +14,14 @@
 #include "VelocityCtrl.h"
 #include "LineChase.h"
 #include "AngleCtrl.h"
+#include "Encoder.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();
 bool getSideSensorStatusR();
 bool getgoalStatus();
+
+bool isTargetDistance(float);
 
 void running();
 
