@@ -136,5 +136,5 @@ float getspeedcount(void){
 }
 
 void clearspeedcount(void){
-	speed_cnt = 0.0;
+	speed_cnt = 0.1;
 }
