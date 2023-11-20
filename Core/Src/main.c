@@ -312,9 +312,9 @@ int main(void)
 
 				  		  //setTargetVelocity(0.6);
 				  		  //startVelocityControl();
-					      startAngleControl();
+					      //startAngleControl();
 
-				  		  //setsuctionMotor(250);
+				  		  setsuctionMotor(250);
 
 				  		  //HAL_Delay(1000);
 
@@ -387,7 +387,7 @@ int main(void)
 						  setTargetVelocity(1.4);
 						  //startVelocityControl();
 
-						  setsuctionMotor(200);
+						  setsuctionMotor(250);
 
 						  HAL_Delay(1000);
 

@@ -21,7 +21,7 @@ void calculateAngleControlFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 6000, ki = 60000, kd = 1.0;
+	float kp = 6000, ki = 60000, kd = 0.0;
 
 	float diff = 0.;
 	static float pre_diff = 0.;
@@ -45,7 +45,7 @@ void calculateAngleControlFlip(void){
 
 		Angle_control_term = p + i + d;
 
-		setMotor(-Angle_control_term, Angle_control_term);
+		//setMotor(-Angle_control_term, Angle_control_term);
 
 		pre_diff = diff;
 	}

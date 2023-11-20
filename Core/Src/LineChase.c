@@ -97,13 +97,13 @@ void lineTraceFlip(void)
 		//motor_l_Deb = motor_l;
 		//motor_r_Deb = motor_r;
 
-		//setMotor(motor_l, motor_r);
+		setMotor(motor_l, motor_r);
 
 		//setMotor(500, 500);
 	}
 	else
 	{
-		//setMotor(0, 0);
+		setMotor(0, 0);
 	}
 }
 
