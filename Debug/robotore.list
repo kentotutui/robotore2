@@ -5004,7 +5004,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 1000, ki = 16000, kd = 0.0;
+	float kp = 1200, ki = 19000, kd = 0.0;
  8002ec6:	4b3a      	ldr	r3, [pc, #232]	; (8002fb0 <calculateVelocityControlFlip+0xf0>)
  8002ec8:	61fb      	str	r3, [r7, #28]
  8002eca:	4b3a      	ldr	r3, [pc, #232]	; (8002fb4 <calculateVelocityControlFlip+0xf4>)
@@ -5123,8 +5123,8 @@ void calculateVelocityControlFlip(void)
  8002fa6:	bf00      	nop
  8002fa8:	d2f1a9fc 	.word	0xd2f1a9fc
  8002fac:	3f50624d 	.word	0x3f50624d
- 8002fb0:	447a0000 	.word	0x447a0000
- 8002fb4:	467a0000 	.word	0x467a0000
+ 8002fb0:	44960000 	.word	0x44960000
+ 8002fb4:	46947000 	.word	0x46947000
  8002fb8:	2000bf40 	.word	0x2000bf40
  8002fbc:	2000bf41 	.word	0x2000bf41
  8002fc0:	2000bf50 	.word	0x2000bf50
@@ -8667,7 +8667,7 @@ void running(void)
 
 				  case 20:
 
-					  setTargetVelocity(-0.05);
+					  setTargetVelocity(-0.01);
  80044e0:	ed9f 0a19 	vldr	s0, [pc, #100]	; 8004548 <running+0x1b8>
  80044e4:	f7fe fd84 	bl	8002ff0 <setTargetVelocity>
 					  HAL_Delay(30);
@@ -8726,7 +8726,7 @@ void running(void)
  800453c:	2000c47e 	.word	0x2000c47e
  8004540:	2000bf67 	.word	0x2000bf67
  8004544:	428c0000 	.word	0x428c0000
- 8004548:	bd4ccccd 	.word	0xbd4ccccd
+ 8004548:	bc23d70a 	.word	0xbc23d70a
  800454c:	00000000 	.word	0x00000000
  8004550:	2000bf66 	.word	0x2000bf66
 
