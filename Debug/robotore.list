@@ -2753,7 +2753,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 4.5, kd = 0.06;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 3.5, kd = 0.04;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
  8001af6:	4b4c      	ldr	r3, [pc, #304]	; (8001c28 <calculateLineFollowingTermFlip+0x138>)
  8001af8:	617b      	str	r3, [r7, #20]
  8001afa:	4b4c      	ldr	r3, [pc, #304]	; (8001c2c <calculateLineFollowingTermFlip+0x13c>)
@@ -2887,8 +2887,8 @@ void calculateLineFollowingTermFlip(void){
  8001c1c:	f3af 8000 	nop.w
  8001c20:	d2f1a9fc 	.word	0xd2f1a9fc
  8001c24:	3f50624d 	.word	0x3f50624d
- 8001c28:	40900000 	.word	0x40900000
- 8001c2c:	3d75c28f 	.word	0x3d75c28f
+ 8001c28:	40600000 	.word	0x40600000
+ 8001c2c:	3d23d70a 	.word	0x3d23d70a
  8001c30:	20000272 	.word	0x20000272
  8001c34:	20000273 	.word	0x20000273
  8001c38:	20000280 	.word	0x20000280
@@ -5004,7 +5004,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 3500, ki = 40000, kd = 0.0;
+	float kp = 1200, ki = 18000, kd = 0.0;
  8002ec6:	4b3a      	ldr	r3, [pc, #232]	; (8002fb0 <calculateVelocityControlFlip+0xf0>)
  8002ec8:	61fb      	str	r3, [r7, #28]
  8002eca:	4b3a      	ldr	r3, [pc, #232]	; (8002fb4 <calculateVelocityControlFlip+0xf4>)
@@ -5123,8 +5123,8 @@ void calculateVelocityControlFlip(void)
  8002fa6:	bf00      	nop
  8002fa8:	d2f1a9fc 	.word	0xd2f1a9fc
  8002fac:	3f50624d 	.word	0x3f50624d
- 8002fb0:	455ac000 	.word	0x455ac000
- 8002fb4:	471c4000 	.word	0x471c4000
+ 8002fb0:	44960000 	.word	0x44960000
+ 8002fb4:	468ca000 	.word	0x468ca000
  8002fb8:	2000bf40 	.word	0x2000bf40
  8002fbc:	2000bf41 	.word	0x2000bf41
  8002fc0:	2000bf50 	.word	0x2000bf50
@@ -5555,16 +5555,16 @@ int main(void)
  8003278:	4603      	mov	r3, r0
  800327a:	2b01      	cmp	r3, #1
  800327c:	d109      	bne.n	8003292 <main+0x6a>
- 800327e:	4bbb      	ldr	r3, [pc, #748]	; (800356c <main+0x344>)
+ 800327e:	4bbc      	ldr	r3, [pc, #752]	; (8003570 <main+0x348>)
  8003280:	881b      	ldrh	r3, [r3, #0]
  8003282:	2b00      	cmp	r3, #0
  8003284:	d105      	bne.n	8003292 <main+0x6a>
 		  timer = 0;
- 8003286:	4bba      	ldr	r3, [pc, #744]	; (8003570 <main+0x348>)
+ 8003286:	4bbb      	ldr	r3, [pc, #748]	; (8003574 <main+0x34c>)
  8003288:	2200      	movs	r2, #0
  800328a:	601a      	str	r2, [r3, #0]
 		  sw = 1;
- 800328c:	4bb7      	ldr	r3, [pc, #732]	; (800356c <main+0x344>)
+ 800328c:	4bb8      	ldr	r3, [pc, #736]	; (8003570 <main+0x348>)
  800328e:	2201      	movs	r2, #1
  8003290:	801a      	strh	r2, [r3, #0]
 	  }
@@ -5574,30 +5574,30 @@ int main(void)
  8003298:	4603      	mov	r3, r0
  800329a:	2b01      	cmp	r3, #1
  800329c:	d10a      	bne.n	80032b4 <main+0x8c>
- 800329e:	4bb4      	ldr	r3, [pc, #720]	; (8003570 <main+0x348>)
+ 800329e:	4bb5      	ldr	r3, [pc, #724]	; (8003574 <main+0x34c>)
  80032a0:	681b      	ldr	r3, [r3, #0]
  80032a2:	2b14      	cmp	r3, #20
  80032a4:	d906      	bls.n	80032b4 <main+0x8c>
- 80032a6:	4bb1      	ldr	r3, [pc, #708]	; (800356c <main+0x344>)
+ 80032a6:	4bb2      	ldr	r3, [pc, #712]	; (8003570 <main+0x348>)
  80032a8:	881b      	ldrh	r3, [r3, #0]
  80032aa:	2b01      	cmp	r3, #1
  80032ac:	d102      	bne.n	80032b4 <main+0x8c>
 		  sw = 2;
- 80032ae:	4baf      	ldr	r3, [pc, #700]	; (800356c <main+0x344>)
+ 80032ae:	4bb0      	ldr	r3, [pc, #704]	; (8003570 <main+0x348>)
  80032b0:	2202      	movs	r2, #2
  80032b2:	801a      	strh	r2, [r3, #0]
 	  }
 	  if(timer > 40 && sw == 1){
- 80032b4:	4bae      	ldr	r3, [pc, #696]	; (8003570 <main+0x348>)
+ 80032b4:	4baf      	ldr	r3, [pc, #700]	; (8003574 <main+0x34c>)
  80032b6:	681b      	ldr	r3, [r3, #0]
  80032b8:	2b28      	cmp	r3, #40	; 0x28
  80032ba:	d906      	bls.n	80032ca <main+0xa2>
- 80032bc:	4bab      	ldr	r3, [pc, #684]	; (800356c <main+0x344>)
+ 80032bc:	4bac      	ldr	r3, [pc, #688]	; (8003570 <main+0x348>)
  80032be:	881b      	ldrh	r3, [r3, #0]
  80032c0:	2b01      	cmp	r3, #1
  80032c2:	d102      	bne.n	80032ca <main+0xa2>
 		  sw = 0;
- 80032c4:	4ba9      	ldr	r3, [pc, #676]	; (800356c <main+0x344>)
+ 80032c4:	4baa      	ldr	r3, [pc, #680]	; (8003570 <main+0x348>)
  80032c6:	2200      	movs	r2, #0
  80032c8:	801a      	strh	r2, [r3, #0]
 	  }
@@ -5607,20 +5607,20 @@ int main(void)
  80032d0:	4603      	mov	r3, r0
  80032d2:	2b00      	cmp	r3, #0
  80032d4:	d10c      	bne.n	80032f0 <main+0xc8>
- 80032d6:	4ba5      	ldr	r3, [pc, #660]	; (800356c <main+0x344>)
+ 80032d6:	4ba6      	ldr	r3, [pc, #664]	; (8003570 <main+0x348>)
  80032d8:	881b      	ldrh	r3, [r3, #0]
  80032da:	2b02      	cmp	r3, #2
  80032dc:	d108      	bne.n	80032f0 <main+0xc8>
 		  //mode_selector++;
 		  soiya++;
- 80032de:	4ba5      	ldr	r3, [pc, #660]	; (8003574 <main+0x34c>)
+ 80032de:	4ba6      	ldr	r3, [pc, #664]	; (8003578 <main+0x350>)
  80032e0:	881b      	ldrh	r3, [r3, #0]
  80032e2:	3301      	adds	r3, #1
  80032e4:	b29a      	uxth	r2, r3
- 80032e6:	4ba3      	ldr	r3, [pc, #652]	; (8003574 <main+0x34c>)
+ 80032e6:	4ba4      	ldr	r3, [pc, #656]	; (8003578 <main+0x350>)
  80032e8:	801a      	strh	r2, [r3, #0]
 		  sw = 0;
- 80032ea:	4ba0      	ldr	r3, [pc, #640]	; (800356c <main+0x344>)
+ 80032ea:	4ba1      	ldr	r3, [pc, #644]	; (8003570 <main+0x348>)
  80032ec:	2200      	movs	r2, #0
  80032ee:	801a      	strh	r2, [r3, #0]
 	  }
@@ -5631,16 +5631,16 @@ int main(void)
  80032f6:	4603      	mov	r3, r0
  80032f8:	2b01      	cmp	r3, #1
  80032fa:	d109      	bne.n	8003310 <main+0xe8>
- 80032fc:	4b9e      	ldr	r3, [pc, #632]	; (8003578 <main+0x350>)
+ 80032fc:	4b9f      	ldr	r3, [pc, #636]	; (800357c <main+0x354>)
  80032fe:	881b      	ldrh	r3, [r3, #0]
  8003300:	2b00      	cmp	r3, #0
  8003302:	d105      	bne.n	8003310 <main+0xe8>
 	  	  timer = 0;
- 8003304:	4b9a      	ldr	r3, [pc, #616]	; (8003570 <main+0x348>)
+ 8003304:	4b9b      	ldr	r3, [pc, #620]	; (8003574 <main+0x34c>)
  8003306:	2200      	movs	r2, #0
  8003308:	601a      	str	r2, [r3, #0]
 	  	  sw2 = 1;
- 800330a:	4b9b      	ldr	r3, [pc, #620]	; (8003578 <main+0x350>)
+ 800330a:	4b9c      	ldr	r3, [pc, #624]	; (800357c <main+0x354>)
  800330c:	2201      	movs	r2, #1
  800330e:	801a      	strh	r2, [r3, #0]
 	  }
@@ -5650,30 +5650,30 @@ int main(void)
  8003316:	4603      	mov	r3, r0
  8003318:	2b01      	cmp	r3, #1
  800331a:	d10a      	bne.n	8003332 <main+0x10a>
- 800331c:	4b94      	ldr	r3, [pc, #592]	; (8003570 <main+0x348>)
+ 800331c:	4b95      	ldr	r3, [pc, #596]	; (8003574 <main+0x34c>)
  800331e:	681b      	ldr	r3, [r3, #0]
  8003320:	2b14      	cmp	r3, #20
  8003322:	d906      	bls.n	8003332 <main+0x10a>
- 8003324:	4b94      	ldr	r3, [pc, #592]	; (8003578 <main+0x350>)
+ 8003324:	4b95      	ldr	r3, [pc, #596]	; (800357c <main+0x354>)
  8003326:	881b      	ldrh	r3, [r3, #0]
  8003328:	2b01      	cmp	r3, #1
  800332a:	d102      	bne.n	8003332 <main+0x10a>
 	  	  sw2 = 2;
- 800332c:	4b92      	ldr	r3, [pc, #584]	; (8003578 <main+0x350>)
+ 800332c:	4b93      	ldr	r3, [pc, #588]	; (800357c <main+0x354>)
  800332e:	2202      	movs	r2, #2
  8003330:	801a      	strh	r2, [r3, #0]
 	  }
 	  if(timer > 40 && sw2 == 1){
- 8003332:	4b8f      	ldr	r3, [pc, #572]	; (8003570 <main+0x348>)
+ 8003332:	4b90      	ldr	r3, [pc, #576]	; (8003574 <main+0x34c>)
  8003334:	681b      	ldr	r3, [r3, #0]
  8003336:	2b28      	cmp	r3, #40	; 0x28
  8003338:	d906      	bls.n	8003348 <main+0x120>
- 800333a:	4b8f      	ldr	r3, [pc, #572]	; (8003578 <main+0x350>)
+ 800333a:	4b90      	ldr	r3, [pc, #576]	; (800357c <main+0x354>)
  800333c:	881b      	ldrh	r3, [r3, #0]
  800333e:	2b01      	cmp	r3, #1
  8003340:	d102      	bne.n	8003348 <main+0x120>
 	  	  sw2 = 0;
- 8003342:	4b8d      	ldr	r3, [pc, #564]	; (8003578 <main+0x350>)
+ 8003342:	4b8e      	ldr	r3, [pc, #568]	; (800357c <main+0x354>)
  8003344:	2200      	movs	r2, #0
  8003346:	801a      	strh	r2, [r3, #0]
 	  }
@@ -5683,37 +5683,37 @@ int main(void)
  800334e:	4603      	mov	r3, r0
  8003350:	2b00      	cmp	r3, #0
  8003352:	d10c      	bne.n	800336e <main+0x146>
- 8003354:	4b88      	ldr	r3, [pc, #544]	; (8003578 <main+0x350>)
+ 8003354:	4b89      	ldr	r3, [pc, #548]	; (800357c <main+0x354>)
  8003356:	881b      	ldrh	r3, [r3, #0]
  8003358:	2b02      	cmp	r3, #2
  800335a:	d108      	bne.n	800336e <main+0x146>
 	  	  cnt++;
- 800335c:	4b87      	ldr	r3, [pc, #540]	; (800357c <main+0x354>)
+ 800335c:	4b88      	ldr	r3, [pc, #544]	; (8003580 <main+0x358>)
  800335e:	881b      	ldrh	r3, [r3, #0]
  8003360:	3301      	adds	r3, #1
  8003362:	b29a      	uxth	r2, r3
- 8003364:	4b85      	ldr	r3, [pc, #532]	; (800357c <main+0x354>)
+ 8003364:	4b86      	ldr	r3, [pc, #536]	; (8003580 <main+0x358>)
  8003366:	801a      	strh	r2, [r3, #0]
 	  	  sw2 = 0;
- 8003368:	4b83      	ldr	r3, [pc, #524]	; (8003578 <main+0x350>)
+ 8003368:	4b84      	ldr	r3, [pc, #528]	; (800357c <main+0x354>)
  800336a:	2200      	movs	r2, #0
  800336c:	801a      	strh	r2, [r3, #0]
 	  }
 
 	  if(cnt >= 2){
- 800336e:	4b83      	ldr	r3, [pc, #524]	; (800357c <main+0x354>)
+ 800336e:	4b84      	ldr	r3, [pc, #528]	; (8003580 <main+0x358>)
  8003370:	881b      	ldrh	r3, [r3, #0]
  8003372:	2b01      	cmp	r3, #1
  8003374:	d902      	bls.n	800337c <main+0x154>
 		  cnt = 0;
- 8003376:	4b81      	ldr	r3, [pc, #516]	; (800357c <main+0x354>)
+ 8003376:	4b82      	ldr	r3, [pc, #520]	; (8003580 <main+0x358>)
  8003378:	2200      	movs	r2, #0
  800337a:	801a      	strh	r2, [r3, #0]
 	  }
 
 
 	  if(cnt >= 1){
- 800337c:	4b7f      	ldr	r3, [pc, #508]	; (800357c <main+0x354>)
+ 800337c:	4b80      	ldr	r3, [pc, #512]	; (8003580 <main+0x358>)
  800337e:	881b      	ldrh	r3, [r3, #0]
  8003380:	2b00      	cmp	r3, #0
  8003382:	d00b      	beq.n	800339c <main+0x174>
@@ -5724,11 +5724,11 @@ int main(void)
  800338c:	2301      	movs	r3, #1
  800338e:	71fb      	strb	r3, [r7, #7]
 		  timer2 = 0;
- 8003390:	4b7b      	ldr	r3, [pc, #492]	; (8003580 <main+0x358>)
+ 8003390:	4b7c      	ldr	r3, [pc, #496]	; (8003584 <main+0x35c>)
  8003392:	2200      	movs	r2, #0
  8003394:	601a      	str	r2, [r3, #0]
 		  cnt = 0;
- 8003396:	4b79      	ldr	r3, [pc, #484]	; (800357c <main+0x354>)
+ 8003396:	4b7a      	ldr	r3, [pc, #488]	; (8003580 <main+0x358>)
  8003398:	2200      	movs	r2, #0
  800339a:	801a      	strh	r2, [r3, #0]
 		  running();
@@ -5757,7 +5757,7 @@ int main(void)
  80033ba:	2300      	movs	r3, #0
  80033bc:	71fb      	strb	r3, [r7, #7]
 		  cnt = 0;
- 80033be:	4b6f      	ldr	r3, [pc, #444]	; (800357c <main+0x354>)
+ 80033be:	4b70      	ldr	r3, [pc, #448]	; (8003580 <main+0x358>)
  80033c0:	2200      	movs	r2, #0
  80033c2:	801a      	strh	r2, [r3, #0]
 		  setsuctionMotor(0);
@@ -5769,30 +5769,30 @@ int main(void)
 	  }*/
 
 	  if(soiya >= 8){
- 80033ca:	4b6a      	ldr	r3, [pc, #424]	; (8003574 <main+0x34c>)
+ 80033ca:	4b6b      	ldr	r3, [pc, #428]	; (8003578 <main+0x350>)
  80033cc:	881b      	ldrh	r3, [r3, #0]
  80033ce:	2b07      	cmp	r3, #7
  80033d0:	d902      	bls.n	80033d8 <main+0x1b0>
 		  soiya = 0;
- 80033d2:	4b68      	ldr	r3, [pc, #416]	; (8003574 <main+0x34c>)
+ 80033d2:	4b69      	ldr	r3, [pc, #420]	; (8003578 <main+0x350>)
  80033d4:	2200      	movs	r2, #0
  80033d6:	801a      	strh	r2, [r3, #0]
 	  }
 
 	  switch(soiya){
- 80033d8:	4b66      	ldr	r3, [pc, #408]	; (8003574 <main+0x34c>)
+ 80033d8:	4b67      	ldr	r3, [pc, #412]	; (8003578 <main+0x350>)
  80033da:	881b      	ldrh	r3, [r3, #0]
  80033dc:	2b07      	cmp	r3, #7
  80033de:	f200 811b 	bhi.w	8003618 <main+0x3f0>
  80033e2:	a201      	add	r2, pc, #4	; (adr r2, 80033e8 <main+0x1c0>)
  80033e4:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
  80033e8:	08003409 	.word	0x08003409
- 80033ec:	08003431 	.word	0x08003431
- 80033f0:	08003465 	.word	0x08003465
- 80033f4:	08003499 	.word	0x08003499
- 80033f8:	080034d3 	.word	0x080034d3
- 80033fc:	08003507 	.word	0x08003507
- 8003400:	0800353d 	.word	0x0800353d
+ 80033ec:	08003433 	.word	0x08003433
+ 80033f0:	08003467 	.word	0x08003467
+ 80033f4:	0800349d 	.word	0x0800349d
+ 80033f8:	080034d7 	.word	0x080034d7
+ 80033fc:	0800350b 	.word	0x0800350b
+ 8003400:	08003541 	.word	0x08003541
  8003404:	0800359d 	.word	0x0800359d
 
 			  case 0:
@@ -5803,7 +5803,7 @@ int main(void)
  800340e:	2052      	movs	r0, #82	; 0x52
  8003410:	f7fe fa24 	bl	800185c <setLED2>
 				  printf("0\r\n");
- 8003414:	485b      	ldr	r0, [pc, #364]	; (8003584 <main+0x35c>)
+ 8003414:	485c      	ldr	r0, [pc, #368]	; (8003588 <main+0x360>)
  8003416:	f006 ffed 	bl	800a3f4 <puts>
 
 				  if(running_flag == true){
@@ -5818,271 +5818,270 @@ int main(void)
 				  		  //startVelocityControl();
 					      //startAngleControl();
 
-				  		  setsuctionMotor(250);
- 8003428:	20fa      	movs	r0, #250	; 0xfa
- 800342a:	f000 ff2d 	bl	8004288 <setsuctionMotor>
+				  		  setsuctionMotor(400);
+ 8003428:	f44f 70c8 	mov.w	r0, #400	; 0x190
+ 800342c:	f000 ff2c 	bl	8004288 <setsuctionMotor>
 				  		  //running();
 				  		  //setMotor(500, 500);
 				  		  //while(1);
 				  }
 
 				  break;
- 800342e:	e0f5      	b.n	800361c <main+0x3f4>
+ 8003430:	e0f4      	b.n	800361c <main+0x3f4>
 
 			  case 1:
 				  setLED('G');
- 8003430:	2047      	movs	r0, #71	; 0x47
- 8003432:	f7fe f945 	bl	80016c0 <setLED>
+ 8003432:	2047      	movs	r0, #71	; 0x47
+ 8003434:	f7fe f944 	bl	80016c0 <setLED>
 				  setLED2('G');
- 8003436:	2047      	movs	r0, #71	; 0x47
- 8003438:	f7fe fa10 	bl	800185c <setLED2>
+ 8003438:	2047      	movs	r0, #71	; 0x47
+ 800343a:	f7fe fa0f 	bl	800185c <setLED2>
 
 				  if(running_flag == true){
- 800343c:	79fb      	ldrb	r3, [r7, #7]
- 800343e:	2b00      	cmp	r3, #0
- 8003440:	f000 80ee 	beq.w	8003620 <main+0x3f8>
+ 800343e:	79fb      	ldrb	r3, [r7, #7]
+ 8003440:	2b00      	cmp	r3, #0
+ 8003442:	f000 80ed 	beq.w	8003620 <main+0x3f8>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
- 8003444:	f7fd ffd8 	bl	80013f8 <clearspeedcount>
+ 8003446:	f7fd ffd7 	bl	80013f8 <clearspeedcount>
 
 						  setTargetVelocity(0.0);
- 8003448:	ed9f 0a4f 	vldr	s0, [pc, #316]	; 8003588 <main+0x360>
- 800344c:	f7ff fdd0 	bl	8002ff0 <setTargetVelocity>
+ 800344a:	ed9f 0a50 	vldr	s0, [pc, #320]	; 800358c <main+0x364>
+ 800344e:	f7ff fdcf 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
- 8003450:	20fa      	movs	r0, #250	; 0xfa
- 8003452:	f000 ff19 	bl	8004288 <setsuctionMotor>
+						  setsuctionMotor(0);
+ 8003452:	2000      	movs	r0, #0
+ 8003454:	f000 ff18 	bl	8004288 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 8003456:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 800345a:	f001 fe4b 	bl	80050f4 <HAL_Delay>
+ 8003458:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 800345c:	f001 fe4a 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 800345e:	f000 ff97 	bl	8004390 <running>
+ 8003460:	f000 ff96 	bl	8004390 <running>
 						  //running();
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8003462:	e0dd      	b.n	8003620 <main+0x3f8>
+ 8003464:	e0dc      	b.n	8003620 <main+0x3f8>
 
 			  case 2:
 				  setLED('B');
- 8003464:	2042      	movs	r0, #66	; 0x42
- 8003466:	f7fe f92b 	bl	80016c0 <setLED>
+ 8003466:	2042      	movs	r0, #66	; 0x42
+ 8003468:	f7fe f92a 	bl	80016c0 <setLED>
 				  setLED2('B');
- 800346a:	2042      	movs	r0, #66	; 0x42
- 800346c:	f7fe f9f6 	bl	800185c <setLED2>
+ 800346c:	2042      	movs	r0, #66	; 0x42
+ 800346e:	f7fe f9f5 	bl	800185c <setLED2>
 
 				  if(running_flag == true){
- 8003470:	79fb      	ldrb	r3, [r7, #7]
- 8003472:	2b00      	cmp	r3, #0
- 8003474:	f000 80d6 	beq.w	8003624 <main+0x3fc>
+ 8003472:	79fb      	ldrb	r3, [r7, #7]
+ 8003474:	2b00      	cmp	r3, #0
+ 8003476:	f000 80d5 	beq.w	8003624 <main+0x3fc>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
- 8003478:	f7fd ffbe 	bl	80013f8 <clearspeedcount>
+ 800347a:	f7fd ffbd 	bl	80013f8 <clearspeedcount>
 
-						  setTargetVelocity(1.2);
- 800347c:	ed9f 0a43 	vldr	s0, [pc, #268]	; 800358c <main+0x364>
- 8003480:	f7ff fdb6 	bl	8002ff0 <setTargetVelocity>
+						  setTargetVelocity(1.6);
+ 800347e:	ed9f 0a44 	vldr	s0, [pc, #272]	; 8003590 <main+0x368>
+ 8003482:	f7ff fdb5 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
- 8003484:	20fa      	movs	r0, #250	; 0xfa
- 8003486:	f000 feff 	bl	8004288 <setsuctionMotor>
+						  setsuctionMotor(400);
+ 8003486:	f44f 70c8 	mov.w	r0, #400	; 0x190
+ 800348a:	f000 fefd 	bl	8004288 <setsuctionMotor>
 						  HAL_Delay(1000);
- 800348a:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 800348e:	f001 fe31 	bl	80050f4 <HAL_Delay>
+ 800348e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8003492:	f001 fe2f 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 8003492:	f000 ff7d 	bl	8004390 <running>
+ 8003496:	f000 ff7b 	bl	8004390 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8003496:	e0c5      	b.n	8003624 <main+0x3fc>
+ 800349a:	e0c3      	b.n	8003624 <main+0x3fc>
 
 			  case 3:
 				  setLED('M');
- 8003498:	204d      	movs	r0, #77	; 0x4d
- 800349a:	f7fe f911 	bl	80016c0 <setLED>
+ 800349c:	204d      	movs	r0, #77	; 0x4d
+ 800349e:	f7fe f90f 	bl	80016c0 <setLED>
 				  setLED2('W');
- 800349e:	2057      	movs	r0, #87	; 0x57
- 80034a0:	f7fe f9dc 	bl	800185c <setLED2>
+ 80034a2:	2057      	movs	r0, #87	; 0x57
+ 80034a4:	f7fe f9da 	bl	800185c <setLED2>
 
 				  if(running_flag == true){
- 80034a4:	79fb      	ldrb	r3, [r7, #7]
- 80034a6:	2b00      	cmp	r3, #0
- 80034a8:	f000 80be 	beq.w	8003628 <main+0x400>
+ 80034a8:	79fb      	ldrb	r3, [r7, #7]
+ 80034aa:	2b00      	cmp	r3, #0
+ 80034ac:	f000 80bc 	beq.w	8003628 <main+0x400>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
- 80034ac:	f7fd ffa4 	bl	80013f8 <clearspeedcount>
+ 80034b0:	f7fd ffa2 	bl	80013f8 <clearspeedcount>
 
 					      setRunMode(1);
- 80034b0:	2001      	movs	r0, #1
- 80034b2:	f000 ff43 	bl	800433c <setRunMode>
+ 80034b4:	2001      	movs	r0, #1
+ 80034b6:	f000 ff41 	bl	800433c <setRunMode>
 
 						  setTargetVelocity(1.4);
- 80034b6:	ed9f 0a36 	vldr	s0, [pc, #216]	; 8003590 <main+0x368>
- 80034ba:	f7ff fd99 	bl	8002ff0 <setTargetVelocity>
+ 80034ba:	ed9f 0a36 	vldr	s0, [pc, #216]	; 8003594 <main+0x36c>
+ 80034be:	f7ff fd97 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
 						  setsuctionMotor(250);
- 80034be:	20fa      	movs	r0, #250	; 0xfa
- 80034c0:	f000 fee2 	bl	8004288 <setsuctionMotor>
+ 80034c2:	20fa      	movs	r0, #250	; 0xfa
+ 80034c4:	f000 fee0 	bl	8004288 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 80034c4:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 80034c8:	f001 fe14 	bl	80050f4 <HAL_Delay>
+ 80034c8:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 80034cc:	f001 fe12 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 80034cc:	f000 ff60 	bl	8004390 <running>
+ 80034d0:	f000 ff5e 	bl	8004390 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 80034d0:	e0aa      	b.n	8003628 <main+0x400>
+ 80034d4:	e0a8      	b.n	8003628 <main+0x400>
 
 			  case 4:
 				  setLED('Y');
- 80034d2:	2059      	movs	r0, #89	; 0x59
- 80034d4:	f7fe f8f4 	bl	80016c0 <setLED>
+ 80034d6:	2059      	movs	r0, #89	; 0x59
+ 80034d8:	f7fe f8f2 	bl	80016c0 <setLED>
 				  //setLED2('Y');
 
 				  if(running_flag == true){
- 80034d8:	79fb      	ldrb	r3, [r7, #7]
- 80034da:	2b00      	cmp	r3, #0
- 80034dc:	f000 80a6 	beq.w	800362c <main+0x404>
+ 80034dc:	79fb      	ldrb	r3, [r7, #7]
+ 80034de:	2b00      	cmp	r3, #0
+ 80034e0:	f000 80a4 	beq.w	800362c <main+0x404>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
- 80034e0:	f7fd ff8a 	bl	80013f8 <clearspeedcount>
+ 80034e4:	f7fd ff88 	bl	80013f8 <clearspeedcount>
 
 					      setRunMode(1);
- 80034e4:	2001      	movs	r0, #1
- 80034e6:	f000 ff29 	bl	800433c <setRunMode>
+ 80034e8:	2001      	movs	r0, #1
+ 80034ea:	f000 ff27 	bl	800433c <setRunMode>
 
 						  setTargetVelocity(1.6);
- 80034ea:	ed9f 0a2a 	vldr	s0, [pc, #168]	; 8003594 <main+0x36c>
- 80034ee:	f7ff fd7f 	bl	8002ff0 <setTargetVelocity>
+ 80034ee:	ed9f 0a28 	vldr	s0, [pc, #160]	; 8003590 <main+0x368>
+ 80034f2:	f7ff fd7d 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
 						  setsuctionMotor(250);
- 80034f2:	20fa      	movs	r0, #250	; 0xfa
- 80034f4:	f000 fec8 	bl	8004288 <setsuctionMotor>
+ 80034f6:	20fa      	movs	r0, #250	; 0xfa
+ 80034f8:	f000 fec6 	bl	8004288 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 80034f8:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 80034fc:	f001 fdfa 	bl	80050f4 <HAL_Delay>
+ 80034fc:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8003500:	f001 fdf8 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 8003500:	f000 ff46 	bl	8004390 <running>
+ 8003504:	f000 ff44 	bl	8004390 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8003504:	e092      	b.n	800362c <main+0x404>
+ 8003508:	e090      	b.n	800362c <main+0x404>
 
 			  case 5:
 				  setLED('C');
- 8003506:	2043      	movs	r0, #67	; 0x43
- 8003508:	f7fe f8da 	bl	80016c0 <setLED>
+ 800350a:	2043      	movs	r0, #67	; 0x43
+ 800350c:	f7fe f8d8 	bl	80016c0 <setLED>
 				  setLED2('X');
- 800350c:	2058      	movs	r0, #88	; 0x58
- 800350e:	f7fe f9a5 	bl	800185c <setLED2>
+ 8003510:	2058      	movs	r0, #88	; 0x58
+ 8003512:	f7fe f9a3 	bl	800185c <setLED2>
 
 				  if(running_flag == true){
- 8003512:	79fb      	ldrb	r3, [r7, #7]
- 8003514:	2b00      	cmp	r3, #0
- 8003516:	f000 808b 	beq.w	8003630 <main+0x408>
+ 8003516:	79fb      	ldrb	r3, [r7, #7]
+ 8003518:	2b00      	cmp	r3, #0
+ 800351a:	f000 8089 	beq.w	8003630 <main+0x408>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
- 800351a:	f7fd ff6d 	bl	80013f8 <clearspeedcount>
+ 800351e:	f7fd ff6b 	bl	80013f8 <clearspeedcount>
 
 						  setTargetVelocity(1.8);
- 800351e:	ed9f 0a1e 	vldr	s0, [pc, #120]	; 8003598 <main+0x370>
- 8003522:	f7ff fd65 	bl	8002ff0 <setTargetVelocity>
+ 8003522:	ed9f 0a1d 	vldr	s0, [pc, #116]	; 8003598 <main+0x370>
+ 8003526:	f7ff fd63 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
 						  setsuctionMotor(300);
- 8003526:	f44f 7096 	mov.w	r0, #300	; 0x12c
- 800352a:	f000 fead 	bl	8004288 <setsuctionMotor>
+ 800352a:	f44f 7096 	mov.w	r0, #300	; 0x12c
+ 800352e:	f000 feab 	bl	8004288 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 800352e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8003532:	f001 fddf 	bl	80050f4 <HAL_Delay>
+ 8003532:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8003536:	f001 fddd 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 8003536:	f000 ff2b 	bl	8004390 <running>
+ 800353a:	f000 ff29 	bl	8004390 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 800353a:	e079      	b.n	8003630 <main+0x408>
+ 800353e:	e077      	b.n	8003630 <main+0x408>
 
 			  case 6:
 				  setLED('R');
- 800353c:	2052      	movs	r0, #82	; 0x52
- 800353e:	f7fe f8bf 	bl	80016c0 <setLED>
+ 8003540:	2052      	movs	r0, #82	; 0x52
+ 8003542:	f7fe f8bd 	bl	80016c0 <setLED>
 
 				  if(running_flag == true){
- 8003542:	79fb      	ldrb	r3, [r7, #7]
- 8003544:	2b00      	cmp	r3, #0
- 8003546:	d075      	beq.n	8003634 <main+0x40c>
+ 8003546:	79fb      	ldrb	r3, [r7, #7]
+ 8003548:	2b00      	cmp	r3, #0
+ 800354a:	d073      	beq.n	8003634 <main+0x40c>
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 						  clearspeedcount();
- 8003548:	f7fd ff56 	bl	80013f8 <clearspeedcount>
+ 800354c:	f7fd ff54 	bl	80013f8 <clearspeedcount>
 
 						  setTargetVelocity(2.0);
- 800354c:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
- 8003550:	f7ff fd4e 	bl	8002ff0 <setTargetVelocity>
+ 8003550:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
+ 8003554:	f7ff fd4c 	bl	8002ff0 <setTargetVelocity>
 						  //startVelocityControl();
 
 						  setsuctionMotor(300);
- 8003554:	f44f 7096 	mov.w	r0, #300	; 0x12c
- 8003558:	f000 fe96 	bl	8004288 <setsuctionMotor>
+ 8003558:	f44f 7096 	mov.w	r0, #300	; 0x12c
+ 800355c:	f000 fe94 	bl	8004288 <setsuctionMotor>
 
 						  HAL_Delay(1000);
- 800355c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8003560:	f001 fdc8 	bl	80050f4 <HAL_Delay>
+ 8003560:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8003564:	f001 fdc6 	bl	80050f4 <HAL_Delay>
 
 						  running();
- 8003564:	f000 ff14 	bl	8004390 <running>
+ 8003568:	f000 ff12 	bl	8004390 <running>
 						  //setMotor(500, 500);
 						  //while(1);
 				  }
 
 				  break;
- 8003568:	e064      	b.n	8003634 <main+0x40c>
- 800356a:	bf00      	nop
- 800356c:	2000c3d0 	.word	0x2000c3d0
- 8003570:	2000c1b4 	.word	0x2000c1b4
- 8003574:	2000bf5a 	.word	0x2000bf5a
- 8003578:	2000bf58 	.word	0x2000bf58
- 800357c:	2000c254 	.word	0x2000c254
- 8003580:	2000c1fc 	.word	0x2000c1fc
- 8003584:	0800db10 	.word	0x0800db10
- 8003588:	00000000 	.word	0x00000000
- 800358c:	3f99999a 	.word	0x3f99999a
- 8003590:	3fb33333 	.word	0x3fb33333
- 8003594:	3fcccccd 	.word	0x3fcccccd
+ 800356c:	e062      	b.n	8003634 <main+0x40c>
+ 800356e:	bf00      	nop
+ 8003570:	2000c3d0 	.word	0x2000c3d0
+ 8003574:	2000c1b4 	.word	0x2000c1b4
+ 8003578:	2000bf5a 	.word	0x2000bf5a
+ 800357c:	2000bf58 	.word	0x2000bf58
+ 8003580:	2000c254 	.word	0x2000c254
+ 8003584:	2000c1fc 	.word	0x2000c1fc
+ 8003588:	0800db10 	.word	0x0800db10
+ 800358c:	00000000 	.word	0x00000000
+ 8003590:	3fcccccd 	.word	0x3fcccccd
+ 8003594:	3fb33333 	.word	0x3fb33333
  8003598:	3fe66666 	.word	0x3fe66666
 
 			  case 7:
