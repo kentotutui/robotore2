@@ -108,6 +108,11 @@ void running(void)
 
 				  case 20:
 
+					  setTargetVelocity(-0.01);
+					  HAL_Delay(30);
+					  setTargetVelocity(0);
+					  HAL_Delay(500);
+
 					  goal_flag = true;
 
 					  break;
