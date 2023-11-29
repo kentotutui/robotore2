@@ -133,7 +133,7 @@ void runningFlip()
 	if(run_flag == true){
 		setLED('G');
 		if(isTargetDistance(10) == true){
-			tsutsui++;
+			//tsutsui++;
 			setLED2('B');
 			saveLog();
 

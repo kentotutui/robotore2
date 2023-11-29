@@ -410,12 +410,14 @@ int main(void)
 
 					      clearspeedcount();
 
+					      IMU_average();
+
 					      setRunMode(1);
 
 						  setTargetVelocity(1.6);
 						  //startVelocityControl();
 
-						  setsuctionMotor(250);
+						  setsuctionMotor(300);
 
 						  HAL_Delay(1000);
 

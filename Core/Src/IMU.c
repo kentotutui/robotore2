@@ -11,6 +11,7 @@
 int16_t xg_, yg_, zg_;
 float omega;
 float theta_10mm;
+float ang_average;
 
 uint8_t initGyro(){
 	uint8_t who_i_am;
@@ -27,12 +28,26 @@ void updateIMUValue(){
 	static int16_t pre_zg;
 	zg_ = (R_IMU)*(zg) + (1.0 - (R_IMU))* (pre_zg);	// ｑニブかったら消す
 
+    zg_ -= ang_average;
+
 	pre_zg = zg_;
 
 	float corrected_zg = zg_;
 	omega = (corrected_zg / 16.4) * PI / 180;
 
 	theta_10mm += omega * 0.001;
+}
+
+void IMU_average(){
+	float average = 0;
+	for(int i=0;i<=1000;i++){
+		//read_gyro_data();
+		average = average+zg;
+		HAL_Delay(1);
+		setLED2('A');
+	}
+	ang_average = average/1000;
+    //if(average<=0) average = -average*100;
 }
 
 float getOmega(){
