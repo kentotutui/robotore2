@@ -415,8 +415,9 @@ int main(void)
 
 					      setRunMode(2);
 
-						  setTargetVelocity(1.8);
-						  //startVelocityControl();
+					      setVelocityRange(1.6, 3.0);
+					      setAccDec(5, 2);
+					      setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(300);
 

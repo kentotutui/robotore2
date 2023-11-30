@@ -80,6 +80,7 @@ void running(void)
 						  start_goal_line_cnt++;
 
 						  if(mode == 1) startLogging();
+						  else startVelocityUpdate();
 
 						  clearGoalJudgeDistance();
 						  pattern = 5;
@@ -128,6 +129,7 @@ void running(void)
 		if(getCouseOutFlag() == true)
 		{
 			stopLogging();
+			stopVelocityUpdate();
 		    pattern = 20;
 	    }
 	}
