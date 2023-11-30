@@ -34,7 +34,19 @@ void runningInit();
 void saveLog();
 void startLogging();
 void stopLogging();
+void startVelocityUpdate();
+void stopVelocityUpdate();
+
+void createVelocityTable();
+float radius2Velocity(float);
+void addDecelerationDistanceMergin(float *, int16_t);
+void addAccelerationDistanceMergin(float *, int16_t);
+void decelerateProcessing(const float, const float *);
+void accelerateProcessing(const float, const float *);
+void updateTargetVelocity();
 
 void setVelocityRange(float, float);
+void setAccDec(float, float);
+void setStraightRadius(float);
 
 #endif /* INC_SIDESENSOR_H_ */

@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 8){
+	  if(soiya >= 7){
 		  soiya = 0;
 	  }
 
@@ -361,10 +361,10 @@ int main(void)
 
 					      clearspeedcount();
 
-						  setTargetVelocity(1.6);
+						  setTargetVelocity(1.5);
 						  //startVelocityControl();
 
-						  setsuctionMotor(400);
+						  setsuctionMotor(300);
 						  HAL_Delay(1000);
 
 						  running();
@@ -375,37 +375,10 @@ int main(void)
 				  break;
 
 			  case 3:
-				  setLED('M');
-				  setLED2('W');
-
-				  if(running_flag == true){
-						  //setVelocityRange(0, 0);
-						  //startLineTrace();
-
-					      clearspeedcount();
-
-					      setRunMode(1);
-
-						  setTargetVelocity(1.4);
-						  //startVelocityControl();
-
-						  setsuctionMotor(250);
-
-						  HAL_Delay(1000);
-
-						  running();
-						  //setMotor(500, 500);
-						  //while(1);
-				  }
-
-				  break;
-
-			  case 4:
 				  setLED('Y');
 				  //setLED2('Y');
 
 				  if(running_flag == true){
-						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
@@ -414,7 +387,9 @@ int main(void)
 
 					      setRunMode(1);
 
-						  setTargetVelocity(1.6);
+					      setVelocityRange(1.6, 1.6);
+
+						  //setTargetVelocity(1.6);
 						  //startVelocityControl();
 
 						  setsuctionMotor(300);
@@ -428,7 +403,7 @@ int main(void)
 
 				  break;
 
-			  case 5:
+			  case 4:
 				  setLED('C');
 				  setLED2('X');
 
@@ -437,6 +412,8 @@ int main(void)
 						  //startLineTrace();
 
 					      clearspeedcount();
+
+					      setRunMode(2);
 
 						  setTargetVelocity(1.8);
 						  //startVelocityControl();
@@ -452,7 +429,7 @@ int main(void)
 
 				  break;
 
-			  case 6:
+			  case 5:
 				  setLED('R');
 
 				  if(running_flag == true){
@@ -475,7 +452,7 @@ int main(void)
 
 				  break;
 
-			  case 7:
+			  case 6:
 				  setLED2('A');
 				  printf("7\r\n");
 
