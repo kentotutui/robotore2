@@ -405,7 +405,6 @@ int main(void)
 
 			  case 4:
 				  setLED('C');
-				  setLED2('X');
 
 				  if(running_flag == true){
 						  //setVelocityRange(0, 0);

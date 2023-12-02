@@ -6028,67 +6028,67 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008003390                HAL_TIM_PeriodElapsedCallback
  .text.init     0x0000000008003420       0x44 Core/Src/main.o
                 0x0000000008003420                init
- .text.main     0x0000000008003464      0x408 Core/Src/main.o
+ .text.main     0x0000000008003464      0x400 Core/Src/main.o
                 0x0000000008003464                main
  .text.SystemClock_Config
-                0x000000000800386c       0xd4 Core/Src/main.o
-                0x000000000800386c                SystemClock_Config
+                0x0000000008003864       0xd4 Core/Src/main.o
+                0x0000000008003864                SystemClock_Config
  .text.MX_ADC1_Init
-                0x0000000008003940       0xc0 Core/Src/main.o
+                0x0000000008003938       0xc0 Core/Src/main.o
  .text.MX_ADC2_Init
-                0x0000000008003a00      0x1d8 Core/Src/main.o
+                0x00000000080039f8      0x1d8 Core/Src/main.o
  .text.MX_I2C1_Init
-                0x0000000008003bd8       0x5c Core/Src/main.o
+                0x0000000008003bd0       0x5c Core/Src/main.o
  .text.MX_SPI3_Init
-                0x0000000008003c34       0x6c Core/Src/main.o
+                0x0000000008003c2c       0x6c Core/Src/main.o
  .text.MX_TIM1_Init
-                0x0000000008003ca0      0x104 Core/Src/main.o
+                0x0000000008003c98      0x104 Core/Src/main.o
  .text.MX_TIM3_Init
-                0x0000000008003da4       0xa8 Core/Src/main.o
+                0x0000000008003d9c       0xa8 Core/Src/main.o
  .text.MX_TIM4_Init
-                0x0000000008003e4c       0xa8 Core/Src/main.o
+                0x0000000008003e44       0xa8 Core/Src/main.o
  .text.MX_TIM6_Init
-                0x0000000008003ef4       0x6c Core/Src/main.o
+                0x0000000008003eec       0x6c Core/Src/main.o
  .text.MX_TIM7_Init
-                0x0000000008003f60       0x68 Core/Src/main.o
+                0x0000000008003f58       0x68 Core/Src/main.o
  .text.MX_TIM8_Init
-                0x0000000008003fc8      0x120 Core/Src/main.o
+                0x0000000008003fc0      0x120 Core/Src/main.o
  .text.MX_USART1_UART_Init
-                0x00000000080040e8       0x54 Core/Src/main.o
+                0x00000000080040e0       0x54 Core/Src/main.o
  .text.MX_DMA_Init
-                0x000000000800413c       0x50 Core/Src/main.o
+                0x0000000008004134       0x50 Core/Src/main.o
  .text.MX_GPIO_Init
-                0x000000000800418c      0x17c Core/Src/main.o
+                0x0000000008004184      0x17c Core/Src/main.o
  .text.Error_Handler
-                0x0000000008004308        0x8 Core/Src/main.o
-                0x0000000008004308                Error_Handler
+                0x0000000008004300        0x8 Core/Src/main.o
+                0x0000000008004300                Error_Handler
  .text.initMotor
-                0x0000000008004310       0x30 Core/Src/motor.o
-                0x0000000008004310                initMotor
+                0x0000000008004308       0x30 Core/Src/motor.o
+                0x0000000008004308                initMotor
  .text.motorCtrlFlip
-                0x0000000008004340       0xc8 Core/Src/motor.o
-                0x0000000008004340                motorCtrlFlip
+                0x0000000008004338       0xc8 Core/Src/motor.o
+                0x0000000008004338                motorCtrlFlip
  .text.suctionmotorCtrlFlip
-                0x0000000008004408       0x24 Core/Src/motor.o
-                0x0000000008004408                suctionmotorCtrlFlip
+                0x0000000008004400       0x24 Core/Src/motor.o
+                0x0000000008004400                suctionmotorCtrlFlip
  .text.setMotor
-                0x000000000800442c       0x7c Core/Src/motor.o
-                0x000000000800442c                setMotor
+                0x0000000008004424       0x7c Core/Src/motor.o
+                0x0000000008004424                setMotor
  .text.setsuctionMotor
-                0x00000000080044a8       0x3c Core/Src/motor.o
-                0x00000000080044a8                setsuctionMotor
+                0x00000000080044a0       0x3c Core/Src/motor.o
+                0x00000000080044a0                setsuctionMotor
  .text.updateSideSensorStatus
-                0x00000000080044e4       0x78 Core/Src/sideSensor.o
-                0x00000000080044e4                updateSideSensorStatus
+                0x00000000080044dc       0x78 Core/Src/sideSensor.o
+                0x00000000080044dc                updateSideSensorStatus
  .text.setRunMode
-                0x000000000800455c       0x20 Core/Src/sideSensor.o
-                0x000000000800455c                setRunMode
+                0x0000000008004554       0x20 Core/Src/sideSensor.o
+                0x0000000008004554                setRunMode
  .text.isTargetDistance
-                0x000000000800457c       0x32 Core/Src/sideSensor.o
-                0x000000000800457c                isTargetDistance
- *fill*         0x00000000080045ae        0x2 
- .text.running  0x00000000080045b0      0x1e0 Core/Src/sideSensor.o
-                0x00000000080045b0                running
+                0x0000000008004574       0x32 Core/Src/sideSensor.o
+                0x0000000008004574                isTargetDistance
+ *fill*         0x00000000080045a6        0x2 
+ .text.running  0x00000000080045a8      0x1e8 Core/Src/sideSensor.o
+                0x00000000080045a8                running
  .text.runningFlip
                 0x0000000008004790       0x40 Core/Src/sideSensor.o
                 0x0000000008004790                runningFlip
@@ -7764,9 +7764,9 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_line    0x00000000000042db      0xb52 Core/Src/Logger.o
  .debug_line    0x0000000000004e2d      0x9a9 Core/Src/MPU6500.o
  .debug_line    0x00000000000057d6      0x9f7 Core/Src/Velocity_Ctrl.o
- .debug_line    0x00000000000061cd      0xcf7 Core/Src/main.o
- .debug_line    0x0000000000006ec4      0x7bb Core/Src/motor.o
- .debug_line    0x000000000000767f      0xc3d Core/Src/sideSensor.o
+ .debug_line    0x00000000000061cd      0xcf6 Core/Src/main.o
+ .debug_line    0x0000000000006ec3      0x7bb Core/Src/motor.o
+ .debug_line    0x000000000000767e      0xc3e Core/Src/sideSensor.o
  .debug_line    0x00000000000082bc      0xb2a Core/Src/stm32f4xx_hal_msp.o
  .debug_line    0x0000000000008de6      0xa44 Core/Src/stm32f4xx_it.o
  .debug_line    0x000000000000982a      0x742 Core/Src/switch.o

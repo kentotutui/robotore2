@@ -110,6 +110,7 @@ void running(void)
 					  if(start_goal_line_cnt >= 2){
 						  stopLogging();
 						  stopVelocityUpdate();
+						  setLED2('R');
 						  pattern = 20;
 					  }
 
