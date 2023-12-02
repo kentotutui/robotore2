@@ -459,10 +459,16 @@ int main(void)
 				  if(running_flag == true){
 					  loadDistance();
 					  loadTheta();
+					  loadCross();
 
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
+					  }
+
+					  printf("Cross\r\n");
+					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
+						 printf("%f\r\n", getCrossLog(i));
 					  }
 
 					  printf("9999, 9999\r\n");

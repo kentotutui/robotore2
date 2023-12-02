@@ -25,6 +25,7 @@ bool getSideSensorStatusR();
 bool getgoalStatus();
 
 void setRunMode(uint16_t);
+bool isCrossLine();
 bool isTargetDistance(float);
 
 void running();
@@ -44,6 +45,7 @@ void addAccelerationDistanceMergin(float *, int16_t);
 void decelerateProcessing(const float, const float *);
 void accelerateProcessing(const float, const float *);
 void updateTargetVelocity();
+void correctionTotalDistanceFromCrossLine();
 
 void setVelocityRange(float, float);
 void setAccDec(float, float);
