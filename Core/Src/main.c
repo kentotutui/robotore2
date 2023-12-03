@@ -437,6 +437,7 @@ int main(void)
 					  loadDistance();
 					  loadTheta();
 					  loadCross();
+					  loadSide();
 					  loadDebug();
 
 					  printf("Distance, Theta\r\n");
@@ -447,6 +448,11 @@ int main(void)
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
+					  }
+
+					  printf("Side\r\n");
+					  for(uint16_t i = 0; i < getSideLogSize(); i++){
+						 printf("%f\r\n", getSideLog(i));
 					  }
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");

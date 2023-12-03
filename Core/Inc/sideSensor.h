@@ -46,6 +46,7 @@ void decelerateProcessing(const float, const float *);
 void accelerateProcessing(const float, const float *);
 void updateTargetVelocity();
 void correctionTotalDistanceFromCrossLine();
+void correctionTotalDistanceFromSideLine();
 
 void setVelocityRange(float, float);
 void setAccDec(float, float);

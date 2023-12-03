@@ -16,12 +16,16 @@ float ref_distance;
 
 static uint8_t start_goal_line_cnt;
 static uint16_t cross_line_idx;
+static uint16_t side_line_idx;
 static uint16_t correction_check_cnt_cross, correction_check_cnt_side;
 
 static bool cross_line_ignore_flag;
+static bool side_line_judge_flag = false;
 static bool side_sensor_l, side_sensor_r;
 static bool goal_flag = false;
 static bool goal_judge_flag = false;
+static bool continuous_cnt_reset_flag = false;
+static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
 static bool velocity_update_flag;
@@ -195,8 +199,34 @@ void runningFlip()
 		else if(cross_line_ignore_flag == true && getCrossLineIgnoreDistance() >= 50){ //50
 			cross_line_ignore_flag = false;
 		}
-		if(cross_line_ignore_flag == true) setLED2('B');
-		else setLED2('N');
+
+		//--- Side marker Process---//
+		if(getSideSensorStatusR() == true){ //Right side line detect
+			side_line_judge_flag = false;
+			clearSideLineJudgeDistance();
+		}
+		if(side_line_judge_flag== false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 60){
+			side_line_judge_flag= true;
+			clearSideLineJudgeDistance();
+		}
+		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 60){ //Detect side line
+			clearSideLineJudgeDistance();
+			side_line_judge_flag= false;
+
+			if(continuous_curve_flag == true){
+				continuous_curve_flag = false;
+				continuous_cnt_reset_flag = true;
+
+				if(mode == 1){
+					correction_check_cnt_side = 0;
+					saveSide(getTotalDistance());
+				}
+				else{
+					correctionTotalDistanceFromSideLine();
+					//saveDebug(getTotalDistance());
+				}
+			}
+		}
 	}
 }
 
@@ -216,9 +246,16 @@ void runningInit()
 
 		ereaseDebugLog();
 	}
+
+	clearCrossLineIgnoreDistance();
+	clearSideLineIgnoreDistance();
+
 	start_goal_line_cnt = 0;
 	cross_line_ignore_flag = false;
+	side_line_judge_flag = false;
 	goal_judge_flag = false;
+	continuous_cnt_reset_flag = true;
+	continuous_curve_flag = false;
 	run_flag = true;
 }
 
@@ -253,6 +290,7 @@ void startVelocityUpdate(){
 	velocity_update_flag = true;
 
 	cross_line_idx = 0;
+	side_line_idx = 0;
 }
 
 void stopVelocityUpdate()
@@ -331,7 +369,6 @@ float radius2Velocity(float radius){
 
 void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 {
-	//setRGB('R');
 	uint16_t idx = mergin_size;
 	float pre_target_velocity = table[idx];
 
@@ -348,8 +385,6 @@ void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 
 		idx++;
 	}
-	//setRGB('r');
-
 }
 
 void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
@@ -371,8 +406,6 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 
 		idx++;
 	}
-	//setRGB('r');
-
 }
 
 void decelerateProcessing(const float am, const float *p_distance){
@@ -419,19 +452,6 @@ void updateTargetVelocity(){
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
 
-
-		/*
-		if(getCurrentVelocity() > velocity_table[velocity_table_idx]+0.5){
-			setClearFlagOfVelocityControlI();
-		}
-		*/
-		/*
-		float diff = pre_target_velocity - velocity_table[velocity_table_idx];
-		if(diff > 0.01){
-			setClearFlagOfVelocityControlI();
-		}
-		*/
-
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
 		}
@@ -455,6 +475,27 @@ void correctionTotalDistanceFromCrossLine()
 
 		if(cross_line_idx >= getCrossLogSize()){
 			cross_line_idx = getCrossLogSize() - 1;
+			break;
+		}
+	}
+}
+
+void correctionTotalDistanceFromSideLine()
+{
+	while(side_line_idx <= getSideLogSize()){
+		float temp_sideline_distance = getSideLog(side_line_idx);
+		float diff = fabs(temp_sideline_distance - getTotalDistance());
+		//if(diff <= 700){
+		if(diff <= 250){
+			correction_check_cnt_side = 0;
+			setTotalDistance(temp_sideline_distance);
+			side_line_idx++;
+			break;
+		}
+		side_line_idx++;
+
+		if(side_line_idx >= getSideLogSize()){
+			side_line_idx = getSideLogSize() - 1;
 			break;
 		}
 	}
