@@ -135,7 +135,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
       checkCourseOut();
 
-      resetEncoderCnt();
+      //resetEncoderCnt();
    }
 
    if(htim->Instance == TIM7){//0.1ms
@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 7){
+	  if(soiya >= 6){
 		  soiya = 0;
 	  }
 
@@ -392,7 +392,7 @@ int main(void)
 						  //setTargetVelocity(1.6);
 						  //startVelocityControl();
 
-						  setsuctionMotor(300);
+						  setsuctionMotor(350);
 
 						  HAL_Delay(1000);
 
@@ -414,8 +414,8 @@ int main(void)
 
 					      setRunMode(2);
 
-					      setVelocityRange(1.6, 5.0);
-					      setAccDec(5, 2);
+					      setVelocityRange(1.8, 6.0);
+					      setAccDec(7, 2);
 					      setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(300);
@@ -430,36 +430,14 @@ int main(void)
 				  break;
 
 			  case 5:
-				  setLED('R');
-
-				  if(running_flag == true){
-						  //setVelocityRange(0, 0);
-						  //startLineTrace();
-
-						  clearspeedcount();
-
-						  setTargetVelocity(2.0);
-						  //startVelocityControl();
-
-						  setsuctionMotor(300);
-
-						  HAL_Delay(1000);
-
-						  running();
-						  //setMotor(500, 500);
-						  //while(1);
-				  }
-
-				  break;
-
-			  case 6:
 				  setLED2('A');
-				  printf("7\r\n");
+				  printf("6\r\n");
 
 				  if(running_flag == true){
 					  loadDistance();
 					  loadTheta();
 					  loadCross();
+					  loadDebug();
 
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
@@ -469,6 +447,12 @@ int main(void)
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
+					  }
+
+					  printf("TargetVelocity, CurrentVelocity\r\n");
+					  uint16_t size = getDebugLogSize();
+					  for(uint16_t i = 0; i < size; i = i+2){
+						 printf("%f, %f\r\n", getDebugLog(i), getDebugLog(i + 1));
 					  }
 
 					  printf("9999, 9999\r\n");

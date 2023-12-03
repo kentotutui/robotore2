@@ -268,7 +268,7 @@ void createVelocityTable(){
 
 	uint16_t log_size = getDistanceLogSize();
 
-	//uint16_t crossline_idx = 0;
+	uint16_t crossline_idx = 0;
 	float total_distance = 0;
 	for(uint16_t i = 0; i < log_size; i++){
 		temp_distance = p_distance[i];
@@ -281,7 +281,7 @@ void createVelocityTable(){
 
 		//Forced maximum speed on the crossline
 		total_distance += temp_distance;
-		/*
+
 		float crossline_distance = getCrossLog(crossline_idx);
 		if(crossline_distance + 60 >= total_distance && total_distance >= crossline_distance - 60){
 			 velocity_table[i] = max_velocity;
@@ -290,15 +290,15 @@ void createVelocityTable(){
 		if(total_distance >= crossline_distance + 60){
 			crossline_idx++;
 		}
-		*/
+
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = 1.5;
+		velocity_table[i] = 1.6;
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 8); //10
-	addAccelerationDistanceMergin(velocity_table, 15); //12
+	addDecelerationDistanceMergin(velocity_table, 5); //8
+	addAccelerationDistanceMergin(velocity_table, 10); //15
 	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;

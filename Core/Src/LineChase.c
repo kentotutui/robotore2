@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 3.8, kd = 0.045;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 4.3, kd = 0.05;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -77,6 +77,7 @@ void lineTraceFlip(void)
 
 		velocity_control_term -= exceeded;
 		line_following_term += exceeded;
+
 
 
 		float motor_l = velocity_control_term + line_following_term;
