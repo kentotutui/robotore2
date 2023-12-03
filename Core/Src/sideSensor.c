@@ -83,6 +83,32 @@ bool isCrossLine()
 	return flag;
 }
 
+bool isContinuousCurvature()
+{
+	static float pre_theta;
+	static float continuous_cnt;
+	bool continuous_flag = false;
+	float diff_theta = fabs(pre_theta - getTheta10mm());
+
+	if(continuous_cnt_reset_flag == true){
+		continuous_cnt_reset_flag = false;
+		continuous_cnt = 0;
+	}
+
+	//if(diff_theta <= 0.005) continuous_cnt++;
+	//if(diff_theta <= 0.010) continuous_cnt++;
+	if(diff_theta <= 0.020) continuous_cnt++;
+	else continuous_cnt = 0;
+
+	if(continuous_cnt >= 40) continuous_flag = true;
+
+	if(continuous_cnt >= 1000) continuous_cnt = 1000;
+
+	pre_theta = getTheta10mm();
+
+	return continuous_flag;
+}
+
 bool isTargetDistance(float target){
 	bool ret = false;
 	if(getDistance10mm() >= target){
@@ -145,6 +171,8 @@ void running(void)
 
 				  case 20:
 
+					  setTargetVelocity(1.0);
+					  HAL_Delay(100);
 					  setTargetVelocity(-0.01);
 					  HAL_Delay(20);
 					  setTargetVelocity(0);
@@ -175,6 +203,11 @@ void runningFlip()
 		if(isTargetDistance(10) == true){
 			saveLog();
 
+			if(isContinuousCurvature() == true){
+				//continuous_curve_check_cnt = 0;
+				continuous_curve_flag = true;
+			}
+
 			clearDistance10mm();
 			clearTheta10mm();
 		}
@@ -182,10 +215,10 @@ void runningFlip()
 		//--- Cross Line Process ---//
 		if(isCrossLine() == true && cross_line_ignore_flag == false){ //Cross line detect
 			cross_line_ignore_flag = true;
-			//continuous_curve_flag = true;
-			//side_line_ignore_flag = true;
+			continuous_curve_flag = true;
+
 			clearCrossLineIgnoreDistance();
-			//clearSideLineIgnoreDistance();
+			clearSideLineIgnoreDistance();
 
 			if(mode == 1){
 				correction_check_cnt_cross = 0;
@@ -335,7 +368,7 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 5); //8
+	addDecelerationDistanceMergin(velocity_table, 8); //8
 	addAccelerationDistanceMergin(velocity_table, 10); //15
 	//shiftVelocityTable(velocity_table, 1);
 

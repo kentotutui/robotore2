@@ -26,6 +26,7 @@ bool getgoalStatus();
 
 void setRunMode(uint16_t);
 bool isCrossLine();
+bool isContinuousCurvature();
 bool isTargetDistance(float);
 
 void running();
