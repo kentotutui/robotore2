@@ -307,20 +307,9 @@ int main(void)
 
 				  if(running_flag == true){
 					  setLED('G');
-				  		  //setVelocityRange(0, 0);
-				  		  //startLineTrace();
-
-				  		  //setTargetVelocity(0.6);
-				  		  //startVelocityControl();
-					      //startAngleControl();
 
 				  		  setsuctionMotor(400);
 
-				  		  //HAL_Delay(1000);
-
-				  		  //running();
-				  		  //setMotor(500, 500);
-				  		  //while(1);
 				  }
 
 				  break;
