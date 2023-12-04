@@ -260,6 +260,13 @@ void runningFlip()
 				}
 			}
 		}
+
+		// Debug LED //
+		correction_check_cnt_side++;
+	    if(correction_check_cnt_side >= 10000) correction_check_cnt_side = 10000;
+
+	    if(correction_check_cnt_side <= 150) setLED('B');
+	    else setLED('G');
 	}
 }
 
@@ -368,8 +375,8 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 8); //8
-	addAccelerationDistanceMergin(velocity_table, 10); //15
+	addDecelerationDistanceMergin(velocity_table, 15); //8
+	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;

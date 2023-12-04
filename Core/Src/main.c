@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 6){
+	  if(soiya >= 8){
 		  soiya = 0;
 	  }
 
@@ -376,7 +376,7 @@ int main(void)
 
 			  case 3:
 				  setLED('Y');
-				  //setLED2('Y');
+				  setLED2('R');
 
 				  if(running_flag == true){
 						  //startLineTrace();
@@ -387,7 +387,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(1.6, 1.6);
+					      setVelocityRange(1.4, 1.4);
 
 						  //setTargetVelocity(1.6);
 						  //startVelocityControl();
@@ -404,19 +404,22 @@ int main(void)
 				  break;
 
 			  case 4:
-				  setLED('C');
+				  setLED('Y');
+				  setLED2('B');
 
 				  if(running_flag == true){
-						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-					      clearspeedcount();
+						  clearspeedcount();
 
-					      setRunMode(2);
+						  IMU_average();
 
-					      setVelocityRange(1.8, 6.5);
-					      setAccDec(8, 4);
-					      setStraightRadius(1000); //Do Not Change
+						  setRunMode(1);
+
+						  setVelocityRange(1.7, 1.7);
+
+						  //setTargetVelocity(1.6);
+						  //startVelocityControl();
 
 						  setsuctionMotor(350);
 
@@ -430,6 +433,61 @@ int main(void)
 				  break;
 
 			  case 5:
+				  setLED('C');
+				  setLED2('R');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+					      clearspeedcount();
+
+					      setRunMode(2);
+
+					      setVelocityRange(1.8, 6.5);
+					      setAccDec(6, 4);
+					      setStraightRadius(1000); //Do Not Change
+
+						  setsuctionMotor(350);
+
+						  HAL_Delay(1000);
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
+				  break;
+
+			  case 6:
+				  setLED('C');
+				  setLED2('B');
+
+				  if(running_flag == true){
+						  //setVelocityRange(0, 0);
+						  //startLineTrace();
+
+						  clearspeedcount();
+
+						  setRunMode(2);
+
+						  setVelocityRange(2.0, 6.0);
+						  setAccDec(4, 2);
+						  setStraightRadius(1000); //Do Not Change
+
+						  setsuctionMotor(350);
+
+						  HAL_Delay(1000);
+
+						  running();
+						  //setMotor(500, 500);
+						  //while(1);
+				  }
+
+				  break;
+
+			  case 7:
+				  setLED('W');
 				  setLED2('A');
 				  printf("6\r\n");
 
