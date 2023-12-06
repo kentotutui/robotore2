@@ -173,8 +173,8 @@ void running(void)
 
 					  setTargetVelocity(1.0);
 					  HAL_Delay(100);
-					  setTargetVelocity(-0.01);
-					  HAL_Delay(20);
+					  //setTargetVelocity(-0.01);
+					  //HAL_Delay(20);
 					  setTargetVelocity(0);
 					  HAL_Delay(500);
 
@@ -225,6 +225,7 @@ void runningFlip()
 				saveCross(getTotalDistance());
 			}
 			else{
+				correction_check_cnt_cross = 0;
 				correctionTotalDistanceFromCrossLine();
 				//saveDebug(getTotalDistance());
 			}
@@ -262,8 +263,13 @@ void runningFlip()
 		}
 
 		// Debug LED //
+		correction_check_cnt_cross++;
 		correction_check_cnt_side++;
+		if(correction_check_cnt_cross >= 10000) correction_check_cnt_cross = 10000;
 	    if(correction_check_cnt_side >= 10000) correction_check_cnt_side = 10000;
+
+	    if(correction_check_cnt_side <= 150) setLED2('G');
+	    else setLED2('N');
 
 	    if(correction_check_cnt_side <= 150) setLED('B');
 	    else setLED('G');
@@ -371,11 +377,11 @@ void createVelocityTable(){
 
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = 1.6;
+		velocity_table[i] = 1.8;
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 15); //8
+	addDecelerationDistanceMergin(velocity_table, 12); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
