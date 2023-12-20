@@ -137,6 +137,7 @@ void running(void)
 						  else startVelocityUpdate();
 
 						  clearGoalJudgeDistance();
+						  clearSideLineJudgeDistance();
 						  pattern = 5;
 					  }
 					  break;
