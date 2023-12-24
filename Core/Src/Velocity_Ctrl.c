@@ -16,9 +16,11 @@
 
 static uint8_t velocity_control_enable_flag;
 static uint8_t i_clear_flag;
+uint16_t mode;
 
 static float velocity_control_term;
 static float target_velocity;
+static float target_acceleration;
 static float variable_speed;
 
 float mon_p,mon_i,mon_d = 0;
@@ -55,7 +57,13 @@ void calculateVelocityControlFlip(void)
 		//if(i >= 1000) i = 1000;
 		//if(i <= -1000) i = -1000;
 
-		velocity_control_term = p + i + d;
+		if(mode == 1){
+		    velocity_control_term = p + i + d;
+		}
+		else if(mode == 2){
+			//velocity_control_term = p + i + d + target_acceleration;
+			velocity_control_term = p + i + d;
+		}
 
 		//setMotor(velocity_control_term, velocity_control_term);
 
@@ -73,6 +81,11 @@ float getVelocityControlTerm(void)
 void setTargetVelocity(float velocity)
 {
 	target_velocity = velocity;
+}
+
+void setTargetAcceleration(float acceleration)
+{
+	target_acceleration = acceleration / 10000;
 }
 
 float setvariablespeed(void)
@@ -120,4 +133,6 @@ void setClearFlagOfVelocityControlI(void)
 	i_clear_flag = 1;
 }
 
-
+void setrunmode(uint16_t num){
+	mode = num;
+}

@@ -7,8 +7,8 @@
 
 #include "Logger.h"
 
-static float log_cross[200];
-static float log_side[200];
+static float log_cross[100];
+static float log_side[100];
 static float log_debug[12000];
 static float log_distance[6000];
 static float log_theta[6000];

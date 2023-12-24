@@ -393,10 +393,11 @@ int main(void)
 						  IMU_average();
 
 						  setRunMode(1);
+						  setrunmode(1);
 
-						  setVelocityRange(2.2, 2.2);
+						  setVelocityRange(1.8, 1.8);
 
-						  setsuctionMotor(450);
+						  setsuctionMotor(350);
 
 						  HAL_Delay(1000);
 
@@ -416,6 +417,7 @@ int main(void)
 					      clearspeedcount();
 
 					      setRunMode(2);
+					      setrunmode(2);
 
 					      setVelocityRange(1.6, 5.0);
 					      setAccDec(4, 2);
@@ -441,6 +443,7 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
+						  setrunmode(2);
 
 						  setVelocityRange(2.0, 5.0);
 						  setAccDec(3, 2);
@@ -466,6 +469,7 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
+						  setrunmode(2);
 
 						  setVelocityRange(2.2, 4.5);
 						  setAccDec(5, 1);
@@ -491,8 +495,9 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
+						  setrunmode(2);
 
-						  setVelocityRange(2.0, 7.0);
+						  setVelocityRange(2.0, 6.5);
 						  setAccDec(5, 2);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -521,7 +526,7 @@ int main(void)
 						  setAccDec(10, 3);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(450);
+						  setsuctionMotor(350);
 
 						  HAL_Delay(1000);
 
@@ -567,7 +572,7 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-					  printf("Distance, Theta\r\n");
+					  /*printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
 					  }
@@ -580,7 +585,7 @@ int main(void)
 					  printf("Side\r\n");
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
-					  }
+					  }*/
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();

@@ -7,7 +7,16 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[6000];
+static float velocity_table[5000];
+static int16_t acceleration_table[5000];
+
+#define WHEEL_RADIUS 0.012 //[m]
+#define AIRCRAFT_MASS 0.155 //[kg]
+#define TORQUE_CONSTANT 0.00352 //[Nm/A]
+#define RWSISTANCE_BETWEEN_TERMINALS 2.9 //[Ω]
+#define BACK_EMF_CONSTANT 0.000370370 //[V/rpm] 回転数定数の逆数
+#define PI 3.1415926535
+#define REDUCTION_RATIO 0.4
 
 uint16_t velocity_table_idx;
 uint16_t mode;
@@ -33,8 +42,7 @@ static bool velocity_update_flag;
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
-
-//white <= 1700 black >= 1700
+static float V_motor;
 
 void updateSideSensorStatus(){
 
@@ -391,6 +399,8 @@ void createVelocityTable(){
 	decelerateProcessing(deceleration, p_distance);
 	accelerateProcessing(acceleration, p_distance);
 
+	CreateAcceleration(p_distance);
+
 }
 
 float radius2Velocity(float radius){
@@ -401,14 +411,6 @@ float radius2Velocity(float radius){
 	}
 	else if(mode == 3){
 		velocity = 1e-3 * radius * radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
-		/*
-		if(radius < 400) velocity = min_velocity;
-		else if(radius < 500) velocity = 1.5;
-		else if(radius < 650) velocity = 1.8;
-		else if(radius < 1500) velocity = 2.0;
-		else if(radius < 2000) velocity = 2.5;
-		else velocity = max_velocity;
-		*/
 	}
 
 	return velocity;
@@ -498,6 +500,7 @@ void updateTargetVelocity(){
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
+		setTargetAcceleration(acceleration_table[velocity_table_idx]);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
@@ -546,6 +549,27 @@ void correctionTotalDistanceFromSideLine()
 			break;
 		}
 	}
+}
+
+void CreateAcceleration(const float *p_distance)
+{
+	uint16_t log_size = getDistanceLogSize();
+    for(uint16_t i = 0; i <= log_size - 1; i++){
+		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度
+
+		float t = p_distance[i]*1e-3 / v_diff;//時間を求める
+		float a = v_diff / t;//加速度計算
+
+		float n = (60*velocity_table[i]) / (2*PI*REDUCTION_RATIO*WHEEL_RADIUS);//回転数
+		float E = BACK_EMF_CONSTANT * n;//逆起電力
+		float T = (AIRCRAFT_MASS * WHEEL_RADIUS * a) / 2 * REDUCTION_RATIO;//モータのトルク
+		float I = TORQUE_CONSTANT * T;//電流
+		float V_mot = I * RWSISTANCE_BETWEEN_TERMINALS + E;//モータの出力に追加したい電圧
+
+		V_motor = V_mot * 10000;
+
+		acceleration_table[i] = V_motor;
+    }
 }
 
 bool getgoalStatus()
