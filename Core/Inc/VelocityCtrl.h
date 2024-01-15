@@ -18,6 +18,8 @@ float getVelocityControlTerm(void);
 
 float getCurrentVelocity(void);
 float getTargetVelocity(void);
+float getTargetAcceleration(void);
+float getPID(void);
 float setvariablespeed(void);
 void setTargetVelocity(float);
 void setTargetAcceleration(float);

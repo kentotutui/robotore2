@@ -7,16 +7,19 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[5000];
-static int16_t acceleration_table[5000];
+static float velocity_table[5500];
+static int16_t acceleration_table[5500];
 
-#define WHEEL_RADIUS 0.012 //[m]
+//↓モータ特性
+#define WHEEL_RADIUS 12 //[mm]
 #define AIRCRAFT_MASS 0.155 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.9 //[Ω]
-#define BACK_EMF_CONSTANT 0.000370370 //[V/rpm] 回転数定数の逆数
 #define PI 3.1415926535
 #define REDUCTION_RATIO 0.4
+#define MAX_CounterPeriod 1679
+
+#define Power_supply_voltage 12.3 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
 uint16_t mode;
@@ -42,7 +45,7 @@ static bool velocity_update_flag;
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
-static float V_motor;
+static int16_t V_motor;
 
 void updateSideSensorStatus(){
 
@@ -320,7 +323,9 @@ void saveLog(){
 		saveTheta(getTheta10mm());
 	}
 	else if(velocity_update_flag == true){
-		saveDebug(getTargetVelocity());
+		//saveDebug(getTargetVelocity());
+		//saveDebug(getCurrentVelocity());
+		saveDebug(getPID());
 		saveDebug(getCurrentVelocity());
 	}
 }
@@ -561,12 +566,15 @@ void CreateAcceleration(const float *p_distance)
 		float a = v_diff / t;//加速度計算
 
 		float n = (60*velocity_table[i]) / (2*PI*REDUCTION_RATIO*WHEEL_RADIUS);//回転数
-		float E = BACK_EMF_CONSTANT * n;//逆起電力
-		float T = (AIRCRAFT_MASS * WHEEL_RADIUS * a) / 2 * REDUCTION_RATIO;//モータのトルク
-		float I = TORQUE_CONSTANT * T;//電流
+		float K_e = ((2*PI)/60) * TORQUE_CONSTANT;//逆起電力定数
+		float E = K_e * n;//逆起電力
+		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク
+		float I = T_t / TORQUE_CONSTANT;//電流
 		float V_mot = I * RWSISTANCE_BETWEEN_TERMINALS + E;//モータの出力に追加したい電圧
+		float Duty = V_mot / Power_supply_voltage;//Duty比
+		float Duty_motor = Duty * MAX_CounterPeriod;
 
-		V_motor = V_mot * 10000;
+		V_motor = Duty_motor * 10000;
 
 		acceleration_table[i] = V_motor;
     }
