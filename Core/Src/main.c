@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 12){
+	  if(soiya >= 13){
 		  soiya = 0;
 	  }
 
@@ -419,7 +419,7 @@ int main(void)
 					      setRunMode(2);
 					      setrunmode(2);
 
-					      setVelocityRange(1.6, 5.0);
+					      setVelocityRange(1.8, 5.0);
 					      setAccDec(4, 2);
 					      setStraightRadius(1000); //Do Not Change
 
@@ -561,6 +561,23 @@ int main(void)
 				  break;
 
 			  case 11:
+				  setLED('R');
+				  setLED2('A');
+
+				  if(running_flag == true){
+					  setLED('G');
+					  setRunMode(2);
+					  setVelocityRange(1.8, 5.0);
+					  setAccDec(4, 2);
+					  setStraightRadius(1000); //Do Not Change
+					  runningInit();
+					  setLED('W');
+					  SaveVelocityTable();
+				  }
+
+				  break;
+
+			  case 12:
 				  setLED('W');
 				  setLED2('A');
 				  printf("6\r\n");
@@ -572,11 +589,13 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-					  /*printf("Distance, Theta\r\n");
+					  /*
+					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }
+					  }*/
 
+					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
@@ -586,6 +605,7 @@ int main(void)
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
 					  }*/
+
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();

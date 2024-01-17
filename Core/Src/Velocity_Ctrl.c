@@ -22,6 +22,7 @@ static float velocity_control_term;
 static float target_velocity;
 static float target_acceleration;
 static float variable_speed;
+static float pid_plus;
 
 float mon_p,mon_i,mon_d = 0;
 
@@ -50,6 +51,8 @@ void calculateVelocityControlFlip(void)
 		i += ki * diff * DELTA_T; //I制御
 		//d = kd * (diff - pre_diff) / DELTA_T; //D制御
 
+		pid_plus = p + i;
+
 		mon_p = p;
 		mon_i = i;
 		//mon_d = d;
@@ -61,8 +64,8 @@ void calculateVelocityControlFlip(void)
 		    velocity_control_term = p + i + d;
 		}
 		else if(mode == 2){
-			//velocity_control_term = p + i + d + target_acceleration;
-			velocity_control_term = p + i + d;
+			velocity_control_term = p + i + d + target_acceleration;
+			//velocity_control_term = p + i + d;
 		}
 
 		//setMotor(velocity_control_term, velocity_control_term);
@@ -78,6 +81,16 @@ float getVelocityControlTerm(void)
 	return velocity_control_term;
 }
 
+float getpidplus(void)
+{
+	return pid_plus;
+}
+
+float getTargetAcceleration(void)
+{
+	return target_acceleration;
+}
+
 void setTargetVelocity(float velocity)
 {
 	target_velocity = velocity;
@@ -85,7 +98,7 @@ void setTargetVelocity(float velocity)
 
 void setTargetAcceleration(float acceleration)
 {
-	target_acceleration = acceleration / 10000;
+	target_acceleration = acceleration / 10;
 }
 
 float setvariablespeed(void)
