@@ -11,15 +11,15 @@ static float velocity_table[5500];
 static int16_t acceleration_table[5500];
 
 //↓モータ特性
-#define WHEEL_RADIUS 12 //[mm]
+#define WHEEL_RADIUS 0.012 //[m]
 #define AIRCRAFT_MASS 0.155 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.9 //[Ω]
 #define PI 3.1415926535
-#define REDUCTION_RATIO 0.4
+#define REDUCTION_RATIO 2.5
 #define MAX_CounterPeriod 1679
 
-#define Power_supply_voltage 12.3 //[V] 仮定電源電圧
+#define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
 uint16_t mode;
@@ -326,7 +326,7 @@ void saveLog(){
 		//saveDebug(getTargetVelocity());
 		//saveDebug(getCurrentVelocity());
 		saveDebug(getPID());
-		saveDebug(getCurrentVelocity());
+		saveDebug(getTargetAcceleration());
 	}
 }
 
@@ -560,21 +560,23 @@ void CreateAcceleration(const float *p_distance)
 {
 	uint16_t log_size = getDistanceLogSize();
     for(uint16_t i = 0; i <= log_size - 1; i++){
-		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度
+		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度 [m/s]
 
-		float t = p_distance[i]*1e-3 / v_diff;//時間を求める
-		float a = v_diff / t;//加速度計算
+		float t = p_distance[i]*1e-3 / v_diff;//時間を求める mm*1e-3 → m [s]
+		float a = v_diff / t;//加速度計算 [m/s^2]
 
-		float n = (60*velocity_table[i]) / (2*PI*REDUCTION_RATIO*WHEEL_RADIUS);//回転数
-		float K_e = ((2*PI)/60) * TORQUE_CONSTANT;//逆起電力定数
-		float E = K_e * n;//逆起電力
-		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク
-		float I = T_t / TORQUE_CONSTANT;//電流
+		float n = (60*velocity_table[i]*REDUCTION_RATIO) / (2*PI*WHEEL_RADIUS);//回転数 [rpm]
+		float K_e = ((2*PI)/60) * TORQUE_CONSTANT;//逆起電力定数 [V/rpm]
+		float E = K_e * n;//逆起電力 [V]
+		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (4*REDUCTION_RATIO);//軸にかかるトルク [Nm] 4輪なので分母は4
+		float I = T_t / TORQUE_CONSTANT;//電流 [A]
 		float V_mot = I * RWSISTANCE_BETWEEN_TERMINALS + E;//モータの出力に追加したい電圧
 		float Duty = V_mot / Power_supply_voltage;//Duty比
 		float Duty_motor = Duty * MAX_CounterPeriod;
 
-		V_motor = Duty_motor * 10000;
+		if(Duty_motor >= MAX_CounterPeriod) Duty_motor = MAX_CounterPeriod;
+
+		V_motor = Duty_motor;
 
 		acceleration_table[i] = V_motor;
     }

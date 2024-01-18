@@ -20,10 +20,10 @@ sideSensor.c:480:6:accelerateProcessing	40	static
 sideSensor.c:495:6:updateTargetVelocity	8	static
 sideSensor.c:518:6:correctionTotalDistanceFromCrossLine	16	static
 sideSensor.c:538:6:correctionTotalDistanceFromSideLine	16	static
-sideSensor.c:559:6:CreateAcceleration	72	static
-sideSensor.c:583:6:getgoalStatus	4	static
-sideSensor.c:588:6:setVelocityRange	16	static
-sideSensor.c:594:6:setAccDec	16	static
-sideSensor.c:600:6:setStraightRadius	16	static
-sideSensor.c:606:6:getSideSensorStatusL	4	static
-sideSensor.c:611:6:getSideSensorStatusR	4	static
+sideSensor.c:559:6:CreateAcceleration	80	static
+sideSensor.c:585:6:getgoalStatus	4	static
+sideSensor.c:590:6:setVelocityRange	16	static
+sideSensor.c:596:6:setAccDec	16	static
+sideSensor.c:602:6:setStraightRadius	16	static
+sideSensor.c:608:6:getSideSensorStatusL	4	static
+sideSensor.c:613:6:getSideSensorStatusR	4	static

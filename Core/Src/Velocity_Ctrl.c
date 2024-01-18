@@ -65,8 +65,8 @@ void calculateVelocityControlFlip(void)
 		    velocity_control_term = p + i + d;
 		}
 		else if(mode == 2){
-			//velocity_control_term = (p + i + d) + target_acceleration;
-			velocity_control_term = p + i + d;
+			velocity_control_term = (p + i + d) + target_acceleration;
+			//velocity_control_term = p + i + d;
 		}
 
 		//setMotor(velocity_control_term, velocity_control_term);
@@ -89,7 +89,7 @@ void setTargetVelocity(float velocity)
 
 void setTargetAcceleration(float acceleration)
 {
-	target_acceleration = acceleration / 10000;
+	target_acceleration = acceleration;
 }
 
 float setvariablespeed(void)
