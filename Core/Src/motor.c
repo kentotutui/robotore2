@@ -34,26 +34,26 @@ void motorCtrlFlip(void)
 		motor_pwm_l = motor_l;
 		// motor1
 		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, motor_pwm_l);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 	}
 	else{
 		motor_pwm_l = motor_l * (-1);
 		// motor1
 		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, motor_pwm_l);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
 	}
 
 	if(motor_r >= 0){
 		motor_pwm_r = motor_r;
 		// motor2
 		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, motor_pwm_r);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
 	}
 	else{
 		motor_pwm_r = motor_r * (-1);
 		//motor2
 		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, motor_pwm_r);
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
 	}
 	mon_rev_l = motor_pwm_l;
 	mon_rev_r = motor_pwm_r;

@@ -308,8 +308,7 @@ int main(void)
 				  if(running_flag == true){
 					  setLED('G');
 
-				  		  setsuctionMotor(400);
-
+				  		  setsuctionMotor(300);
 				  }
 
 				  break;
@@ -324,6 +323,7 @@ int main(void)
 
 					      clearspeedcount();
 
+					      //setVelocityRange(0, 0);
 						  setTargetVelocity(0.0);
 						  //startVelocityControl();
 
@@ -346,7 +346,9 @@ int main(void)
 
 					      clearspeedcount();
 
-						  setTargetVelocity(1.5);
+					      setRunMode(1);
+
+					      setVelocityRange(1.0, 1.0);
 						  //startVelocityControl();
 
 						  setsuctionMotor(300);
@@ -419,8 +421,8 @@ int main(void)
 					      setRunMode(2);
 					      setrunmode(2);
 
-					      setVelocityRange(1.8, 1.8);
-					      setAccDec(4, 2);
+					      setVelocityRange(1.8, 4.0);
+					      setAccDec(4, 1);
 					      setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(350);
@@ -521,6 +523,7 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
+						  setrunmode(2);
 
 						  setVelocityRange(2.3, 5.5);
 						  setAccDec(4, 2);
@@ -546,6 +549,7 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
+						  setrunmode(2);
 
 						  setVelocityRange(2.1, 7.0);
 						  setAccDec(7, 2);
@@ -572,10 +576,13 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-					  /*printf("Distance, Theta\r\n");
+
+					  /*
+					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
 					  }
+
 
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
@@ -586,6 +593,7 @@ int main(void)
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
 					  }*/
+
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();
