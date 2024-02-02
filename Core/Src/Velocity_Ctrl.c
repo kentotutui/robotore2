@@ -68,7 +68,7 @@ void calculateVelocityControlFlip(void)
 		    velocity_control_term = p + i + d;
 		}
 		else if(mode == 2){
-			velocity_control_term = (p + i + d) + target_acceleration;
+			velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御
 			//velocity_control_term = p + i + d;
 		}
 

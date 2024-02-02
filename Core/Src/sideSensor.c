@@ -395,7 +395,7 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 15); //8
+	addDecelerationDistanceMergin(velocity_table, 10); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
@@ -556,19 +556,19 @@ void correctionTotalDistanceFromSideLine()
 	}
 }
 
-void CreateAcceleration(const float *p_distance)
+void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
 {
 	uint16_t log_size = getDistanceLogSize();
     for(uint16_t i = 0; i <= log_size - 1; i++){
-		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度 [m/s]
+		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度  Δv [m/s]
 
-		float t = p_distance[i]*1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m [s]
+		float t = p_distance[i]*1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m Δt [s]
 		float a = v_diff / t;//加速度計算 [m/s^2]
 
 		float n = (60*velocity_table[i]*REDUCTION_RATIO) / (2*PI*WHEEL_RADIUS);//回転数 [rpm]
 		float K_e = ((2*PI)/60) * TORQUE_CONSTANT;//逆起電力定数 [V/rpm]
 		float E = K_e * n;//逆起電力 [V]
-		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク [Nm] 4輪なので分母は4
+		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク [Nm]
 		float I = T_t / TORQUE_CONSTANT;//電流 [A]
 		float V_mot = I * RWSISTANCE_BETWEEN_TERMINALS + E;//モータの出力に追加したい電圧
 		float Duty = V_mot / Power_supply_voltage;//Duty比

@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_line   000167ce  00000000  00000000  0006d88c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb2c4  00000000  00000000  0008405a  2**0
+ 18 .debug_str    000cb2cb  00000000  00000000  0008405a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0014f31e  2**0
+ 19 .comment      0000007b  00000000  00000000  0014f325  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00007a54  00000000  00000000  0014f39c  2**2
+ 20 .debug_frame  00007a54  00000000  00000000  0014f3a0  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1631,8 +1631,8 @@ void updateEncoderCnt(void)
  8001270:	bf00      	nop
  8001272:	bd98      	pop	{r3, r4, r7, pc}
  8001274:	f3af 8000 	nop.w
- 8001278:	43146665 	.word	0x43146665
- 800127c:	3f8ba561 	.word	0x3f8ba561
+ 8001278:	bec93a2d 	.word	0xbec93a2d
+ 800127c:	3f8c463a 	.word	0x3f8c463a
  8001280:	40000400 	.word	0x40000400
  8001284:	20000244 	.word	0x20000244
  8001288:	40000800 	.word	0x40000800
@@ -2914,7 +2914,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 2.7, kd = 0.018;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 2.3, kd = 0.02;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
  8001c1e:	4b4c      	ldr	r3, [pc, #304]	; (8001d50 <calculateLineFollowingTermFlip+0x138>)
  8001c20:	617b      	str	r3, [r7, #20]
  8001c22:	4b4c      	ldr	r3, [pc, #304]	; (8001d54 <calculateLineFollowingTermFlip+0x13c>)
@@ -3048,8 +3048,8 @@ void calculateLineFollowingTermFlip(void){
  8001d44:	f3af 8000 	nop.w
  8001d48:	d2f1a9fc 	.word	0xd2f1a9fc
  8001d4c:	3f50624d 	.word	0x3f50624d
- 8001d50:	402ccccd 	.word	0x402ccccd
- 8001d54:	3c9374bc 	.word	0x3c9374bc
+ 8001d50:	40133333 	.word	0x40133333
+ 8001d54:	3ca3d70a 	.word	0x3ca3d70a
  8001d58:	20000276 	.word	0x20000276
  8001d5c:	20000277 	.word	0x20000277
  8001d60:	20000284 	.word	0x20000284
@@ -5738,7 +5738,7 @@ void calculateVelocityControlFlip(void)
  80033d0:	881b      	ldrh	r3, [r3, #0]
  80033d2:	2b02      	cmp	r3, #2
  80033d4:	d112      	bne.n	80033fc <calculateVelocityControlFlip+0x124>
-			velocity_control_term = (p + i + d) + target_acceleration;
+			velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御
  80033d6:	4b14      	ldr	r3, [pc, #80]	; (8003428 <calculateVelocityControlFlip+0x150>)
  80033d8:	ed93 7a00 	vldr	s14, [r3]
  80033dc:	edd7 7a02 	vldr	s15, [r7, #8]
@@ -5946,8 +5946,8 @@ float getCurrentVelocity(void)
  8003574:	bd90      	pop	{r4, r7, pc}
  8003576:	bf00      	nop
  8003578:	2001f1d4 	.word	0x2001f1d4
- 800357c:	35ec80c4 	.word	0x35ec80c4
- 8003580:	3f8703eb 	.word	0x3f8703eb
+ 800357c:	2df331e5 	.word	0x2df331e5
+ 8003580:	3f878fcc 	.word	0x3f878fcc
 
 08003584 <getTargetVelocity>:
 
@@ -6920,9 +6920,9 @@ int main(void)
  8003b8e:	eef1 0a0a 	vmov.f32	s1, #26	; 0x40d00000  6.5
  8003b92:	ed1f 0a52 	vldr	s0, [pc, #-328]	; 8003a4c <main+0x344>
  8003b96:	f002 f86b 	bl	8005c70 <setVelocityRange>
-						  setAccDec(5, 2);
+						  setAccDec(4, 2);
  8003b9a:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
- 8003b9e:	eeb1 0a04 	vmov.f32	s0, #20	; 0x40a00000  5.0
+ 8003b9e:	eeb1 0a00 	vmov.f32	s0, #16	; 0x40800000  4.0
  8003ba2:	f002 f87d 	bl	8005ca0 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
  8003ba6:	ed1f 0a54 	vldr	s0, [pc, #-336]	; 8003a58 <main+0x350>
@@ -10571,8 +10571,8 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 15); //8
- 8005298:	210f      	movs	r1, #15
+	addDecelerationDistanceMergin(velocity_table, 10); //8
+ 8005298:	210a      	movs	r1, #10
  800529a:	4813      	ldr	r0, [pc, #76]	; (80052e8 <createVelocityTable+0x198>)
  800529c:	f000 f8b8 	bl	8005410 <addDecelerationDistanceMergin>
 	addAccelerationDistanceMergin(velocity_table, 5); //15
@@ -11498,7 +11498,7 @@ void correctionTotalDistanceFromSideLine()
 
 08005a10 <CreateAcceleration>:
 
-void CreateAcceleration(const float *p_distance)
+void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
 {
  8005a10:	b5b0      	push	{r4, r5, r7, lr}
  8005a12:	b090      	sub	sp, #64	; 0x40
@@ -11512,7 +11512,7 @@ void CreateAcceleration(const float *p_distance)
  8005a20:	2300      	movs	r3, #0
  8005a22:	87fb      	strh	r3, [r7, #62]	; 0x3e
  8005a24:	e0e4      	b.n	8005bf0 <CreateAcceleration+0x1e0>
-		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度 [m/s]
+		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度  Δv [m/s]
  8005a26:	8ffb      	ldrh	r3, [r7, #62]	; 0x3e
  8005a28:	3301      	adds	r3, #1
  8005a2a:	4a83      	ldr	r2, [pc, #524]	; (8005c38 <CreateAcceleration+0x228>)
@@ -11527,7 +11527,7 @@ void CreateAcceleration(const float *p_distance)
  8005a40:	ee77 7a67 	vsub.f32	s15, s14, s15
  8005a44:	edc7 7a0c 	vstr	s15, [r7, #48]	; 0x30
 
-		float t = p_distance[i]*1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m [s]
+		float t = p_distance[i]*1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m Δt [s]
  8005a48:	8ffb      	ldrh	r3, [r7, #62]	; 0x3e
  8005a4a:	009b      	lsls	r3, r3, #2
  8005a4c:	687a      	ldr	r2, [r7, #4]
@@ -11597,7 +11597,7 @@ void CreateAcceleration(const float *p_distance)
  8005aec:	edd7 7a09 	vldr	s15, [r7, #36]	; 0x24
  8005af0:	ee67 7a27 	vmul.f32	s15, s14, s15
  8005af4:	edc7 7a07 	vstr	s15, [r7, #28]
-		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク [Nm] 4輪なので分母は4
+		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク [Nm]
  8005af8:	6ab8      	ldr	r0, [r7, #40]	; 0x28
  8005afa:	f7fa fd25 	bl	8000548 <__aeabi_f2d>
  8005afe:	a346      	add	r3, pc, #280	; (adr r3, 8005c18 <CreateAcceleration+0x208>)
@@ -11714,10 +11714,10 @@ void CreateAcceleration(const float *p_distance)
  8005c04:	f3af 8000 	nop.w
  8005c08:	d2f1a9fc 	.word	0xd2f1a9fc
  8005c0c:	3f50624d 	.word	0x3f50624d
- 8005c10:	ed7db22b 	.word	0xed7db22b
- 8005c14:	3fb1b185 	.word	0x3fb1b185
- 8005c18:	68b19a42 	.word	0x68b19a42
- 8005c1c:	3f593b3a 	.word	0x3f593b3a
+ 8005c10:	8457d34f 	.word	0x8457d34f
+ 8005c14:	3fb21877 	.word	0x3fb21877
+ 8005c18:	5f6fd220 	.word	0x5f6fd220
+ 8005c1c:	3f59ce07 	.word	0x3f59ce07
  8005c20:	9c38b04b 	.word	0x9c38b04b
  8005c24:	3f6cd5f9 	.word	0x3f6cd5f9
  8005c28:	33333333 	.word	0x33333333
