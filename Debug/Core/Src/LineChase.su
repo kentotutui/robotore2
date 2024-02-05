@@ -1,4 +1,4 @@
-LineChase.c:29:6:calculateLineFollowingTermFlip	40	static
+LineChase.c:29:6:calculateLineFollowingTermFlip	48	static
 LineChase.c:59:6:lineTraceFlip	32	static
 LineChase.c:114:6:startLineTrace	4	static
 LineChase.c:120:6:stopLineTrace	4	static

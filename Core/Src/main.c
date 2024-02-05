@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 12){
+	  if(soiya >= 13){
 		  soiya = 0;
 	  }
 
@@ -306,9 +306,8 @@ int main(void)
 				  printf("0\r\n");
 
 				  if(running_flag == true){
-					  setLED('G');
 
-				  		  setsuctionMotor(300);
+				  		  setsuctionMotor(650);
 				  }
 
 				  break;
@@ -409,6 +408,31 @@ int main(void)
 				  break;
 
 			  case 5:
+				  setLED('Y');
+				  setLED2('B');
+
+				  if(running_flag == true){
+						  //startLineTrace();
+
+						  clearspeedcount();
+
+						  IMU_average();
+
+						  setRunMode(1);
+						  setrunmode(1);
+
+						  setVelocityRange(2.2, 2.2);
+
+						  setsuctionMotor(350);
+
+						  HAL_Delay(1000);
+
+						  running();
+				  }
+
+				  break;
+
+			  case 6:
 				  setLED('C');
 				  setLED2('R');
 
@@ -434,7 +458,7 @@ int main(void)
 
 				  break;
 
-			  case 6:
+			  case 7:
 				  setLED('C');
 				  setLED2('G');
 
@@ -460,7 +484,7 @@ int main(void)
 
 				  break;
 
-			  case 7:
+			  case 8:
 				  setLED('C');
 				  setLED2('B');
 
@@ -473,8 +497,8 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.2, 4.5);
-						  setAccDec(5, 1);
+						  setVelocityRange(2.2, 5.0);
+						  setAccDec(4, 2);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(350);
@@ -486,7 +510,7 @@ int main(void)
 
 				  break;
 
-			  case 8:
+			  case 9:
 				  setLED('C');
 				  setLED2('W');
 
@@ -512,7 +536,7 @@ int main(void)
 
 				  break;
 
-			  case 9:
+			  case 10:
 				  setLED('C');
 				  setLED2('Y');
 
@@ -525,7 +549,7 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.3, 5.5);
+						  setVelocityRange(2.0, 6.0);
 						  setAccDec(4, 2);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -538,7 +562,7 @@ int main(void)
 
 			  	  break;
 
-			  case 10:
+			  case 11:
 				  setLED('C');
 				  setLED2('X');
 
@@ -551,8 +575,8 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.1, 7.0);
-						  setAccDec(7, 2);
+						  setVelocityRange(2.3, 7.0);
+						  setAccDec(4, 2);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(350);
@@ -564,7 +588,7 @@ int main(void)
 
 				  break;
 
-			  case 11:
+			  case 12:
 				  setLED('W');
 				  setLED2('A');
 				  printf("6\r\n");

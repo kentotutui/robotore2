@@ -19,7 +19,7 @@ static int16_t acceleration_table[5500];
 #define REDUCTION_RATIO 3
 #define MAX_CounterPeriod 1679
 
-#define Power_supply_voltage 12.3 //[V] 仮定電源電圧
+#define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
 uint16_t mode;
@@ -391,11 +391,11 @@ void createVelocityTable(){
 
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = 1.8;
+		velocity_table[i] = 2.0;
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 10); //8
+	addDecelerationDistanceMergin(velocity_table, 15); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
