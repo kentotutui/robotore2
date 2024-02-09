@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 2.2, kd = 0.023;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
+	float kp = 3.8, kd = 0.02;//kp = 1.5, kd = 0.0015  //kp = 3.0, kd = 0.005
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){

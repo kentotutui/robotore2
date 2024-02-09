@@ -14,7 +14,7 @@ static int16_t acceleration_table[5500];
 #define WHEEL_RADIUS 0.01125 //[m]
 #define AIRCRAFT_MASS 0.140 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
-#define RWSISTANCE_BETWEEN_TERMINALS 2.9 //[Ω]
+#define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
 #define PI 3.1415926535
 #define REDUCTION_RATIO 3
 #define MAX_CounterPeriod 1679
@@ -568,7 +568,7 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 		float n = (60*velocity_table[i]*REDUCTION_RATIO) / (2*PI*WHEEL_RADIUS);//回転数 [rpm]
 		float K_e = ((2*PI)/60) * TORQUE_CONSTANT;//逆起電力定数 [V/rpm]
 		float E = K_e * n;//逆起電力 [V]
-		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//軸にかかるトルク [Nm]
+		float T_t = (AIRCRAFT_MASS*WHEEL_RADIUS*a) / (2*REDUCTION_RATIO);//タイヤにかかるトルク [Nm]
 		float I = T_t / TORQUE_CONSTANT;//電流 [A]
 		float V_mot = I * RWSISTANCE_BETWEEN_TERMINALS + E;//モータの出力に追加したい電圧
 		float Duty = V_mot / Power_supply_voltage;//Duty比
