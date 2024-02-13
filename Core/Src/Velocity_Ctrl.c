@@ -61,7 +61,7 @@ void calculateVelocityControlFlip(void)
 		//if(i >= 1000) i = 1000;
 		//if(i <= -1000) i = -1000;
 
-		//velocity_control_term = p + i + d;
+		//velocity_control_term = p + i + d;//速度制御のPIDゲイン調整の時はこのコメント文をはずす
 
 
 		if(mode == 1){

@@ -94,7 +94,7 @@ bool isCrossLine()
 	return flag;
 }
 
-bool isContinuousCurvature()
+bool isContinuousCurvature()//連続曲率判定
 {
 	static float pre_theta;
 	static float continuous_cnt;
@@ -251,8 +251,8 @@ void runningFlip()
 			side_line_judge_flag = false;
 			clearSideLineJudgeDistance();
 		}
-		if(side_line_judge_flag== false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 60){
-			side_line_judge_flag= true;
+		if(side_line_judge_flag == false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 60){
+			side_line_judge_flag = true;
 			clearSideLineJudgeDistance();
 		}
 		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 60){ //Detect side line
@@ -395,7 +395,7 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 15); //8
+	addDecelerationDistanceMergin(velocity_table, 12); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
@@ -421,6 +421,8 @@ float radius2Velocity(float radius){
 	return velocity;
 }
 
+//*table：速度テーブル（一定距離ごとの目標速度が格納された配列）
+//mergin_size：マージンする距離（10mmごとに速度テーブルを生成している場合，10を引数にすると100mmマージンされます）
 void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 {
 	uint16_t idx = mergin_size;
@@ -515,7 +517,7 @@ void updateTargetVelocity(){
 	}
 }
 
-void correctionTotalDistanceFromCrossLine()
+void correctionTotalDistanceFromCrossLine()//クロスでの距離補正
 {
 	while(cross_line_idx <= getCrossLogSize()){
 		float temp_crossline_distance = getCrossLog(cross_line_idx);
@@ -535,7 +537,7 @@ void correctionTotalDistanceFromCrossLine()
 	}
 }
 
-void correctionTotalDistanceFromSideLine()
+void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 {
 	while(side_line_idx <= getSideLogSize()){
 		float temp_sideline_distance = getSideLog(side_line_idx);

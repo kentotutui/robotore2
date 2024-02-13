@@ -135,7 +135,7 @@ void updateAnalogSensor(void) {
 
 }
 
-void sensorCalibration()
+void sensorCalibration()//センサキャリブレーションはノムさんに修正してもらいました
 {
 	float max_values_buffer[LINESENSOR_ADC_NUM]={0};
 	float min_values_buffer[LINESENSOR_ADC_NUM]={1000};
