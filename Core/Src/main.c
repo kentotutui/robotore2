@@ -282,7 +282,7 @@ int main(void)
 		  stopVelocityControl();
 	  }
 
-	  if(getgoalStatus() == true){  //goal判?��?
+	  if(getgoalStatus() == true){//goal判定
 		  running_flag = false;
 		  cnt = 0;
 		  setsuctionMotor(0);
@@ -476,7 +476,7 @@ int main(void)
 						  setrunmode(2);
 
 						  setVelocityRange(2.0, 6.0);
-						  setAccDec(8, 4);
+						  setAccDec(8, 5);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -527,8 +527,8 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.0, 7.0);
-						  setAccDec(7, 3);
+						  setVelocityRange(2.0, 6.5);
+						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -552,7 +552,7 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.2, 8.0);
+						  setVelocityRange(2.2, 7.0);
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 

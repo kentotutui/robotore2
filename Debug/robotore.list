@@ -2986,7 +2986,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 3.3, kd = 0.021;//taiya良くないやつ kp = 3.2, kd = 0.018
+	float kp = 3.2, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
  8001cc0:	4bb1      	ldr	r3, [pc, #708]	; (8001f88 <calculateLineFollowingTermFlip+0x2d0>)
  8001cc2:	617b      	str	r3, [r7, #20]
  8001cc4:	4bb1      	ldr	r3, [pc, #708]	; (8001f8c <calculateLineFollowingTermFlip+0x2d4>)
@@ -3274,8 +3274,8 @@ void calculateLineFollowingTermFlip(void){
  8001f7c:	3ff0cccc 	.word	0x3ff0cccc
  8001f80:	d2f1a9fc 	.word	0xd2f1a9fc
  8001f84:	3f50624d 	.word	0x3f50624d
- 8001f88:	40533333 	.word	0x40533333
- 8001f8c:	3cac0831 	.word	0x3cac0831
+ 8001f88:	404ccccd 	.word	0x404ccccd
+ 8001f8c:	3ccccccd 	.word	0x3ccccccd
  8001f90:	20000276 	.word	0x20000276
  8001f94:	20000277 	.word	0x20000277
  8001f98:	20000284 	.word	0x20000284
@@ -6699,7 +6699,7 @@ int main(void)
  8003acc:	f7ff fe9a 	bl	8003804 <stopVelocityControl>
 	  }
 
-	  if(getgoalStatus() == true){  //goal判?��?
+	  if(getgoalStatus() == true){//goal判定
  8003ad0:	f002 f9d6 	bl	8005e80 <getgoalStatus>
  8003ad4:	4603      	mov	r3, r0
  8003ad6:	2b00      	cmp	r3, #0
@@ -7101,8 +7101,8 @@ int main(void)
  8003d80:	eef1 0a08 	vmov.f32	s1, #24	; 0x40c00000  6.0
  8003d84:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8003d88:	f002 f886 	bl	8005e98 <setVelocityRange>
-						  setAccDec(8, 4);
- 8003d8c:	eef1 0a00 	vmov.f32	s1, #16	; 0x40800000  4.0
+						  setAccDec(8, 5);
+ 8003d8c:	eef1 0a04 	vmov.f32	s1, #20	; 0x40a00000  5.0
  8003d90:	eeb2 0a00 	vmov.f32	s0, #32	; 0x41000000  8.0
  8003d94:	f002 f898 	bl	8005ec8 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
@@ -7201,12 +7201,12 @@ int main(void)
  8003e2e:	2002      	movs	r0, #2
  8003e30:	f7ff fd00 	bl	8003834 <setrunmode>
 
-						  setVelocityRange(2.0, 7.0);
- 8003e34:	eef1 0a0c 	vmov.f32	s1, #28	; 0x40e00000  7.0
+						  setVelocityRange(2.0, 6.5);
+ 8003e34:	eef1 0a0a 	vmov.f32	s1, #26	; 0x40d00000  6.5
  8003e38:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8003e3c:	f002 f82c 	bl	8005e98 <setVelocityRange>
-						  setAccDec(7, 3);
- 8003e40:	eef0 0a08 	vmov.f32	s1, #8	; 0x40400000  3.0
+						  setAccDec(7, 4);
+ 8003e40:	eef1 0a00 	vmov.f32	s1, #16	; 0x40800000  4.0
  8003e44:	eeb1 0a0c 	vmov.f32	s0, #28	; 0x40e00000  7.0
  8003e48:	f002 f83e 	bl	8005ec8 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
@@ -7252,8 +7252,8 @@ int main(void)
  8003e88:	2002      	movs	r0, #2
  8003e8a:	f7ff fcd3 	bl	8003834 <setrunmode>
 
-						  setVelocityRange(2.2, 8.0);
- 8003e8e:	eef2 0a00 	vmov.f32	s1, #32	; 0x41000000  8.0
+						  setVelocityRange(2.2, 7.0);
+ 8003e8e:	eef1 0a0c 	vmov.f32	s1, #28	; 0x40e00000  7.0
  8003e92:	ed1f 0a7d 	vldr	s0, [pc, #-500]	; 8003ca0 <main+0x358>
  8003e96:	f001 ffff 	bl	8005e98 <setVelocityRange>
 						  setAccDec(7, 4);
@@ -10802,8 +10802,8 @@ void createVelocityTable(){
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 12); //8
- 80054e2:	210c      	movs	r1, #12
+	addDecelerationDistanceMergin(velocity_table, 10); //8
+ 80054e2:	210a      	movs	r1, #10
  80054e4:	4812      	ldr	r0, [pc, #72]	; (8005530 <createVelocityTable+0x198>)
  80054e6:	f000 f8b3 	bl	8005650 <addDecelerationDistanceMergin>
 	addAccelerationDistanceMergin(velocity_table, 5); //15
