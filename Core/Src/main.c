@@ -423,8 +423,8 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.0, 5.0);//changeパラメータ
-						  setAccDec(4, 3);
+						  setVelocityRange(2.5, 5.0);//changeパラメータ
+						  setAccDec(7, 3);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -449,8 +449,8 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.5, 5.0);
-						  setAccDec(5, 3);
+						  setVelocityRange(2.0, 6.0);
+						  setAccDec(8, 5);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -527,8 +527,8 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.0, 6.5);
-						  setAccDec(7, 4);
+						  setVelocityRange(2.3, 6.5);
+						  setAccDec(8, 4);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);

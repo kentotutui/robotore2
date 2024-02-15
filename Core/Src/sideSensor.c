@@ -12,7 +12,7 @@ static int16_t acceleration_table[5500];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[m]
-#define AIRCRAFT_MASS 0.140 //[kg]
+#define AIRCRAFT_MASS 0.139 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
 #define PI 3.1415926535
@@ -391,7 +391,8 @@ void createVelocityTable(){
 
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = 2.0;
+		velocity_table[i] = max_velocity;
+		//velocity_table[i] = 2.0;
 	}
 
 
