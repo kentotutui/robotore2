@@ -391,7 +391,7 @@ void createVelocityTable(){
 
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = max_velocity;
+		velocity_table[i] = 3.0;
 		//velocity_table[i] = 2.0;
 	}
 

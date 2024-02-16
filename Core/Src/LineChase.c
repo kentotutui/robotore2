@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 3.3, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
+	float kp = 3.5, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -39,8 +39,8 @@ void calculateLineFollowingTermFlip(void){
 			i_clear_flag = 0;
 		}
 
-		//diff = ( ( sensor[0] * 2.0 + sensor[1] * 1.8 + sensor[2] * 1.6 + sensor[3] * 1.4 + sensor[4] * 1.2 + sensor[5]) / 6 ) - ( ( sensor[6] + sensor[7] * 1.2 + sensor[8] * 1.4 + sensor[9] * 1.6 + sensor[10] * 1.8 + sensor[11] * 2.0 ) / 6 );
-		diff = ( ( sensor[0] * 1.25 + sensor[1] * 1.2 + sensor[2] * 1.15 + sensor[3] * 1.1 + sensor[4] * 1.05 + sensor[5] ) / 6 ) - ( ( sensor[6] + sensor[7] * 1.05 + sensor[8] * 1.1 + sensor[9] * 1.15 + sensor[10] * 1.2 + sensor[11] * 1.25 ) / 6 );
+		diff = ( ( sensor[0] * 1.75 + sensor[1] * 1.6 + sensor[2] * 1.45 + sensor[3] * 1.3 + sensor[4] * 1.15 + sensor[5]) / 6 ) - ( ( sensor[6] + sensor[7] * 1.15 + sensor[8] * 1.3 + sensor[9] * 1.45 + sensor[10] * 1.6 + sensor[11] * 1.75 ) / 6 );
+		//diff = ( ( sensor[0] * 1.25 + sensor[1] * 1.2 + sensor[2] * 1.15 + sensor[3] * 1.1 + sensor[4] * 1.05 + sensor[5] ) / 6 ) - ( ( sensor[6] + sensor[7] * 1.05 + sensor[8] * 1.1 + sensor[9] * 1.15 + sensor[10] * 1.2 + sensor[11] * 1.25 ) / 6 );
 		//diff = ( ( sensor[0] + sensor[1] + sensor[2] + sensor[3] + sensor[4] + sensor[5] ) / 6 ) - ( ( sensor[6] + sensor[7] + sensor[8] + sensor[9] + sensor[10] + sensor[11] ) / 6 );
 
 		p = kp * diff; //P制御

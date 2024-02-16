@@ -294,7 +294,7 @@ int main(void)
 		  clearDistance10mm();
 	  }*/
 
-	  if(soiya >= 12){
+	  if(soiya >= 14){
 		  soiya = 0;
 	  }
 
@@ -397,7 +397,7 @@ int main(void)
 					      setRunMode(2);
 					      setrunmode(2);
 
-					      setVelocityRange(2.0, 5.0);
+					      setVelocityRange(2.2, 4.5);
 					      setAccDec(6, 2);
 					      setStraightRadius(1000); //Do Not Change
 
@@ -450,7 +450,7 @@ int main(void)
 						  setrunmode(2);
 
 						  setVelocityRange(2.0, 6.0);
-						  setAccDec(8, 5);
+						  setAccDec(6, 5);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -541,7 +541,7 @@ int main(void)
 				  break;
 
 			  case 10:
-				  setLED('Y');
+				  setLED('C');
 				  setLED2('V');
 
 				  if(running_flag == true){
@@ -552,7 +552,7 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.2, 7.0);
+						  setVelocityRange(2.0, 7.0);
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -565,8 +565,59 @@ int main(void)
 
 				  break;
 
+
 			  case 11:
-				  setLED('W');
+				  setLED('C');
+				  setLED2('T');
+
+				  if(running_flag == true){
+						  //startLineTrace();
+
+						  clearspeedcount();
+
+						  setRunMode(3);
+						  setrunmode(2);
+
+						  setVelocityRange(2.2, 8.5);
+						  setAccDec(10, 3);
+						  setStraightRadius(1000); //Do Not Change
+
+						  setsuctionMotor(500);
+
+						  HAL_Delay(1000);
+
+						  running();
+				  }
+
+				  break;
+
+			  case 12:
+				  setLED('C');
+				  setLED2('A');
+
+				  if(running_flag == true){
+						  //startLineTrace();
+
+						  clearspeedcount();
+
+						  setRunMode(2);
+						  setrunmode(2);
+
+						  setVelocityRange(2.3, 9.0);
+						  setAccDec(8, 4);
+						  setStraightRadius(1000); //Do Not Change
+
+						  setsuctionMotor(500);
+
+						  HAL_Delay(1000);
+
+						  running();
+				  }
+
+				  break;
+
+			  case 13:
+				  setLED('M');
 				  setLED2('A');
 				  printf("6\r\n");
 
