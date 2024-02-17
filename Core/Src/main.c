@@ -552,7 +552,7 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.0, 7.0);
+						  setVelocityRange(2.3, 7.5);
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -578,8 +578,8 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.2, 8.5);
-						  setAccDec(10, 3);
+						  setVelocityRange(2.5, 8.5);
+						  setAccDec(10, 5);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
@@ -603,8 +603,8 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.3, 9.0);
-						  setAccDec(8, 4);
+						  setVelocityRange(2.6, 10.0);
+						  setAccDec(8, 6);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
