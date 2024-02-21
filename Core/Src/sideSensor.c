@@ -584,7 +584,7 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 		acceleration_table[i] = V_motor;
     }
 }
-/*
+
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -605,7 +605,7 @@ void CreateXYcoordinates()
 		th = th + temp_theta;
 	}
 }
-*/
+
 bool getgoalStatus()
 {
 	return goal_flag;
