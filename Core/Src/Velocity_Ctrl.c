@@ -68,8 +68,8 @@ void calculateVelocityControlFlip(void)
 		    velocity_control_term = p + i + d;
 		}
 		else if(mode == 2){
-			velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御 2自由度制御
-			//velocity_control_term = p + i + d;
+			//velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御 2自由度制御
+			velocity_control_term = p + i + d;
 		}
 
 		//setMotor(velocity_control_term, velocity_control_term);

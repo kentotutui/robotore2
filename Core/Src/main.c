@@ -307,7 +307,10 @@ int main(void)
 
 				  if(running_flag == true){
 
-				  		  setsuctionMotor(500);
+				  		  //setsuctionMotor(500);
+					      setRunMode(2);
+					      runningInit();
+					      soiya = 13;
 				  }
 
 				  break;
@@ -347,8 +350,9 @@ int main(void)
 					      IMU_average();
 
 					      setRunMode(1);
+					      setrunmode(1);
 
-					      setVelocityRange(1.8, 1.8);
+					      setVelocityRange(1.5, 1.5);
 
 						  setsuctionMotor(500);
 
@@ -628,12 +632,11 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-
-
+					  /*
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }
+					  }*/
 
 
 					  /*

@@ -8,7 +8,8 @@
 #include "sideSensor.h"
 
 static float velocity_table[5500];
-static int16_t acceleration_table[5500];
+//static float X_table[5500];
+//static float Y_table[5500];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[m]
@@ -45,7 +46,7 @@ static bool velocity_update_flag;
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
-static int16_t V_motor;
+//static int16_t V_motor;
 
 void updateSideSensorStatus(){
 
@@ -296,13 +297,15 @@ void runningInit()
 	}
 	else
 	{
+		ereaseDebugLog();
 		loadDistance();
 		loadTheta();
 		loadCross();
 		loadSide();
-		createVelocityTable();
+		//createVelocityTable();
+		CreateXYcoordinates();
 
-		ereaseDebugLog();
+		//ereaseDebugLog();
 	}
 
 	clearCrossLineIgnoreDistance();
@@ -323,10 +326,12 @@ void saveLog(){
 		saveTheta(getTheta10mm());
 	}
 	else if(velocity_update_flag == true){
-		saveDebug(getTargetVelocity());
-		saveDebug(getCurrentVelocity());
+		//saveDebug(getTargetVelocity());
+		//saveDebug(getCurrentVelocity());
 		//saveDebug(getPID());
 		//saveDebug(getTargetAcceleration());
+		saveDebug(getTargetVelocity());
+	    saveDebug(getCurrentVelocity());
 	}
 }
 
@@ -405,7 +410,7 @@ void createVelocityTable(){
 	decelerateProcessing(deceleration, p_distance);
 	accelerateProcessing(acceleration, p_distance);
 
-	CreateAcceleration(p_distance);
+	//CreateAcceleration(p_distance);
 
 }
 
@@ -508,7 +513,7 @@ void updateTargetVelocity(){
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
-		setTargetAcceleration(acceleration_table[velocity_table_idx]);
+		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
@@ -558,7 +563,7 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 		}
 	}
 }
-
+/*
 void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
 {
 	uint16_t log_size = getDistanceLogSize();
@@ -584,14 +589,15 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 		acceleration_table[i] = V_motor;
     }
 }
-
+*/
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
 	p_distance = getDistanceArrayPointer();
 	p_theta = getThetaArrayPointer();
 
-	float temp_distance, temp_theta, x, y, th;
+	float temp_distance, temp_theta;
+	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
 
 	for(uint16_t i = 0; i < log_size; i++){
@@ -603,6 +609,12 @@ void CreateXYcoordinates()
 		x = x + temp_distance * cos(th + temp_theta/2);
 		y = y + temp_distance * sin(th + temp_theta/2);
 		th = th + temp_theta;
+
+		//X_table[i] = x;
+		//Y_table[i] = y;
+
+		saveDebug(x);
+	    saveDebug(y);
 	}
 }
 

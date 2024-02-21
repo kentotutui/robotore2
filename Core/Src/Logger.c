@@ -9,10 +9,13 @@
 
 static float log_cross[100];
 static float log_side[100];
+//static float log_x-axis[5500];
+//static float log_y-axis[5500];
 static float log_debug[12000];
 static float log_distance[5500];
 static float log_theta[5500];
 static uint16_t log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
+//static uint16_t log_distance_cnt, log_theta_cnt, log_x-axis_cnt, log_y-axis_cnt, log_debug_cnt;
 
 void initLog(){
 	writeAdd_1 = start_adress_sector7;
@@ -52,6 +55,17 @@ void saveDebug(float value){
 	writeAdd_5+= 0x04;
 }
 
+/*
+void saveX-axis(float x-axis){
+	FLASH_Write_Word_F(writeAdd_3, cross);
+	writeAdd_3 += 0x04;
+}*/
+
+/*
+void saveY-axis(float y-axis){
+	FLASH_Write_Word_F(writeAdd_4, side);
+	writeAdd_4 += 0x04;
+}*/
 
 void ereaseLog(){
 	FLASH_EreaseSector(FLASH_SECTOR_7);
