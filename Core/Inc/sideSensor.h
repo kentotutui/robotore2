@@ -49,6 +49,7 @@ void updateTargetVelocity();
 void correctionTotalDistanceFromCrossLine();
 void correctionTotalDistanceFromSideLine();
 void CreateAcceleration(const float *);
+void CreateXYcoordinates();
 
 void setVelocityRange(float, float);
 void setAccDec(float, float);

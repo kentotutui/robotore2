@@ -584,7 +584,28 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 		acceleration_table[i] = V_motor;
     }
 }
+/*
+void CreateXYcoordinates()
+{
+	const float *p_distance, *p_theta;
+	p_distance = getDistanceArrayPointer();
+	p_theta = getThetaArrayPointer();
 
+	float temp_distance, temp_theta, x, y, th;
+	uint16_t log_size = getDistanceLogSize();
+
+	for(uint16_t i = 0; i < log_size; i++){
+		temp_distance = p_distance[i];
+		temp_theta = p_theta[i];
+
+		if(temp_theta == 0) temp_theta = 0.00001;
+
+		x = x + temp_distance * cos(th + temp_theta/2);
+		y = y + temp_distance * sin(th + temp_theta/2);
+		th = th + temp_theta;
+	}
+}
+*/
 bool getgoalStatus()
 {
 	return goal_flag;

@@ -7027,8 +7027,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000234        0x4 Core/Src/AngleCtrl.o
  .bss.variable_Angle
                 0x0000000020000238        0x4 Core/Src/AngleCtrl.o
- .bss.i.9606    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
- .bss.pre_diff.9611
+ .bss.i.9607    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
+ .bss.pre_diff.9612
                 0x0000000020000240        0x4 Core/Src/AngleCtrl.o
  .bss.enc_l_cnt
                 0x0000000020000244        0x2 Core/Src/Encoder.o
@@ -7059,7 +7059,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.ang_average
                 0x0000000020000270        0x4 Core/Src/IMU.o
                 0x0000000020000270                ang_average
- .bss.pre_zg.9607
+ .bss.pre_zg.9608
                 0x0000000020000274        0x2 Core/Src/IMU.o
  .bss.line_trace_enable_flag
                 0x0000000020000276        0x1 Core/Src/LineChase.o
@@ -7071,8 +7071,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002000027c        0x1 Core/Src/LineChase.o
  *fill*         0x000000002000027d        0x3 
  .bss.pre_diff  0x0000000020000280        0x4 Core/Src/LineChase.o
- .bss.i.9609    0x0000000020000284        0x4 Core/Src/LineChase.o
- .bss.dark_cnt.9629
+ .bss.i.9610    0x0000000020000284        0x4 Core/Src/LineChase.o
+ .bss.dark_cnt.9630
                 0x0000000020000288        0x2 Core/Src/LineChase.o
  *fill*         0x000000002000028a        0x2 
  .bss.adc_value
@@ -7138,8 +7138,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020016e54        0x4 Core/Src/Velocity_Ctrl.o
  .bss.variable_speed
                 0x0000000020016e58        0x4 Core/Src/Velocity_Ctrl.o
- .bss.i.9614    0x0000000020016e5c        0x4 Core/Src/Velocity_Ctrl.o
- .bss.pre_diff.9619
+ .bss.i.9615    0x0000000020016e5c        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.pre_diff.9620
                 0x0000000020016e60        0x4 Core/Src/Velocity_Ctrl.o
  .bss.sw2       0x0000000020016e64        0x2 Core/Src/main.o
                 0x0000000020016e64                sw2
@@ -7198,15 +7198,15 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.straight_radius
                 0x000000002001ef80        0x4 Core/Src/sideSensor.o
  .bss.V_motor   0x000000002001ef84        0x2 Core/Src/sideSensor.o
- .bss.cnt.9630  0x000000002001ef86        0x2 Core/Src/sideSensor.o
- .bss.flag.9633
+ .bss.cnt.9631  0x000000002001ef86        0x2 Core/Src/sideSensor.o
+ .bss.flag.9634
                 0x000000002001ef88        0x1 Core/Src/sideSensor.o
  *fill*         0x000000002001ef89        0x3 
- .bss.pre_theta.9636
+ .bss.pre_theta.9637
                 0x000000002001ef8c        0x4 Core/Src/sideSensor.o
- .bss.continuous_cnt.9637
+ .bss.continuous_cnt.9638
                 0x000000002001ef90        0x4 Core/Src/sideSensor.o
- .bss.pre_target_velocity.9747
+ .bss.pre_target_velocity.9748
                 0x000000002001ef94        0x4 Core/Src/sideSensor.o
  .bss.__sbrk_heap_end
                 0x000000002001ef98        0x4 Core/Src/sysmem.o

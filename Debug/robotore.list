@@ -12136,7 +12136,10 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
  8005fe4:	2001c460 	.word	0x2001c460
 
 08005fe8 <getgoalStatus>:
-
+		th = th + temp_theta;
+	}
+}
+*/
 bool getgoalStatus()
 {
  8005fe8:	b480      	push	{r7}
