@@ -213,7 +213,7 @@ void runningFlip()
 		setLED('G');
 		updateTargetVelocity();
 
-		if(isTargetDistance(10) == true){
+		if(isTargetDistance(30) == true){//30mmごとにデータ取得
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -305,7 +305,6 @@ void runningInit()
 		//createVelocityTable();
 		CreateXYcoordinates();
 
-		//ereaseDebugLog();
 	}
 
 	clearCrossLineIgnoreDistance();

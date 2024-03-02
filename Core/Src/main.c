@@ -320,7 +320,9 @@ int main(void)
 				  setLED2('G');
 
 				  if(running_flag == true){
-						  //setVelocityRange(0, 0);
+
+					  setsuctionMotor(500);
+						  /*//setVelocityRange(0, 0);
 						  //startLineTrace();
 
 					      clearspeedcount();
@@ -333,7 +335,7 @@ int main(void)
 
 						  HAL_Delay(1500);
 
-						  running();
+						  running();*/
 				  }
 
 				  break;
@@ -632,11 +634,11 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-					  /*
+
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }*/
+					  }
 
 
 					  /*
