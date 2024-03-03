@@ -7,6 +7,7 @@
 "Core/Src/LineSensor.o"
 "Core/Src/Logger.o"
 "Core/Src/MPU6500.o"
+"Core/Src/Purepursuit.o"
 "Core/Src/Velocity_Ctrl.o"
 "Core/Src/main.o"
 "Core/Src/motor.o"

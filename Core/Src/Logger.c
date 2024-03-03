@@ -12,8 +12,8 @@ static float log_side[100];
 //static float log_x-axis[5500];
 //static float log_y-axis[5500];
 static float log_debug[12000];
-static float log_distance[5500];
-static float log_theta[5500];
+static float log_distance[2000];
+static float log_theta[2000];
 static uint16_t log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
 //static uint16_t log_distance_cnt, log_theta_cnt, log_x-axis_cnt, log_y-axis_cnt, log_debug_cnt;
 

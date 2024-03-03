@@ -36,7 +36,7 @@ Core/Src/LineChase.o: ../Core/Src/LineChase.c ../Core/Inc/LineChase.h \
  ../Core/Inc/switch.h ../Core/Inc/main.h ../Core/Inc/sideSensor.h \
  ../Core/Inc/LED.h ../Core/Inc/VelocityCtrl.h ../Core/Inc/Encoder.h \
  ../Core/Inc/AngleCtrl.h ../Core/Inc/IMU.h ../Core/Inc/MPU6500.h \
- ../Core/Inc/Logger.h ../Core/Inc/Flash_F405.h
+ ../Core/Inc/Logger.h ../Core/Inc/Flash_F405.h ../Core/Inc/Purepursuit.h
 
 ../Core/Inc/LineChase.h:
 
@@ -133,3 +133,5 @@ Core/Src/LineChase.o: ../Core/Src/LineChase.c ../Core/Inc/LineChase.h \
 ../Core/Inc/Logger.h:
 
 ../Core/Inc/Flash_F405.h:
+
+../Core/Inc/Purepursuit.h:

@@ -1,5 +1,6 @@
-Core/Src/Logger.o: ../Core/Src/Logger.c ../Core/Inc/Logger.h \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/Purepursuit.o: ../Core/Src/Purepursuit.c \
+ ../Core/Inc/Purepursuit.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -32,15 +33,13 @@ Core/Src/Logger.o: ../Core/Src/Logger.c ../Core/Inc/Logger.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Inc/LineChase.h ../Core/Inc/Motor.h ../Core/Inc/LineSensor.h \
- ../Core/Inc/switch.h ../Core/Inc/LED.h ../Core/Inc/VelocityCtrl.h \
- ../Core/Inc/Encoder.h ../Core/Inc/sideSensor.h ../Core/Inc/AngleCtrl.h \
+ ../Core/Inc/LineSensor.h ../Core/Inc/LineChase.h ../Core/Inc/Motor.h \
+ ../Core/Inc/main.h ../Core/Inc/sideSensor.h ../Core/Inc/LED.h \
+ ../Core/Inc/VelocityCtrl.h ../Core/Inc/Encoder.h ../Core/Inc/AngleCtrl.h \
  ../Core/Inc/IMU.h ../Core/Inc/MPU6500.h ../Core/Inc/Logger.h \
- ../Core/Inc/Purepursuit.h ../Core/Inc/Flash_F405.h
+ ../Core/Inc/Flash_F405.h ../Core/Inc/Purepursuit.h ../Core/Inc/switch.h
 
-../Core/Inc/Logger.h:
-
-../Core/Inc/main.h:
+../Core/Inc/Purepursuit.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -108,21 +107,21 @@ Core/Src/Logger.o: ../Core/Src/Logger.c ../Core/Inc/Logger.h \
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 
+../Core/Inc/LineSensor.h:
+
 ../Core/Inc/LineChase.h:
 
 ../Core/Inc/Motor.h:
 
-../Core/Inc/LineSensor.h:
+../Core/Inc/main.h:
 
-../Core/Inc/switch.h:
+../Core/Inc/sideSensor.h:
 
 ../Core/Inc/LED.h:
 
 ../Core/Inc/VelocityCtrl.h:
 
 ../Core/Inc/Encoder.h:
-
-../Core/Inc/sideSensor.h:
 
 ../Core/Inc/AngleCtrl.h:
 
@@ -132,6 +131,8 @@ Core/Src/Logger.o: ../Core/Src/Logger.c ../Core/Inc/Logger.h \
 
 ../Core/Inc/Logger.h:
 
+../Core/Inc/Flash_F405.h:
+
 ../Core/Inc/Purepursuit.h:
 
-../Core/Inc/Flash_F405.h:
+../Core/Inc/switch.h:

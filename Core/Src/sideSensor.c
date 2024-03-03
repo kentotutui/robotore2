@@ -6,10 +6,9 @@
  */
 
 #include "sideSensor.h"
+#include "math.h"
 
-static float velocity_table[5500];
-//static float X_table[5500];
-//static float Y_table[5500];
+static float velocity_table[2000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[m]
@@ -23,9 +22,11 @@ static float velocity_table[5500];
 #define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
+uint16_t lookaheadpoint_table_idx;
 uint16_t mode;
 
 float ref_distance;
+float ref_points;
 
 static uint8_t start_goal_line_cnt;
 static uint16_t cross_line_idx;
@@ -42,6 +43,7 @@ static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
 static bool velocity_update_flag;
+static bool lookaheadpoint_update_flag;
 
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
@@ -325,8 +327,6 @@ void saveLog(){
 		saveTheta(getTheta10mm());
 	}
 	else if(velocity_update_flag == true){
-		//saveDebug(getTargetVelocity());
-		//saveDebug(getCurrentVelocity());
 		//saveDebug(getPID());
 		//saveDebug(getTargetAcceleration());
 		saveDebug(getTargetVelocity());
@@ -522,6 +522,14 @@ void updateTargetVelocity(){
 	}
 }
 
+void updateLookaheadpoints(){
+	if(lookaheadpoint_update_flag == true){
+		if(getTotalDistance() >= ref_points){
+
+		}
+	}
+}
+
 void correctionTotalDistanceFromCrossLine()//クロスでの距離補正
 {
 	while(cross_line_idx <= getCrossLogSize()){
@@ -589,32 +597,10 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
     }
 }
 */
-void CreateXYcoordinates()
+
+void PurepursuitCalculation()
 {
-	const float *p_distance, *p_theta;
-	p_distance = getDistanceArrayPointer();
-	p_theta = getThetaArrayPointer();
 
-	float temp_distance, temp_theta;
-	float x = 0, y = 0, th = 0;
-	uint16_t log_size = getDistanceLogSize();
-
-	for(uint16_t i = 0; i < log_size; i++){
-		temp_distance = p_distance[i];
-		temp_theta = p_theta[i];
-
-		if(temp_theta == 0) temp_theta = 0.00001;
-
-		x = x + temp_distance * cos(th + temp_theta/2);
-		y = y + temp_distance * sin(th + temp_theta/2);
-		th = th + temp_theta;
-
-		//X_table[i] = x;
-		//Y_table[i] = y;
-
-		saveDebug(x);
-	    saveDebug(y);
-	}
 }
 
 bool getgoalStatus()
