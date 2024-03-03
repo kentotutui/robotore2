@@ -10,6 +10,11 @@
 static float X_table[2000];
 static float Y_table[2000];
 
+uint16_t lookaheadpoint_table_idx;
+float ref_points;
+
+static bool lookaheadpoint_update_flag;
+
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -36,4 +41,17 @@ void CreateXYcoordinates()
 		saveDebug(x);
 	    saveDebug(y);
 	}
+}
+
+void updateLookaheadpoints(){
+	if(lookaheadpoint_update_flag == true){
+		if(getTotalDistance() >= ref_points){
+
+		}
+	}
+}
+
+void PurepursuitCalculation()
+{
+
 }

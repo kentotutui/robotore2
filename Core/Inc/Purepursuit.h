@@ -20,5 +20,6 @@
 #include "Logger.h"
 
 void CreateXYcoordinates();
+void PurepursuitCalculation();
 
 #endif /* INC_PUREPURSUIT_H_ */

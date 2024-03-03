@@ -47,12 +47,9 @@ void addAccelerationDistanceMergin(float *, int16_t);
 void decelerateProcessing(const float, const float *);
 void accelerateProcessing(const float, const float *);
 void updateTargetVelocity();
-void updateLookaheadpoints();
 void correctionTotalDistanceFromCrossLine();
 void correctionTotalDistanceFromSideLine();
 void CreateAcceleration(const float *);
-//void CreateXYcoordinates();
-void PurepursuitCalculation();
 
 void setVelocityRange(float, float);
 void setAccDec(float, float);

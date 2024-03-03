@@ -36,6 +36,7 @@ extern "C" {
 #include "LineChase.h"
 #include "LineSensor.h"
 #include "sideSensor.h"
+#include "Purepursuit.h"
 
 /* USER CODE END Includes */
 

@@ -163,7 +163,7 @@ enc_cnt             0x4               Core/Src/main.o
 errno               0x4               c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-reent.o)
 timer2              0x4               Core/Src/main.o
 lookaheadpoint_table_idx
-                    0x2               Core/Src/sideSensor.o
+                    0x2               Core/Src/Purepursuit.o
 hadc2               0x48              Core/Src/LineSensor.o
 hi2c1               0x54              Core/Src/main.o
 writeAdd_1          0x4               Core/Src/AngleCtrl.o
@@ -180,7 +180,7 @@ mon_velo_term       0x4               Core/Src/LineChase.o
 htim3               0x40              Core/Src/Encoder.o
 hspi3               0x58              Core/Src/main.o
 writeAdd_5          0x4               Core/Src/AngleCtrl.o
-ref_points          0x4               Core/Src/sideSensor.o
+ref_points          0x4               Core/Src/Purepursuit.o
 mon_rev_l           0x2               Core/Src/motor.o
 pid_plus            0x4               Core/Src/Velocity_Ctrl.o
 xg_                 0x2               Core/Src/IMU.o
@@ -1396,6 +1396,12 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Core/Src/Purepursuit.o
  .data          0x0000000000000000        0x0 Core/Src/Purepursuit.o
  .bss           0x0000000000000000        0x0 Core/Src/Purepursuit.o
+ .bss.lookaheadpoint_update_flag
+                0x0000000000000000        0x1 Core/Src/Purepursuit.o
+ .text.updateLookaheadpoints
+                0x0000000000000000       0x18 Core/Src/Purepursuit.o
+ .text.PurepursuitCalculation
+                0x0000000000000000        0xe Core/Src/Purepursuit.o
  .debug_macro   0x0000000000000000      0xa5a Core/Src/Purepursuit.o
  .debug_macro   0x0000000000000000      0x2a6 Core/Src/Purepursuit.o
  .debug_macro   0x0000000000000000       0x2e Core/Src/Purepursuit.o
@@ -1460,6 +1466,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x35 Core/Src/Purepursuit.o
  .debug_macro   0x0000000000000000       0x20 Core/Src/Purepursuit.o
  .debug_macro   0x0000000000000000       0x10 Core/Src/Purepursuit.o
+ COMMON         0x0000000000000000        0x8 Core/Src/Purepursuit.o
  .group         0x0000000000000000        0xc Core/Src/Velocity_Ctrl.o
  .group         0x0000000000000000        0xc Core/Src/Velocity_Ctrl.o
  .group         0x0000000000000000        0xc Core/Src/Velocity_Ctrl.o
@@ -1583,7 +1590,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x22 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x10 Core/Src/Velocity_Ctrl.o
- .debug_macro   0x0000000000000000       0x2e Core/Src/Velocity_Ctrl.o
+ .debug_macro   0x0000000000000000       0x28 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x46 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x18 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x3c Core/Src/Velocity_Ctrl.o
@@ -1595,10 +1602,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1a3 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000      0x32a Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000      0x1e1 Core/Src/Velocity_Ctrl.o
- .debug_macro   0x0000000000000000       0x10 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x16 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x35 Core/Src/Velocity_Ctrl.o
  .debug_macro   0x0000000000000000       0x20 Core/Src/Velocity_Ctrl.o
+ .debug_macro   0x0000000000000000       0x10 Core/Src/Velocity_Ctrl.o
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
@@ -1897,8 +1904,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Core/Src/sideSensor.o
  .data          0x0000000000000000        0x0 Core/Src/sideSensor.o
  .bss           0x0000000000000000        0x0 Core/Src/sideSensor.o
- .bss.lookaheadpoint_update_flag
-                0x0000000000000000        0x1 Core/Src/sideSensor.o
  .text.createVelocityTable
                 0x0000000000000000      0x1ac Core/Src/sideSensor.o
  .text.radius2Velocity
@@ -1911,10 +1916,6 @@ Discarded input sections
                 0x0000000000000000      0x13c Core/Src/sideSensor.o
  .text.accelerateProcessing
                 0x0000000000000000      0x13c Core/Src/sideSensor.o
- .text.updateLookaheadpoints
-                0x0000000000000000       0x18 Core/Src/sideSensor.o
- .text.PurepursuitCalculation
-                0x0000000000000000        0xe Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000      0xa5a Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000      0x2a6 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x2e Core/Src/sideSensor.o
@@ -1963,7 +1964,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x10 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x22 Core/Src/sideSensor.o
- .debug_macro   0x0000000000000000       0x2e Core/Src/sideSensor.o
+ .debug_macro   0x0000000000000000       0x28 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x46 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x18 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x3c Core/Src/sideSensor.o
@@ -1975,10 +1976,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1a3 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000      0x32a Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000      0x1e1 Core/Src/sideSensor.o
- .debug_macro   0x0000000000000000       0x10 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x16 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x35 Core/Src/sideSensor.o
  .debug_macro   0x0000000000000000       0x20 Core/Src/sideSensor.o
+ .debug_macro   0x0000000000000000       0x10 Core/Src/sideSensor.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_msp.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_msp.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_msp.o
@@ -7230,7 +7231,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .igot.plt      0x0000000020000210        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
                 0x0000000020000210                . = ALIGN (0x4)
 
-.bss            0x0000000020000210    0x1624c load address 0x0000000008010618
+.bss            0x0000000020000210    0x16244 load address 0x0000000008010618
                 0x0000000020000210                _sbss = .
                 0x0000000020000210                __bss_start__ = _sbss
  *(.bss)
@@ -7246,8 +7247,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000234        0x4 Core/Src/AngleCtrl.o
  .bss.variable_Angle
                 0x0000000020000238        0x4 Core/Src/AngleCtrl.o
- .bss.i.9609    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
- .bss.pre_diff.9614
+ .bss.i.9608    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
+ .bss.pre_diff.9613
                 0x0000000020000240        0x4 Core/Src/AngleCtrl.o
  .bss.enc_l_cnt
                 0x0000000020000244        0x2 Core/Src/Encoder.o
@@ -7278,7 +7279,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.ang_average
                 0x0000000020000270        0x4 Core/Src/IMU.o
                 0x0000000020000270                ang_average
- .bss.pre_zg.9610
+ .bss.pre_zg.9609
                 0x0000000020000274        0x2 Core/Src/IMU.o
  .bss.line_trace_enable_flag
                 0x0000000020000276        0x1 Core/Src/LineChase.o
@@ -7290,8 +7291,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002000027c        0x1 Core/Src/LineChase.o
  *fill*         0x000000002000027d        0x3 
  .bss.pre_diff  0x0000000020000280        0x4 Core/Src/LineChase.o
- .bss.i.9612    0x0000000020000284        0x4 Core/Src/LineChase.o
- .bss.dark_cnt.9632
+ .bss.i.9611    0x0000000020000284        0x4 Core/Src/LineChase.o
+ .bss.dark_cnt.9631
                 0x0000000020000288        0x2 Core/Src/LineChase.o
  *fill*         0x000000002000028a        0x2 
  .bss.adc_value
@@ -7359,8 +7360,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020013f74        0x4 Core/Src/Velocity_Ctrl.o
  .bss.variable_speed
                 0x0000000020013f78        0x4 Core/Src/Velocity_Ctrl.o
- .bss.i.9617    0x0000000020013f7c        0x4 Core/Src/Velocity_Ctrl.o
- .bss.pre_diff.9622
+ .bss.i.9616    0x0000000020013f7c        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.pre_diff.9621
                 0x0000000020013f80        0x4 Core/Src/Velocity_Ctrl.o
  .bss.sw2       0x0000000020013f84        0x2 Core/Src/main.o
                 0x0000000020013f84                sw2
@@ -7416,15 +7417,15 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020015ef4        0x4 Core/Src/sideSensor.o
  .bss.straight_radius
                 0x0000000020015ef8        0x4 Core/Src/sideSensor.o
- .bss.cnt.9634  0x0000000020015efc        0x2 Core/Src/sideSensor.o
- .bss.flag.9637
+ .bss.cnt.9630  0x0000000020015efc        0x2 Core/Src/sideSensor.o
+ .bss.flag.9633
                 0x0000000020015efe        0x1 Core/Src/sideSensor.o
  *fill*         0x0000000020015eff        0x1 
- .bss.pre_theta.9640
+ .bss.pre_theta.9636
                 0x0000000020015f00        0x4 Core/Src/sideSensor.o
- .bss.continuous_cnt.9641
+ .bss.continuous_cnt.9637
                 0x0000000020015f04        0x4 Core/Src/sideSensor.o
- .bss.pre_target_velocity.9751
+ .bss.pre_target_velocity.9747
                 0x0000000020015f08        0x4 Core/Src/sideSensor.o
  .bss.__sbrk_heap_end
                 0x0000000020015f0c        0x4 Core/Src/sysmem.o
@@ -7505,33 +7506,31 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002001641e                mon_rev_r
                 0x0000000020016420                mon_rev_l
  *fill*         0x0000000020016422        0x2 
- COMMON         0x0000000020016424        0xe Core/Src/sideSensor.o
+ COMMON         0x0000000020016424        0x6 Core/Src/sideSensor.o
                 0x0000000020016424                ref_distance
-                0x0000000020016428                lookaheadpoint_table_idx
-                0x000000002001642c                ref_points
-                0x0000000020016430                velocity_table_idx
- *fill*         0x0000000020016432        0x2 
- COMMON         0x0000000020016434        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020016434                uwTick
- COMMON         0x0000000020016438       0x20 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
-                0x0000000020016438                pFlash
- COMMON         0x0000000020016458        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-reent.o)
-                0x0000000020016458                errno
-                0x000000002001645c                . = ALIGN (0x4)
-                0x000000002001645c                _ebss = .
-                0x000000002001645c                __bss_end__ = _ebss
+                0x0000000020016428                velocity_table_idx
+ *fill*         0x000000002001642a        0x2 
+ COMMON         0x000000002001642c        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x000000002001642c                uwTick
+ COMMON         0x0000000020016430       0x20 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+                0x0000000020016430                pFlash
+ COMMON         0x0000000020016450        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-reent.o)
+                0x0000000020016450                errno
+                0x0000000020016454                . = ALIGN (0x4)
+                0x0000000020016454                _ebss = .
+                0x0000000020016454                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002001645c      0x604 load address 0x0000000008010618
-                0x0000000020016460                . = ALIGN (0x8)
- *fill*         0x000000002001645c        0x4 
+                0x0000000020016454      0x604 load address 0x0000000008010618
+                0x0000000020016458                . = ALIGN (0x8)
+ *fill*         0x0000000020016454        0x4 
                 [!provide]                        PROVIDE (end = .)
-                0x0000000020016460                PROVIDE (_end = .)
-                0x0000000020016660                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020016460      0x200 
-                0x0000000020016a60                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020016660      0x400 
-                0x0000000020016a60                . = ALIGN (0x8)
+                0x0000000020016458                PROVIDE (_end = .)
+                0x0000000020016658                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020016458      0x200 
+                0x0000000020016a58                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020016658      0x400 
+                0x0000000020016a58                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -7759,7 +7758,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000000000156d       0x22 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(robotore.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000    0x22982
+.debug_info     0x0000000000000000    0x22987
  .debug_info    0x0000000000000000     0x11fc Core/Src/AngleCtrl.o
  .debug_info    0x00000000000011fc      0x8eb Core/Src/Encoder.o
  .debug_info    0x0000000000001ae7     0x1436 Core/Src/Flash_F405.o
@@ -7769,33 +7768,33 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_info    0x000000000000567c     0x162a Core/Src/LineSensor.o
  .debug_info    0x0000000000006ca6     0x14b6 Core/Src/Logger.o
  .debug_info    0x000000000000815c     0x12ae Core/Src/MPU6500.o
- .debug_info    0x000000000000940a     0x11a3 Core/Src/Purepursuit.o
- .debug_info    0x000000000000a5ad     0x1392 Core/Src/Velocity_Ctrl.o
- .debug_info    0x000000000000b93f     0x27b5 Core/Src/main.o
- .debug_info    0x000000000000e0f4      0x868 Core/Src/motor.o
- .debug_info    0x000000000000e95c     0x1973 Core/Src/sideSensor.o
- .debug_info    0x00000000000102cf     0x2412 Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x00000000000126e1     0x1449 Core/Src/stm32f4xx_it.o
- .debug_info    0x0000000000013b2a      0x259 Core/Src/switch.o
- .debug_info    0x0000000000013d83      0xebd Core/Src/syscalls.o
- .debug_info    0x0000000000014c40      0x985 Core/Src/sysmem.o
- .debug_info    0x00000000000155c5      0x554 Core/Src/system_stm32f4xx.o
- .debug_info    0x0000000000015b19       0x22 Core/Startup/startup_stm32f405rgtx.o
- .debug_info    0x0000000000015b3b      0x933 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x000000000001646e      0xcee Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_info    0x000000000001715c      0xe16 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x0000000000017f72      0x968 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_info    0x00000000000188da      0x622 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_info    0x0000000000018efc      0x721 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_info    0x000000000001961d      0x7b5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x0000000000019dd2     0x2426 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_info    0x000000000001c1f8      0x904 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x000000000001cafc     0x163a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_info    0x000000000001e136     0x24a9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_info    0x00000000000205df     0x1157 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_info    0x0000000000021736     0x124c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_info    0x000000000000940a     0x11ff Core/Src/Purepursuit.o
+ .debug_info    0x000000000000a609     0x1392 Core/Src/Velocity_Ctrl.o
+ .debug_info    0x000000000000b99b     0x27b5 Core/Src/main.o
+ .debug_info    0x000000000000e150      0x868 Core/Src/motor.o
+ .debug_info    0x000000000000e9b8     0x191c Core/Src/sideSensor.o
+ .debug_info    0x00000000000102d4     0x2412 Core/Src/stm32f4xx_hal_msp.o
+ .debug_info    0x00000000000126e6     0x1449 Core/Src/stm32f4xx_it.o
+ .debug_info    0x0000000000013b2f      0x259 Core/Src/switch.o
+ .debug_info    0x0000000000013d88      0xebd Core/Src/syscalls.o
+ .debug_info    0x0000000000014c45      0x985 Core/Src/sysmem.o
+ .debug_info    0x00000000000155ca      0x554 Core/Src/system_stm32f4xx.o
+ .debug_info    0x0000000000015b1e       0x22 Core/Startup/startup_stm32f405rgtx.o
+ .debug_info    0x0000000000015b40      0x933 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x0000000000016473      0xcee Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_info    0x0000000000017161      0xe16 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x0000000000017f77      0x968 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_info    0x00000000000188df      0x622 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_info    0x0000000000018f01      0x721 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_info    0x0000000000019622      0x7b5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000000000019dd7     0x2426 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_info    0x000000000001c1fd      0x904 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x000000000001cb01     0x163a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_info    0x000000000001e13b     0x24a9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_info    0x00000000000205e4     0x1157 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x000000000002173b     0x124c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_abbrev   0x0000000000000000     0x48e0
+.debug_abbrev   0x0000000000000000     0x490c
  .debug_abbrev  0x0000000000000000      0x230 Core/Src/AngleCtrl.o
  .debug_abbrev  0x0000000000000230      0x205 Core/Src/Encoder.o
  .debug_abbrev  0x0000000000000435      0x253 Core/Src/Flash_F405.o
@@ -7805,31 +7804,31 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_abbrev  0x0000000000000c6f      0x25c Core/Src/LineSensor.o
  .debug_abbrev  0x0000000000000ecb      0x2a3 Core/Src/Logger.o
  .debug_abbrev  0x000000000000116e      0x28b Core/Src/MPU6500.o
- .debug_abbrev  0x00000000000013f9      0x210 Core/Src/Purepursuit.o
- .debug_abbrev  0x0000000000001609      0x29e Core/Src/Velocity_Ctrl.o
- .debug_abbrev  0x00000000000018a7      0x33e Core/Src/main.o
- .debug_abbrev  0x0000000000001be5      0x1e2 Core/Src/motor.o
- .debug_abbrev  0x0000000000001dc7      0x3b9 Core/Src/sideSensor.o
- .debug_abbrev  0x0000000000002180      0x28f Core/Src/stm32f4xx_hal_msp.o
- .debug_abbrev  0x000000000000240f      0x209 Core/Src/stm32f4xx_it.o
- .debug_abbrev  0x0000000000002618      0x106 Core/Src/switch.o
- .debug_abbrev  0x000000000000271e      0x261 Core/Src/syscalls.o
- .debug_abbrev  0x000000000000297f      0x19b Core/Src/sysmem.o
- .debug_abbrev  0x0000000000002b1a      0x12b Core/Src/system_stm32f4xx.o
- .debug_abbrev  0x0000000000002c45       0x12 Core/Startup/startup_stm32f405rgtx.o
- .debug_abbrev  0x0000000000002c57      0x1c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_abbrev  0x0000000000002e1e      0x205 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_abbrev  0x0000000000003023      0x2fa Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_abbrev  0x000000000000331d      0x229 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_abbrev  0x0000000000003546      0x248 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_abbrev  0x000000000000378e      0x220 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_abbrev  0x00000000000039ae      0x1c9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_abbrev  0x0000000000003b77      0x254 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_abbrev  0x0000000000003dcb      0x245 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_abbrev  0x0000000000004010      0x240 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_abbrev  0x0000000000004250      0x230 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_abbrev  0x0000000000004480      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_abbrev  0x000000000000469e      0x242 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_abbrev  0x00000000000013f9      0x23c Core/Src/Purepursuit.o
+ .debug_abbrev  0x0000000000001635      0x29e Core/Src/Velocity_Ctrl.o
+ .debug_abbrev  0x00000000000018d3      0x33e Core/Src/main.o
+ .debug_abbrev  0x0000000000001c11      0x1e2 Core/Src/motor.o
+ .debug_abbrev  0x0000000000001df3      0x3b9 Core/Src/sideSensor.o
+ .debug_abbrev  0x00000000000021ac      0x28f Core/Src/stm32f4xx_hal_msp.o
+ .debug_abbrev  0x000000000000243b      0x209 Core/Src/stm32f4xx_it.o
+ .debug_abbrev  0x0000000000002644      0x106 Core/Src/switch.o
+ .debug_abbrev  0x000000000000274a      0x261 Core/Src/syscalls.o
+ .debug_abbrev  0x00000000000029ab      0x19b Core/Src/sysmem.o
+ .debug_abbrev  0x0000000000002b46      0x12b Core/Src/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000002c71       0x12 Core/Startup/startup_stm32f405rgtx.o
+ .debug_abbrev  0x0000000000002c83      0x1c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_abbrev  0x0000000000002e4a      0x205 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_abbrev  0x000000000000304f      0x2fa Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_abbrev  0x0000000000003349      0x229 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_abbrev  0x0000000000003572      0x248 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_abbrev  0x00000000000037ba      0x220 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_abbrev  0x00000000000039da      0x1c9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x0000000000003ba3      0x254 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_abbrev  0x0000000000003df7      0x245 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_abbrev  0x000000000000403c      0x240 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_abbrev  0x000000000000427c      0x230 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_abbrev  0x00000000000044ac      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_abbrev  0x00000000000046ca      0x242 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_aranges  0x0000000000000000     0x1950
  .debug_aranges
@@ -7851,15 +7850,15 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000358       0x40 Core/Src/MPU6500.o
  .debug_aranges
-                0x0000000000000398       0x20 Core/Src/Purepursuit.o
+                0x0000000000000398       0x30 Core/Src/Purepursuit.o
  .debug_aranges
-                0x00000000000003b8       0x80 Core/Src/Velocity_Ctrl.o
+                0x00000000000003c8       0x80 Core/Src/Velocity_Ctrl.o
  .debug_aranges
-                0x0000000000000438       0xb0 Core/Src/main.o
+                0x0000000000000448       0xb0 Core/Src/main.o
  .debug_aranges
-                0x00000000000004e8       0x40 Core/Src/motor.o
+                0x00000000000004f8       0x40 Core/Src/motor.o
  .debug_aranges
-                0x0000000000000528      0x108 Core/Src/sideSensor.o
+                0x0000000000000538       0xf8 Core/Src/sideSensor.o
  .debug_aranges
                 0x0000000000000630       0x98 Core/Src/stm32f4xx_hal_msp.o
  .debug_aranges
@@ -7911,11 +7910,11 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_ranges  0x00000000000001d8       0x28 Core/Src/LineSensor.o
  .debug_ranges  0x0000000000000200       0xd8 Core/Src/Logger.o
  .debug_ranges  0x00000000000002d8       0x30 Core/Src/MPU6500.o
- .debug_ranges  0x0000000000000308       0x10 Core/Src/Purepursuit.o
- .debug_ranges  0x0000000000000318       0x70 Core/Src/Velocity_Ctrl.o
- .debug_ranges  0x0000000000000388       0xa0 Core/Src/main.o
- .debug_ranges  0x0000000000000428       0x30 Core/Src/motor.o
- .debug_ranges  0x0000000000000458       0xf8 Core/Src/sideSensor.o
+ .debug_ranges  0x0000000000000308       0x20 Core/Src/Purepursuit.o
+ .debug_ranges  0x0000000000000328       0x70 Core/Src/Velocity_Ctrl.o
+ .debug_ranges  0x0000000000000398       0xa0 Core/Src/main.o
+ .debug_ranges  0x0000000000000438       0x30 Core/Src/motor.o
+ .debug_ranges  0x0000000000000468       0xe8 Core/Src/sideSensor.o
  .debug_ranges  0x0000000000000550       0x88 Core/Src/stm32f4xx_hal_msp.o
  .debug_ranges  0x00000000000005d8       0x70 Core/Src/stm32f4xx_it.o
  .debug_ranges  0x0000000000000648       0x10 Core/Src/switch.o
@@ -7937,7 +7936,7 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_ranges  0x0000000000001460      0x140 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_ranges  0x00000000000015a0      0x1c0 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_macro    0x0000000000000000    0x24a86
+.debug_macro    0x0000000000000000    0x24a9a
  .debug_macro   0x0000000000000000      0x3a6 Core/Src/AngleCtrl.o
  .debug_macro   0x00000000000003a6      0xa5a Core/Src/AngleCtrl.o
  .debug_macro   0x0000000000000e00      0x2a6 Core/Src/AngleCtrl.o
@@ -8014,64 +8013,64 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_macro   0x000000000001face      0x39a Core/Src/MPU6500.o
  .debug_macro   0x000000000001fe68       0x28 Core/Src/MPU6500.o
  .debug_macro   0x000000000001fe90      0x39a Core/Src/Purepursuit.o
- .debug_macro   0x000000000002022a      0x3b4 Core/Src/Velocity_Ctrl.o
- .debug_macro   0x00000000000205de      0x3c2 Core/Src/main.o
- .debug_macro   0x00000000000209a0      0x21a Core/Src/motor.o
- .debug_macro   0x0000000000020bba       0x1c Core/Src/motor.o
- .debug_macro   0x0000000000020bd6      0x3bc Core/Src/sideSensor.o
- .debug_macro   0x0000000000020f92      0x390 Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x0000000000021322      0x39a Core/Src/stm32f4xx_it.o
- .debug_macro   0x00000000000216bc      0x215 Core/Src/switch.o
- .debug_macro   0x00000000000218d1      0x243 Core/Src/syscalls.o
- .debug_macro   0x0000000000021b14       0x40 Core/Src/syscalls.o
- .debug_macro   0x0000000000021b54       0x94 Core/Src/syscalls.o
- .debug_macro   0x0000000000021be8       0x57 Core/Src/syscalls.o
- .debug_macro   0x0000000000021c3f      0x330 Core/Src/syscalls.o
- .debug_macro   0x0000000000021f6f       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000021f7f       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000021f8f       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000021f9f       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000021faf       0x1c Core/Src/syscalls.o
- .debug_macro   0x0000000000021fcb       0x52 Core/Src/syscalls.o
- .debug_macro   0x000000000002201d       0x40 Core/Src/syscalls.o
- .debug_macro   0x000000000002205d       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000002206d       0x40 Core/Src/syscalls.o
- .debug_macro   0x00000000000220ad       0xd7 Core/Src/syscalls.o
- .debug_macro   0x0000000000022184       0x1c Core/Src/syscalls.o
- .debug_macro   0x00000000000221a0       0x3d Core/Src/syscalls.o
- .debug_macro   0x00000000000221dd       0x35 Core/Src/syscalls.o
- .debug_macro   0x0000000000022212      0x122 Core/Src/syscalls.o
- .debug_macro   0x0000000000022334       0x16 Core/Src/syscalls.o
- .debug_macro   0x000000000002234a       0x16 Core/Src/syscalls.o
- .debug_macro   0x0000000000022360       0x29 Core/Src/syscalls.o
- .debug_macro   0x0000000000022389       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000022399      0x241 Core/Src/syscalls.o
- .debug_macro   0x00000000000225da       0x1c Core/Src/syscalls.o
- .debug_macro   0x00000000000225f6       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000022606       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000022616       0x16 Core/Src/syscalls.o
- .debug_macro   0x000000000002262c      0x145 Core/Src/syscalls.o
- .debug_macro   0x0000000000022771      0x189 Core/Src/syscalls.o
- .debug_macro   0x00000000000228fa       0x16 Core/Src/syscalls.o
- .debug_macro   0x0000000000022910       0x88 Core/Src/syscalls.o
- .debug_macro   0x0000000000022998       0xee Core/Src/sysmem.o
- .debug_macro   0x0000000000022a86      0x23b Core/Src/sysmem.o
- .debug_macro   0x0000000000022cc1      0x211 Core/Src/system_stm32f4xx.o
- .debug_macro   0x0000000000022ed2      0x26b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x000000000002313d      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_macro   0x0000000000023349      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x0000000000023554      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x0000000000023765      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_macro   0x0000000000023976      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_macro   0x0000000000023b87      0x241 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x0000000000023dc8      0x252 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_macro   0x000000000002401a      0x22f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x0000000000024249      0x21a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_macro   0x0000000000024463      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x000000000002466f      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x000000000002487a      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_macro   0x000000000002022a      0x3be Core/Src/Velocity_Ctrl.o
+ .debug_macro   0x00000000000205e8      0x3c2 Core/Src/main.o
+ .debug_macro   0x00000000000209aa      0x21a Core/Src/motor.o
+ .debug_macro   0x0000000000020bc4       0x1c Core/Src/motor.o
+ .debug_macro   0x0000000000020be0      0x3c6 Core/Src/sideSensor.o
+ .debug_macro   0x0000000000020fa6      0x390 Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x0000000000021336      0x39a Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000216d0      0x215 Core/Src/switch.o
+ .debug_macro   0x00000000000218e5      0x243 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021b28       0x40 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021b68       0x94 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021bfc       0x57 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021c53      0x330 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021f83       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021f93       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021fa3       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021fb3       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000021fc3       0x1c Core/Src/syscalls.o
+ .debug_macro   0x0000000000021fdf       0x52 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022031       0x40 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022071       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022081       0x40 Core/Src/syscalls.o
+ .debug_macro   0x00000000000220c1       0xd7 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022198       0x1c Core/Src/syscalls.o
+ .debug_macro   0x00000000000221b4       0x3d Core/Src/syscalls.o
+ .debug_macro   0x00000000000221f1       0x35 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022226      0x122 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022348       0x16 Core/Src/syscalls.o
+ .debug_macro   0x000000000002235e       0x16 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022374       0x29 Core/Src/syscalls.o
+ .debug_macro   0x000000000002239d       0x10 Core/Src/syscalls.o
+ .debug_macro   0x00000000000223ad      0x241 Core/Src/syscalls.o
+ .debug_macro   0x00000000000225ee       0x1c Core/Src/syscalls.o
+ .debug_macro   0x000000000002260a       0x10 Core/Src/syscalls.o
+ .debug_macro   0x000000000002261a       0x10 Core/Src/syscalls.o
+ .debug_macro   0x000000000002262a       0x16 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022640      0x145 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022785      0x189 Core/Src/syscalls.o
+ .debug_macro   0x000000000002290e       0x16 Core/Src/syscalls.o
+ .debug_macro   0x0000000000022924       0x88 Core/Src/syscalls.o
+ .debug_macro   0x00000000000229ac       0xee Core/Src/sysmem.o
+ .debug_macro   0x0000000000022a9a      0x23b Core/Src/sysmem.o
+ .debug_macro   0x0000000000022cd5      0x211 Core/Src/system_stm32f4xx.o
+ .debug_macro   0x0000000000022ee6      0x26b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x0000000000023151      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_macro   0x000000000002335d      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x0000000000023568      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x0000000000023779      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_macro   0x000000000002398a      0x211 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_macro   0x0000000000023b9b      0x241 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x0000000000023ddc      0x252 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_macro   0x000000000002402e      0x22f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x000000000002425d      0x21a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_macro   0x0000000000024477      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0000000000024683      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x000000000002488e      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_line     0x0000000000000000    0x1726c
+.debug_line     0x0000000000000000    0x1726a
  .debug_line    0x0000000000000000      0x9b1 Core/Src/AngleCtrl.o
  .debug_line    0x00000000000009b1      0x88c Core/Src/Encoder.o
  .debug_line    0x000000000000123d      0xa8e Core/Src/Flash_F405.o
@@ -8081,31 +8080,31 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_line    0x00000000000038a1      0xaae Core/Src/LineSensor.o
  .debug_line    0x000000000000434f      0xb64 Core/Src/Logger.o
  .debug_line    0x0000000000004eb3      0x9ba Core/Src/MPU6500.o
- .debug_line    0x000000000000586d      0x9a2 Core/Src/Purepursuit.o
- .debug_line    0x000000000000620f      0xa56 Core/Src/Velocity_Ctrl.o
- .debug_line    0x0000000000006c65      0xd9b Core/Src/main.o
- .debug_line    0x0000000000007a00      0x7bb Core/Src/motor.o
- .debug_line    0x00000000000081bb      0xd80 Core/Src/sideSensor.o
- .debug_line    0x0000000000008f3b      0xb3b Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000009a76      0xa55 Core/Src/stm32f4xx_it.o
- .debug_line    0x000000000000a4cb      0x742 Core/Src/switch.o
- .debug_line    0x000000000000ac0d      0x73e Core/Src/syscalls.o
- .debug_line    0x000000000000b34b      0x4c7 Core/Src/sysmem.o
- .debug_line    0x000000000000b812      0x755 Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000bf67       0x85 Core/Startup/startup_stm32f405rgtx.o
- .debug_line    0x000000000000bfec      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000000000000c92b      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x000000000000d4cf      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x000000000000df32      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x000000000000e93f      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_line    0x000000000000f264      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_line    0x000000000000fb75      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x0000000000010493     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_line    0x0000000000012080      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000012a17     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x0000000000013b12     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x00000000000154ca      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x000000000001621f     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x000000000000586d      0x9c4 Core/Src/Purepursuit.o
+ .debug_line    0x0000000000006231      0xa56 Core/Src/Velocity_Ctrl.o
+ .debug_line    0x0000000000006c87      0xd9b Core/Src/main.o
+ .debug_line    0x0000000000007a22      0x7bb Core/Src/motor.o
+ .debug_line    0x00000000000081dd      0xd5c Core/Src/sideSensor.o
+ .debug_line    0x0000000000008f39      0xb3b Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000009a74      0xa55 Core/Src/stm32f4xx_it.o
+ .debug_line    0x000000000000a4c9      0x742 Core/Src/switch.o
+ .debug_line    0x000000000000ac0b      0x73e Core/Src/syscalls.o
+ .debug_line    0x000000000000b349      0x4c7 Core/Src/sysmem.o
+ .debug_line    0x000000000000b810      0x755 Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000bf65       0x85 Core/Startup/startup_stm32f405rgtx.o
+ .debug_line    0x000000000000bfea      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x000000000000c929      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x000000000000d4cd      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x000000000000df30      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x000000000000e93d      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_line    0x000000000000f262      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_line    0x000000000000fb73      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x0000000000010491     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_line    0x000000000001207e      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000012a15     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x0000000000013b10     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x00000000000154c8      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x000000000001621d     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_str      0x0000000000000000    0xcb345
  .debug_str     0x0000000000000000    0xc2964 Core/Src/AngleCtrl.o
@@ -8126,16 +8125,16 @@ OUTPUT(robotore.elf elf32-littlearm)
                                       0xc2e8d (size before relaxing)
  .debug_str     0x00000000000c373c       0x5c Core/Src/MPU6500.o
                                       0xc2d11 (size before relaxing)
- .debug_str     0x00000000000c3798       0x60 Core/Src/Purepursuit.o
-                                      0xc2cf0 (size before relaxing)
- .debug_str     0x00000000000c37f8      0x213 Core/Src/Velocity_Ctrl.o
+ .debug_str     0x00000000000c3798       0xcc Core/Src/Purepursuit.o
+                                      0xc2d62 (size before relaxing)
+ .debug_str     0x00000000000c3864      0x213 Core/Src/Velocity_Ctrl.o
                                       0xc2f46 (size before relaxing)
- .debug_str     0x00000000000c3a0b      0xe74 Core/Src/main.o
+ .debug_str     0x00000000000c3a77      0xe74 Core/Src/main.o
                                       0xc3f41 (size before relaxing)
- .debug_str     0x00000000000c487f       0xa4 Core/Src/motor.o
+ .debug_str     0x00000000000c48eb       0xa4 Core/Src/motor.o
                                       0xbf144 (size before relaxing)
- .debug_str     0x00000000000c4923      0x5a5 Core/Src/sideSensor.o
-                                      0xc32c1 (size before relaxing)
+ .debug_str     0x00000000000c498f      0x539 Core/Src/sideSensor.o
+                                      0xc3255 (size before relaxing)
  .debug_str     0x00000000000c4ec8      0x187 Core/Src/stm32f4xx_hal_msp.o
                                       0xc3ba3 (size before relaxing)
  .debug_str     0x00000000000c504f      0x111 Core/Src/stm32f4xx_it.o
@@ -8223,11 +8222,11 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_frame   0x0000000000000764       0xa0 Core/Src/LineSensor.o
  .debug_frame   0x0000000000000804      0x3ac Core/Src/Logger.o
  .debug_frame   0x0000000000000bb0       0xbc Core/Src/MPU6500.o
- .debug_frame   0x0000000000000c6c       0x3c Core/Src/Purepursuit.o
- .debug_frame   0x0000000000000ca8      0x1d4 Core/Src/Velocity_Ctrl.o
- .debug_frame   0x0000000000000e7c      0x290 Core/Src/main.o
- .debug_frame   0x000000000000110c       0xc0 Core/Src/motor.o
- .debug_frame   0x00000000000011cc      0x430 Core/Src/sideSensor.o
+ .debug_frame   0x0000000000000c6c       0x78 Core/Src/Purepursuit.o
+ .debug_frame   0x0000000000000ce4      0x1d4 Core/Src/Velocity_Ctrl.o
+ .debug_frame   0x0000000000000eb8      0x290 Core/Src/main.o
+ .debug_frame   0x0000000000001148       0xc0 Core/Src/motor.o
+ .debug_frame   0x0000000000001208      0x3f4 Core/Src/sideSensor.o
  .debug_frame   0x00000000000015fc      0x25c Core/Src/stm32f4xx_hal_msp.o
  .debug_frame   0x0000000000001858      0x174 Core/Src/stm32f4xx_it.o
  .debug_frame   0x00000000000019cc       0x34 Core/Src/switch.o

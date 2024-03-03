@@ -21,29 +21,29 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   8 .data         00000210  20000000  08010408  00030000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          0001624c  20000210  08010618  00030210  2**2
+  9 .bss          00016244  20000210  08010618  00030210  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2001645c  08010618  0003645c  2**0
+ 10 ._user_heap_stack 00000604  20016454  08010618  00036454  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00030210  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00022982  00000000  00000000  00030240  2**0
+ 12 .debug_info   00022987  00000000  00000000  00030240  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 000048e0  00000000  00000000  00052bc2  2**0
+ 13 .debug_abbrev 0000490c  00000000  00000000  00052bc7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001950  00000000  00000000  000574a8  2**3
+ 14 .debug_aranges 00001950  00000000  00000000  000574d8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00001760  00000000  00000000  00058df8  2**3
+ 15 .debug_ranges 00001760  00000000  00000000  00058e28  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00024a86  00000000  00000000  0005a558  2**0
+ 16 .debug_macro  00024a9a  00000000  00000000  0005a588  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0001726c  00000000  00000000  0007efde  2**0
+ 17 .debug_line   0001726a  00000000  00000000  0007f022  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb345  00000000  00000000  0009624a  2**0
+ 18 .debug_str    000cb345  00000000  00000000  0009628c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0016158f  2**0
+ 19 .comment      0000007b  00000000  00000000  001615d1  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00007cc0  00000000  00000000  0016160c  2**2
+ 20 .debug_frame  00007cc0  00000000  00000000  0016164c  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -5856,9 +5856,9 @@ void read_gyro_data() {
  8003540:	20016134 	.word	0x20016134
 
 08003544 <CreateXYcoordinates>:
+float ref_points;
 
-static float X_table[2000];
-static float Y_table[2000];
+static bool lookaheadpoint_update_flag;
 
 void CreateXYcoordinates()
 {
@@ -10943,7 +10943,7 @@ void startVelocityUpdate(){
 }
  8005600:	bf00      	nop
  8005602:	bd80      	pop	{r7, pc}
- 8005604:	20016430 	.word	0x20016430
+ 8005604:	20016428 	.word	0x20016428
  8005608:	20016424 	.word	0x20016424
  800560c:	20015ee4 	.word	0x20015ee4
  8005610:	20015ed2 	.word	0x20015ed2
@@ -11068,14 +11068,11 @@ void updateTargetVelocity(){
  80056e6:	bd80      	pop	{r7, pc}
  80056e8:	20015ee4 	.word	0x20015ee4
  80056ec:	20016424 	.word	0x20016424
- 80056f0:	20016430 	.word	0x20016430
+ 80056f0:	20016428 	.word	0x20016428
  80056f4:	20013f90 	.word	0x20013f90
  80056f8:	20015f08 	.word	0x20015f08
 
 080056fc <correctionTotalDistanceFromCrossLine>:
-		}
-	}
-}
 
 void correctionTotalDistanceFromCrossLine()//クロスでの距離補正
 {
@@ -11255,9 +11252,9 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
  8005850:	20015ed8 	.word	0x20015ed8
 
 08005854 <getgoalStatus>:
-{
-
+    }
 }
+*/
 
 bool getgoalStatus()
 {
@@ -13025,7 +13022,7 @@ void *_sbrk(ptrdiff_t incr)
  8006234:	20020000 	.word	0x20020000
  8006238:	00000400 	.word	0x00000400
  800623c:	20015f0c 	.word	0x20015f0c
- 8006240:	20016460 	.word	0x20016460
+ 8006240:	20016458 	.word	0x20016458
 
 08006244 <SystemInit>:
   *         configuration.
@@ -13147,7 +13144,7 @@ LoopFillZerobss:
   ldr  r2, =_sbss
  80062b8:	20000210 	.word	0x20000210
   ldr  r3, = _ebss
- 80062bc:	2001645c 	.word	0x2001645c
+ 80062bc:	20016454 	.word	0x20016454
 
 080062c0 <ADC_IRQHandler>:
  * @retval None       
@@ -13310,7 +13307,7 @@ __weak void HAL_IncTick(void)
  8006384:	4770      	bx	lr
  8006386:	bf00      	nop
  8006388:	2000003c 	.word	0x2000003c
- 800638c:	20016434 	.word	0x20016434
+ 800638c:	2001642c 	.word	0x2001642c
 
 08006390 <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -13330,7 +13327,7 @@ __weak uint32_t HAL_GetTick(void)
  800639c:	f85d 7b04 	ldr.w	r7, [sp], #4
  80063a0:	4770      	bx	lr
  80063a2:	bf00      	nop
- 80063a4:	20016434 	.word	0x20016434
+ 80063a4:	2001642c 	.word	0x2001642c
 
 080063a8 <HAL_Delay>:
   *       implementations in user file.
@@ -16720,7 +16717,7 @@ HAL_StatusTypeDef FLASH_WaitForLastOperation(uint32_t Timeout)
  80075aa:	3710      	adds	r7, #16
  80075ac:	46bd      	mov	sp, r7
  80075ae:	bd80      	pop	{r7, pc}
- 80075b0:	20016438 	.word	0x20016438
+ 80075b0:	20016430 	.word	0x20016430
  80075b4:	40023c00 	.word	0x40023c00
 
 080075b8 <FLASH_SetErrorCode>:
@@ -16845,7 +16842,7 @@ static void FLASH_SetErrorCode(void)
  8007656:	f85d 7b04 	ldr.w	r7, [sp], #4
  800765a:	4770      	bx	lr
  800765c:	40023c00 	.word	0x40023c00
- 8007660:	20016438 	.word	0x20016438
+ 8007660:	20016430 	.word	0x20016430
 
 08007664 <HAL_FLASHEx_Erase>:
   *         (0xFFFFFFFFU means that all the sectors have been correctly erased)
@@ -17010,7 +17007,7 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase(FLASH_EraseInitTypeDef *pEraseInit, uint32_t
  8007736:	3710      	adds	r7, #16
  8007738:	46bd      	mov	sp, r7
  800773a:	bd80      	pop	{r7, pc}
- 800773c:	20016438 	.word	0x20016438
+ 800773c:	20016430 	.word	0x20016430
  8007740:	40023c00 	.word	0x40023c00
 
 08007744 <FLASH_MassErase>:
@@ -33689,7 +33686,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fc22:	b103      	cbz	r3, 800fc26 <_sbrk_r+0x1a>
  800fc24:	602b      	str	r3, [r5, #0]
  800fc26:	bd38      	pop	{r3, r4, r5, pc}
- 800fc28:	20016458 	.word	0x20016458
+ 800fc28:	20016450 	.word	0x20016450
 
 0800fc2c <__sread>:
  800fc2c:	b510      	push	{r4, lr}
@@ -33798,7 +33795,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fd0a:	b103      	cbz	r3, 800fd0e <_write_r+0x1e>
  800fd0c:	602b      	str	r3, [r5, #0]
  800fd0e:	bd38      	pop	{r3, r4, r5, pc}
- 800fd10:	20016458 	.word	0x20016458
+ 800fd10:	20016450 	.word	0x20016450
 
 0800fd14 <_close_r>:
  800fd14:	b538      	push	{r3, r4, r5, lr}
@@ -33814,7 +33811,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fd2a:	b103      	cbz	r3, 800fd2e <_close_r+0x1a>
  800fd2c:	602b      	str	r3, [r5, #0]
  800fd2e:	bd38      	pop	{r3, r4, r5, pc}
- 800fd30:	20016458 	.word	0x20016458
+ 800fd30:	20016450 	.word	0x20016450
 
 0800fd34 <_fstat_r>:
  800fd34:	b538      	push	{r3, r4, r5, lr}
@@ -33832,7 +33829,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fd4e:	602b      	str	r3, [r5, #0]
  800fd50:	bd38      	pop	{r3, r4, r5, pc}
  800fd52:	bf00      	nop
- 800fd54:	20016458 	.word	0x20016458
+ 800fd54:	20016450 	.word	0x20016450
 
 0800fd58 <_isatty_r>:
  800fd58:	b538      	push	{r3, r4, r5, lr}
@@ -33848,7 +33845,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fd6e:	b103      	cbz	r3, 800fd72 <_isatty_r+0x1a>
  800fd70:	602b      	str	r3, [r5, #0]
  800fd72:	bd38      	pop	{r3, r4, r5, pc}
- 800fd74:	20016458 	.word	0x20016458
+ 800fd74:	20016450 	.word	0x20016450
 
 0800fd78 <_lseek_r>:
  800fd78:	b538      	push	{r3, r4, r5, lr}
@@ -33866,7 +33863,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fd92:	b103      	cbz	r3, 800fd96 <_lseek_r+0x1e>
  800fd94:	602b      	str	r3, [r5, #0]
  800fd96:	bd38      	pop	{r3, r4, r5, pc}
- 800fd98:	20016458 	.word	0x20016458
+ 800fd98:	20016450 	.word	0x20016450
 
 0800fd9c <memmove>:
  800fd9c:	4288      	cmp	r0, r1
@@ -33946,7 +33943,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800fe3a:	b103      	cbz	r3, 800fe3e <_read_r+0x1e>
  800fe3c:	602b      	str	r3, [r5, #0]
  800fe3e:	bd38      	pop	{r3, r4, r5, pc}
- 800fe40:	20016458 	.word	0x20016458
+ 800fe40:	20016450 	.word	0x20016450
 
 0800fe44 <_malloc_usable_size_r>:
  800fe44:	f851 3c04 	ldr.w	r3, [r1, #-4]

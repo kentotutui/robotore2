@@ -22,11 +22,9 @@ static float velocity_table[2000];
 #define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
-uint16_t lookaheadpoint_table_idx;
 uint16_t mode;
 
 float ref_distance;
-float ref_points;
 
 static uint8_t start_goal_line_cnt;
 static uint16_t cross_line_idx;
@@ -43,7 +41,6 @@ static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
 static bool velocity_update_flag;
-static bool lookaheadpoint_update_flag;
 
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
@@ -522,14 +519,6 @@ void updateTargetVelocity(){
 	}
 }
 
-void updateLookaheadpoints(){
-	if(lookaheadpoint_update_flag == true){
-		if(getTotalDistance() >= ref_points){
-
-		}
-	}
-}
-
 void correctionTotalDistanceFromCrossLine()//クロスでの距離補正
 {
 	while(cross_line_idx <= getCrossLogSize()){
@@ -597,11 +586,6 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
     }
 }
 */
-
-void PurepursuitCalculation()
-{
-
-}
 
 bool getgoalStatus()
 {
