@@ -11,7 +11,10 @@ static float X_table[2000];
 static float Y_table[2000];
 
 uint16_t lookaheadpoint_table_idx;
-float ref_points;
+float ref_XYdistance;
+
+static float target_X_coordinate;
+static float target_Y_coordinate;
 
 static bool lookaheadpoint_update_flag;
 
@@ -38,20 +41,84 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 
-		saveDebug(x);
-	    saveDebug(y);
+		//saveDebug(x);
+	    //saveDebug(y);
 	}
+}
+
+float CurrentXcoordinates(void)
+{
+	static float pre_x;
+	static float pre_th;
+	float x = 0, th = 0;
+
+	float now_distance = getDistance10mm();
+	float now_theta = getTheta10mm();
+
+	if(now_theta == 0) now_theta = 0.00001;
+
+	x = pre_x + now_distance * cos(pre_th + now_theta/2);
+	th = pre_th + now_theta;
+
+	pre_x = x;
+	pre_th = th;
+
+	return x;
+}
+
+float CurrentYcoordinates(void)
+{
+	static float pre_y;
+	static float pre_th;
+	float y = 0, th = 0;
+
+	float now_distance = getDistance10mm();
+	float now_theta = getTheta10mm();
+
+	if(now_theta == 0) now_theta = 0.00001;
+
+	y = pre_y + now_distance * sin(pre_th + now_theta/2);
+	th = pre_th + now_theta;
+
+	pre_y = y;
+	pre_th = th;
+
+	return y;
 }
 
 void updateLookaheadpoints(){
 	if(lookaheadpoint_update_flag == true){
-		if(getTotalDistance() >= ref_points){
-
+		if(getTotalDistance() >= ref_XYdistance){
+			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
+			lookaheadpoint_table_idx++;
 		}
+		if(lookaheadpoint_table_idx >= getDistanceLogSize()){
+			lookaheadpoint_table_idx = getDistanceLogSize() - 1;
+		}
+
+		setLookaheadpoints_X(X_table[lookaheadpoint_table_idx]);
+		setLookaheadpoints_Y(Y_table[lookaheadpoint_table_idx]);
 	}
 }
 
 void PurepursuitCalculation()
 {
+}
 
+void setLookaheadpoints_X(float X_coordinate)
+{
+	target_X_coordinate = X_coordinate;
+}
+
+void setLookaheadpoints_Y(float Y_coordinate)
+{
+	target_Y_coordinate = Y_coordinate;
+}
+
+void getCurrentXcoordinates()
+{
+}
+
+void getCurrentYcoordinates()
+{
 }
