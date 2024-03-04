@@ -26,7 +26,5 @@ float CurrentYcoordinates(void);
 void PurepursuitCalculation();
 void setLookaheadpoints_X(float);
 void setLookaheadpoints_Y(float);
-void getCurrentXcoordinates();
-void getCurrentYcoordinates();
 
 #endif /* INC_PUREPURSUIT_H_ */

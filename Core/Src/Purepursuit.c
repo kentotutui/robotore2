@@ -114,11 +114,3 @@ void setLookaheadpoints_Y(float Y_coordinate)
 {
 	target_Y_coordinate = Y_coordinate;
 }
-
-void getCurrentXcoordinates()
-{
-}
-
-void getCurrentYcoordinates()
-{
-}

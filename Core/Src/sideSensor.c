@@ -322,8 +322,8 @@ void saveLog(){
 	if(logging_flag == true){
 		saveDistance(getDistance10mm());
 		saveTheta(getTheta10mm());
-		saveDebug(CurrentXcoordinates());
-	    saveDebug(CurrentYcoordinates());
+		//saveDebug(CurrentXcoordinates());
+	    //saveDebug(CurrentYcoordinates());
 	}
 	else if(velocity_update_flag == true){
 		//saveDebug(getPID());
