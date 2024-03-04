@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00030210  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00022ad3  00000000  00000000  00030240  2**0
+ 12 .debug_info   00022b21  00000000  00000000  00030240  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00004951  00000000  00000000  00052d13  2**0
+ 13 .debug_abbrev 00004953  00000000  00000000  00052d61  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001970  00000000  00000000  00057668  2**3
+ 14 .debug_aranges 00001980  00000000  00000000  000576b8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00001780  00000000  00000000  00058fd8  2**3
+ 15 .debug_ranges 00001790  00000000  00000000  00059038  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00024a9e  00000000  00000000  0005a758  2**0
+ 16 .debug_macro  00024a9e  00000000  00000000  0005a7c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000172d3  00000000  00000000  0007f1f6  2**0
+ 17 .debug_line   000172fb  00000000  00000000  0007f266  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb3ed  00000000  00000000  000964c9  2**0
+ 18 .debug_str    000cb420  00000000  00000000  00096561  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  001618b6  2**0
+ 19 .comment      0000007b  00000000  00000000  00161981  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00007d68  00000000  00000000  00161934  2**2
+ 20 .debug_frame  00007dc4  00000000  00000000  001619fc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -7098,9 +7098,9 @@ int main(void)
  8003dac:	2002      	movs	r0, #2
  8003dae:	f7ff fdf9 	bl	80039a4 <setrunmode>
 
-					      setVelocityRange(2.2, 4.5);
- 8003db2:	eef1 0a02 	vmov.f32	s1, #18	; 0x40900000  4.5
- 8003db6:	ed9f 0a13 	vldr	s0, [pc, #76]	; 8003e04 <main+0x34c>
+					      setVelocityRange(1.5, 1.5);
+ 8003db2:	eef7 0a08 	vmov.f32	s1, #120	; 0x3fc00000  1.5
+ 8003db6:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  8003dba:	f001 fd4f 	bl	800585c <setVelocityRange>
 					      setAccDec(6, 2);
  8003dbe:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
@@ -9910,10 +9910,10 @@ void setsuctionMotor(int16_t suction)
  8004e98:	20013f8c 	.word	0x20013f8c
 
 08004e9c <updateSideSensorStatus>:
+
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
-//static int16_t V_motor;
 
 void updateSideSensorStatus(){
  8004e9c:	b480      	push	{r7}
@@ -10041,7 +10041,6 @@ bool isCrossLine()
  8004f74:	881b      	ldrh	r3, [r3, #0]
  8004f76:	2b02      	cmp	r3, #2
  8004f78:	d903      	bls.n	8004f82 <isCrossLine+0x72>
-		//setLED2('Y');
 		flag = true;
  8004f7a:	4b0a      	ldr	r3, [pc, #40]	; (8004fa4 <isCrossLine+0x94>)
  8004f7c:	2201      	movs	r2, #1
@@ -10049,7 +10048,6 @@ bool isCrossLine()
  8004f80:	e002      	b.n	8004f88 <isCrossLine+0x78>
 	}
 	else{
-		//setLED2('N');
 		flag = false;
  8004f82:	4b08      	ldr	r3, [pc, #32]	; (8004fa4 <isCrossLine+0x94>)
  8004f84:	2200      	movs	r2, #0
@@ -10107,8 +10105,6 @@ bool isContinuousCurvature()//連続曲率判定
  8004fe4:	601a      	str	r2, [r3, #0]
 	}
 
-	//if(diff_theta <= 0.005) continuous_cnt++;
-	//if(diff_theta <= 0.010) continuous_cnt++;
 	if(diff_theta <= 0.020) continuous_cnt++;
  8004fe6:	6838      	ldr	r0, [r7, #0]
  8004fe8:	f7fb faae 	bl	8000548 <__aeabi_f2d>
@@ -10439,8 +10435,6 @@ void running(void)
  8005274:	f47f af35 	bne.w	80050e2 <running+0x26>
 	    }
 	}
-	//HAL_Delay(2000);
-	//goal_flag = false;
 }
  8005278:	bf00      	nop
  800527a:	3708      	adds	r7, #8
@@ -10550,7 +10544,6 @@ void runningFlip()
  8005330:	f000 f9dc 	bl	80056ec <correctionTotalDistanceFromCrossLine>
 			if(mode == 1){
  8005334:	e011      	b.n	800535a <runningFlip+0xbe>
-				//saveDebug(getTotalDistance());
 			}
 		}
 		else if(cross_line_ignore_flag == true && getCrossLineIgnoreDistance() >= 50){ //50

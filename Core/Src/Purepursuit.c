@@ -6,6 +6,7 @@
  */
 
 #include "Purepursuit.h"
+#include "math.h"
 
 static float X_table[2000];
 static float Y_table[2000];
@@ -103,6 +104,11 @@ void updateLookaheadpoints(){
 
 void PurepursuitCalculation()
 {
+	static float ang_diff;
+
+	float now_theta = getTheta10mm();
+
+	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;
 }
 
 void setLookaheadpoints_X(float X_coordinate)
@@ -113,4 +119,14 @@ void setLookaheadpoints_X(float X_coordinate)
 void setLookaheadpoints_Y(float Y_coordinate)
 {
 	target_Y_coordinate = Y_coordinate;
+}
+
+float getLookaheadpoints_X()
+{
+	return target_X_coordinate;
+}
+
+float getLookaheadpoints_Y()
+{
+	return target_Y_coordinate;
 }

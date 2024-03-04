@@ -6,7 +6,6 @@
  */
 
 #include "sideSensor.h"
-#include "math.h"
 
 static float velocity_table[2000];
 
@@ -14,7 +13,7 @@ static float velocity_table[2000];
 #define WHEEL_RADIUS 0.01125 //[m]
 #define AIRCRAFT_MASS 0.139 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
-#define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
+#define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω] カタログスペックでもいいと思うけど、実測の方が確実
 #define PI 3.1415926535
 #define REDUCTION_RATIO 3
 #define MAX_CounterPeriod 1679
@@ -45,7 +44,6 @@ static bool velocity_update_flag;
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
-//static int16_t V_motor;
 
 void updateSideSensorStatus(){
 
@@ -83,11 +81,9 @@ bool isCrossLine()
 	}
 
 	if(cnt >= 3){
-		//setLED2('Y');
 		flag = true;
 	}
 	else{
-		//setLED2('N');
 		flag = false;
 	}
 
@@ -106,8 +102,6 @@ bool isContinuousCurvature()//連続曲率判定
 		continuous_cnt = 0;
 	}
 
-	//if(diff_theta <= 0.005) continuous_cnt++;
-	//if(diff_theta <= 0.010) continuous_cnt++;
 	if(diff_theta <= 0.020) continuous_cnt++;
 	else continuous_cnt = 0;
 
@@ -202,8 +196,6 @@ void running(void)
 		    pattern = 20;
 	    }
 	}
-	//HAL_Delay(2000);
-	//goal_flag = false;
 }
 
 void runningFlip()
@@ -239,7 +231,6 @@ void runningFlip()
 			else{
 				correction_check_cnt_cross = 0;
 				correctionTotalDistanceFromCrossLine();
-				//saveDebug(getTotalDistance());
 			}
 		}
 		else if(cross_line_ignore_flag == true && getCrossLineIgnoreDistance() >= 50){ //50
@@ -269,7 +260,6 @@ void runningFlip()
 				}
 				else{
 					correctionTotalDistanceFromSideLine();
-					//saveDebug(getTotalDistance());
 				}
 			}
 		}
@@ -401,7 +391,6 @@ void createVelocityTable(){
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
-	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;
 

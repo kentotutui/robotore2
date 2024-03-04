@@ -403,7 +403,7 @@ int main(void)
 					      setRunMode(2);
 					      setrunmode(2);
 
-					      setVelocityRange(2.2, 4.5);
+					      setVelocityRange(1.5, 1.5);
 					      setAccDec(6, 2);
 					      setStraightRadius(1000); //Do Not Change
 

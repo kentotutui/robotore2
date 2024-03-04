@@ -23,8 +23,11 @@
 void CreateXYcoordinates();
 float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
+void updateLookaheadpoints();
 void PurepursuitCalculation();
 void setLookaheadpoints_X(float);
 void setLookaheadpoints_Y(float);
+float getLookaheadpoints_X();
+float getLookaheadpoints_Y();
 
 #endif /* INC_PUREPURSUIT_H_ */
