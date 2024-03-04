@@ -17,7 +17,7 @@ float ref_XYdistance;
 static float target_X_coordinate;
 static float target_Y_coordinate;
 
-static bool lookaheadpoint_update_flag;
+bool lookaheadpoint_update_flag;
 
 void CreateXYcoordinates()
 {
@@ -88,7 +88,7 @@ float CurrentYcoordinates(void)
 }
 
 void updateLookaheadpoints(){
-	if(lookaheadpoint_update_flag == true){
+	if(getDebugflag() == true){
 		if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
 			lookaheadpoint_table_idx++;
@@ -108,7 +108,7 @@ void PurepursuitCalculation()
 
 	float now_theta = getTheta10mm();
 
-	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;
+	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する
 }
 
 void setLookaheadpoints_X(float X_coordinate)

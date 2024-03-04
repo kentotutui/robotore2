@@ -39,6 +39,7 @@ static bool continuous_cnt_reset_flag = false;
 static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
+static bool debug_flag;
 static bool velocity_update_flag;
 
 static float min_velocity, max_velocity;
@@ -139,7 +140,8 @@ void running(void)
 						  start_goal_line_cnt++;
 
 						  if(mode == 1) startLogging();
-						  else startVelocityUpdate();
+						  else if(mode == 2 || mode == 3) startVelocityUpdate();
+						  else if(mode == 5) startDebugLogging();
 
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
@@ -169,6 +171,7 @@ void running(void)
 
 					  if(start_goal_line_cnt >= 2){
 						  stopLogging();
+						  stopDebugLogging();
 						  stopVelocityUpdate();
 						  pattern = 20;
 					  }
@@ -192,6 +195,7 @@ void running(void)
 		if(getCouseOutFlag() == true)
 		{
 			stopLogging();
+			stopDebugLogging();
 			stopVelocityUpdate();
 		    pattern = 20;
 	    }
@@ -203,6 +207,7 @@ void runningFlip()
 	if(run_flag == true){
 		setLED('G');
 		updateTargetVelocity();
+		updateLookaheadpoints();
 
 		if(isTargetDistance(30) == true){//30mmごとにデータ取得
 			saveLog();
@@ -321,9 +326,14 @@ void saveLog(){
 		saveDebug(getTargetVelocity());
 	    saveDebug(getCurrentVelocity());
 	}
+	else if(debug_flag == true){
+		saveDebug(getLookaheadpoints_X());
+		saveDebug(getLookaheadpoints_Y());
+	}
 }
 
-void startLogging(){
+void startLogging()
+{
 	clearDistance10mm();
 	clearTheta10mm();
 	clearTotalDistance();
@@ -333,6 +343,19 @@ void startLogging(){
 void stopLogging()
 {
 	logging_flag = false;
+}
+
+void startDebugLogging()
+{
+	clearDistance10mm();
+	clearTheta10mm();
+	clearTotalDistance();
+	debug_flag = true;
+}
+
+void stopDebugLogging()
+{
+	debug_flag = false;
 }
 
 void startVelocityUpdate(){
@@ -581,6 +604,11 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 bool getgoalStatus()
 {
 	return goal_flag;
+}
+
+bool getDebugflag()//デバックflag監視
+{
+	return debug_flag;
 }
 
 void setVelocityRange(float min_vel, float max_vel)

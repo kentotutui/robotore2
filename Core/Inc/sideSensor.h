@@ -24,6 +24,7 @@ void updateSideSensorStatus();
 bool getSideSensorStatusL();
 bool getSideSensorStatusR();
 bool getgoalStatus();
+bool getDebugflag();
 
 void setRunMode(uint16_t);
 bool isCrossLine();
@@ -37,6 +38,10 @@ void runningInit();
 void saveLog();
 void startLogging();
 void stopLogging();
+
+void startDebugLogging();
+void stopDebugLogging();
+
 void startVelocityUpdate();
 void stopVelocityUpdate();
 

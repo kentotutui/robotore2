@@ -400,12 +400,10 @@ int main(void)
 
 					      clearspeedcount();
 
-					      setRunMode(2);
-					      setrunmode(2);
+					      setRunMode(5);
+					      setrunmode(1);
 
 					      setVelocityRange(1.5, 1.5);
-					      setAccDec(6, 2);
-					      setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(500);
 
