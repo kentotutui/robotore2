@@ -42,7 +42,7 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 
-		//saveDebug(X_table[i]);
+		//saveDebug(X_table[i]);//X_tableに値が入っていることは確認出来た
 	    //saveDebug(Y_table[i]);
 	}
 }
@@ -87,7 +87,7 @@ float CurrentYcoordinates(void)
 	return y;
 }
 
-void updateLookaheadpoints(){
+void updateLookaheadpoints(){//ここに入っていないからログ取れない
 	if(getDebugflag() == true){
 		if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
@@ -99,6 +99,7 @@ void updateLookaheadpoints(){
 
 		target_X_coordinate = X_table[lookaheadpoint_table_idx];
 		target_Y_coordinate = Y_table[lookaheadpoint_table_idx];
+
 	}
 }
 

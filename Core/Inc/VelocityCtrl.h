@@ -29,5 +29,4 @@ void stopVelocityControl(void);
 
 void setClearFlagOfVelocityControlI();
 
-void setrunmode(uint16_t);
 #endif /* INC_VELOCITYCTRL_H_ */

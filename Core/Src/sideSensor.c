@@ -141,7 +141,7 @@ void running(void)
 
 						  if(mode == 1) startLogging();
 						  else if(mode == 2 || mode == 3) startVelocityUpdate();
-						  else if(mode == 5) startDebugLogging();
+						  else startDebugLogging();
 
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
@@ -530,6 +530,7 @@ void updateTargetVelocity(){
 		}
 
 		pre_target_velocity = velocity_table[velocity_table_idx];
+
 	}
 }
 
