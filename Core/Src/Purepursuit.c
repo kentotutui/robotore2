@@ -103,13 +103,17 @@ void updateLookaheadpoints(){
 	}
 }
 
-void PurepursuitCalculation()
+float PurepursuitCalculation(void)
 {
 	static float ang_diff;
 
-	float now_theta = getTheta10mm();
+	float now_theta = getaddTheta30mm();
 
-	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する
+	if(now_theta == 0) now_theta = 0.00001;
+
+	ang_diff = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
+
+	return ang_diff;
 }
 
 float getLookaheadpoints_X()

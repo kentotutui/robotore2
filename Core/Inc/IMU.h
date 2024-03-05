@@ -18,7 +18,9 @@ uint8_t initGyro();
 void updateIMUValue();
 float getOmega();
 float getTheta10mm();
+float getaddTheta30mm();
 void clearTheta10mm();
+void clearaddTheta30mm();
 void IMU_average();
 
 #endif /* INC_IMU_H_ */

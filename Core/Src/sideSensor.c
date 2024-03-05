@@ -327,8 +327,9 @@ void saveLog(){
 	    saveDebug(getCurrentVelocity());
 	}
 	else if(debug_flag == true){
-		saveDebug(getLookaheadpoints_X());
-		saveDebug(getLookaheadpoints_Y());
+		//saveDebug(getLookaheadpoints_X());
+		//saveDebug(getLookaheadpoints_Y());
+		saveDebug(PurepursuitCalculation());
 	}
 }
 
@@ -336,6 +337,7 @@ void startLogging()
 {
 	clearDistance10mm();
 	clearTheta10mm();
+	clearaddTheta30mm();
 	clearTotalDistance();
 	logging_flag = true;
 }
@@ -349,6 +351,7 @@ void startDebugLogging()
 {
 	clearDistance10mm();
 	clearTheta10mm();
+	clearaddTheta30mm();
 	clearTotalDistance();
 	debug_flag = true;
 }
