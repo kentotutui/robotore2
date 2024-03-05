@@ -206,8 +206,8 @@ void runningFlip()
 {
 	if(run_flag == true){
 		setLED('G');
-		updateTargetVelocity();
-		updateLookaheadpoints();
+		updateTargetVelocity();//速度の変更
+		updateLookaheadpoints();//座標の変更
 
 		if(isTargetDistance(30) == true){//30mmごとにデータ取得
 			saveLog();
@@ -317,8 +317,8 @@ void saveLog(){
 	if(logging_flag == true){
 		saveDistance(getDistance10mm());
 		saveTheta(getTheta10mm());
-		//saveDebug(CurrentXcoordinates());
-	    //saveDebug(CurrentYcoordinates());
+		//saveDebug(CurrentXcoordinates());//今のx座標を計算で算出
+	    //saveDebug(CurrentYcoordinates());//今のy座標を計算で算出
 	}
 	else if(velocity_update_flag == true){
 		//saveDebug(getPID());

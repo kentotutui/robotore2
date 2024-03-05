@@ -11,7 +11,7 @@
 static float X_table[2000];
 static float Y_table[2000];
 
-uint16_t lookaheadpoint_table_idx;
+uint16_t lookaheadpoint_table_idx = 0;
 float ref_XYdistance;
 
 static float target_X_coordinate;
@@ -42,8 +42,8 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 
-		//saveDebug(x);
-	    //saveDebug(y);
+		//saveDebug(X_table[i]);
+	    //saveDebug(Y_table[i]);
 	}
 }
 
@@ -97,8 +97,8 @@ void updateLookaheadpoints(){
 			lookaheadpoint_table_idx = getDistanceLogSize() - 1;
 		}
 
-		setLookaheadpoints_X(X_table[lookaheadpoint_table_idx]);
-		setLookaheadpoints_Y(Y_table[lookaheadpoint_table_idx]);
+		target_X_coordinate = X_table[lookaheadpoint_table_idx];
+		target_Y_coordinate = Y_table[lookaheadpoint_table_idx];
 	}
 }
 
@@ -111,7 +111,7 @@ void PurepursuitCalculation()
 	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する
 }
 
-void setLookaheadpoints_X(float X_coordinate)
+/*void setLookaheadpoints_X(float X_coordinate)
 {
 	target_X_coordinate = X_coordinate;
 }
@@ -119,7 +119,7 @@ void setLookaheadpoints_X(float X_coordinate)
 void setLookaheadpoints_Y(float Y_coordinate)
 {
 	target_Y_coordinate = Y_coordinate;
-}
+}*/
 
 float getLookaheadpoints_X()
 {
