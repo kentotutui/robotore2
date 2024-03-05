@@ -6014,7 +6014,7 @@ void CreateXYcoordinates()
  800369c:	429a      	cmp	r2, r3
  800369e:	f4ff af6b 	bcc.w	8003578 <CreateXYcoordinates+0x34>
 
-		//saveDebug(X_table[i]);//X_tableに値が入っていることは確認出来た
+		//saveDebug(X_table[i]);//X_tableに値が入っていることを確認
 	    //saveDebug(Y_table[i]);
 	}
 }
@@ -6032,7 +6032,7 @@ void CreateXYcoordinates()
 	return y;
 }
 
-void updateLookaheadpoints(){//ここに入っていないからログ取れない
+void updateLookaheadpoints(){
  80036b8:	b580      	push	{r7, lr}
  80036ba:	af00      	add	r7, sp, #0
 	if(getDebugflag() == true){
@@ -6116,9 +6116,9 @@ void updateLookaheadpoints(){//ここに入っていないからログ取れな�
  8003760:	20013f74 	.word	0x20013f74
 
 08003764 <getLookaheadpoints_X>:
-{
-	target_Y_coordinate = Y_coordinate;
-}*/
+
+	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する
+}
 
 float getLookaheadpoints_X()
 {

@@ -42,7 +42,7 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 
-		//saveDebug(X_table[i]);//X_tableに値が入っていることは確認出来た
+		//saveDebug(X_table[i]);//X_tableに値が入っていることを確認
 	    //saveDebug(Y_table[i]);
 	}
 }
@@ -87,7 +87,7 @@ float CurrentYcoordinates(void)
 	return y;
 }
 
-void updateLookaheadpoints(){//ここに入っていないからログ取れない
+void updateLookaheadpoints(){
 	if(getDebugflag() == true){
 		if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
@@ -111,16 +111,6 @@ void PurepursuitCalculation()
 
 	ang_diff = atan2((target_Y_coordinate - CurrentXcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する
 }
-
-/*void setLookaheadpoints_X(float X_coordinate)
-{
-	target_X_coordinate = X_coordinate;
-}
-
-void setLookaheadpoints_Y(float Y_coordinate)
-{
-	target_Y_coordinate = Y_coordinate;
-}*/
 
 float getLookaheadpoints_X()
 {

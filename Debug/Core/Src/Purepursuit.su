@@ -3,5 +3,5 @@ Purepursuit.c:50:7:CurrentXcoordinates	40	static
 Purepursuit.c:70:7:CurrentYcoordinates	40	static
 Purepursuit.c:90:6:updateLookaheadpoints	8	static
 Purepursuit.c:106:6:PurepursuitCalculation	40	static
-Purepursuit.c:125:7:getLookaheadpoints_X	4	static
-Purepursuit.c:130:7:getLookaheadpoints_Y	4	static
+Purepursuit.c:115:7:getLookaheadpoints_X	4	static
+Purepursuit.c:120:7:getLookaheadpoints_Y	4	static
