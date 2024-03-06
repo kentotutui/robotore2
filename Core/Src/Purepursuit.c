@@ -11,6 +11,8 @@
 static float X_table[2000];
 static float Y_table[2000];
 
+#define PI 3.1415926535
+
 uint16_t lookaheadpoint_table_idx = 0;
 float ref_XYdistance;
 
@@ -105,13 +107,24 @@ void updateLookaheadpoints(){
 
 float PurepursuitCalculation(void)
 {
+	static float ang_atan2;
 	static float ang_diff;
 
 	float now_theta = getaddTheta30mm();
 
 	if(now_theta == 0) now_theta = 0.00001;
 
-	ang_diff = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates())) - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
+	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
+
+	if(ang_atan2 <= -PI/2 && now_theta >= PI/2){
+		ang_atan2 = ang_atan2 + 2*PI;
+	}
+
+	if(ang_atan2 >= PI/2 && now_theta <= -PI/2){
+		ang_atan2 = ang_atan2 - 2*PI;
+	}
+
+	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
 
 	return ang_diff;
 }

@@ -42,8 +42,9 @@ void updateIMUValue(){
 
 void IMU_average(){
 	float average = 0;
-	for(int i=0;i<=1000;i++){
-		average = average+zg;
+	for(int i = 0; i <= 1000; i++)
+	{
+		average = average + zg;
 		HAL_Delay(1);
 		setLED2('A');
 	}
