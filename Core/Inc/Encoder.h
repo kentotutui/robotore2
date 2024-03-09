@@ -16,6 +16,8 @@ void getEncoderCnt(int16_t *, int16_t *);
 
 float getDistance10mm(void);
 void clearDistance10mm(void);
+float getDistance30mm(void);
+void clearDistance30mm(void);
 float getCrossLineIgnoreDistance(void);
 float getSideLineIgnoreDistance(void);
 float getTotalDistance();

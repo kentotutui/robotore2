@@ -90,10 +90,16 @@ float CurrentYcoordinates(void)
 }
 
 void updateLookaheadpoints(){
+
 	if(getDebugflag() == true){
 		if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
 			lookaheadpoint_table_idx++;
+			clearDistance30mm();
+		}else if(getDistance30mm() >= 30){
+			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
+			lookaheadpoint_table_idx++;
+			clearDistance30mm();
 		}
 		if(lookaheadpoint_table_idx >= getDistanceLogSize()){
 			lookaheadpoint_table_idx = getDistanceLogSize() - 1;
@@ -116,15 +122,17 @@ float PurepursuitCalculation(void)
 
 	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
 
-	if(ang_atan2 <= -PI/2 && now_theta >= PI/2){
+	/*if(ang_atan2 <= -PI/2 && now_theta >= PI/2){
 		ang_atan2 = ang_atan2 + 2*PI;
 	}
 
 	if(ang_atan2 >= PI/2 && now_theta <= -PI/2){
 		ang_atan2 = ang_atan2 - 2*PI;
-	}
+	}*/
 
-	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
+	//ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
+
+	ang_diff = ang_atan2;
 
 	return ang_diff;
 }
