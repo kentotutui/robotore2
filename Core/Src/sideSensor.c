@@ -329,9 +329,9 @@ void saveLog(){
 	else if(debug_flag == true){
 		//saveDebug(getLookaheadpoints_X());
 		//saveDebug(getLookaheadpoints_Y());
-		//saveDebug(PurepursuitCalculation());
+		saveDebug(PurepursuitCalculation());
 		//saveDebug(getaddTheta30mm());
-		debugatan2();
+		//debugatan2();
 	}
 }
 

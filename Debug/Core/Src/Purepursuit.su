@@ -3,6 +3,6 @@ Purepursuit.c:54:7:CurrentXcoordinates	40	static
 Purepursuit.c:74:7:CurrentYcoordinates	40	static
 Purepursuit.c:94:6:updateLookaheadpoints	8	static
 Purepursuit.c:116:7:PurepursuitCalculation	32	static
-Purepursuit.c:146:6:debugatan2	32	static
-Purepursuit.c:175:7:getLookaheadpoints_X	4	static
-Purepursuit.c:180:7:getLookaheadpoints_Y	4	static
+Purepursuit.c:144:6:debugatan2	4	static
+Purepursuit.c:174:7:getLookaheadpoints_X	4	static
+Purepursuit.c:179:7:getLookaheadpoints_Y	4	static

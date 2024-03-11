@@ -117,8 +117,6 @@ float PurepursuitCalculation(void)
 {
 	static float ang_atan2;
 	static float ang_diff;
-	static float pre_ang_atan2;
-	static float pre_ang_atan2_diff;
 
 	float now_theta = getaddTheta30mm();
 
@@ -128,12 +126,12 @@ float PurepursuitCalculation(void)
 
 	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
 
-	if(pre_ang_atan2_diff >= PI){
-		ang_atan2 = ang_atan2 - 2*PI;
+	if(pre_ang_atan2_diff > PI){
+		ang_atan2 = ang_atan2 + 2*PI;
 	}
 
-	if(pre_ang_atan2_diff <= PI){
-		ang_atan2 = ang_atan2 + 2*PI;
+	if(pre_ang_atan2_diff < -PI){
+		ang_atan2 = ang_atan2 - 2*PI;
 	}
 
 	pre_ang_atan2 = ang_atan2;
@@ -144,6 +142,7 @@ float PurepursuitCalculation(void)
 }
 
 void debugatan2(){
+	/*
 	static float ang_atan2;
 	static float ang_diff;
 
@@ -169,7 +168,7 @@ void debugatan2(){
 
 	saveDebug(ang_atan2);
 	saveDebug(now_theta);
-	saveDebug(ang_diff);
+	saveDebug(ang_diff);*/
 }
 
 float getLookaheadpoints_X()
