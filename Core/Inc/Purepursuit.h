@@ -25,6 +25,7 @@ float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 void updateLookaheadpoints();
 float PurepursuitCalculation(void);
+void debugatan2();
 float getLookaheadpoints_X();
 float getLookaheadpoints_Y();
 

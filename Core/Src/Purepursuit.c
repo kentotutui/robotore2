@@ -16,6 +16,8 @@ static float Y_table[2000];
 uint16_t lookaheadpoint_table_idx = 0;
 float ref_XYdistance;
 
+static float pre_ang_atan2 = 0;
+static float pre_ang_atan2_diff = 0;
 static float target_X_coordinate;
 static float target_Y_coordinate;
 
@@ -115,6 +117,8 @@ float PurepursuitCalculation(void)
 {
 	static float ang_atan2;
 	static float ang_diff;
+	static float pre_ang_atan2;
+	static float pre_ang_atan2_diff;
 
 	float now_theta = getaddTheta30mm();
 
@@ -122,19 +126,50 @@ float PurepursuitCalculation(void)
 
 	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
 
-	/*if(ang_atan2 <= -PI/2 && now_theta >= PI/2){
+	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
+
+	if(pre_ang_atan2_diff >= PI){
+		ang_atan2 = ang_atan2 - 2*PI;
+	}
+
+	if(pre_ang_atan2_diff <= PI){
 		ang_atan2 = ang_atan2 + 2*PI;
 	}
 
-	if(ang_atan2 >= PI/2 && now_theta <= -PI/2){
-		ang_atan2 = ang_atan2 - 2*PI;
-	}*/
+	pre_ang_atan2 = ang_atan2;
 
-	//ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
-
-	ang_diff = ang_atan2;
+	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
 
 	return ang_diff;
+}
+
+void debugatan2(){
+	static float ang_atan2;
+	static float ang_diff;
+
+	float now_theta = getaddTheta30mm();
+
+	if(now_theta == 0) now_theta = 0.00001;
+
+	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
+
+	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
+
+	if(pre_ang_atan2_diff > PI){
+		ang_atan2 = ang_atan2 + 2*PI;
+	}
+
+	if(pre_ang_atan2_diff < -PI){
+		ang_atan2 = ang_atan2 - 2*PI;
+	}
+
+	pre_ang_atan2 = ang_atan2;
+
+	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
+
+	saveDebug(ang_atan2);
+	saveDebug(now_theta);
+	saveDebug(ang_diff);
 }
 
 float getLookaheadpoints_X()

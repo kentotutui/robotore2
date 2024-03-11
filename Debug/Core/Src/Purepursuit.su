@@ -1,7 +1,8 @@
-Purepursuit.c:24:6:CreateXYcoordinates	64	static
-Purepursuit.c:52:7:CurrentXcoordinates	40	static
-Purepursuit.c:72:7:CurrentYcoordinates	40	static
-Purepursuit.c:92:6:updateLookaheadpoints	8	static
-Purepursuit.c:114:7:PurepursuitCalculation	32	static
-Purepursuit.c:140:7:getLookaheadpoints_X	4	static
-Purepursuit.c:145:7:getLookaheadpoints_Y	4	static
+Purepursuit.c:26:6:CreateXYcoordinates	64	static
+Purepursuit.c:54:7:CurrentXcoordinates	40	static
+Purepursuit.c:74:7:CurrentYcoordinates	40	static
+Purepursuit.c:94:6:updateLookaheadpoints	8	static
+Purepursuit.c:116:7:PurepursuitCalculation	32	static
+Purepursuit.c:146:6:debugatan2	32	static
+Purepursuit.c:175:7:getLookaheadpoints_X	4	static
+Purepursuit.c:180:7:getLookaheadpoints_Y	4	static
