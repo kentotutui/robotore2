@@ -39,7 +39,7 @@ static bool continuous_cnt_reset_flag = false;
 static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
-static bool debug_flag;
+static bool target_update_flag;
 static bool velocity_update_flag;
 
 static float min_velocity, max_velocity;
@@ -141,7 +141,7 @@ void running(void)
 
 						  if(mode == 1) startLogging();
 						  else if(mode == 2 || mode == 3) startVelocityUpdate();
-						  else startDebugLogging();
+						  else startTargetUpdate();
 
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
@@ -171,7 +171,7 @@ void running(void)
 
 					  if(start_goal_line_cnt >= 2){
 						  stopLogging();
-						  stopDebugLogging();
+						  stopTargetUpdate();
 						  stopVelocityUpdate();
 						  pattern = 20;
 					  }
@@ -195,7 +195,7 @@ void running(void)
 		if(getCouseOutFlag() == true)
 		{
 			stopLogging();
-			stopDebugLogging();
+			stopTargetUpdate();
 			stopVelocityUpdate();
 		    pattern = 20;
 	    }
@@ -326,7 +326,7 @@ void saveLog(){
 		saveDebug(getTargetVelocity());
 	    saveDebug(getCurrentVelocity());
 	}
-	else if(debug_flag == true){
+	else if(target_update_flag == true){
 		//saveDebug(getLookaheadpoints_X());
 		//saveDebug(getLookaheadpoints_Y());
 		saveDebug(PurepursuitCalculation());
@@ -349,18 +349,18 @@ void stopLogging()
 	logging_flag = false;
 }
 
-void startDebugLogging()
+void startTargetUpdate()
 {
 	clearDistance10mm();
 	clearTheta10mm();
 	clearaddTheta30mm();
 	clearTotalDistance();
-	debug_flag = true;
+	target_update_flag = true;
 }
 
-void stopDebugLogging()
+void stopTargetUpdate()
 {
-	debug_flag = false;
+	target_update_flag = false;
 }
 
 void startVelocityUpdate(){
@@ -612,9 +612,9 @@ bool getgoalStatus()
 	return goal_flag;
 }
 
-bool getDebugflag()//デバックflag監視
+bool getTargetUpdateflag()//デバックflag監視
 {
-	return debug_flag;
+	return target_update_flag;
 }
 
 void setVelocityRange(float min_vel, float max_vel)

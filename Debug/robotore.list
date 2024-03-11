@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_line   0001736b  00000000  00000000  0007f304  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb4b3  00000000  00000000  0009666f  2**0
+ 18 .debug_str    000cb4c2  00000000  00000000  0009666f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161b22  2**0
+ 19 .comment      0000007b  00000000  00000000  00161b31  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00007edc  00000000  00000000  00161ba0  2**2
+ 20 .debug_frame  00007edc  00000000  00000000  00161bac  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -6315,8 +6315,8 @@ void updateLookaheadpoints(){
  800391c:	b580      	push	{r7, lr}
  800391e:	af00      	add	r7, sp, #0
 
-	if(getDebugflag() == true){
- 8003920:	f002 f9b8 	bl	8005c94 <getDebugflag>
+	if(getTargetUpdateflag() == true){
+ 8003920:	f002 f9b8 	bl	8005c94 <getTargetUpdateflag>
  8003924:	4603      	mov	r3, r0
  8003926:	2b00      	cmp	r3, #0
  8003928:	d064      	beq.n	80039f4 <updateLookaheadpoints+0xd8>
@@ -10723,8 +10723,8 @@ void running(void)
  8005530:	d102      	bne.n	8005538 <running+0xc4>
  8005532:	f000 fa63 	bl	80059fc <startVelocityUpdate>
  8005536:	e001      	b.n	800553c <running+0xc8>
-						  else startDebugLogging();
- 8005538:	f000 fa42 	bl	80059c0 <startDebugLogging>
+						  else startTargetUpdate();
+ 8005538:	f000 fa42 	bl	80059c0 <startTargetUpdate>
 
 						  clearGoalJudgeDistance();
  800553c:	f7fb ff3a 	bl	80013b4 <clearGoalJudgeDistance>
@@ -10821,8 +10821,8 @@ void running(void)
  80055e6:	d91d      	bls.n	8005624 <running+0x1b0>
 						  stopLogging();
  80055e8:	f000 f9de 	bl	80059a8 <stopLogging>
-						  stopDebugLogging();
- 80055ec:	f000 f9fa 	bl	80059e4 <stopDebugLogging>
+						  stopTargetUpdate();
+ 80055ec:	f000 f9fa 	bl	80059e4 <stopTargetUpdate>
 						  stopVelocityUpdate();
  80055f0:	f000 fa26 	bl	8005a40 <stopVelocityUpdate>
 						  pattern = 20;
@@ -10872,8 +10872,8 @@ void running(void)
 		{
 			stopLogging();
  8005630:	f000 f9ba 	bl	80059a8 <stopLogging>
-			stopDebugLogging();
- 8005634:	f000 f9d6 	bl	80059e4 <stopDebugLogging>
+			stopTargetUpdate();
+ 8005634:	f000 f9d6 	bl	80059e4 <stopTargetUpdate>
 			stopVelocityUpdate();
  8005638:	f000 fa02 	bl	8005a40 <stopVelocityUpdate>
 		    pattern = 20;
@@ -11311,7 +11311,7 @@ void saveLog(){
  8005956:	f7fd fb83 	bl	8003060 <saveDebug>
 }
  800595a:	e00b      	b.n	8005974 <saveLog+0x70>
-	else if(debug_flag == true){
+	else if(target_update_flag == true){
  800595c:	4b08      	ldr	r3, [pc, #32]	; (8005980 <saveLog+0x7c>)
  800595e:	781b      	ldrb	r3, [r3, #0]
  8005960:	2b00      	cmp	r3, #0
@@ -11369,9 +11369,9 @@ void stopLogging()
  80059ba:	4770      	bx	lr
  80059bc:	20015f13 	.word	0x20015f13
 
-080059c0 <startDebugLogging>:
+080059c0 <startTargetUpdate>:
 
-void startDebugLogging()
+void startTargetUpdate()
 {
  80059c0:	b580      	push	{r7, lr}
  80059c2:	af00      	add	r7, sp, #0
@@ -11383,8 +11383,8 @@ void startDebugLogging()
  80059cc:	f7fb ff68 	bl	80018a0 <clearaddTheta30mm>
 	clearTotalDistance();
  80059d0:	f7fb fce2 	bl	8001398 <clearTotalDistance>
-	debug_flag = true;
- 80059d4:	4b02      	ldr	r3, [pc, #8]	; (80059e0 <startDebugLogging+0x20>)
+	target_update_flag = true;
+ 80059d4:	4b02      	ldr	r3, [pc, #8]	; (80059e0 <startTargetUpdate+0x20>)
  80059d6:	2201      	movs	r2, #1
  80059d8:	701a      	strb	r2, [r3, #0]
 }
@@ -11393,14 +11393,14 @@ void startDebugLogging()
  80059de:	bf00      	nop
  80059e0:	20015f14 	.word	0x20015f14
 
-080059e4 <stopDebugLogging>:
+080059e4 <stopTargetUpdate>:
 
-void stopDebugLogging()
+void stopTargetUpdate()
 {
  80059e4:	b480      	push	{r7}
  80059e6:	af00      	add	r7, sp, #0
-	debug_flag = false;
- 80059e8:	4b03      	ldr	r3, [pc, #12]	; (80059f8 <stopDebugLogging+0x14>)
+	target_update_flag = false;
+ 80059e8:	4b03      	ldr	r3, [pc, #12]	; (80059f8 <stopTargetUpdate+0x14>)
  80059ea:	2200      	movs	r2, #0
  80059ec:	701a      	strb	r2, [r3, #0]
 }
@@ -11772,14 +11772,14 @@ bool getgoalStatus()
  8005c8e:	bf00      	nop
  8005c90:	20015f0e 	.word	0x20015f0e
 
-08005c94 <getDebugflag>:
+08005c94 <getTargetUpdateflag>:
 
-bool getDebugflag()//デバックflag監視
+bool getTargetUpdateflag()//デバックflag監視
 {
  8005c94:	b480      	push	{r7}
  8005c96:	af00      	add	r7, sp, #0
-	return debug_flag;
- 8005c98:	4b03      	ldr	r3, [pc, #12]	; (8005ca8 <getDebugflag+0x14>)
+	return target_update_flag;
+ 8005c98:	4b03      	ldr	r3, [pc, #12]	; (8005ca8 <getTargetUpdateflag+0x14>)
  8005c9a:	781b      	ldrb	r3, [r3, #0]
 }
  8005c9c:	4618      	mov	r0, r3

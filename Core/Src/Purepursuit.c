@@ -93,7 +93,7 @@ float CurrentYcoordinates(void)
 
 void updateLookaheadpoints(){
 
-	if(getDebugflag() == true){
+	if(getTargetUpdateflag() == true){
 		if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(lookaheadpoint_table_idx);
 			lookaheadpoint_table_idx++;

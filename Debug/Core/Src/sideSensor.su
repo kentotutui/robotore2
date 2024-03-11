@@ -9,8 +9,8 @@ sideSensor.c:286:6:runningInit	8	static
 sideSensor.c:316:6:saveLog	8	static
 sideSensor.c:338:6:startLogging	8	static
 sideSensor.c:347:6:stopLogging	4	static
-sideSensor.c:352:6:startDebugLogging	8	static
-sideSensor.c:361:6:stopDebugLogging	4	static
+sideSensor.c:352:6:startTargetUpdate	8	static
+sideSensor.c:361:6:stopTargetUpdate	4	static
 sideSensor.c:366:6:startVelocityUpdate	8	static
 sideSensor.c:377:6:stopVelocityUpdate	4	static
 sideSensor.c:382:6:createVelocityTable	64	static
@@ -23,7 +23,7 @@ sideSensor.c:518:6:updateTargetVelocity	8	static
 sideSensor.c:542:6:correctionTotalDistanceFromCrossLine	16	static
 sideSensor.c:562:6:correctionTotalDistanceFromSideLine	16	static
 sideSensor.c:610:6:getgoalStatus	4	static
-sideSensor.c:615:6:getDebugflag	4	static
+sideSensor.c:615:6:getTargetUpdateflag	4	static
 sideSensor.c:620:6:setVelocityRange	16	static
 sideSensor.c:626:6:setAccDec	16	static
 sideSensor.c:632:6:setStraightRadius	16	static
