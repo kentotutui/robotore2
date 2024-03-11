@@ -9,7 +9,7 @@
 
 static float velocity_table[2000];
 
-//↓モータ特性
+//↓車体特性
 #define WHEEL_RADIUS 0.01125 //[m]
 #define AIRCRAFT_MASS 0.139 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
@@ -329,9 +329,9 @@ void saveLog(){
 	else if(target_update_flag == true){
 		//saveDebug(getLookaheadpoints_X());
 		//saveDebug(getLookaheadpoints_Y());
-		saveDebug(PurepursuitCalculation());
+		//saveDebug(PurepursuitCalculation());
 		//saveDebug(getaddTheta30mm());
-		//debugatan2();
+		AngularVelocityCalculation();
 	}
 }
 

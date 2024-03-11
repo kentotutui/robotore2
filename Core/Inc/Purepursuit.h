@@ -25,6 +25,8 @@ float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 void updateLookaheadpoints();
 float PurepursuitCalculation(void);
+float Ang_atan_diff(void);
+float AngularVelocityCalculation(void);
 void debugatan2();
 float getLookaheadpoints_X();
 float getLookaheadpoints_Y();

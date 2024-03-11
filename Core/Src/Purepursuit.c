@@ -13,6 +13,10 @@ static float Y_table[2000];
 
 #define PI 3.1415926535
 
+#define WHEEL_RADIUS 0.01125//[mm]
+#define Tread 0.1075//[mm]
+#define Forward_gaze_distance 0.03//[m]
+
 uint16_t lookaheadpoint_table_idx = 0;
 float ref_XYdistance;
 
@@ -113,7 +117,7 @@ void updateLookaheadpoints(){
 	}
 }
 
-float PurepursuitCalculation(void)
+float Ang_atan_diff(void)
 {
 	static float ang_atan2;
 	static float ang_diff;
@@ -143,34 +147,24 @@ float PurepursuitCalculation(void)
 	return ang_diff;
 }
 
-void debugatan2(){
-	/*
-	static float ang_atan2;
-	static float ang_diff;
+float AngularVelocityCalculation(void)
+{
+	static float control_input_v;
+	static float control_output_omega;
 
-	float now_theta = getaddTheta30mm();
+	control_input_v = getTargetVelocity();
 
-	if(now_theta == 0) now_theta = 0.00001;
+	control_output_omega = (2*control_input_v*sin(Ang_atan_diff())) / Forward_gaze_distance;
 
-	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
+	saveDebug(control_output_omega);
+}
 
-	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
+float PurepursuitCalculation(void)
+{
+}
 
-	if(pre_ang_atan2_diff > PI){
-		ang_atan2 = ang_atan2 + 2*PI;
-	}
-
-	if(pre_ang_atan2_diff < -PI){
-		ang_atan2 = ang_atan2 - 2*PI;
-	}
-
-	pre_ang_atan2 = ang_atan2;
-
-	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
-
-	saveDebug(ang_atan2);
-	saveDebug(now_theta);
-	saveDebug(ang_diff);*/
+void debugatan2()
+{
 }
 
 float getLookaheadpoints_X()
