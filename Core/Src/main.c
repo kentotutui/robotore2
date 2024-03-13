@@ -628,7 +628,7 @@ int main(void)
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }/*
+					  }*/
 
 
 					  /*
@@ -649,15 +649,15 @@ int main(void)
 					  /*for(uint16_t i = 0; i < size; i = i+2){
 						 printf("%f, %f\r\n", getDebugLog(i), getDebugLog(i + 1));
 					  }*/
+					  /*
 					  for(uint16_t i = 0; i < size; i++){
 						  printf("%f\r\n", getDebugLog(i));
-					  }
+					  }*/
 
-					  /*
-					  printf("ang_atan2, now_theta, ang_diff\r\n");
+					  printf("getaddTheta30mm, ang_diff, output_omega\r\n");
 					  for(uint16_t i = 0; i < size; i = i+3){
 						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2));
-					  }*/
+					  }
 
 					  printf("9999, 9999\r\n");
 				  }

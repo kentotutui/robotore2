@@ -13,8 +13,8 @@ static float Y_table[2000];
 
 #define PI 3.1415926535
 
-#define WHEEL_RADIUS 0.01125//[mm]
-#define Tread 0.1075//[mm]
+#define WHEEL_RADIUS 11.25//[mm]
+#define Tread 107.5//[mm]
 #define Forward_gaze_distance 0.03//[m]
 
 uint16_t lookaheadpoint_table_idx = 0;
@@ -144,18 +144,28 @@ float Ang_atan_diff(void)
 
 	ang_diff = ang_atan2 - now_theta;//目標点と走行中の点の差分角度を計算する(rad)
 
+	/*
+	saveDebug(ang_atan2);
+	saveDebug(getaddTheta30mm());
+	saveDebug(ang_diff);
+	*/
+
 	return ang_diff;
 }
 
 float AngularVelocityCalculation(void)
 {
 	static float control_input_v;
+	static float ang_diff;
 	static float control_output_omega;
 
 	control_input_v = getTargetVelocity();
+	ang_diff = Ang_atan_diff();
 
-	control_output_omega = (2*control_input_v*sin(Ang_atan_diff())) / Forward_gaze_distance;
+	control_output_omega = (2*control_input_v*sin(ang_diff)) / Forward_gaze_distance;//車体の角速度
 
+	saveDebug(getaddTheta30mm());
+	saveDebug(ang_diff);
 	saveDebug(control_output_omega);
 }
 

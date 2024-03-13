@@ -3,8 +3,8 @@ Purepursuit.c:58:7:CurrentXcoordinates	40	static
 Purepursuit.c:78:7:CurrentYcoordinates	40	static
 Purepursuit.c:98:6:updateLookaheadpoints	8	static
 Purepursuit.c:120:7:Ang_atan_diff	32	static
-Purepursuit.c:150:7:AngularVelocityCalculation	16	static
-Purepursuit.c:162:7:PurepursuitCalculation	4	static
-Purepursuit.c:166:6:debugatan2	4	static
-Purepursuit.c:169:7:getLookaheadpoints_X	4	static
-Purepursuit.c:174:7:getLookaheadpoints_Y	4	static
+Purepursuit.c:156:7:AngularVelocityCalculation	16	static
+Purepursuit.c:172:7:PurepursuitCalculation	4	static
+Purepursuit.c:176:6:debugatan2	4	static
+Purepursuit.c:180:7:getLookaheadpoints_X	4	static
+Purepursuit.c:185:7:getLookaheadpoints_Y	4	static
