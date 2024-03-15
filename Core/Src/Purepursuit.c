@@ -128,7 +128,7 @@ float Ang_atan_diff(void)
 
 	ang_atan2 = atan2((target_Y_coordinate - CurrentYcoordinates()) , (target_X_coordinate - CurrentXcoordinates()));
 
-	//atan2関数は、-π ~ πの間で戻り値が設定されているため、-π・πを超えた数字が戻り値として計算されることはない。そのため、条件分岐を使って、＋－2πすることで値を計算している。
+	//atan2関数は、-π ~ πの間で戻り値が設定されているため、-π・πを超えた数字が戻り値として計算されない。そのため、条件分岐を使って、＋－2πすることで値を計算している。
 
 	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
 

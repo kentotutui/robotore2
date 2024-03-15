@@ -6477,7 +6477,7 @@ float Ang_atan_diff(void)
  8003a8a:	4b3c      	ldr	r3, [pc, #240]	; (8003b7c <Ang_atan_diff+0x16c>)
  8003a8c:	601a      	str	r2, [r3, #0]
 
-	//atan2関数は、-π ~ πの間で戻り値が設定されているため、-π・πを超えた数字が戻り値として計算されることはない。そのため、条件分岐を使って、＋－2πすることで値を計算している。
+	//atan2関数は、-π ~ πの間で戻り値が設定されているため、-π・πを超えた数字が戻り値として計算されない。そのため、条件分岐を使って、＋－2πすることで値を計算している。
 
 	pre_ang_atan2_diff = pre_ang_atan2 - ang_atan2;
  8003a8e:	4b3c      	ldr	r3, [pc, #240]	; (8003b80 <Ang_atan_diff+0x170>)
@@ -7610,9 +7610,9 @@ int main(void)
  800426a:	2001      	movs	r0, #1
  800426c:	f001 f8a6 	bl	80053bc <setRunMode>
 
-					      setVelocityRange(1.5, 1.5);
- 8004270:	eef7 0a08 	vmov.f32	s1, #120	; 0x3fc00000  1.5
- 8004274:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
+					      setVelocityRange(0.5, 0.5);
+ 8004270:	eef6 0a00 	vmov.f32	s1, #96	; 0x3f000000  0.5
+ 8004274:	eeb6 0a00 	vmov.f32	s0, #96	; 0x3f000000  0.5
  8004278:	f001 fd9e 	bl	8005db8 <setVelocityRange>
 
 						  setsuctionMotor(500);
@@ -7699,9 +7699,9 @@ int main(void)
  80042f2:	2005      	movs	r0, #5
  80042f4:	f001 f862 	bl	80053bc <setRunMode>
 
-					      setVelocityRange(1.5, 1.5);
- 80042f8:	eef7 0a08 	vmov.f32	s1, #120	; 0x3fc00000  1.5
- 80042fc:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
+					      setVelocityRange(0.5, 0.5);
+ 80042f8:	eef6 0a00 	vmov.f32	s1, #96	; 0x3f000000  0.5
+ 80042fc:	eeb6 0a00 	vmov.f32	s0, #96	; 0x3f000000  0.5
  8004300:	f001 fd5a 	bl	8005db8 <setVelocityRange>
 
 						  setsuctionMotor(500);
