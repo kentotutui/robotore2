@@ -209,7 +209,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の変更
 		updateLookaheadpoints();//座標の変更
 
-		if(isTargetDistance(30) == true){//30mmごとにデータ取得
+		if(isTargetDistance(10) == true){//30mmごとにデータ取得
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -327,12 +327,13 @@ void saveLog(){
 	    saveDebug(getCurrentVelocity());
 	}
 	else if(target_update_flag == true){
-		//saveDebug(getLookaheadpoints_X());
-		//saveDebug(getLookaheadpoints_Y());
+		saveDebug(CurrentXcoordinates());
+		saveDebug(CurrentYcoordinates());
+		saveDebug(getTheta10mm());
 		//saveDebug(PurepursuitCalculation());
 		//saveDebug(getaddTheta30mm());
 		//Ang_atan_diff();
-		AngularVelocityCalculation();
+		//AngularVelocityCalculation();
 	}
 }
 
