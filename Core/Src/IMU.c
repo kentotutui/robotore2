@@ -11,6 +11,7 @@
 int16_t xg_, yg_, zg_;
 float omega;
 float theta_10mm;
+float add_theta;
 float ang_average = 0;
 
 uint8_t initGyro(){
@@ -36,6 +37,7 @@ void updateIMUValue(){
 	omega = (corrected_zg / 16.4) * PI / 180;
 
 	theta_10mm += omega * 0.001;
+	add_theta += omega * 0.001;
 }
 
 void IMU_average(){
@@ -60,4 +62,9 @@ float getTheta10mm()
 void clearTheta10mm()
 {
 	theta_10mm = 0;
+}
+
+float addTheta()
+{
+	return add_theta;
 }

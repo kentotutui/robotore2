@@ -1,6 +1,7 @@
-IMU.c:16:9:initGyro	16	static
-IMU.c:24:6:updateIMUValue	24	static
-IMU.c:41:6:IMU_average	16	static
-IMU.c:51:7:getOmega	4	static
-IMU.c:55:7:getTheta10mm	4	static
-IMU.c:60:6:clearTheta10mm	4	static
+IMU.c:17:9:initGyro	16	static
+IMU.c:25:6:updateIMUValue	24	static
+IMU.c:43:6:IMU_average	16	static
+IMU.c:53:7:getOmega	4	static
+IMU.c:57:7:getTheta10mm	4	static
+IMU.c:62:6:clearTheta10mm	4	static
+IMU.c:67:7:addTheta	4	static
