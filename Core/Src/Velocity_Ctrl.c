@@ -16,7 +16,6 @@
 
 static uint8_t velocity_control_enable_flag;
 static uint8_t i_clear_flag;
-uint16_t mode;
 
 static float velocity_control_term;
 static float target_velocity;
@@ -61,16 +60,16 @@ void calculateVelocityControlFlip(void)
 		//if(i >= 1000) i = 1000;
 		//if(i <= -1000) i = -1000;
 
-		//velocity_control_term = p + i + d;//速度制御のPIDゲイン調整の時はこのコメント文をはずす
+		velocity_control_term = p + i + d;//速度制御のPIDゲイン調整の時はこのコメント文をはずす
 
 
-		if(mode == 1){
+		/*if(mode == 1){
 		    velocity_control_term = p + i + d;
 		}
 		else if(mode == 2){
 			velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御 2自由度制御
 			//velocity_control_term = p + i + d;
-		}
+		}*/
 
 		//setMotor(velocity_control_term, velocity_control_term);
 
@@ -148,8 +147,4 @@ void stopVelocityControl(void)
 void setClearFlagOfVelocityControlI(void)
 {
 	i_clear_flag = 1;
-}
-
-void setrunmode(uint16_t num){
-	mode = num;
 }

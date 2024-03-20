@@ -371,7 +371,6 @@ int main(void)
 						  IMU_average();
 
 						  setRunMode(1);
-						  setrunmode(1);
 
 						  setVelocityRange(2.2, 2.2);
 
@@ -395,7 +394,6 @@ int main(void)
 					      clearspeedcount();
 
 					      setRunMode(2);
-					      setrunmode(2);
 
 					      setVelocityRange(2.2, 4.5);
 					      setAccDec(6, 2);
@@ -421,7 +419,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
-						  setrunmode(2);
 
 						  setVelocityRange(2.5, 5.0);//changeパラメータ
 						  setAccDec(7, 3);
@@ -447,7 +444,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
-						  setrunmode(2);
 
 						  setVelocityRange(2.0, 6.0);
 						  setAccDec(8, 5);
@@ -473,7 +469,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
-						  setrunmode(2);
 
 						  setVelocityRange(2.5, 6.0);
 						  setAccDec(8, 5);
@@ -499,7 +494,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(3);
-						  setrunmode(2);
 
 						  setVelocityRange(2.3, 6.5);
 						  setAccDec(7, 4);
@@ -525,7 +519,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(3);
-						  setrunmode(2);
 
 						  setVelocityRange(2.3, 6.5);
 						  setAccDec(8, 6);
@@ -550,7 +543,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
-						  setrunmode(2);
 
 						  setVelocityRange(2.5, 7.5);
 						  setAccDec(7, 4);
@@ -576,7 +568,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(3);
-						  setrunmode(2);
 
 						  setVelocityRange(2.5, 8.5);
 						  setAccDec(10, 5);
@@ -601,7 +592,6 @@ int main(void)
 						  clearspeedcount();
 
 						  setRunMode(2);
-						  setrunmode(2);
 
 						  setVelocityRange(2.6, 10.0);
 						  setAccDec(7, 4);
