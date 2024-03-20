@@ -7,8 +7,7 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[5500];
-static int16_t acceleration_table[5500];
+static float velocity_table[2000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[m]
@@ -40,6 +39,7 @@ static bool continuous_cnt_reset_flag = false;
 static bool continuous_curve_flag = false;
 static bool run_flag = false;
 static bool logging_flag;
+static bool target_update_flag;
 static bool velocity_update_flag;
 
 static float min_velocity, max_velocity;
@@ -145,7 +145,8 @@ void running(void)
 						  start_goal_line_cnt++;
 
 						  if(mode == 1) startLogging();
-						  else startVelocityUpdate();
+						  else if(mode == 2 || mode == 3) startVelocityUpdate();
+						  else startTargetUpdate();
 
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
@@ -212,7 +213,7 @@ void runningFlip()
 		setLED('G');
 		updateTargetVelocity();
 
-		if(isTargetDistance(10) == true){
+		if(isTargetDistance(30) == true){
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -296,13 +297,15 @@ void runningInit()
 	}
 	else
 	{
+		ereaseDebugLog();
 		loadDistance();
 		loadTheta();
 		loadCross();
 		loadSide();
-		createVelocityTable();
+		//createVelocityTable();
+		CreateXYcoordinates();
 
-		ereaseDebugLog();
+		//ereaseDebugLog();//デバックのため上に移動させた
 	}
 
 	clearCrossLineIgnoreDistance();
@@ -328,6 +331,9 @@ void saveLog(){
 		//saveDebug(getPID());
 		//saveDebug(getTargetAcceleration());
 	}
+	else if(target_update_flag == true){
+		//CreateXYcoordinates();
+	}
 }
 
 void startLogging(){
@@ -340,6 +346,20 @@ void startLogging(){
 void stopLogging()
 {
 	logging_flag = false;
+}
+
+void startTargetUpdate()
+{
+	clearDistance10mm();
+	clearTheta10mm();
+	clearaddTheta();
+	clearTotalDistance();
+	target_update_flag = true;
+}
+
+void stopTargetUpdate()
+{
+	target_update_flag = false;
 }
 
 void startVelocityUpdate(){
@@ -405,7 +425,7 @@ void createVelocityTable(){
 	decelerateProcessing(deceleration, p_distance);
 	accelerateProcessing(acceleration, p_distance);
 
-	CreateAcceleration(p_distance);
+	//CreateAcceleration(p_distance);
 
 }
 
@@ -508,7 +528,7 @@ void updateTargetVelocity(){
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
-		setTargetAcceleration(acceleration_table[velocity_table_idx]);
+		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
@@ -559,7 +579,7 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 	}
 }
 
-void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
+/*void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
 {
 	uint16_t log_size = getDistanceLogSize();
     for(uint16_t i = 0; i <= log_size - 1; i++){
@@ -583,7 +603,8 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 
 		acceleration_table[i] = V_motor;
     }
-}
+}*/
+
 /*
 void CreateXYcoordinates()
 {
@@ -609,6 +630,11 @@ void CreateXYcoordinates()
 bool getgoalStatus()
 {
 	return goal_flag;
+}
+
+bool getTargetUpdateflag()
+{
+	return target_update_flag;
 }
 
 void setVelocityRange(float min_vel, float max_vel)

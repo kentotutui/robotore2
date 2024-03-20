@@ -20,6 +20,7 @@ float getOmega();
 float getTheta10mm();
 float addTheta();
 void clearTheta10mm();
+void clearaddTheta();
 void IMU_average();
 
 #endif /* INC_IMU_H_ */

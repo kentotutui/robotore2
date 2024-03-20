@@ -68,3 +68,8 @@ float addTheta()
 {
 	return add_theta;
 }
+
+void clearaddTheta()
+{
+	add_theta = 0;
+}

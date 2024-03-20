@@ -307,7 +307,10 @@ int main(void)
 
 				  if(running_flag == true){
 
-				  		  setsuctionMotor(500);
+				  		  //setsuctionMotor(500);
+					      setRunMode(2);
+						  runningInit();
+						  soiya = 13;
 				  }
 
 				  break;
@@ -348,7 +351,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(1.8, 1.8);
+					      setVelocityRange(1.0, 1.0);
 
 						  setsuctionMotor(500);
 
@@ -393,11 +396,11 @@ int main(void)
 
 					      clearspeedcount();
 
-					      setRunMode(2);
+						  IMU_average();
 
-					      setVelocityRange(2.2, 4.5);
-					      setAccDec(6, 2);
-					      setStraightRadius(1000); //Do Not Change
+						  setRunMode(5);
+
+						  setVelocityRange(0.5, 0.5);
 
 						  setsuctionMotor(500);
 

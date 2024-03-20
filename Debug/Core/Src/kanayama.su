@@ -1,2 +1,3 @@
-kanayama.c:14:7:CurrentXcoordinates	40	static
-kanayama.c:34:7:CurrentYcoordinates	40	static
+kanayama.c:14:6:CreateXYcoordinates	64	static
+kanayama.c:43:7:CurrentXcoordinates	40	static
+kanayama.c:63:7:CurrentYcoordinates	40	static

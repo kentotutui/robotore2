@@ -20,6 +20,7 @@
 #include "Logger.h"
 #include "sideSensor.h"
 
+void CreateXYcoordinates();
 float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 
