@@ -10,12 +10,14 @@
 
 static float X_table[2000];
 static float Y_table[2000];
+static float Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
 float ref_XYdistance;
 
 static float target_X_coordinate;
 static float target_Y_coordinate;
+static float target_Theta;
 
 void CreateXYcoordinates()
 {
@@ -39,6 +41,7 @@ void CreateXYcoordinates()
 
 		X_table[i] = x;
 		Y_table[i] = y;
+		Theta_table[i] = th;
 
 		//saveDebug(X_table[i]);//X_tableに値が入っているか確認済み
 	    //saveDebug(Y_table[i]);
@@ -101,10 +104,9 @@ void updateTargetpoint()
 		if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 		}
-
 		target_X_coordinate = X_table[targetpoint_table_idx];
 		target_Y_coordinate = Y_table[targetpoint_table_idx];
-
+		target_Theta = Theta_table[targetpoint_table_idx];
 	}
 }
 
@@ -116,6 +118,10 @@ float ErrorYcoodinates(void)
 {
 }
 
+float ErrorTheta(void)
+{
+}
+
 float getTargetpoint_X()
 {
 	return target_X_coordinate;
@@ -124,4 +130,8 @@ float getTargetpoint_X()
 float getTargetpoint_Y()
 {
 	return target_Y_coordinate;
+}
+
+float getTargetpoint_Theta(){
+	return target_Theta;
 }

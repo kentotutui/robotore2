@@ -337,6 +337,7 @@ void saveLog(){
 		//saveDebug(CurrentYcoordinates());
 		saveDebug(getTargetpoint_X());
 		saveDebug(getTargetpoint_Y());
+		saveDebug(getTargetpoint_Theta());
 	}
 }
 

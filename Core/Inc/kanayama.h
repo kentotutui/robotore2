@@ -26,8 +26,10 @@ float CurrentYcoordinates(void);
 void updateTargetpoint();
 float ErrorXcoordinates(void);
 float ErrorYcoodinates(void);
+float ErrorTheta(void);
 
 float getTargetpoint_X();
 float getTargetpoint_Y();
+float getTargetpoint_Theta();
 
 #endif /* INC_KANAYAMA_H_ */
