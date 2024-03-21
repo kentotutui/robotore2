@@ -64,7 +64,7 @@ void clearTheta10mm()
 	theta_10mm = 0;
 }
 
-float addTheta()
+float getaddTheta()
 {
 	return add_theta;
 }
