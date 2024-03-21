@@ -23,5 +23,11 @@
 void CreateXYcoordinates();
 float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
+void updateTargetpoint();
+float ErrorXcoordinates(void);
+float ErrorYcoodinates(void);
+
+float getTargetpoint_X();
+float getTargetpoint_Y();
 
 #endif /* INC_KANAYAMA_H_ */

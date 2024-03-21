@@ -11,6 +11,12 @@
 static float X_table[2000];
 static float Y_table[2000];
 
+uint16_t targetpoint_table_idx;
+float ref_XYdistance;
+
+static float target_X_coordinate;
+static float target_Y_coordinate;
+
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -78,4 +84,44 @@ float CurrentYcoordinates(void)
 	pre_th = th;
 
 	return y;
+}
+
+void updateTargetpoint()
+{
+	if(getTargetUpdateflag() == true){
+		if(getTotalDistance() >= ref_XYdistance){
+			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
+			targetpoint_table_idx++;
+			clearDistance30mm();
+		}else if(getDistance30mm() >= 30){
+			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
+			targetpoint_table_idx++;
+			clearDistance30mm();
+		}
+		if(targetpoint_table_idx >= getDistanceLogSize()){
+			targetpoint_table_idx = getDistanceLogSize() - 1;
+		}
+
+		target_X_coordinate = X_table[targetpoint_table_idx];
+		target_Y_coordinate = Y_table[targetpoint_table_idx];
+
+	}
+}
+
+float ErrorXcoordinates(void)
+{
+}
+
+float ErrorYcoodinates(void)
+{
+}
+
+float getTargetpoint_X()
+{
+	return target_X_coordinate;
+}
+
+float getTargetpoint_Y()
+{
+	return target_Y_coordinate;
 }

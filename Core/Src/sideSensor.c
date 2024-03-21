@@ -213,7 +213,8 @@ void runningFlip()
 {
 	if(run_flag == true){
 		setLED('G');
-		updateTargetVelocity();
+		updateTargetVelocity();//速度の更新
+		updateTargetpoint();//座標の更新
 
 		if(isTargetDistance(30) == true){
 			saveLog();
@@ -332,8 +333,10 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		saveDebug(CurrentXcoordinates());
-		saveDebug(CurrentYcoordinates());
+		//saveDebug(CurrentXcoordinates());
+		//saveDebug(CurrentYcoordinates());
+		saveDebug(getTargetpoint_X());
+		saveDebug(getTargetpoint_Y());
 	}
 }
 

@@ -1,3 +1,8 @@
-kanayama.c:14:6:CreateXYcoordinates	64	static
-kanayama.c:43:7:CurrentXcoordinates	40	static
-kanayama.c:63:7:CurrentYcoordinates	40	static
+kanayama.c:20:6:CreateXYcoordinates	64	static
+kanayama.c:49:7:CurrentXcoordinates	40	static
+kanayama.c:69:7:CurrentYcoordinates	40	static
+kanayama.c:89:6:updateTargetpoint	8	static
+kanayama.c:111:7:ErrorXcoordinates	4	static
+kanayama.c:115:7:ErrorYcoodinates	4	static
+kanayama.c:119:7:getTargetpoint_X	4	static
+kanayama.c:124:7:getTargetpoint_Y	4	static
