@@ -643,9 +643,15 @@ int main(void)
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();
+
 					  for(uint16_t i = 0; i < size; i = i+3){
 						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2));
 					  }
+
+					  /*
+					  for(uint16_t i = 0; i < size; i = i+1){
+						 printf("%f\r\n", getDebugLog(i));
+					  }*/
 
 					  printf("9999, 9999\r\n");
 				  }

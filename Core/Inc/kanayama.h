@@ -25,7 +25,7 @@ float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 void updateTargetpoint();
 float ErrorXcoordinates(void);
-float ErrorYcoodinates(void);
+float ErrorYcoordinates(void);
 float ErrorTheta(void);
 
 float getTargetpoint_X();

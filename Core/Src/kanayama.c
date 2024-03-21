@@ -110,16 +110,42 @@ void updateTargetpoint()
 	}
 }
 
-float ErrorXcoordinates(void)
-{
-}
-
-float ErrorYcoodinates(void)
-{
-}
-
 float ErrorTheta(void)
 {
+	float Theta_e = 0;
+
+	float now_theta = getaddTheta();
+
+	Theta_e = target_Theta - now_theta;
+
+	return Theta_e;
+}
+
+float ErrorXcoordinates(void)
+{
+	float X_e = 0;
+
+	float error_theta = ErrorTheta();
+
+	if(error_theta == 0) error_theta = 0.00001;
+
+	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(error_theta);
+
+	return X_e;
+}
+
+float ErrorYcoordinates(void)
+{
+	float Y_e = 0;
+
+	float error_theta = ErrorTheta();
+
+	if(error_theta == 0) error_theta = 0.00001;
+
+	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(error_theta);
+
+	return Y_e;
+
 }
 
 float getTargetpoint_X()
@@ -132,6 +158,7 @@ float getTargetpoint_Y()
 	return target_Y_coordinate;
 }
 
-float getTargetpoint_Theta(){
+float getTargetpoint_Theta()
+{
 	return target_Theta;
 }

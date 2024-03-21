@@ -335,9 +335,9 @@ void saveLog(){
 	else if(target_update_flag == true){
 		//saveDebug(CurrentXcoordinates());
 		//saveDebug(CurrentYcoordinates());
-		saveDebug(getTargetpoint_X());
-		saveDebug(getTargetpoint_Y());
-		saveDebug(getTargetpoint_Theta());
+		saveDebug(ErrorXcoordinates());
+	    saveDebug(ErrorYcoordinates());
+		saveDebug(ErrorTheta());
 	}
 }
 
