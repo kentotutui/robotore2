@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_line   0001738a  00000000  00000000  0007f362  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb4b2  00000000  00000000  000966ec  2**0
+ 18 .debug_str    000cb4a6  00000000  00000000  000966ec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161b9e  2**0
+ 19 .comment      0000007b  00000000  00000000  00161b92  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00007eac  00000000  00000000  00161c1c  2**2
+ 20 .debug_frame  00007eac  00000000  00000000  00161c10  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -6883,11 +6883,11 @@ float ErrorXcoordinates(void)
  8003d6c:	f04f 0300 	mov.w	r3, #0
  8003d70:	603b      	str	r3, [r7, #0]
 
-	float error_theta = ErrorTheta();
- 8003d72:	f7ff ffd7 	bl	8003d24 <ErrorTheta>
+	float now_theta = getaddTheta();
+ 8003d72:	f7fd fd87 	bl	8001884 <getaddTheta>
  8003d76:	ed87 0a01 	vstr	s0, [r7, #4]
 
-	if(error_theta == 0) error_theta = 0.00001;
+	if(now_theta == 0) now_theta = 0.00001;
  8003d7a:	edd7 7a01 	vldr	s15, [r7, #4]
  8003d7e:	eef5 7a40 	vcmp.f32	s15, #0.0
  8003d82:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
@@ -6895,7 +6895,7 @@ float ErrorXcoordinates(void)
  8003d88:	4b2d      	ldr	r3, [pc, #180]	; (8003e40 <ErrorXcoordinates+0xe0>)
  8003d8a:	607b      	str	r3, [r7, #4]
 
-	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(error_theta);
+	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(now_theta);
  8003d8c:	4b2d      	ldr	r3, [pc, #180]	; (8003e44 <ErrorXcoordinates+0xe4>)
  8003d8e:	ed93 8a00 	vldr	s16, [r3]
  8003d92:	f7ff fe65 	bl	8003a60 <CurrentXcoordinates>
@@ -6977,11 +6977,11 @@ float ErrorYcoordinates(void)
  8003e58:	f04f 0300 	mov.w	r3, #0
  8003e5c:	603b      	str	r3, [r7, #0]
 
-	float error_theta = ErrorTheta();
- 8003e5e:	f7ff ff61 	bl	8003d24 <ErrorTheta>
+	float now_theta = getaddTheta();
+ 8003e5e:	f7fd fd11 	bl	8001884 <getaddTheta>
  8003e62:	ed87 0a01 	vstr	s0, [r7, #4]
 
-	if(error_theta == 0) error_theta = 0.00001;
+	if(now_theta == 0) now_theta = 0.00001;
  8003e66:	edd7 7a01 	vldr	s15, [r7, #4]
  8003e6a:	eef5 7a40 	vcmp.f32	s15, #0.0
  8003e6e:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
@@ -6989,7 +6989,7 @@ float ErrorYcoordinates(void)
  8003e74:	4b2e      	ldr	r3, [pc, #184]	; (8003f30 <ErrorYcoordinates+0xe4>)
  8003e76:	607b      	str	r3, [r7, #4]
 
-	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(error_theta);
+	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(now_theta);
  8003e78:	4b2e      	ldr	r3, [pc, #184]	; (8003f34 <ErrorYcoordinates+0xe8>)
  8003e7a:	ed93 8a00 	vldr	s16, [r3]
  8003e7e:	f7ff fdef 	bl	8003a60 <CurrentXcoordinates>

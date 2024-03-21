@@ -125,11 +125,11 @@ float ErrorXcoordinates(void)
 {
 	float X_e = 0;
 
-	float error_theta = ErrorTheta();
+	float now_theta = getaddTheta();
 
-	if(error_theta == 0) error_theta = 0.00001;
+	if(now_theta == 0) now_theta = 0.00001;
 
-	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(error_theta);
+	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(now_theta);
 
 	return X_e;
 }
@@ -138,11 +138,11 @@ float ErrorYcoordinates(void)
 {
 	float Y_e = 0;
 
-	float error_theta = ErrorTheta();
+	float now_theta = getaddTheta();
 
-	if(error_theta == 0) error_theta = 0.00001;
+	if(now_theta == 0) now_theta = 0.00001;
 
-	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(error_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(error_theta);
+	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(now_theta);
 
 	return Y_e;
 
