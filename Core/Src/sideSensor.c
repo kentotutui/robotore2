@@ -177,6 +177,7 @@ void running(void)
 					  if(start_goal_line_cnt >= 2){
 						  stopLogging();
 						  stopVelocityUpdate();
+						  stopTargetUpdate();
 						  pattern = 20;
 					  }
 
@@ -200,6 +201,7 @@ void running(void)
 		{
 			stopLogging();
 			stopVelocityUpdate();
+			stopTargetUpdate();
 		    pattern = 20;
 	    }
 	}
@@ -304,8 +306,6 @@ void runningInit()
 		loadSide();
 		//createVelocityTable();
 		CreateXYcoordinates();
-
-		//ereaseDebugLog();//デバックのため上に移動させた
 	}
 
 	clearCrossLineIgnoreDistance();
@@ -332,7 +332,8 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		//CreateXYcoordinates();
+		saveDebug(CurrentXcoordinates());
+		saveDebug(CurrentYcoordinates());
 	}
 }
 

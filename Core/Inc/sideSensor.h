@@ -18,6 +18,7 @@
 #include "Encoder.h"
 #include "IMU.h"
 #include "Logger.h"
+#include "kanayama.h"
 
 void updateSideSensorStatus();
 bool getSideSensorStatusL();

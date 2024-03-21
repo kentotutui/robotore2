@@ -34,8 +34,8 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 
-		saveDebug(X_table[i]);//X_tableに値が入っているか未確認
-	    saveDebug(Y_table[i]);
+		//saveDebug(X_table[i]);//X_tableに値が入っているか確認済み
+	    //saveDebug(Y_table[i]);
 
 	}
 }
