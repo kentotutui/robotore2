@@ -333,8 +333,12 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		//saveDebug(CurrentXcoordinates());
-		//saveDebug(CurrentYcoordinates());
+		saveDebug(getTargetpoint_X());
+		saveDebug(getTargetpoint_Y());
+		saveDebug(getTargetpoint_Theta());
+		saveDebug(CurrentXcoordinates());
+		saveDebug(CurrentYcoordinates());
+		saveDebug(getaddTheta());
 		saveDebug(ErrorXcoordinates());
 	    saveDebug(ErrorYcoordinates());
 		saveDebug(ErrorTheta());
@@ -355,10 +359,7 @@ void stopLogging()
 
 void startTargetUpdate()
 {
-	clearDistance10mm();
-	clearTheta10mm();
 	clearaddTheta();
-	clearTotalDistance();
 	target_update_flag = true;
 }
 
