@@ -2,9 +2,9 @@ kanayama.c:22:6:CreateXYcoordinates	64	static
 kanayama.c:52:7:CurrentXcoordinates	40	static
 kanayama.c:72:7:CurrentYcoordinates	40	static
 kanayama.c:92:6:updateTargetpoint	8	static
-kanayama.c:113:7:ErrorTheta	16	static
-kanayama.c:124:7:ErrorXcoordinates	40	static
-kanayama.c:137:7:ErrorYcoordinates	40	static
-kanayama.c:151:7:getTargetpoint_X	4	static
-kanayama.c:156:7:getTargetpoint_Y	4	static
-kanayama.c:161:7:getTargetpoint_Theta	4	static
+kanayama.c:118:7:ErrorTheta	16	static
+kanayama.c:129:7:ErrorXcoordinates	40	static
+kanayama.c:142:7:ErrorYcoordinates	40	static
+kanayama.c:156:7:getTargetpoint_X	4	static
+kanayama.c:161:7:getTargetpoint_Y	4	static
+kanayama.c:166:7:getTargetpoint_Theta	4	static

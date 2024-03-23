@@ -92,12 +92,17 @@ float CurrentYcoordinates(void)
 void updateTargetpoint()
 {
 	if(getTargetUpdateflag() == true){
-		if(getTotalDistance() >= ref_XYdistance){
+		/*if(getTotalDistance() >= ref_XYdistance){
 			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}else if(getDistance30mm() >= 30){
 			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
+			targetpoint_table_idx++;
+			clearDistance30mm();
+		}*/
+		if(getDistance30mm() >= 30){
+			//ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}

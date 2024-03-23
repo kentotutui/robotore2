@@ -339,9 +339,9 @@ void saveLog(){
 		saveDebug(CurrentXcoordinates());
 		saveDebug(CurrentYcoordinates());
 		saveDebug(getaddTheta());
-		saveDebug(ErrorXcoordinates());
-	    saveDebug(ErrorYcoordinates());
-		saveDebug(ErrorTheta());
+		//saveDebug(ErrorXcoordinates());
+	    //saveDebug(ErrorYcoordinates());
+		//saveDebug(ErrorTheta());
 	}
 }
 
