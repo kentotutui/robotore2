@@ -333,15 +333,15 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		saveDebug(getTargetpoint_X());
-		saveDebug(getTargetpoint_Y());
-		saveDebug(getTargetpoint_Theta());
+		//saveDebug(getTargetpoint_X());
+		//saveDebug(getTargetpoint_Y());
+		//saveDebug(getTargetpoint_Theta());
 		saveDebug(CurrentXcoordinates());
 		saveDebug(CurrentYcoordinates());
 		saveDebug(getaddTheta());
-		//saveDebug(ErrorXcoordinates());
-	    //saveDebug(ErrorYcoordinates());
-		//saveDebug(ErrorTheta());
+		saveDebug(ErrorXcoordinates());
+	    saveDebug(ErrorYcoordinates());
+		saveDebug(ErrorTheta());
 	}
 }
 

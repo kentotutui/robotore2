@@ -60,7 +60,7 @@ float CurrentXcoordinates(void)
 
 	if(now_theta == 0) now_theta = 0.00001;
 
-	x = pre_x + now_distance * cos(pre_th + now_theta/2);
+	x = pre_x + now_distance * cosf(pre_th + now_theta/2);
 	th = pre_th + now_theta;
 
 	pre_x = x;
@@ -80,7 +80,7 @@ float CurrentYcoordinates(void)
 
 	if(now_theta == 0) now_theta = 0.00001;
 
-	y = pre_y + now_distance * sin(pre_th + now_theta/2);
+	y = pre_y + now_distance * sinf(pre_th + now_theta/2);
 	th = pre_th + now_theta;
 
 	pre_y = y;
@@ -126,15 +126,17 @@ float ErrorTheta(void)
 	return Theta_e;
 }
 
-float ErrorXcoordinates(void)
+float ErrorXcoordinates(void)//三角関数計算重い?
 {
 	float X_e = 0;
 
 	float now_theta = getaddTheta();
+	float cos_theta = cosf(now_theta);
+	float sin_theta = sinf(now_theta);
 
-	if(now_theta == 0) now_theta = 0.00001;
+	//if(now_theta == 0) now_theta = 0.00001;
 
-	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * sin(now_theta);
+	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos_theta + (target_Y_coordinate - CurrentYcoordinates()) * sin_theta;
 
 	return X_e;
 }
@@ -144,13 +146,14 @@ float ErrorYcoordinates(void)
 	float Y_e = 0;
 
 	float now_theta = getaddTheta();
+	float cos_theta = cosf(now_theta);
+	float sin_theta = sinf(now_theta);
 
-	if(now_theta == 0) now_theta = 0.00001;
+	//if(now_theta == 0) now_theta = 0.00001;
 
-	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin(now_theta) + (target_Y_coordinate - CurrentYcoordinates()) * cos(now_theta);
+	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin_theta + (target_Y_coordinate - CurrentYcoordinates()) * cos_theta;
 
 	return Y_e;
-
 }
 
 float getTargetpoint_X()
