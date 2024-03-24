@@ -156,6 +156,24 @@ float ErrorYcoordinates(void)
 	return Y_e;
 }
 
+void Error_XY_Debug()
+{
+	float X_e = 0;
+	float Y_e = 0;
+	float now_theta = getaddTheta();
+	float sin_theta = sinf(now_theta);
+	float cos_theta = cosf(now_theta);
+	float now_X = CurrentXcoordinates();
+	float now_Y = CurrentYcoordinates();
+
+	X_e = (target_X_coordinate - now_X) * cos_theta + (target_Y_coordinate - now_Y) * sin_theta;
+	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;
+
+	saveDebug(X_e);
+	saveDebug(Y_e);
+	saveDebug(now_theta);
+}
+
 float getTargetpoint_X()
 {
 	return target_X_coordinate;

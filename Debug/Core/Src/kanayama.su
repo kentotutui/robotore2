@@ -5,6 +5,7 @@ kanayama.c:92:6:updateTargetpoint	8	static
 kanayama.c:118:7:ErrorTheta	16	static
 kanayama.c:129:7:ErrorXcoordinates	32	static
 kanayama.c:144:7:ErrorYcoordinates	32	static
-kanayama.c:160:7:getTargetpoint_X	4	static
-kanayama.c:165:7:getTargetpoint_Y	4	static
-kanayama.c:170:7:getTargetpoint_Theta	4	static
+kanayama.c:159:6:Error_XY_Debug	40	static
+kanayama.c:177:7:getTargetpoint_X	4	static
+kanayama.c:182:7:getTargetpoint_Y	4	static
+kanayama.c:187:7:getTargetpoint_Theta	4	static
