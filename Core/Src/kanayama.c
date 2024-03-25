@@ -169,7 +169,7 @@ float ErrorYcoordinates(void)
 	return Y_e;
 }
 
-void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)//三角関数の計算重い
+void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
 	//float now_theta = getaddTheta();
 	float sin_theta = sinf(now_Theta);
