@@ -192,10 +192,11 @@ void running(void)
 
 					  goal_flag = true;
 
+					  /*
 					  if(mode != 1)
 					  {
-						  //Save_Debug_Table();
-					  }
+						  Save_Debug_Table();
+					  }*/
 
 					  break;
 		}
@@ -334,6 +335,7 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
+		saveDebug(getDistance30mm());
 		//saveDebug(getTargetpoint_X());//目標のx座標
 		//saveDebug(getTargetpoint_Y());//目標のy座標
 		//saveDebug(getTargetpoint_Theta());//目標の角速度θ

@@ -64,12 +64,12 @@ float CurrentXcoordinates(void)
 	float x = 0, th = 0;
 
 	float now_distance = getDistance10mm();
-	float now_theta = getTheta10mm();
+	float now_X_theta = getTheta10mm();
 
-	if(now_theta == 0) now_theta = 0.00001;
+	if(now_X_theta == 0) now_X_theta = 0.00001;
 
-	x = pre_x + now_distance * cosf(pre_th + now_theta/2);
-	th = pre_th + now_theta;
+	x = pre_x + now_distance * cosf(pre_th + now_X_theta/2);
+	th = pre_th + now_X_theta;
 
 	pre_x = x;
 	pre_th = th;
@@ -84,12 +84,12 @@ float CurrentYcoordinates(void)
 	float y = 0, th = 0;
 
 	float now_distance = getDistance10mm();
-	float now_theta = getTheta10mm();
+	float now_Y_theta = getTheta10mm();
 
-	if(now_theta == 0) now_theta = 0.00001;
+	if(now_Y_theta == 0) now_Y_theta = 0.00001;
 
-	y = pre_y + now_distance * sinf(pre_th + now_theta/2);
-	th = pre_th + now_theta;
+	y = pre_y + now_distance * sinf(pre_th + now_Y_theta/2);
+	th = pre_th + now_Y_theta;
 
 	pre_y = y;
 	pre_th = th;
@@ -169,7 +169,7 @@ float ErrorYcoordinates(void)
 	return Y_e;
 }
 
-void Error_XY_Debug()
+void Error_XY_Debug()//三角関数の計算重い
 {
 	float now_theta = getaddTheta();
 	float sin_theta = sinf(now_theta);
@@ -177,13 +177,15 @@ void Error_XY_Debug()
 	float now_X = CurrentXcoordinates();
 	float now_Y = CurrentYcoordinates();
 
+	if(now_theta == 0) now_theta = 0.00001;
+
 	X_e = (target_X_coordinate - now_X) * cos_theta + (target_Y_coordinate - now_Y) * sin_theta;
 	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;
 	Theta_e = target_Theta - now_theta;
 
-	//saveDebug(X_e);
-	//saveDebug(Y_e);
-	//saveDebug(Theta_e);
+	saveDebug(X_e);
+	saveDebug(Y_e);
+	saveDebug(Theta_e);
 }
 
 void Save_Debug_Table()
