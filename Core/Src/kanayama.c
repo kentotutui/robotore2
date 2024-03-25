@@ -169,19 +169,19 @@ float ErrorYcoordinates(void)
 	return Y_e;
 }
 
-void Error_XY_Debug()//三角関数の計算重い
+void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)//三角関数の計算重い
 {
-	float now_theta = getaddTheta();
-	float sin_theta = sinf(now_theta);
-	float cos_theta = cosf(now_theta);
-	float now_X = CurrentXcoordinates();
-	float now_Y = CurrentYcoordinates();
+	//float now_theta = getaddTheta();
+	float sin_theta = sinf(now_Theta);
+	float cos_theta = cosf(now_Theta);
+	//float now_X = CurrentXcoordinates();
+	//float now_Y = CurrentYcoordinates();
 
-	if(now_theta == 0) now_theta = 0.00001;
+    //if(now_Theta == 0) now_Theta = 0.00001;
 
 	X_e = (target_X_coordinate - now_X) * cos_theta + (target_Y_coordinate - now_Y) * sin_theta;
 	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;
-	Theta_e = target_Theta - now_theta;
+	Theta_e = target_Theta - now_Theta;
 
 	saveDebug(X_e);
 	saveDebug(Y_e);

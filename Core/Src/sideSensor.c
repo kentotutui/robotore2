@@ -45,6 +45,9 @@ static bool velocity_update_flag;
 static float min_velocity, max_velocity;
 static float acceleration, deceleration;
 static float straight_radius;
+static float debug_now_X;
+static float debug_now_Y;
+static float debug_now_Theta;
 static int16_t V_motor;
 
 void updateSideSensorStatus(){
@@ -335,17 +338,19 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		saveDebug(getDistance30mm());
+		debug_now_X = CurrentXcoordinates();
+		debug_now_Y = CurrentYcoordinates();
+		debug_now_Theta = getaddTheta();
 		//saveDebug(getTargetpoint_X());//目標のx座標
 		//saveDebug(getTargetpoint_Y());//目標のy座標
 		//saveDebug(getTargetpoint_Theta());//目標の角速度θ
-		saveDebug(CurrentXcoordinates());//現在のx座標
-		saveDebug(CurrentYcoordinates());//現在のy座標
-		saveDebug(getaddTheta());//現在の角度
+		saveDebug(debug_now_X);//現在のx座標
+		saveDebug(debug_now_Y);//現在のy座標
+		saveDebug(debug_now_Theta);//現在の角度
 		//saveDebug(ErrorXcoordinates());//x座標の誤差
 	    //saveDebug(ErrorYcoordinates());//y座標の誤差
 		//saveDebug(ErrorTheta());//角速度の誤差
-		//Error_XY_Debug();//誤差の計算関数
+		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
 	}
 }
 
