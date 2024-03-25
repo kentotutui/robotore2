@@ -334,16 +334,16 @@ void saveLog(){
 		//saveDebug(getTargetAcceleration());
 	}
 	else if(target_update_flag == true){
-		//saveDebug(getTargetpoint_X());
-		//saveDebug(getTargetpoint_Y());
-		//saveDebug(getTargetpoint_Theta());
-		saveDebug(CurrentXcoordinates());
-		saveDebug(CurrentYcoordinates());
-		saveDebug(getaddTheta());
-		//saveDebug(ErrorXcoordinates());
-	    //saveDebug(ErrorYcoordinates());
-		//saveDebug(ErrorTheta());
-		//Error_XY_Debug();
+		//saveDebug(getTargetpoint_X());//目標のx座標
+		//saveDebug(getTargetpoint_Y());//目標のy座標
+		//saveDebug(getTargetpoint_Theta());//目標の角速度θ
+		saveDebug(CurrentXcoordinates());//現在のx座標
+		saveDebug(CurrentYcoordinates());//現在のy座標
+		saveDebug(getaddTheta());//現在の角度
+		//saveDebug(ErrorXcoordinates());//x座標の誤差
+	    //saveDebug(ErrorYcoordinates());//y座標の誤差
+		//saveDebug(ErrorTheta());//角速度の誤差
+		//Error_XY_Debug();//誤差の計算関数
 	}
 }
 
