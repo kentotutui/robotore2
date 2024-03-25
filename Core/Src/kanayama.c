@@ -139,7 +139,7 @@ float ErrorTheta(void)
 	return Theta_e;
 }
 
-float ErrorXcoordinates(void)//三角関数計算重い?
+float ErrorXcoordinates(void)
 {
 	float X_e = 0;
 
@@ -171,13 +171,8 @@ float ErrorYcoordinates(void)
 
 void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
-	//float now_theta = getaddTheta();
 	float sin_theta = sinf(now_Theta);
 	float cos_theta = cosf(now_Theta);
-	//float now_X = CurrentXcoordinates();
-	//float now_Y = CurrentYcoordinates();
-
-    //if(now_Theta == 0) now_Theta = 0.00001;
 
 	X_e = (target_X_coordinate - now_X) * cos_theta + (target_Y_coordinate - now_Y) * sin_theta;
 	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;

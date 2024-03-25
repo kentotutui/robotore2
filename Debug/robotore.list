@@ -6781,7 +6781,7 @@ void updateTargetpoint()
 	return Y_e;
 }
 
-void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)//三角関数の計算重い
+void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
  8003c70:	b580      	push	{r7, lr}
  8003c72:	b086      	sub	sp, #24
