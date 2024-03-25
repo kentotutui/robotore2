@@ -29,6 +29,8 @@ float ErrorYcoordinates(void);
 float ErrorTheta(void);
 void Error_XY_Debug();
 
+void Save_Debug_Table();
+
 float getTargetpoint_X();
 float getTargetpoint_Y();
 float getTargetpoint_Theta();

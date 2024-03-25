@@ -8,16 +8,24 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static float X_table[2000];
-static float Y_table[2000];
-static float Theta_table[2000];
+static float X_table[500];
+static float Y_table[500];
+static float Theta_table[500];
+static float Debug_X_Table[500];
+static float Debug_Y_Table[500];
+static float Debug_Theta_Table[500];
 
 uint16_t targetpoint_table_idx;
+uint16_t debug_table_idx;
 float ref_XYdistance;
 
 static float target_X_coordinate;
 static float target_Y_coordinate;
 static float target_Theta;
+
+static float X_e;
+static float Y_e;
+static float Theta_e;
 
 void CreateXYcoordinates()
 {
@@ -104,6 +112,11 @@ void updateTargetpoint()
 		if(getDistance30mm() >= 30){
 			//ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
+
+			Debug_X_Table[targetpoint_table_idx] = X_e;
+			Debug_Y_Table[targetpoint_table_idx] = Y_e;
+			Debug_Theta_Table[targetpoint_table_idx] = Theta_e;
+
 			clearDistance30mm();
 		}
 		if(targetpoint_table_idx >= getDistanceLogSize()){
@@ -158,8 +171,6 @@ float ErrorYcoordinates(void)
 
 void Error_XY_Debug()
 {
-	float X_e = 0;
-	float Y_e = 0;
 	float now_theta = getaddTheta();
 	float sin_theta = sinf(now_theta);
 	float cos_theta = cosf(now_theta);
@@ -168,10 +179,20 @@ void Error_XY_Debug()
 
 	X_e = (target_X_coordinate - now_X) * cos_theta + (target_Y_coordinate - now_Y) * sin_theta;
 	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;
+	Theta_e = target_Theta - now_theta;
 
-	saveDebug(X_e);
-	saveDebug(Y_e);
-	saveDebug(now_theta);
+	//saveDebug(X_e);
+	//saveDebug(Y_e);
+	//saveDebug(Theta_e);
+}
+
+void Save_Debug_Table()
+{
+	for(uint16_t i = 0; i < 200; i++){
+		saveDebug(Debug_X_Table[i]);
+		saveDebug(Debug_Y_Table[i]);
+		saveDebug(Debug_Theta_Table[i]);
+	}
 }
 
 float getTargetpoint_X()

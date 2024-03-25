@@ -187,12 +187,15 @@ void running(void)
 
 					  setTargetVelocity(1.0);
 					  HAL_Delay(100);
-					  //setTargetVelocity(-0.01);
-					  //HAL_Delay(20);
 					  setTargetVelocity(0);
 					  HAL_Delay(500);
 
 					  goal_flag = true;
+
+					  if(mode != 1)
+					  {
+						  //Save_Debug_Table();
+					  }
 
 					  break;
 		}
@@ -205,8 +208,6 @@ void running(void)
 		    pattern = 20;
 	    }
 	}
-	//HAL_Delay(2000);
-	//goal_flag = false;
 }
 
 void runningFlip()
@@ -342,7 +343,7 @@ void saveLog(){
 		//saveDebug(ErrorXcoordinates());
 	    //saveDebug(ErrorYcoordinates());
 		//saveDebug(ErrorTheta());
-		Error_XY_Debug();
+		//Error_XY_Debug();
 	}
 }
 
