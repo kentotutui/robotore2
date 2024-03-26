@@ -195,12 +195,6 @@ void running(void)
 
 					  goal_flag = true;
 
-					  /*
-					  if(mode != 1)
-					  {
-						  Save_Debug_Table();
-					  }*/
-
 					  break;
 		}
 

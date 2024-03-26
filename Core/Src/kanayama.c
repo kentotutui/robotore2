@@ -112,11 +112,6 @@ void updateTargetpoint()
 		if(getDistance30mm() >= 30){
 			//ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
-
-			Debug_X_Table[targetpoint_table_idx] = X_e;
-			Debug_Y_Table[targetpoint_table_idx] = Y_e;
-			Debug_Theta_Table[targetpoint_table_idx] = Theta_e;
-
 			clearDistance30mm();
 		}
 		if(targetpoint_table_idx >= getDistanceLogSize()){
@@ -181,15 +176,6 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	saveDebug(X_e);
 	saveDebug(Y_e);
 	saveDebug(Theta_e);
-}
-
-void Save_Debug_Table()
-{
-	for(uint16_t i = 0; i < 200; i++){
-		saveDebug(Debug_X_Table[i]);
-		saveDebug(Debug_Y_Table[i]);
-		saveDebug(Debug_Theta_Table[i]);
-	}
 }
 
 float getTargetpoint_X()
