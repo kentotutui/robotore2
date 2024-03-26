@@ -23,10 +23,6 @@ static float target_X_coordinate;
 static float target_Y_coordinate;
 static float target_Theta;
 
-static float X_e;
-static float Y_e;
-static float Theta_e;
-
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -123,7 +119,7 @@ void updateTargetpoint()
 	}
 }
 
-float ErrorTheta(void)
+/*float ErrorTheta(void)
 {
 	float Theta_e = 0;
 
@@ -132,9 +128,9 @@ float ErrorTheta(void)
 	Theta_e = target_Theta - now_theta;
 
 	return Theta_e;
-}
+}/*
 
-float ErrorXcoordinates(void)
+/*float ErrorXcoordinates(void)
 {
 	float X_e = 0;
 
@@ -147,9 +143,9 @@ float ErrorXcoordinates(void)
 	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos_theta + (target_Y_coordinate - CurrentYcoordinates()) * sin_theta;
 
 	return X_e;
-}
+}*/
 
-float ErrorYcoordinates(void)
+/*float ErrorYcoordinates(void)
 {
 	float Y_e = 0;
 
@@ -162,10 +158,13 @@ float ErrorYcoordinates(void)
 	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin_theta + (target_Y_coordinate - CurrentYcoordinates()) * cos_theta;
 
 	return Y_e;
-}
+}*/
 
 void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
+	float X_e;
+	float Y_e;
+	float Theta_e;
 	float sin_theta = sinf(now_Theta);
 	float cos_theta = cosf(now_Theta);
 
