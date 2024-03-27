@@ -11,9 +11,6 @@
 static float X_table[500];
 static float Y_table[500];
 static float Theta_table[500];
-static float Debug_X_Table[500];
-static float Debug_Y_Table[500];
-static float Debug_Theta_Table[500];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -22,6 +19,13 @@ float ref_XYdistance;
 static float target_X_coordinate;
 static float target_Y_coordinate;
 static float target_Theta;
+
+static float now_error_x;
+static float now_error_y;
+static float now_error_theta;
+
+static float Output_velocity;
+static float Output_angularvelocity;
 
 void CreateXYcoordinates()
 {
@@ -46,9 +50,6 @@ void CreateXYcoordinates()
 		X_table[i] = x;
 		Y_table[i] = y;
 		Theta_table[i] = th;
-
-		//saveDebug(X_table[i]);//X_tableに値が入っているか確認済み
-	    //saveDebug(Y_table[i]);
 
 	}
 }
@@ -128,7 +129,7 @@ void updateTargetpoint()
 	Theta_e = target_Theta - now_theta;
 
 	return Theta_e;
-}/*
+}*/
 
 /*float ErrorXcoordinates(void)
 {
@@ -172,9 +173,23 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	Y_e = -(target_X_coordinate - now_X) * sin_theta + (target_Y_coordinate - now_Y) * cos_theta;
 	Theta_e = target_Theta - now_Theta;
 
-	saveDebug(X_e);
-	saveDebug(Y_e);
-	saveDebug(Theta_e);
+	now_error_x = X_e;
+	now_error_y = Y_e;
+	now_error_theta = Theta_e;
+
+	//saveDebug(X_e);
+	//saveDebug(Y_e);
+	//saveDebug(Theta_e);
+}
+
+void Velocity_Angularvelocity()
+{
+	float kx = 0.0, ky = 0.0, kt = 0.0;
+
+	float Target_velocity = getTargetVelocity();
+	float Target_angularvelocity = target_Theta;
+
+	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_theta;
 }
 
 float getTargetpoint_X()

@@ -337,13 +337,10 @@ void saveLog(){
 		debug_now_Theta = getaddTheta();
 		//saveDebug(getTargetpoint_X());//目標のx座標
 		//saveDebug(getTargetpoint_Y());//目標のy座標
-		//saveDebug(getTargetpoint_Theta());//目標の角速度θ
+		//saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
 		saveDebug(debug_now_X);//現在のx座標
 		saveDebug(debug_now_Y);//現在のy座標
-		saveDebug(debug_now_Theta);//現在の角度
-		//saveDebug(ErrorXcoordinates());//x座標の誤差
-	    //saveDebug(ErrorYcoordinates());//y座標の誤差
-		//saveDebug(ErrorTheta());//角速度の誤差
+		saveDebug(debug_now_Theta);//現在の車体角速度
 		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
 	}
 }

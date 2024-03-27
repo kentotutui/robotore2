@@ -28,6 +28,7 @@ float ErrorXcoordinates(void);
 float ErrorYcoordinates(void);
 float ErrorTheta(void);
 void Error_XY_Debug(const float, const float, const float);
+void Velocity_Angularvelocity();
 
 float getTargetpoint_X();
 float getTargetpoint_Y();
