@@ -6952,9 +6952,9 @@ int main(void)
  8003c76:	2002      	movs	r0, #2
  8003c78:	f7ff fdf4 	bl	8003864 <setrunmode>
 
-					      setVelocityRange(2.2, 4.5);
+					      setVelocityRange(1.8, 4.5);
  8003c7c:	eef1 0a02 	vmov.f32	s1, #18	; 0x40900000  4.5
- 8003c80:	ed9f 0a15 	vldr	s0, [pc, #84]	; 8003cd8 <main+0x360>
+ 8003c80:	ed9f 0a14 	vldr	s0, [pc, #80]	; 8003cd4 <main+0x35c>
  8003c84:	f002 f9bc 	bl	8006000 <setVelocityRange>
 					      setAccDec(6, 2);
  8003c88:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
