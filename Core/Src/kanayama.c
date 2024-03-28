@@ -143,12 +143,13 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 void Velocity_Angularvelocity()
 {
-	float kx = 0.0, ky = 0.0, kt = 0.0;
+	float kx = 1.0, ky = 1.0, kt = 1.0;//Kanayama Control Methodゲイン値調整
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = target_Theta;
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_theta;
+	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));
 }
 
 float getTargetpoint_X()
