@@ -7371,8 +7371,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000234        0x4 Core/Src/AngleCtrl.o
  .bss.variable_Angle
                 0x0000000020000238        0x4 Core/Src/AngleCtrl.o
- .bss.i.9634    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
- .bss.pre_diff.9639
+ .bss.i.9628    0x000000002000023c        0x4 Core/Src/AngleCtrl.o
+ .bss.pre_diff.9633
                 0x0000000020000240        0x4 Core/Src/AngleCtrl.o
  .bss.enc_l_cnt
                 0x0000000020000244        0x2 Core/Src/Encoder.o
@@ -7405,7 +7405,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.ang_average
                 0x0000000020000274        0x4 Core/Src/IMU.o
                 0x0000000020000274                ang_average
- .bss.pre_zg.9636
+ .bss.pre_zg.9630
                 0x0000000020000278        0x2 Core/Src/IMU.o
  .bss.line_trace_enable_flag
                 0x000000002000027a        0x1 Core/Src/LineChase.o
@@ -7417,8 +7417,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000280        0x1 Core/Src/LineChase.o
  *fill*         0x0000000020000281        0x3 
  .bss.pre_diff  0x0000000020000284        0x4 Core/Src/LineChase.o
- .bss.i.9637    0x0000000020000288        0x4 Core/Src/LineChase.o
- .bss.dark_cnt.9657
+ .bss.i.9631    0x0000000020000288        0x4 Core/Src/LineChase.o
+ .bss.dark_cnt.9651
                 0x000000002000028c        0x2 Core/Src/LineChase.o
  *fill*         0x000000002000028e        0x2 
  .bss.adc_value
@@ -7482,8 +7482,8 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020016e54        0x4 Core/Src/Velocity_Ctrl.o
  .bss.variable_speed
                 0x0000000020016e58        0x4 Core/Src/Velocity_Ctrl.o
- .bss.i.9641    0x0000000020016e5c        0x4 Core/Src/Velocity_Ctrl.o
- .bss.pre_diff.9646
+ .bss.i.9635    0x0000000020016e5c        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.pre_diff.9640
                 0x0000000020016e60        0x4 Core/Src/Velocity_Ctrl.o
  .bss.X_table   0x0000000020016e64      0x7d0 Core/Src/kanayama.o
  .bss.Y_table   0x0000000020017634      0x7d0 Core/Src/kanayama.o
@@ -7501,13 +7501,13 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000200185e4        0x4 Core/Src/kanayama.o
  .bss.now_error_theta
                 0x00000000200185e8        0x4 Core/Src/kanayama.o
- .bss.pre_th.9656
+ .bss.pre_th.9650
                 0x00000000200185ec        0x4 Core/Src/kanayama.o
- .bss.pre_x.9655
+ .bss.pre_x.9649
                 0x00000000200185f0        0x4 Core/Src/kanayama.o
- .bss.pre_th.9665
+ .bss.pre_th.9659
                 0x00000000200185f4        0x4 Core/Src/kanayama.o
- .bss.pre_y.9664
+ .bss.pre_y.9658
                 0x00000000200185f8        0x4 Core/Src/kanayama.o
  .bss.sw2       0x00000000200185fc        0x2 Core/Src/main.o
                 0x00000000200185fc                sw2
@@ -7571,15 +7571,15 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002001a578        0x4 Core/Src/sideSensor.o
  .bss.debug_now_Theta
                 0x000000002001a57c        0x4 Core/Src/sideSensor.o
- .bss.cnt.9661  0x000000002001a580        0x2 Core/Src/sideSensor.o
- .bss.flag.9664
+ .bss.cnt.9655  0x000000002001a580        0x2 Core/Src/sideSensor.o
+ .bss.flag.9658
                 0x000000002001a582        0x1 Core/Src/sideSensor.o
  *fill*         0x000000002001a583        0x1 
- .bss.pre_theta.9667
+ .bss.pre_theta.9661
                 0x000000002001a584        0x4 Core/Src/sideSensor.o
- .bss.continuous_cnt.9668
+ .bss.continuous_cnt.9662
                 0x000000002001a588        0x4 Core/Src/sideSensor.o
- .bss.pre_target_velocity.9782
+ .bss.pre_target_velocity.9776
                 0x000000002001a58c        0x4 Core/Src/sideSensor.o
  .bss.__sbrk_heap_end
                 0x000000002001a590        0x4 Core/Src/sysmem.o

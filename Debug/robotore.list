@@ -6738,9 +6738,6 @@ void updateTargetpoint()
 
 08003c24 <Error_XY_Debug>:
 
-	return Y_e;
-}*/
-
 void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
  8003c24:	b580      	push	{r7, lr}

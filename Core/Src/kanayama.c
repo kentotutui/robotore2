@@ -120,47 +120,6 @@ void updateTargetpoint()
 	}
 }
 
-/*float ErrorTheta(void)
-{
-	float Theta_e = 0;
-
-	float now_theta = getaddTheta();
-
-	Theta_e = target_Theta - now_theta;
-
-	return Theta_e;
-}*/
-
-/*float ErrorXcoordinates(void)
-{
-	float X_e = 0;
-
-	float now_theta = getaddTheta();
-	float cos_theta = cosf(now_theta);
-	float sin_theta = sinf(now_theta);
-
-	//if(now_theta == 0) now_theta = 0.00001;
-
-	X_e = (target_X_coordinate - CurrentXcoordinates()) * cos_theta + (target_Y_coordinate - CurrentYcoordinates()) * sin_theta;
-
-	return X_e;
-}*/
-
-/*float ErrorYcoordinates(void)
-{
-	float Y_e = 0;
-
-	float now_theta = getaddTheta();
-	float cos_theta = cosf(now_theta);
-	float sin_theta = sinf(now_theta);
-
-	//if(now_theta == 0) now_theta = 0.00001;
-
-	Y_e = -(target_X_coordinate - CurrentXcoordinates()) * sin_theta + (target_Y_coordinate - CurrentYcoordinates()) * cos_theta;
-
-	return Y_e;
-}*/
-
 void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 {
 	float X_e;

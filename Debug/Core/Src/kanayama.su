@@ -2,8 +2,8 @@ kanayama.c:30:6:CreateXYcoordinates	64	static
 kanayama.c:57:7:CurrentXcoordinates	24	static
 kanayama.c:77:7:CurrentYcoordinates	24	static
 kanayama.c:97:6:updateTargetpoint	8	static
-kanayama.c:164:6:Error_XY_Debug	48	static
-kanayama.c:185:6:Velocity_Angularvelocity	32	static
-kanayama.c:195:7:getTargetpoint_X	4	static
-kanayama.c:200:7:getTargetpoint_Y	4	static
-kanayama.c:205:7:getTargetpoint_Theta	4	static
+kanayama.c:123:6:Error_XY_Debug	48	static
+kanayama.c:144:6:Velocity_Angularvelocity	32	static
+kanayama.c:154:7:getTargetpoint_X	4	static
+kanayama.c:159:7:getTargetpoint_Y	4	static
+kanayama.c:164:7:getTargetpoint_Theta	4	static
