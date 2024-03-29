@@ -136,20 +136,20 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	now_error_y = Y_e;
 	now_error_theta = Theta_e;
 
-	//saveDebug(X_e);
-	//saveDebug(Y_e);
-	//saveDebug(Theta_e);
+	saveDebug(X_e);
+	saveDebug(Y_e);
+	saveDebug(Theta_e);
 }
 
 void Velocity_Angularvelocity()
 {
-	float kx = 1.0, ky = 1.0, kt = 1.0;//Kanayama Control Methodゲイン値調整
+	float kx = 0.1, ky = 10, kt = 10;//Kanayama Control Methodゲイン値調整
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = target_Theta;
 
-	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;
-	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));
+	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//Velocity計算
+	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//Angularvelocity計算
 
 	saveDebug(Output_velocity);
 	saveDebug(Output_angularvelocity);
