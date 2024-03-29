@@ -641,7 +641,8 @@ int main(void)
 					  }*/
 
 
-					  printf("TargetVelocity, CurrentVelocity\r\n");
+					  //printf("TargetVelocity, CurrentVelocity\r\n");
+					  printf("Now_X, Now_Y, Now_Theta, Velocity, Angularvelocity\r\n");
 					  uint16_t size = getDebugLogSize();
 
 					  /*
