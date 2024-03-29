@@ -148,7 +148,7 @@ void Velocity_Angularvelocity()
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = target_Theta;
 
-	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_theta;
+	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));
 
 	saveDebug(Output_velocity);
