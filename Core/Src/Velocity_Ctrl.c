@@ -33,7 +33,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 1500, ki = 20000, kd = 0.0;//kp = 1550, ki = 20000, kd = 0.0;
+	float kp = 1500, ki = 20000, kd = 0.0;
 
 	float diff = 0.;
 	static float pre_diff = 0.;
