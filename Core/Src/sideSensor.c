@@ -138,6 +138,7 @@ void running(void)
 	runningInit();
 	startLineTrace();
 	startVelocityControl();
+	startAngleControl();
 	setTargetVelocity(min_velocity);
 
 	while(goal_flag == false){
