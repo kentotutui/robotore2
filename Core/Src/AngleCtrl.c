@@ -25,7 +25,7 @@ void calculateAngleControlFlip(void){
 
 	float diff = 0.;
 	static float pre_diff = 0.;
-	float current_Angle = getTheta10mm();
+	float current_Angle = getaddTheta();
 	float variable_Angle = getOutput_angularvelocity();
 
 	if(Angle_control_enable_flag == 1){

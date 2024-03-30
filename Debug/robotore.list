@@ -1305,8 +1305,8 @@ void calculateAngleControlFlip(void){
  8000f9c:	f04f 0300 	mov.w	r3, #0
  8000fa0:	613b      	str	r3, [r7, #16]
 	static float pre_diff = 0.;
-	float current_Angle = getTheta10mm();
- 8000fa2:	f000 fc57 	bl	8001854 <getTheta10mm>
+	float current_Angle = getaddTheta();
+ 8000fa2:	f000 fc73 	bl	800188c <getaddTheta>
  8000fa6:	ed87 0a03 	vstr	s0, [r7, #12]
 	float variable_Angle = getOutput_angularvelocity();
  8000faa:	f002 fea7 	bl	8003cfc <getOutput_angularvelocity>
@@ -6656,85 +6656,84 @@ void Velocity_Angularvelocity(void)
  8003ba2:	ed2d 8b02 	vpush	{d8}
  8003ba6:	b086      	sub	sp, #24
  8003ba8:	af00      	add	r7, sp, #0
-	float kx = 0.003, ky = 0.1, kt = 0.1;//Kanayama Control Methodゲイン値調整
- 8003baa:	4b30      	ldr	r3, [pc, #192]	; (8003c6c <Velocity_Angularvelocity+0xcc>)
- 8003bac:	617b      	str	r3, [r7, #20]
- 8003bae:	4b30      	ldr	r3, [pc, #192]	; (8003c70 <Velocity_Angularvelocity+0xd0>)
- 8003bb0:	613b      	str	r3, [r7, #16]
- 8003bb2:	4b2f      	ldr	r3, [pc, #188]	; (8003c70 <Velocity_Angularvelocity+0xd0>)
- 8003bb4:	60fb      	str	r3, [r7, #12]
+	float kx = 0.0, ky = 0.0, kt = 0.0;//Kanayama Control Methodゲイン値調整
+ 8003baa:	f04f 0300 	mov.w	r3, #0
+ 8003bae:	617b      	str	r3, [r7, #20]
+ 8003bb0:	f04f 0300 	mov.w	r3, #0
+ 8003bb4:	613b      	str	r3, [r7, #16]
+ 8003bb6:	f04f 0300 	mov.w	r3, #0
+ 8003bba:	60fb      	str	r3, [r7, #12]
 
 	float Target_velocity = getTargetVelocity();
- 8003bb6:	f7ff fd89 	bl	80036cc <getTargetVelocity>
- 8003bba:	ed87 0a02 	vstr	s0, [r7, #8]
+ 8003bbc:	f7ff fd86 	bl	80036cc <getTargetVelocity>
+ 8003bc0:	ed87 0a02 	vstr	s0, [r7, #8]
 	//float Target_angularvelocity = target_Theta;
 	float Target_angularvelocity = now_error_theta;
- 8003bbe:	4b2d      	ldr	r3, [pc, #180]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
- 8003bc0:	681b      	ldr	r3, [r3, #0]
- 8003bc2:	607b      	str	r3, [r7, #4]
+ 8003bc4:	4b2b      	ldr	r3, [pc, #172]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
+ 8003bc6:	681b      	ldr	r3, [r3, #0]
+ 8003bc8:	607b      	str	r3, [r7, #4]
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
- 8003bc4:	4b2b      	ldr	r3, [pc, #172]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
- 8003bc6:	edd3 7a00 	vldr	s15, [r3]
- 8003bca:	eeb0 0a67 	vmov.f32	s0, s15
- 8003bce:	f007 f967 	bl	800aea0 <cosf>
- 8003bd2:	eeb0 7a40 	vmov.f32	s14, s0
- 8003bd6:	edd7 7a02 	vldr	s15, [r7, #8]
- 8003bda:	ee27 7a27 	vmul.f32	s14, s14, s15
- 8003bde:	4b26      	ldr	r3, [pc, #152]	; (8003c78 <Velocity_Angularvelocity+0xd8>)
- 8003be0:	edd3 6a00 	vldr	s13, [r3]
- 8003be4:	edd7 7a05 	vldr	s15, [r7, #20]
- 8003be8:	ee66 7aa7 	vmul.f32	s15, s13, s15
- 8003bec:	ee77 7a27 	vadd.f32	s15, s14, s15
- 8003bf0:	4b22      	ldr	r3, [pc, #136]	; (8003c7c <Velocity_Angularvelocity+0xdc>)
- 8003bf2:	edc3 7a00 	vstr	s15, [r3]
+ 8003bca:	4b2a      	ldr	r3, [pc, #168]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
+ 8003bcc:	edd3 7a00 	vldr	s15, [r3]
+ 8003bd0:	eeb0 0a67 	vmov.f32	s0, s15
+ 8003bd4:	f007 f964 	bl	800aea0 <cosf>
+ 8003bd8:	eeb0 7a40 	vmov.f32	s14, s0
+ 8003bdc:	edd7 7a02 	vldr	s15, [r7, #8]
+ 8003be0:	ee27 7a27 	vmul.f32	s14, s14, s15
+ 8003be4:	4b24      	ldr	r3, [pc, #144]	; (8003c78 <Velocity_Angularvelocity+0xd8>)
+ 8003be6:	edd3 6a00 	vldr	s13, [r3]
+ 8003bea:	edd7 7a05 	vldr	s15, [r7, #20]
+ 8003bee:	ee66 7aa7 	vmul.f32	s15, s13, s15
+ 8003bf2:	ee77 7a27 	vadd.f32	s15, s14, s15
+ 8003bf6:	4b21      	ldr	r3, [pc, #132]	; (8003c7c <Velocity_Angularvelocity+0xdc>)
+ 8003bf8:	edc3 7a00 	vstr	s15, [r3]
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
- 8003bf6:	4b22      	ldr	r3, [pc, #136]	; (8003c80 <Velocity_Angularvelocity+0xe0>)
- 8003bf8:	ed93 7a00 	vldr	s14, [r3]
- 8003bfc:	edd7 7a04 	vldr	s15, [r7, #16]
- 8003c00:	ee27 8a27 	vmul.f32	s16, s14, s15
- 8003c04:	4b1b      	ldr	r3, [pc, #108]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
- 8003c06:	edd3 7a00 	vldr	s15, [r3]
- 8003c0a:	eeb0 0a67 	vmov.f32	s0, s15
- 8003c0e:	f007 f987 	bl	800af20 <sinf>
- 8003c12:	eeb0 7a40 	vmov.f32	s14, s0
- 8003c16:	edd7 7a03 	vldr	s15, [r7, #12]
- 8003c1a:	ee67 7a27 	vmul.f32	s15, s14, s15
- 8003c1e:	ee38 7a27 	vadd.f32	s14, s16, s15
- 8003c22:	edd7 7a02 	vldr	s15, [r7, #8]
- 8003c26:	ee27 7a27 	vmul.f32	s14, s14, s15
- 8003c2a:	edd7 7a01 	vldr	s15, [r7, #4]
- 8003c2e:	ee77 7a27 	vadd.f32	s15, s14, s15
- 8003c32:	4b14      	ldr	r3, [pc, #80]	; (8003c84 <Velocity_Angularvelocity+0xe4>)
- 8003c34:	edc3 7a00 	vstr	s15, [r3]
+ 8003bfc:	4b20      	ldr	r3, [pc, #128]	; (8003c80 <Velocity_Angularvelocity+0xe0>)
+ 8003bfe:	ed93 7a00 	vldr	s14, [r3]
+ 8003c02:	edd7 7a04 	vldr	s15, [r7, #16]
+ 8003c06:	ee27 8a27 	vmul.f32	s16, s14, s15
+ 8003c0a:	4b1a      	ldr	r3, [pc, #104]	; (8003c74 <Velocity_Angularvelocity+0xd4>)
+ 8003c0c:	edd3 7a00 	vldr	s15, [r3]
+ 8003c10:	eeb0 0a67 	vmov.f32	s0, s15
+ 8003c14:	f007 f984 	bl	800af20 <sinf>
+ 8003c18:	eeb0 7a40 	vmov.f32	s14, s0
+ 8003c1c:	edd7 7a03 	vldr	s15, [r7, #12]
+ 8003c20:	ee67 7a27 	vmul.f32	s15, s14, s15
+ 8003c24:	ee38 7a27 	vadd.f32	s14, s16, s15
+ 8003c28:	edd7 7a02 	vldr	s15, [r7, #8]
+ 8003c2c:	ee27 7a27 	vmul.f32	s14, s14, s15
+ 8003c30:	edd7 7a01 	vldr	s15, [r7, #4]
+ 8003c34:	ee77 7a27 	vadd.f32	s15, s14, s15
+ 8003c38:	4b12      	ldr	r3, [pc, #72]	; (8003c84 <Velocity_Angularvelocity+0xe4>)
+ 8003c3a:	edc3 7a00 	vstr	s15, [r3]
 
 	if(getMaxvelocity() <= Output_velocity){
- 8003c38:	f002 f8aa 	bl	8005d90 <getMaxvelocity>
- 8003c3c:	eeb0 7a40 	vmov.f32	s14, s0
- 8003c40:	4b0e      	ldr	r3, [pc, #56]	; (8003c7c <Velocity_Angularvelocity+0xdc>)
- 8003c42:	edd3 7a00 	vldr	s15, [r3]
- 8003c46:	eeb4 7ae7 	vcmpe.f32	s14, s15
- 8003c4a:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8003c4e:	d900      	bls.n	8003c52 <Velocity_Angularvelocity+0xb2>
+ 8003c3e:	f002 f8a7 	bl	8005d90 <getMaxvelocity>
+ 8003c42:	eeb0 7a40 	vmov.f32	s14, s0
+ 8003c46:	4b0d      	ldr	r3, [pc, #52]	; (8003c7c <Velocity_Angularvelocity+0xdc>)
+ 8003c48:	edd3 7a00 	vldr	s15, [r3]
+ 8003c4c:	eeb4 7ae7 	vcmpe.f32	s14, s15
+ 8003c50:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8003c54:	d900      	bls.n	8003c58 <Velocity_Angularvelocity+0xb8>
 		Output_velocity_safe = getMaxvelocity();
 	}
 	//saveDebug(Output_velocity);
 	//saveDebug(Output_angularvelocity);
 }
- 8003c50:	e006      	b.n	8003c60 <Velocity_Angularvelocity+0xc0>
+ 8003c56:	e006      	b.n	8003c66 <Velocity_Angularvelocity+0xc6>
 		Output_velocity_safe = getMaxvelocity();
- 8003c52:	f002 f89d 	bl	8005d90 <getMaxvelocity>
- 8003c56:	eef0 7a40 	vmov.f32	s15, s0
- 8003c5a:	4b0b      	ldr	r3, [pc, #44]	; (8003c88 <Velocity_Angularvelocity+0xe8>)
- 8003c5c:	edc3 7a00 	vstr	s15, [r3]
+ 8003c58:	f002 f89a 	bl	8005d90 <getMaxvelocity>
+ 8003c5c:	eef0 7a40 	vmov.f32	s15, s0
+ 8003c60:	4b09      	ldr	r3, [pc, #36]	; (8003c88 <Velocity_Angularvelocity+0xe8>)
+ 8003c62:	edc3 7a00 	vstr	s15, [r3]
 }
- 8003c60:	bf00      	nop
- 8003c62:	3718      	adds	r7, #24
- 8003c64:	46bd      	mov	sp, r7
- 8003c66:	ecbd 8b02 	vpop	{d8}
- 8003c6a:	bd80      	pop	{r7, pc}
- 8003c6c:	3b449ba6 	.word	0x3b449ba6
- 8003c70:	3dcccccd 	.word	0x3dcccccd
+ 8003c66:	bf00      	nop
+ 8003c68:	3718      	adds	r7, #24
+ 8003c6a:	46bd      	mov	sp, r7
+ 8003c6c:	ecbd 8b02 	vpop	{d8}
+ 8003c70:	bd80      	pop	{r7, pc}
+ 8003c72:	bf00      	nop
  8003c74:	200185e0 	.word	0x200185e0
  8003c78:	200185d8 	.word	0x200185d8
  8003c7c:	200185e4 	.word	0x200185e4
