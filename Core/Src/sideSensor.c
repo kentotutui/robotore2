@@ -674,6 +674,11 @@ float getMaxvelocity()
 	return max_velocity;
 }
 
+float getMinvelocity()
+{
+	return min_velocity;
+}
+
 //↓sidesensorjob
 bool getSideSensorStatusL()
 {

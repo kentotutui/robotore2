@@ -29,5 +29,6 @@ sideSensor.c:656:6:setAccDec	16	static
 sideSensor.c:662:6:setStraightRadius	16	static
 sideSensor.c:667:7:getRunMode	4	static
 sideSensor.c:672:7:getMaxvelocity	4	static
-sideSensor.c:678:6:getSideSensorStatusL	4	static
-sideSensor.c:683:6:getSideSensorStatusR	4	static
+sideSensor.c:677:7:getMinvelocity	4	static
+sideSensor.c:683:6:getSideSensorStatusL	4	static
+sideSensor.c:688:6:getSideSensorStatusR	4	static

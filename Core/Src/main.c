@@ -125,7 +125,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       updateAnalogSensor();
 
       calculateLineFollowingTermFlip();
-      Velocity_Angularvelocity();
+      //Velocity_Angularvelocity();
       calculateVelocityControlFlip();
       calculateAngleControlFlip();
       lineTraceFlip();

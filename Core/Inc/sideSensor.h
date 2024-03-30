@@ -60,5 +60,6 @@ void setAccDec(float, float);
 void setStraightRadius(float);
 float getRunMode();
 float getMaxvelocity();
+float getMinvelocity();
 
 #endif /* INC_SIDESENSOR_H_ */

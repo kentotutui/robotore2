@@ -120,7 +120,7 @@ void updateTargetpoint()
 		target_Y_coordinate = Y_table[targetpoint_table_idx];
 		target_Theta = Theta_table[targetpoint_table_idx];
 
-		setTargetVelocity(getOutput_velocity());
+		setTargetVelocity(0.5);
 	}
 }
 
