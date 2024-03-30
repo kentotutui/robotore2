@@ -10,7 +10,7 @@
 static float velocity_table[2000];
 
 //↓モータ特性
-#define WHEEL_RADIUS 0.01125 //[m]
+#define WHEEL_RADIUS 0.01125 //[mm]
 #define AIRCRAFT_MASS 0.139 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
@@ -212,7 +212,7 @@ void runningFlip()
 {
 	if(run_flag == true){
 		setLED('G');
-		updateTargetVelocity();//速度の更新
+		//updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
 		if(isTargetDistance(30) == true){
@@ -661,6 +661,16 @@ void setAccDec(float acc, float dec)
 void setStraightRadius(float radius)
 {
 	straight_radius = radius;
+}
+
+float getRunMode()
+{
+	return mode;
+}
+
+float getMaxvelocity()
+{
+	return max_velocity;
 }
 
 //↓sidesensorjob

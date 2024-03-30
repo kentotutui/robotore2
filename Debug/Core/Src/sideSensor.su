@@ -27,5 +27,7 @@ sideSensor.c:644:6:getTargetUpdateflag	4	static
 sideSensor.c:649:6:setVelocityRange	16	static
 sideSensor.c:655:6:setAccDec	16	static
 sideSensor.c:661:6:setStraightRadius	16	static
-sideSensor.c:667:6:getSideSensorStatusL	4	static
-sideSensor.c:672:6:getSideSensorStatusR	4	static
+sideSensor.c:666:7:getRunMode	4	static
+sideSensor.c:671:7:getMaxvelocity	4	static
+sideSensor.c:677:6:getSideSensorStatusL	4	static
+sideSensor.c:682:6:getSideSensorStatusR	4	static

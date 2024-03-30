@@ -9,6 +9,7 @@
 #include "LineChase.h"
 
 #define DELTA_T 0.001
+#define HALF_TREAD 0.061//[mm]
 
 static int8_t line_trace_enable_flag;
 static uint8_t i_clear_flag;
@@ -61,9 +62,12 @@ void lineTraceFlip(void)
 {
 	if(line_trace_enable_flag == 1){
 
+		float motor_l;
+		float motor_r;
+
 		float velocity_control_term = getVelocityControlTerm();
 
-		float limit = MAX_COUNTER_PERIOD * 0.85;
+		/*float limit = MAX_COUNTER_PERIOD * 0.85;
 
 		if(velocity_control_term >= limit) velocity_control_term = limit;
 		else if(velocity_control_term <= -limit) velocity_control_term = -limit;
@@ -77,12 +81,19 @@ void lineTraceFlip(void)
 		}
 
 		velocity_control_term -= exceeded;
-		line_following_term += exceeded;
+		line_following_term += exceeded;*/
 
 
 
-		float motor_l = velocity_control_term + line_following_term;
-		float motor_r = velocity_control_term - line_following_term;
+		if(getRunMode() == 1){
+		    motor_l = velocity_control_term + line_following_term;//ライントレース時のモータ出力
+			motor_r = velocity_control_term - line_following_term;
+		}
+		else if(getRunMode() == 5)
+		{
+			motor_l = velocity_control_term + HALF_TREAD * getOutput_angularvelocity();
+			motor_r = velocity_control_term - HALF_TREAD * getOutput_angularvelocity();
+		}
 
 		//float motor_l = line_following_term;
 		//float motor_r = -line_following_term;
@@ -148,4 +159,3 @@ bool getCouseOutFlag()
 {
 	return dark_flag;
 }
-

@@ -1,7 +1,7 @@
-LineChase.c:29:6:calculateLineFollowingTermFlip	48	static
-LineChase.c:60:6:lineTraceFlip	32	static
-LineChase.c:112:6:startLineTrace	4	static
-LineChase.c:118:6:stopLineTrace	4	static
-LineChase.c:125:6:checkCourseOut	16	static
-LineChase.c:141:6:debugmotor	16	static
-LineChase.c:147:6:getCouseOutFlag	4	static
+LineChase.c:30:6:calculateLineFollowingTermFlip	48	static
+LineChase.c:61:6:lineTraceFlip	32	static
+LineChase.c:123:6:startLineTrace	4	static
+LineChase.c:129:6:stopLineTrace	4	static
+LineChase.c:136:6:checkCourseOut	16	static
+LineChase.c:152:6:debugmotor	16	static
+LineChase.c:158:6:getCouseOutFlag	4	static

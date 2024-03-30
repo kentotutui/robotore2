@@ -58,5 +58,7 @@ void CreateXYcoordinates();
 void setVelocityRange(float, float);
 void setAccDec(float, float);
 void setStraightRadius(float);
+float getRunMode();
+float getMaxvelocity();
 
 #endif /* INC_SIDESENSOR_H_ */

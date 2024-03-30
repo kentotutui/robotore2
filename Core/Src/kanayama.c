@@ -27,6 +27,8 @@ static float now_error_theta;
 static float Output_velocity;
 static float Output_angularvelocity;
 
+static float Output_velocity_safe;
+
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -117,6 +119,8 @@ void updateTargetpoint()
 		target_X_coordinate = X_table[targetpoint_table_idx];
 		target_Y_coordinate = Y_table[targetpoint_table_idx];
 		target_Theta = Theta_table[targetpoint_table_idx];
+
+		setTargetVelocity(getOutput_velocity());
 	}
 }
 
@@ -143,7 +147,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 void Velocity_Angularvelocity(void)
 {
-	float kx = 0.003, ky = 0.05, kt = 0.05;//Kanayama Control Methodゲイン値調整
+	float kx = 0.003, ky = 0.01, kt = 0.01;//Kanayama Control Methodゲイン値調整
 
 	float Target_velocity = getTargetVelocity();
 	//float Target_angularvelocity = target_Theta;
@@ -152,6 +156,9 @@ void Velocity_Angularvelocity(void)
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
 
+	if(getMaxvelocity() >= Output_velocity){
+		Output_velocity_safe = getMaxvelocity();
+	}
 	//saveDebug(Output_velocity);
 	//saveDebug(Output_angularvelocity);
 }
@@ -173,7 +180,7 @@ float getTargetpoint_Theta()
 
 float getOutput_velocity()
 {
-	return Output_velocity;
+	return Output_velocity_safe;
 }
 
 float getOutput_angularvelocity()

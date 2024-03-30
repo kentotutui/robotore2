@@ -134,7 +134,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       suctionmotorCtrlFlip();
       updateSideSensorStatus();
 
-      checkCourseOut();
+      //checkCourseOut();
 
       //resetEncoderCnt();
    }
@@ -352,7 +352,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(0.5, 0.5);
+					      setVelocityRange(0.5, 0.8);
 
 						  setsuctionMotor(500);
 
