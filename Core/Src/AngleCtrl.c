@@ -15,7 +15,7 @@ static uint16_t i_clear_flag;
 static float Angle_diff;
 
 static float Angle_control_term;
-static float variable_Angle = 0;
+//static float variable_Angle;
 
 void calculateAngleControlFlip(void){
 	float p, d;
@@ -26,6 +26,7 @@ void calculateAngleControlFlip(void){
 	float diff = 0.;
 	static float pre_diff = 0.;
 	float current_Angle = getTheta10mm();
+	float variable_Angle = getOutput_angularvelocity();
 
 	if(Angle_control_enable_flag == 1){
 		if(i_clear_flag == 1){
@@ -33,7 +34,7 @@ void calculateAngleControlFlip(void){
 			i_clear_flag = 0;
 		}
 
-		diff = setvariableAngle() - current_Angle;
+		diff = variable_Angle - current_Angle;
 
 		Angle_diff = diff;
 
@@ -52,10 +53,6 @@ void calculateAngleControlFlip(void){
 float getAngleControlTerm(void)
 {
 	return Angle_control_term;
-}
-
-float setvariableAngle(void){
-	return variable_Angle;
 }
 
 void startAngleControl(void)

@@ -9,7 +9,6 @@
 #include "LineChase.h"
 
 #define DELTA_T 0.001
-#define HALF_TREAD 0.061//[mm]
 
 static int8_t line_trace_enable_flag;
 static uint8_t i_clear_flag;
@@ -91,8 +90,8 @@ void lineTraceFlip(void)
 		}
 		else if(getRunMode() == 5)
 		{
-			motor_l = velocity_control_term + HALF_TREAD * getOutput_angularvelocity();
-			motor_r = velocity_control_term - HALF_TREAD * getOutput_angularvelocity();
+			motor_l = velocity_control_term + getAngleControlTerm();
+			motor_r = velocity_control_term - getAngleControlTerm();
 		}
 
 		//float motor_l = line_following_term;

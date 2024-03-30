@@ -17,7 +17,6 @@
 void calculateAngleControlFlip(void);
 
 float getAngleControlTerm(void);
-float setvariableAngle(void);
 
 void startAngleControl(void);
 void stopAngleControl(void);
