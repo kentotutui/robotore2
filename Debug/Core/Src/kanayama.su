@@ -7,3 +7,5 @@ kanayama.c:144:6:Velocity_Angularvelocity	40	static
 kanayama.c:159:7:getTargetpoint_X	4	static
 kanayama.c:164:7:getTargetpoint_Y	4	static
 kanayama.c:169:7:getTargetpoint_Theta	4	static
+kanayama.c:174:7:getOutput_velocity	4	static
+kanayama.c:179:7:getOutput_angularvelocity	4	static

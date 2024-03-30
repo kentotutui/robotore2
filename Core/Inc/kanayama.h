@@ -25,10 +25,12 @@ float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 void updateTargetpoint();
 void Error_XY_Debug(const float, const float, const float);
-void Velocity_Angularvelocity();
+void Velocity_Angularvelocity(void);
 
 float getTargetpoint_X();
 float getTargetpoint_Y();
 float getTargetpoint_Theta();
+float getOutput_velocity();
+float getOutput_angularvelocity();
 
 #endif /* INC_KANAYAMA_H_ */

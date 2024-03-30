@@ -141,7 +141,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	saveDebug(Theta_e);
 }
 
-void Velocity_Angularvelocity()
+void Velocity_Angularvelocity(void)
 {
 	float kx = 0.003, ky = 0.05, kt = 0.05;//Kanayama Control Methodゲイン値調整
 
@@ -152,8 +152,8 @@ void Velocity_Angularvelocity()
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
 
-	saveDebug(Output_velocity);
-	saveDebug(Output_angularvelocity);
+	//saveDebug(Output_velocity);
+	//saveDebug(Output_angularvelocity);
 }
 
 float getTargetpoint_X()
@@ -169,4 +169,14 @@ float getTargetpoint_Y()
 float getTargetpoint_Theta()
 {
 	return target_Theta;
+}
+
+float getOutput_velocity()
+{
+	return Output_velocity;
+}
+
+float getOutput_angularvelocity()
+{
+	return Output_angularvelocity;
 }
