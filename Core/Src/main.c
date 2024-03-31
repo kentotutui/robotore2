@@ -403,7 +403,7 @@ int main(void)
 
 						  setVelocityRange(0.5, 0.5);
 
-						  //setsuctionMotor(500);
+						  setsuctionMotor(500);
 
 						  HAL_Delay(1500);
 
@@ -624,10 +624,10 @@ int main(void)
 
 
 
-					  /*printf("Distance, Theta\r\n");
+					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }*/
+					  }
 
 
 					  /*
