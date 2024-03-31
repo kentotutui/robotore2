@@ -395,15 +395,15 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-					      clearspeedcount();
-
 						  IMU_average();
+
+						  clearspeedcount();
 
 						  setRunMode(5);
 
 						  setVelocityRange(0.5, 0.5);
 
-						  setsuctionMotor(500);
+						  //setsuctionMotor(500);
 
 						  HAL_Delay(1500);
 

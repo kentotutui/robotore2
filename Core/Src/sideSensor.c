@@ -215,8 +215,9 @@ void runningFlip()
 		setLED('G');
 		//updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
+		setTargetVelocity(0.5);
 
-		if(isTargetDistance(30) == true){
+		if(isTargetDistance(10) == true){
 			saveLog();
 
 			if(isContinuousCurvature() == true){
