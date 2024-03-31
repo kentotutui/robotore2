@@ -182,6 +182,7 @@ void running(void)
 						  stopLogging();
 						  stopVelocityUpdate();
 						  stopTargetUpdate();
+						  stopAngleControl();
 						  pattern = 20;
 					  }
 
@@ -204,8 +205,18 @@ void running(void)
 			stopLogging();
 			stopVelocityUpdate();
 			stopTargetUpdate();
+			stopAngleControl();
 		    pattern = 20;
 	    }
+
+		if(getTotalDistance() >= 1500)
+		{
+			stopLogging();
+			stopVelocityUpdate();
+			stopTargetUpdate();
+			stopAngleControl();
+			pattern = 20;
+		}
 	}
 }
 
