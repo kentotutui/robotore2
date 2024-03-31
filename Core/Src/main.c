@@ -304,7 +304,7 @@ int main(void)
 			  case 0:
 				  setLED('W');
 				  setLED2('R');
-				  printf("0\r\n");
+				  //printf("0\r\n");
 
 				  if(running_flag == true){
 
@@ -613,7 +613,7 @@ int main(void)
 			  case 13:
 				  setLED('M');
 				  setLED2('A');
-				  printf("6\r\n");
+				  //printf("6\r\n");
 
 				  if(running_flag == true){
 					  loadDistance();
@@ -622,12 +622,11 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-
-
+					  /*
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }
+					  }*/
 
 
 					  /*
