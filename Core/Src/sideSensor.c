@@ -208,15 +208,6 @@ void running(void)
 			stopAngleControl();
 		    pattern = 20;
 	    }
-
-		if(getTotalDistance() >= 1500)
-		{
-			stopLogging();
-			stopVelocityUpdate();
-			stopTargetUpdate();
-			stopAngleControl();
-			pattern = 20;
-		}
 	}
 }
 
@@ -224,9 +215,8 @@ void runningFlip()
 {
 	if(run_flag == true){
 		setLED('G');
-		//updateTargetVelocity();//速度の更新
+		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
-		setTargetVelocity(0.5);
 
 		if(isTargetDistance(10) == true){
 			saveLog();
@@ -348,16 +338,15 @@ void saveLog(){
 		debug_now_X = CurrentXcoordinates();
 		debug_now_Y = CurrentYcoordinates();
 		debug_now_Theta = getaddTheta();
-		//saveDebug(getTargetpoint_X());//目標のx座標
-		//saveDebug(getTargetpoint_Y());//目標のy座標
-		//saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
+		saveDebug(getTargetpoint_X());//目標のx座標
+		saveDebug(getTargetpoint_Y());//目標のy座標
+		saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
 		saveDebug(debug_now_X);//現在のx座標
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
-		//Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
-		//Velocity_Angularvelocity();//速度・車体角速度計算
-		saveDebug(getCurrentVelocity());
-		//saveDebug(getOutput_angularvelocity());
+		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
+		saveDebug(getOutput_velocity());
+		saveDebug(getOutput_angularvelocity());
 	}
 }
 

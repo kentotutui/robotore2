@@ -84,18 +84,18 @@ void lineTraceFlip(void)
 
 
 
-		/*if(getRunMode() == 1){
+		if(getRunMode() == 1){
 		    motor_l = velocity_control_term + line_following_term;//ライントレース時のモータ出力
 			motor_r = velocity_control_term - line_following_term;
 		}
 		else if(getRunMode() == 5)
 		{
-			motor_l = velocity_control_term + getAngleControlTerm();
-			motor_r = velocity_control_term - getAngleControlTerm();
-		}*/
+			motor_l = velocity_control_term - getAngleControlTerm();
+			motor_r = velocity_control_term + getAngleControlTerm();
+		}
 
-		motor_l = velocity_control_term - getAngleControlTerm();
-		motor_r = velocity_control_term + getAngleControlTerm();
+		//motor_l = velocity_control_term - getAngleControlTerm();
+		//motor_r = velocity_control_term + getAngleControlTerm();
 
 		//float motor_l = line_following_term;
 		//float motor_r = -line_following_term;

@@ -108,7 +108,7 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}*/
-		if(getDistance30mm() >= 30){
+		if(getDistance30mm() >= 10){
 			//ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
 			clearDistance30mm();
@@ -154,9 +154,10 @@ void Velocity_Angularvelocity(void)
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
 
+	/*
 	if(getMaxvelocity() <= Output_velocity){
 		Output_velocity_safe = getMaxvelocity();
-	}
+	}*/
 	//saveDebug(Output_velocity);
 	//saveDebug(Output_angularvelocity);
 }
@@ -178,7 +179,8 @@ float getTargetpoint_Theta()
 
 float getOutput_velocity()
 {
-	return Output_velocity_safe;
+	//return Output_velocity_safe;
+	return Output_velocity;
 }
 
 float getOutput_angularvelocity()
