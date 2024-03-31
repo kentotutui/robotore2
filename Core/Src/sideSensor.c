@@ -348,16 +348,16 @@ void saveLog(){
 		debug_now_X = CurrentXcoordinates();
 		debug_now_Y = CurrentYcoordinates();
 		debug_now_Theta = getaddTheta();
-		saveDebug(getTargetpoint_X());//目標のx座標
-		saveDebug(getTargetpoint_Y());//目標のy座標
-		saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
+		//saveDebug(getTargetpoint_X());//目標のx座標
+		//saveDebug(getTargetpoint_Y());//目標のy座標
+		//saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
 		saveDebug(debug_now_X);//現在のx座標
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
-		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
+		//Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
 		//Velocity_Angularvelocity();//速度・車体角速度計算
-		saveDebug(getOutput_velocity());
-		saveDebug(getOutput_angularvelocity());
+		saveDebug(getCurrentVelocity());
+		//saveDebug(getOutput_angularvelocity());
 	}
 }
 
@@ -375,6 +375,8 @@ void stopLogging()
 
 void startTargetUpdate()
 {
+	clearDistance10mm();
+	clearTheta10mm();
 	clearaddTheta();
 	target_update_flag = true;
 }
