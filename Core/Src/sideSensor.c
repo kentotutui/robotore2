@@ -208,6 +208,18 @@ void running(void)
 			stopAngleControl();
 		    pattern = 20;
 	    }
+
+		if(mode == 5)
+		{
+			if(getTotalDistance() >= 4750)
+			{
+				stopLogging();
+				stopVelocityUpdate();
+				stopTargetUpdate();
+				stopAngleControl();
+				pattern = 20;
+			}
+		}
 	}
 }
 

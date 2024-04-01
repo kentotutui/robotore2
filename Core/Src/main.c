@@ -642,20 +642,19 @@ int main(void)
 
 
 					  //printf("TargetVelocity, CurrentVelocity\r\n");
-					  printf("Target_X, Target_Y, Target_Theta, Now_X, Now_Y, Now_Theta, Error_X, Error_Y, Errr_Theta, Velocity, Angularvelocity\r\n");
+					  //printf("Target_X, Target_Y, Target_Theta, Now_X, Now_Y, Now_Theta, Error_X, Error_Y, Errr_Theta, Velocity, Angularvelocity\r\n");
 					  uint16_t size = getDebugLogSize();
 
 					  /*
 					  for(uint16_t i = 0; i < size; i = i+9){
 						 printf("%f, %f, %f, %f, %f, %f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8));
 					  }*/
-
 					  for(uint16_t i = 0; i < size; i = i+11){
-						 printf("%f, %f, %f | %f, %f, %f | %f, %f, %f | %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8), getDebugLog(i + 9), getDebugLog(i + 10));
+						 printf("%f, %f, %f , %f, %f, %f , %f, %f, %f , %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8), getDebugLog(i + 9), getDebugLog(i + 10));
 					  }
 					  /*
-					  for(uint16_t i = 0; i < size; i = i+4){
-						 printf("%f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3));
+					  for(uint16_t i = 0; i < size; i = i+3){
+						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2));
 					  }*/
 
 					  /*
