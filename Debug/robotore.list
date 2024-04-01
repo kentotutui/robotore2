@@ -1293,7 +1293,7 @@ void calculateAngleControlFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 6000, ki = 60000, kd = 0.0;
+	float kp = 8000, ki = 80000, kd = 0.0;
  8000f8e:	4b48      	ldr	r3, [pc, #288]	; (80010b0 <calculateAngleControlFlip+0x128>)
  8000f90:	61fb      	str	r3, [r7, #28]
  8000f92:	4b48      	ldr	r3, [pc, #288]	; (80010b4 <calculateAngleControlFlip+0x12c>)
@@ -1423,8 +1423,8 @@ void calculateAngleControlFlip(void){
  80010a4:	f3af 8000 	nop.w
  80010a8:	d2f1a9fc 	.word	0xd2f1a9fc
  80010ac:	3f50624d 	.word	0x3f50624d
- 80010b0:	45bb8000 	.word	0x45bb8000
- 80010b4:	476a6000 	.word	0x476a6000
+ 80010b0:	45fa0000 	.word	0x45fa0000
+ 80010b4:	479c4000 	.word	0x479c4000
  80010b8:	2000022c 	.word	0x2000022c
  80010bc:	2000022e 	.word	0x2000022e
  80010c0:	20000238 	.word	0x20000238
@@ -6742,63 +6742,64 @@ void Velocity_Angularvelocity(void)
  8003c22:	ed2d 8b02 	vpush	{d8}
  8003c26:	b086      	sub	sp, #24
  8003c28:	af00      	add	r7, sp, #0
-	float kx = 0.003, ky = 0.0, kt = 0.0;//Kanayama Control Methodゲイン値調整
- 8003c2a:	4b27      	ldr	r3, [pc, #156]	; (8003cc8 <Velocity_Angularvelocity+0xa8>)
+	float kx = 0.003, ky = 0.01, kt = 0.01;//Kanayama Control Methodゲイン値調整
+ 8003c2a:	4b26      	ldr	r3, [pc, #152]	; (8003cc4 <Velocity_Angularvelocity+0xa4>)
  8003c2c:	617b      	str	r3, [r7, #20]
- 8003c2e:	f04f 0300 	mov.w	r3, #0
- 8003c32:	613b      	str	r3, [r7, #16]
- 8003c34:	f04f 0300 	mov.w	r3, #0
- 8003c38:	60fb      	str	r3, [r7, #12]
+ 8003c2e:	4b26      	ldr	r3, [pc, #152]	; (8003cc8 <Velocity_Angularvelocity+0xa8>)
+ 8003c30:	613b      	str	r3, [r7, #16]
+ 8003c32:	4b25      	ldr	r3, [pc, #148]	; (8003cc8 <Velocity_Angularvelocity+0xa8>)
+ 8003c34:	60fb      	str	r3, [r7, #12]
 
 	float Target_velocity = getTargetVelocity();
- 8003c3a:	f7ff fd77 	bl	800372c <getTargetVelocity>
- 8003c3e:	ed87 0a02 	vstr	s0, [r7, #8]
+ 8003c36:	f7ff fd79 	bl	800372c <getTargetVelocity>
+ 8003c3a:	ed87 0a02 	vstr	s0, [r7, #8]
 	float Target_angularvelocity = now_error_theta;
- 8003c42:	4b22      	ldr	r3, [pc, #136]	; (8003ccc <Velocity_Angularvelocity+0xac>)
- 8003c44:	681b      	ldr	r3, [r3, #0]
- 8003c46:	607b      	str	r3, [r7, #4]
+ 8003c3e:	4b23      	ldr	r3, [pc, #140]	; (8003ccc <Velocity_Angularvelocity+0xac>)
+ 8003c40:	681b      	ldr	r3, [r3, #0]
+ 8003c42:	607b      	str	r3, [r7, #4]
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
- 8003c48:	4b20      	ldr	r3, [pc, #128]	; (8003ccc <Velocity_Angularvelocity+0xac>)
- 8003c4a:	edd3 7a00 	vldr	s15, [r3]
- 8003c4e:	eeb0 0a67 	vmov.f32	s0, s15
- 8003c52:	f007 fa19 	bl	800b088 <cosf>
- 8003c56:	eeb0 7a40 	vmov.f32	s14, s0
- 8003c5a:	edd7 7a02 	vldr	s15, [r7, #8]
- 8003c5e:	ee27 7a27 	vmul.f32	s14, s14, s15
- 8003c62:	4b1b      	ldr	r3, [pc, #108]	; (8003cd0 <Velocity_Angularvelocity+0xb0>)
- 8003c64:	edd3 6a00 	vldr	s13, [r3]
- 8003c68:	edd7 7a05 	vldr	s15, [r7, #20]
- 8003c6c:	ee66 7aa7 	vmul.f32	s15, s13, s15
- 8003c70:	ee77 7a27 	vadd.f32	s15, s14, s15
- 8003c74:	4b17      	ldr	r3, [pc, #92]	; (8003cd4 <Velocity_Angularvelocity+0xb4>)
- 8003c76:	edc3 7a00 	vstr	s15, [r3]
+ 8003c44:	4b21      	ldr	r3, [pc, #132]	; (8003ccc <Velocity_Angularvelocity+0xac>)
+ 8003c46:	edd3 7a00 	vldr	s15, [r3]
+ 8003c4a:	eeb0 0a67 	vmov.f32	s0, s15
+ 8003c4e:	f007 fa1b 	bl	800b088 <cosf>
+ 8003c52:	eeb0 7a40 	vmov.f32	s14, s0
+ 8003c56:	edd7 7a02 	vldr	s15, [r7, #8]
+ 8003c5a:	ee27 7a27 	vmul.f32	s14, s14, s15
+ 8003c5e:	4b1c      	ldr	r3, [pc, #112]	; (8003cd0 <Velocity_Angularvelocity+0xb0>)
+ 8003c60:	edd3 6a00 	vldr	s13, [r3]
+ 8003c64:	edd7 7a05 	vldr	s15, [r7, #20]
+ 8003c68:	ee66 7aa7 	vmul.f32	s15, s13, s15
+ 8003c6c:	ee77 7a27 	vadd.f32	s15, s14, s15
+ 8003c70:	4b18      	ldr	r3, [pc, #96]	; (8003cd4 <Velocity_Angularvelocity+0xb4>)
+ 8003c72:	edc3 7a00 	vstr	s15, [r3]
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
- 8003c7a:	4b17      	ldr	r3, [pc, #92]	; (8003cd8 <Velocity_Angularvelocity+0xb8>)
- 8003c7c:	ed93 7a00 	vldr	s14, [r3]
- 8003c80:	edd7 7a04 	vldr	s15, [r7, #16]
- 8003c84:	ee27 8a27 	vmul.f32	s16, s14, s15
- 8003c88:	4b10      	ldr	r3, [pc, #64]	; (8003ccc <Velocity_Angularvelocity+0xac>)
- 8003c8a:	edd3 7a00 	vldr	s15, [r3]
- 8003c8e:	eeb0 0a67 	vmov.f32	s0, s15
- 8003c92:	f007 fa39 	bl	800b108 <sinf>
- 8003c96:	eeb0 7a40 	vmov.f32	s14, s0
- 8003c9a:	edd7 7a03 	vldr	s15, [r7, #12]
- 8003c9e:	ee67 7a27 	vmul.f32	s15, s14, s15
- 8003ca2:	ee38 7a27 	vadd.f32	s14, s16, s15
- 8003ca6:	edd7 7a02 	vldr	s15, [r7, #8]
- 8003caa:	ee27 7a27 	vmul.f32	s14, s14, s15
- 8003cae:	edd7 7a01 	vldr	s15, [r7, #4]
- 8003cb2:	ee77 7a27 	vadd.f32	s15, s14, s15
- 8003cb6:	4b09      	ldr	r3, [pc, #36]	; (8003cdc <Velocity_Angularvelocity+0xbc>)
- 8003cb8:	edc3 7a00 	vstr	s15, [r3]
+ 8003c76:	4b18      	ldr	r3, [pc, #96]	; (8003cd8 <Velocity_Angularvelocity+0xb8>)
+ 8003c78:	ed93 7a00 	vldr	s14, [r3]
+ 8003c7c:	edd7 7a04 	vldr	s15, [r7, #16]
+ 8003c80:	ee27 8a27 	vmul.f32	s16, s14, s15
+ 8003c84:	4b11      	ldr	r3, [pc, #68]	; (8003ccc <Velocity_Angularvelocity+0xac>)
+ 8003c86:	edd3 7a00 	vldr	s15, [r3]
+ 8003c8a:	eeb0 0a67 	vmov.f32	s0, s15
+ 8003c8e:	f007 fa3b 	bl	800b108 <sinf>
+ 8003c92:	eeb0 7a40 	vmov.f32	s14, s0
+ 8003c96:	edd7 7a03 	vldr	s15, [r7, #12]
+ 8003c9a:	ee67 7a27 	vmul.f32	s15, s14, s15
+ 8003c9e:	ee38 7a27 	vadd.f32	s14, s16, s15
+ 8003ca2:	edd7 7a02 	vldr	s15, [r7, #8]
+ 8003ca6:	ee27 7a27 	vmul.f32	s14, s14, s15
+ 8003caa:	edd7 7a01 	vldr	s15, [r7, #4]
+ 8003cae:	ee77 7a27 	vadd.f32	s15, s14, s15
+ 8003cb2:	4b0a      	ldr	r3, [pc, #40]	; (8003cdc <Velocity_Angularvelocity+0xbc>)
+ 8003cb4:	edc3 7a00 	vstr	s15, [r3]
 }
- 8003cbc:	bf00      	nop
- 8003cbe:	3718      	adds	r7, #24
- 8003cc0:	46bd      	mov	sp, r7
- 8003cc2:	ecbd 8b02 	vpop	{d8}
- 8003cc6:	bd80      	pop	{r7, pc}
- 8003cc8:	3b449ba6 	.word	0x3b449ba6
+ 8003cb8:	bf00      	nop
+ 8003cba:	3718      	adds	r7, #24
+ 8003cbc:	46bd      	mov	sp, r7
+ 8003cbe:	ecbd 8b02 	vpop	{d8}
+ 8003cc2:	bd80      	pop	{r7, pc}
+ 8003cc4:	3b449ba6 	.word	0x3b449ba6
+ 8003cc8:	3c23d70a 	.word	0x3c23d70a
  8003ccc:	200185e4 	.word	0x200185e4
  8003cd0:	200185dc 	.word	0x200185dc
  8003cd4:	200185e8 	.word	0x200185e8
