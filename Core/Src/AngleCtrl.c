@@ -15,7 +15,6 @@ static uint16_t i_clear_flag;
 static float Angle_diff;
 
 static float Angle_control_term;
-//static float variable_Angle;
 
 void calculateAngleControlFlip(void){
 	float p, d;

@@ -86,11 +86,9 @@ bool isCrossLine()
 	}
 
 	if(cnt >= 3){
-		//setLED2('Y');
 		flag = true;
 	}
 	else{
-		//setLED2('N');
 		flag = false;
 	}
 
@@ -234,7 +232,6 @@ void runningFlip()
 			saveLog();
 
 			if(isContinuousCurvature() == true){
-				//continuous_curve_check_cnt = 0;
 				continuous_curve_flag = true;
 			}
 
@@ -256,8 +253,7 @@ void runningFlip()
 			}
 			else{
 				correction_check_cnt_cross = 0;
-				correctionTotalDistanceFromCrossLine();
-				//saveDebug(getTotalDistance());
+				correctionTotalDistanceFromCrossLine();;
 			}
 		}
 		else if(cross_line_ignore_flag == true && getCrossLineIgnoreDistance() >= 50){ //50
@@ -287,7 +283,6 @@ void runningFlip()
 				}
 				else{
 					correctionTotalDistanceFromSideLine();
-					//saveDebug(getTotalDistance());
 				}
 			}
 		}
@@ -352,7 +347,7 @@ void saveLog(){
 		debug_now_Theta = getaddTheta();
 		saveDebug(getTargetpoint_X());//目標のx座標
 		saveDebug(getTargetpoint_Y());//目標のy座標
-		saveDebug(getTargetpoint_Theta());//目標の車体角速度θ
+		saveDebug(getTargetpoint_Theta());//目標の車体角速度
 		saveDebug(debug_now_X);//現在のx座標
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
@@ -632,28 +627,6 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
     }
 }*/
 
-/*
-void CreateXYcoordinates()
-{
-	const float *p_distance, *p_theta;
-	p_distance = getDistanceArrayPointer();
-	p_theta = getThetaArrayPointer();
-
-	float temp_distance, temp_theta, x, y, th;
-	uint16_t log_size = getDistanceLogSize();
-
-	for(uint16_t i = 0; i < log_size; i++){
-		temp_distance = p_distance[i];
-		temp_theta = p_theta[i];
-
-		if(temp_theta == 0) temp_theta = 0.00001;
-
-		x = x + temp_distance * cos(th + temp_theta/2);
-		y = y + temp_distance * sin(th + temp_theta/2);
-		th = th + temp_theta;
-	}
-}
-*/
 bool getgoalStatus()
 {
 	return goal_flag;

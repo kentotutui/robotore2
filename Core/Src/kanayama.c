@@ -8,9 +8,9 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static float X_table[500];
-static float Y_table[500];
-static float Theta_table[500];
+static float X_table[2000];
+static float Y_table[2000];
+static float Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -110,7 +110,6 @@ void updateTargetpoint()
 			clearDistance30mm();
 		}*/
 		if(getDistance30mm() >= 10){
-			//ref_XYdistance += getDistanceLog(targetpoint_table_idx);
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}
