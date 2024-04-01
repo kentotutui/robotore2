@@ -359,6 +359,8 @@ void saveLog(){
 		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
 		saveDebug(getOutput_velocity());
 		saveDebug(getOutput_angularvelocity());
+		saveDebug(getCurrentVelocity());
+		saveDebug(getTheta10mm());
 	}
 }
 

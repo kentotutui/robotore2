@@ -1,7 +1,7 @@
 main.c:107:1:__io_putchar	16	static
 main.c:117:6:HAL_TIM_PeriodElapsedCallback	16	static
 main.c:150:6:init	8	static
-main.c:175:5:main	184	static
+main.c:175:5:main	216	static
 main.c:685:6:SystemClock_Config	88	static
 main.c:730:13:MX_ADC1_Init	24	static
 main.c:788:13:MX_ADC2_Init	24	static
