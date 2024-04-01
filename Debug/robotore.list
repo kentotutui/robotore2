@@ -5848,7 +5848,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 1550, ki = 25000, kd = 0.0;
+	float kp = 1800, ki = 25000, kd = 0.0;
  80034e6:	4b40      	ldr	r3, [pc, #256]	; (80035e8 <calculateVelocityControlFlip+0x108>)
  80034e8:	61fb      	str	r3, [r7, #28]
  80034ea:	4b40      	ldr	r3, [pc, #256]	; (80035ec <calculateVelocityControlFlip+0x10c>)
@@ -5978,7 +5978,7 @@ void calculateVelocityControlFlip(void)
  80035dc:	f3af 8000 	nop.w
  80035e0:	d2f1a9fc 	.word	0xd2f1a9fc
  80035e4:	3f50624d 	.word	0x3f50624d
- 80035e8:	44c1c000 	.word	0x44c1c000
+ 80035e8:	44e10000 	.word	0x44e10000
  80035ec:	46c35000 	.word	0x46c35000
  80035f0:	20016e46 	.word	0x20016e46
  80035f4:	20016e47 	.word	0x20016e47
