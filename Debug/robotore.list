@@ -6742,7 +6742,7 @@ void Velocity_Angularvelocity(void)
  8003c22:	ed2d 8b02 	vpush	{d8}
  8003c26:	b086      	sub	sp, #24
  8003c28:	af00      	add	r7, sp, #0
-	float kx = 0.003, ky = 0.01, kt = 0.01;//Kanayama Control Methodゲイン値調整
+	float kx = 0.003, ky = 0.02, kt = 0.02;//Kanayama Control Methodゲイン値調整
  8003c2a:	4b26      	ldr	r3, [pc, #152]	; (8003cc4 <Velocity_Angularvelocity+0xa4>)
  8003c2c:	617b      	str	r3, [r7, #20]
  8003c2e:	4b26      	ldr	r3, [pc, #152]	; (8003cc8 <Velocity_Angularvelocity+0xa8>)
@@ -6799,7 +6799,7 @@ void Velocity_Angularvelocity(void)
  8003cbe:	ecbd 8b02 	vpop	{d8}
  8003cc2:	bd80      	pop	{r7, pc}
  8003cc4:	3b449ba6 	.word	0x3b449ba6
- 8003cc8:	3c23d70a 	.word	0x3c23d70a
+ 8003cc8:	3ca3d70a 	.word	0x3ca3d70a
  8003ccc:	200185e4 	.word	0x200185e4
  8003cd0:	200185dc 	.word	0x200185dc
  8003cd4:	200185e8 	.word	0x200185e8
