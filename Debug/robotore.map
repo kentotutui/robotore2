@@ -8264,7 +8264,7 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_macro   0x0000000000024673      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_macro   0x000000000002487e      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_line     0x0000000000000000    0x173b3
+.debug_line     0x0000000000000000    0x173b1
  .debug_line    0x0000000000000000      0x99e Core/Src/AngleCtrl.o
  .debug_line    0x000000000000099e      0x8b1 Core/Src/Encoder.o
  .debug_line    0x000000000000124f      0xa8b Core/Src/Flash_F405.o
@@ -8276,29 +8276,29 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_line    0x0000000000004ec9      0x9b7 Core/Src/MPU6500.o
  .debug_line    0x0000000000005880      0xa3e Core/Src/Velocity_Ctrl.o
  .debug_line    0x00000000000062be      0xa9b Core/Src/kanayama.o
- .debug_line    0x0000000000006d59      0xd7a Core/Src/main.o
- .debug_line    0x0000000000007ad3      0x7bb Core/Src/motor.o
- .debug_line    0x000000000000828e      0xdfa Core/Src/sideSensor.o
- .debug_line    0x0000000000009088      0xb38 Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000009bc0      0xa52 Core/Src/stm32f4xx_it.o
- .debug_line    0x000000000000a612      0x742 Core/Src/switch.o
- .debug_line    0x000000000000ad54      0x73e Core/Src/syscalls.o
- .debug_line    0x000000000000b492      0x4c7 Core/Src/sysmem.o
- .debug_line    0x000000000000b959      0x755 Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000c0ae       0x85 Core/Startup/startup_stm32f405rgtx.o
- .debug_line    0x000000000000c133      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000000000000ca72      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x000000000000d616      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x000000000000e079      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x000000000000ea86      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_line    0x000000000000f3ab      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_line    0x000000000000fcbc      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x00000000000105da     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_line    0x00000000000121c7      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000012b5e     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x0000000000013c59     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x0000000000015611      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000000000016366     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x0000000000006d59      0xd78 Core/Src/main.o
+ .debug_line    0x0000000000007ad1      0x7bb Core/Src/motor.o
+ .debug_line    0x000000000000828c      0xdfa Core/Src/sideSensor.o
+ .debug_line    0x0000000000009086      0xb38 Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000009bbe      0xa52 Core/Src/stm32f4xx_it.o
+ .debug_line    0x000000000000a610      0x742 Core/Src/switch.o
+ .debug_line    0x000000000000ad52      0x73e Core/Src/syscalls.o
+ .debug_line    0x000000000000b490      0x4c7 Core/Src/sysmem.o
+ .debug_line    0x000000000000b957      0x755 Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000c0ac       0x85 Core/Startup/startup_stm32f405rgtx.o
+ .debug_line    0x000000000000c131      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x000000000000ca70      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x000000000000d614      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x000000000000e077      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x000000000000ea84      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_line    0x000000000000f3a9      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_line    0x000000000000fcba      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000105d8     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_line    0x00000000000121c5      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000012b5c     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x0000000000013c57     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x000000000001560f      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0000000000016364     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_str      0x0000000000000000    0xcb5ab
  .debug_str     0x0000000000000000    0xc2950 Core/Src/AngleCtrl.o

@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00024a8a  00000000  00000000  0005aa80  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000173b3  00000000  00000000  0007f50a  2**0
+ 17 .debug_line   000173b1  00000000  00000000  0007f50a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb5ab  00000000  00000000  000968bd  2**0
+ 18 .debug_str    000cb5ab  00000000  00000000  000968bb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161e68  2**0
+ 19 .comment      0000007b  00000000  00000000  00161e66  2**0
                   CONTENTS, READONLY
  20 .debug_frame  000080dc  00000000  00000000  00161ee4  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -5848,7 +5848,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 1800, ki = 25000, kd = 0.0;
+	float kp = 1700, ki = 27000, kd = 0.0;
  80034e6:	4b40      	ldr	r3, [pc, #256]	; (80035e8 <calculateVelocityControlFlip+0x108>)
  80034e8:	61fb      	str	r3, [r7, #28]
  80034ea:	4b40      	ldr	r3, [pc, #256]	; (80035ec <calculateVelocityControlFlip+0x10c>)
@@ -5978,8 +5978,8 @@ void calculateVelocityControlFlip(void)
  80035dc:	f3af 8000 	nop.w
  80035e0:	d2f1a9fc 	.word	0xd2f1a9fc
  80035e4:	3f50624d 	.word	0x3f50624d
- 80035e8:	44e10000 	.word	0x44e10000
- 80035ec:	46c35000 	.word	0x46c35000
+ 80035e8:	44d48000 	.word	0x44d48000
+ 80035ec:	46d2f000 	.word	0x46d2f000
  80035f0:	20014f06 	.word	0x20014f06
  80035f4:	20014f07 	.word	0x20014f07
  80035f8:	20014f14 	.word	0x20014f14
@@ -6741,7 +6741,7 @@ void Velocity_Angularvelocity(void)
  8003c22:	ed2d 8b02 	vpush	{d8}
  8003c26:	b086      	sub	sp, #24
  8003c28:	af00      	add	r7, sp, #0
-	float kx = 0.003, ky = 0.02, kt = 0.02;//Kanayama Control Methodゲイン値調整
+	float kx = 0.003, ky = 0.005, kt = 0.005;//Kanayama Control Methodゲイン値調整
  8003c2a:	4b26      	ldr	r3, [pc, #152]	; (8003cc4 <Velocity_Angularvelocity+0xa4>)
  8003c2c:	617b      	str	r3, [r7, #20]
  8003c2e:	4b26      	ldr	r3, [pc, #152]	; (8003cc8 <Velocity_Angularvelocity+0xa8>)
@@ -6798,7 +6798,7 @@ void Velocity_Angularvelocity(void)
  8003cbe:	ecbd 8b02 	vpop	{d8}
  8003cc2:	bd80      	pop	{r7, pc}
  8003cc4:	3b449ba6 	.word	0x3b449ba6
- 8003cc8:	3ca3d70a 	.word	0x3ca3d70a
+ 8003cc8:	3ba3d70a 	.word	0x3ba3d70a
  8003ccc:	2001acf4 	.word	0x2001acf4
  8003cd0:	2001acec 	.word	0x2001acec
  8003cd4:	2001acf8 	.word	0x2001acf8
@@ -7347,10 +7347,8 @@ int main(void)
 		  setsuctionMotor(0);
  8004022:	2000      	movs	r0, #0
  8004024:	f001 f986 	bl	8005334 <setsuctionMotor>
-	  /*if(isTargetDistance(10) == true){
-		  cnt2++;
-		  clearDistance10mm();
-	  }*/
+		  //getgoalStatus() = false;
+	  }
 
 	  if(soiya >= 14){
  8004028:	4b62      	ldr	r3, [pc, #392]	; (80041b4 <main+0x338>)

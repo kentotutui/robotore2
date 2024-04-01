@@ -290,11 +290,6 @@ int main(void)
 		  //getgoalStatus() = false;
 	  }
 
-	  /*if(isTargetDistance(10) == true){
-		  cnt2++;
-		  clearDistance10mm();
-	  }*/
-
 	  if(soiya >= 14){
 		  soiya = 0;
 	  }
