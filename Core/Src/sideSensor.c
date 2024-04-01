@@ -211,7 +211,7 @@ void running(void)
 
 		if(mode == 5)
 		{
-			if(getTotalDistance() >= 4750)
+			if(getTotalDistance() >= getTotal_length())
 			{
 				stopLogging();
 				stopVelocityUpdate();

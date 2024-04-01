@@ -16,6 +16,8 @@ uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
 float ref_XYdistance;
 
+static float Total_length_of_course;
+
 static float target_X_coordinate;
 static float target_Y_coordinate;
 static float target_Theta;
@@ -26,8 +28,6 @@ static float now_error_theta;
 
 static float Output_velocity;
 static float Output_angularvelocity;
-
-static float Output_velocity_safe;
 
 void CreateXYcoordinates()
 {
@@ -53,6 +53,7 @@ void CreateXYcoordinates()
 		Y_table[i] = y;
 		Theta_table[i] = th;
 
+		Total_length_of_course = temp_distance + Total_length_of_course;
 	}
 }
 
@@ -148,18 +149,15 @@ void Velocity_Angularvelocity(void)
 	float kx = 0.0, ky = 0.0, kt = 0.0;//Kanayama Control Methodゲイン値調整
 
 	float Target_velocity = getTargetVelocity();
-	//float Target_angularvelocity = target_Theta;
 	float Target_angularvelocity = now_error_theta;
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
+}
 
-	/*
-	if(getMaxvelocity() <= Output_velocity){
-		Output_velocity_safe = getMaxvelocity();
-	}*/
-	//saveDebug(Output_velocity);
-	//saveDebug(Output_angularvelocity);
+float getTotal_length()
+{
+	return Total_length_of_course;
 }
 
 float getTargetpoint_X()
@@ -179,7 +177,6 @@ float getTargetpoint_Theta()
 
 float getOutput_velocity()
 {
-	//return Output_velocity_safe;
 	return Output_velocity;
 }
 

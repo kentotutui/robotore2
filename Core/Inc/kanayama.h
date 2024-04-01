@@ -27,6 +27,7 @@ void updateTargetpoint();
 void Error_XY_Debug(const float, const float, const float);
 void Velocity_Angularvelocity(void);
 
+float getTotal_length();
 float getTargetpoint_X();
 float getTargetpoint_Y();
 float getTargetpoint_Theta();

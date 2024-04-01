@@ -3,7 +3,7 @@ sideSensor.c:70:6:setRunMode	16	static
 sideSensor.c:74:6:isCrossLine	16	static
 sideSensor.c:100:6:isContinuousCurvature	24	static
 sideSensor.c:126:6:isTargetDistance	24	static
-sideSensor.c:134:6:running	16	static
+sideSensor.c:134:6:running	24	static
 sideSensor.c:226:6:runningFlip	8	static
 sideSensor.c:309:6:runningInit	8	static
 sideSensor.c:338:6:saveLog	8	static
