@@ -59,6 +59,7 @@ void setVelocityRange(float, float);
 void setAccDec(float, float);
 void setStraightRadius(float);
 float getRunMode();
+float getControl_Mode();
 float getMaxvelocity();
 float getMinvelocity();
 

@@ -22,6 +22,7 @@ static float velocity_table[2000];
 
 uint16_t velocity_table_idx;
 uint16_t mode;
+uint16_t Control_Mode;
 
 float ref_distance;
 
@@ -146,9 +147,17 @@ void running(void)
 					  if(getSideSensorStatusR() == true){
 						  start_goal_line_cnt++;
 
-						  if(mode == 1) startLogging();
+						  if(mode == 1)
+						  {
+							  Control_Mode = 1;
+							  startLogging();
+						  }
 						  else if(mode == 2 || mode == 3) startVelocityUpdate();
-						  else startTargetUpdate();
+						  else
+						  {
+							  Control_Mode = 5;
+						      startTargetUpdate();
+						  }
 
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
@@ -165,7 +174,7 @@ void running(void)
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 70){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true && getGoalJudgeDistance() >= 70){
 						  goal_judge_flag = true;
 						  clearGoalJudgeDistance();
 					  }
@@ -659,6 +668,11 @@ float getRunMode()
 	return mode;
 }
 
+float getControl_Mode()
+{
+	return Control_Mode;
+}
+
 float getMaxvelocity()
 {
 	return max_velocity;
@@ -668,7 +682,6 @@ float getMinvelocity()
 {
 	return min_velocity;
 }
-
 //↓sidesensorjob
 bool getSideSensorStatusL()
 {

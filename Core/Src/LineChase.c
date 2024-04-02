@@ -90,27 +90,27 @@ void lineTraceFlip(void)
 		}
 		else if(getRunMode() == 5)
 		{
-			motor_l = velocity_control_term - getAngleControlTerm();
+			motor_l = velocity_control_term - getAngleControlTerm();//バーチャルライントレース時のモータ出力
 			motor_r = velocity_control_term + getAngleControlTerm();
 		}
 
 		//motor_l = velocity_control_term - getAngleControlTerm();
 		//motor_r = velocity_control_term + getAngleControlTerm();
 
-		//float motor_l = line_following_term;
-		//float motor_r = -line_following_term;
+		//motor_l = line_following_term;
+		//motor_r = -line_following_term;
 
 
-		//float motor_l = velocity_control_term ;
-		//float motor_r = velocity_control_term ;
+		//motor_l = velocity_control_term ;
+		//motor_r = velocity_control_term ;
 
 		mon_velo_term = velocity_control_term;
 
 		//motor_l_Deb = motor_l;
 		//motor_r_Deb = motor_r;
 
-		//float motor_l = 500;
-		//float motor_r = 500;
+		//motor_l = 500;
+		//motor_r = 500;
 
 		setMotor(motor_l, motor_r);
 
