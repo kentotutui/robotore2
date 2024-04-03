@@ -8,9 +8,9 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static float X_table[2000];
-static float Y_table[2000];
-static float Theta_table[2000];
+static float X_table[4000];
+static float Y_table[4000];
+static float Theta_table[4000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -138,9 +138,9 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	now_error_y = Y_e;
 	now_error_theta = Theta_e;
 
-	saveDebug(X_e);
-	saveDebug(Y_e);
-	saveDebug(Theta_e);
+	//saveDebug(X_e);
+	//saveDebug(Y_e);
+	//saveDebug(Theta_e);
 }
 
 void Velocity_Angularvelocity(void)
@@ -150,8 +150,8 @@ void Velocity_Angularvelocity(void)
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
 
-	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算
-	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算
+	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算(m/s)
+	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算(rad/s)
 }
 
 float getTotal_length()

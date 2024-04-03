@@ -7,7 +7,7 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[2000];
+static float velocity_table[1000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[mm]
@@ -170,7 +170,7 @@ void running(void)
 					  break;
 
 				  case 5:
-					  if(getSideSensorStatusR() == false) pattern = 10;
+					  if(getSideSensorStatusR() == false && Control_Mode == 2) pattern = 10;
 
 				  case 10:
 					  if(getSideSensorStatusL() == true){ //Leght side line detect
@@ -178,18 +178,18 @@ void running(void)
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true && getGoalJudgeDistance() >= 70){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true && getGoalJudgeDistance() >= 70 && Control_Mode == 2){
 						  goal_judge_flag = true;
 						  clearGoalJudgeDistance();
 					  }
 
-					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 70){
+					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 70 && Control_Mode == 2){
 						  start_goal_line_cnt++;
 						  goal_judge_flag = false;
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(start_goal_line_cnt >= 2){
+					  if(start_goal_line_cnt >= 2 && Control_Mode == 2){
 						  stopLogging();
 						  stopVelocityUpdate();
 						  stopTargetUpdate();
@@ -365,8 +365,8 @@ void saveLog(){
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
 		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
-		saveDebug(getOutput_velocity());
-		saveDebug(getOutput_angularvelocity());
+		//saveDebug(getOutput_velocity());
+		//saveDebug(getOutput_angularvelocity());
 		saveDebug(getCurrentVelocity());
 		saveDebug(getTheta10mm());
 	}
@@ -563,8 +563,9 @@ void updateTargetVelocity(){
 			velocity_table_idx = getDistanceLogSize() - 1;
 		}
 
-		setTargetVelocity(velocity_table[velocity_table_idx]);
+		//setTargetVelocity(velocity_table[velocity_table_idx]);
 		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
+		setTargetVelocity(1.5);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
