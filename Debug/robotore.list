@@ -7500,8 +7500,8 @@ int main(void)
  8004140:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  8004144:	f001 ff02 	bl	8005f4c <setVelocityRange>
 
-						  setsuctionMotor(500);
- 8004148:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(700);
+ 8004148:	f44f 702f 	mov.w	r0, #700	; 0x2bc
  800414c:	f001 f912 	bl	8005374 <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7589,8 +7589,8 @@ int main(void)
  80041cc:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  80041d0:	f001 febc 	bl	8005f4c <setVelocityRange>
 
-						  setsuctionMotor(500);
- 80041d4:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(700);
+ 80041d4:	f44f 702f 	mov.w	r0, #700	; 0x2bc
  80041d8:	f001 f8cc 	bl	8005374 <setsuctionMotor>
 
 						  HAL_Delay(1500);
