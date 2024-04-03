@@ -145,7 +145,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 void Velocity_Angularvelocity(void)
 {
-	float kx = 0.003, ky = 0.005, kt = 0.005;//Kanayama Control Methodゲイン値調整
+	float kx = 0.0, ky = 0.0, kt = 0.0;//Kanayama Control Methodゲイン値調整 全部0でいいかも
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;

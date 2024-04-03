@@ -149,7 +149,7 @@ void running(void)
 
 						  if(mode == 1)
 						  {
-							  Control_Mode = 1;
+							  Control_Mode = 2;
 							  startLogging();
 						  }
 						  else if(mode == 2 || mode == 3) startVelocityUpdate();
@@ -162,6 +162,10 @@ void running(void)
 						  clearGoalJudgeDistance();
 						  clearSideLineJudgeDistance();
 						  pattern = 5;
+					  }
+					  else
+					  {
+						  Control_Mode = 1;
 					  }
 					  break;
 
@@ -385,6 +389,7 @@ void startTargetUpdate()
 	clearDistance10mm();
 	clearTheta10mm();
 	clearaddTheta();
+	clearTotalDistance();
 	target_update_flag = true;
 }
 

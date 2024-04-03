@@ -347,7 +347,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(0.5, 0.5);
+					      setVelocityRange(1.5, 1.5);
 
 						  setsuctionMotor(500);
 
@@ -396,7 +396,7 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(0.5, 0.5);
+						  setVelocityRange(1.5, 1.5);
 
 						  setsuctionMotor(500);
 

@@ -84,11 +84,15 @@ void lineTraceFlip(void)
 
 
 
-		if(getRunMode() == 1){
+		if(getControl_Mode() == 1){
 		    motor_l = velocity_control_term + line_following_term;//ライントレース時のモータ出力
 			motor_r = velocity_control_term - line_following_term;
 		}
-		else if(getRunMode() == 5)
+		else if(getControl_Mode() == 2){
+			motor_l = velocity_control_term + line_following_term;//ライントレース時のモータ出力
+			motor_r = velocity_control_term - line_following_term;
+		}
+		else if(getControl_Mode() == 5)
 		{
 			motor_l = velocity_control_term - getAngleControlTerm();//バーチャルライントレース時のモータ出力
 			motor_r = velocity_control_term + getAngleControlTerm();
