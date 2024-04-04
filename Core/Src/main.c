@@ -622,14 +622,12 @@ int main(void)
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
 					  }*/
-
-
 					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
-					  }
-
+					  }*/
+					  /*
 					  printf("Side\r\n");
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
@@ -1308,7 +1306,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
+  huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;

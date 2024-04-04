@@ -9,9 +9,9 @@
 
 static float log_cross[100];
 static float log_side[100];
-static float log_debug[10000];
-static float log_distance[4000];
-static float log_theta[4000];
+static float log_debug[12000];
+static float log_distance[3500];
+static float log_theta[3500];
 static uint16_t log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
 
 void initLog(){

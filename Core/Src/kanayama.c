@@ -8,9 +8,9 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static float X_table[4000];
-static float Y_table[4000];
-static float Theta_table[4000];
+static int16_t X_table[3000];
+static int16_t Y_table[3000];
+static int16_t Theta_table[3000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -37,6 +37,7 @@ void CreateXYcoordinates()
 
 	float temp_distance, temp_theta;
 	float x = 0, y = 0, th = 0;
+	float mon_x = 0, mon_y = 0, mon_th = 0;
 	uint16_t log_size = getDistanceLogSize();
 
 	for(uint16_t i = 0; i < log_size; i++){
@@ -49,9 +50,13 @@ void CreateXYcoordinates()
 		y = y + temp_distance * sin(th + temp_theta/2);
 		th = th + temp_theta;
 
-		X_table[i] = x;
-		Y_table[i] = y;
-		Theta_table[i] = th;
+		mon_x = x;
+		mon_y = y;
+		mon_th = th;
+
+		X_table[i] = mon_x * 10000;
+		Y_table[i] = mon_y* 10000;
+		Theta_table[i] = mon_th * 10000;
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}
@@ -116,9 +121,9 @@ void updateTargetpoint()
 		if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 		}
-		target_X_coordinate = X_table[targetpoint_table_idx];
-		target_Y_coordinate = Y_table[targetpoint_table_idx];
-		target_Theta = Theta_table[targetpoint_table_idx];
+		target_X_coordinate = X_table[targetpoint_table_idx] / 10000;
+		target_Y_coordinate = Y_table[targetpoint_table_idx] / 10000;
+		target_Theta = Theta_table[targetpoint_table_idx] / 10000;
 	}
 }
 
@@ -138,14 +143,14 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	now_error_y = Y_e;
 	now_error_theta = Theta_e;
 
-	//saveDebug(X_e);
-	//saveDebug(Y_e);
-	//saveDebug(Theta_e);
+	saveDebug(X_e);
+	saveDebug(Y_e);
+	saveDebug(Theta_e);
 }
 
 void Velocity_Angularvelocity(void)
 {
-	float kx = 0.0, ky = 0.0, kt = 0.0;//Kanayama Control Methodゲイン値調整 全部0でいいかも
+	float kx = 0.00001, ky = 0.00001, kt = 0.00001;//Kanayama Control Methodゲイン値調整 全部0でいいかも
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;

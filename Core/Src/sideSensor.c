@@ -7,7 +7,7 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[1000];
+static float velocity_table[3000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[mm]
@@ -365,8 +365,8 @@ void saveLog(){
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
 		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
-		//saveDebug(getOutput_velocity());
-		//saveDebug(getOutput_angularvelocity());
+		saveDebug(getOutput_velocity());
+		saveDebug(getOutput_angularvelocity());
 		saveDebug(getCurrentVelocity());
 		saveDebug(getTheta10mm());
 	}
