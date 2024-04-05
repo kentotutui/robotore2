@@ -10,7 +10,7 @@
 
 static int16_t X_table[6000];
 static int16_t Y_table[6000];
-static float Theta_table[3000];
+static int16_t Theta_table[6000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -51,7 +51,7 @@ void CreateXYcoordinates()
 
 		X_table[i] = x * 10;
 		Y_table[i] = y * 10;
-		Theta_table[i] = th;
+		Theta_table[i] = th * 1000;
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}
@@ -99,7 +99,7 @@ float CurrentYcoordinates(void)
 
 void updateTargetpoint()
 {
-	static float mon_X_table, mon_Y_table;
+	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
 		/*if(getTotalDistance() >= ref_XYdistance){
@@ -120,10 +120,11 @@ void updateTargetpoint()
 		}
 		mon_X_table = X_table[targetpoint_table_idx];
 		mon_Y_table = Y_table[targetpoint_table_idx];
+		mon_Theta_table = Theta_table[targetpoint_table_idx];
 
 		target_X_coordinate = mon_X_table / 10;
 		target_Y_coordinate = mon_Y_table / 10;
-		target_Theta = Theta_table[targetpoint_table_idx];
+		target_Theta = mon_Theta_table / 1000;
 	}
 }
 
