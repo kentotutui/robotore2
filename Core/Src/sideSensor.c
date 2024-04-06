@@ -387,6 +387,7 @@ void stopLogging()
 void startTargetUpdate()
 {
 	clearDistance10mm();
+	clearVLT_Distance10mm();
 	clearTheta10mm();
 	clearaddTheta();
 	clearTotalDistance();

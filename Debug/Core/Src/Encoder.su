@@ -15,7 +15,7 @@ Encoder.c:118:6:clearSideLineIgnoreDistance	4	static
 Encoder.c:123:6:resetEncoderCnt	4	static
 Encoder.c:129:7:getDistance10mm	4	static
 Encoder.c:133:6:clearDistance10mm	4	static
-Encoder.c:137:7:getDistance30mm	4	static
-Encoder.c:141:6:clearDistance30mm	4	static
+Encoder.c:137:7:getVLT_Distance10mm	4	static
+Encoder.c:141:6:clearVLT_Distance10mm	4	static
 Encoder.c:145:7:getspeedcount	16	static
 Encoder.c:153:6:clearspeedcount	4	static

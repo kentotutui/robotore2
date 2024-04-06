@@ -111,9 +111,9 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}*/
-		if(getDistance30mm() >= 10){
+		if(getVLT_Distance10mm() >= 10){
 			targetpoint_table_idx++;
-			clearDistance30mm();
+			clearVLT_Distance10mm();
 		}
 		if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;

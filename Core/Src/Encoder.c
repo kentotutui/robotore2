@@ -25,7 +25,7 @@ static int16_t enc_l_cnt, enc_r_cnt, enc_l_total, enc_r_total;
 
 static float distance_1ms;
 static float distance_10mm;
-static float distance_30mm;
+static float VLT_distance_10mm;
 static float sab_distance_10mm;
 static float total_distance;
 static float goal_judge_distance;
@@ -53,7 +53,7 @@ void updateEncoderCnt(void)
 
 	distance_1ms = DISTANCE_PER_CNT * (enc_l_cnt + enc_r_cnt) / 2;
 	distance_10mm += distance_1ms;
-	distance_30mm += distance_1ms;
+	VLT_distance_10mm += distance_1ms;
 	sab_distance_10mm += distance_1ms;
 	total_distance += distance_1ms;
 	goal_judge_distance += distance_1ms;
@@ -134,12 +134,12 @@ void clearDistance10mm(void){
 	distance_10mm = 0;
 }
 
-float getDistance30mm(void){
-	return distance_30mm;
+float getVLT_Distance10mm(void){
+	return VLT_distance_10mm;
 }
 
-void clearDistance30mm(void){
-	distance_30mm = 0;
+void clearVLT_Distance10mm(void){
+	VLT_distance_10mm = 0;
 }
 
 float getspeedcount(void){
