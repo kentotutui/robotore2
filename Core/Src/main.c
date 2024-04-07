@@ -300,14 +300,14 @@ int main(void)
 				  setLED('W');
 				  setLED2('R');
 				  //printf("0\r\n");
-
+				  /*
 				  if(running_flag == true){
 
 				  		  //setsuctionMotor(500);
 					      setRunMode(2);
 						  runningInit();
 						  soiya = 13;
-				  }
+				  }*/
 
 				  break;
 
@@ -654,8 +654,9 @@ int main(void)
 					  for(uint16_t i = 0; i < size; i = i+1){
 						 printf("%f\r\n", getDebugLog(i));
 					  }*/
+					  soiya = 0;
 
-					  printf("9999, 9999\r\n");
+					  //printf("9999, 9999\r\n");
 				  }
 
 				  break;

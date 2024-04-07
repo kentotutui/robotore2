@@ -117,14 +117,21 @@ void updateTargetpoint()
 		}
 		if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
+			mon_Theta_table = Theta_table[targetpoint_table_idx];
+			target_X_coordinate = -400;
+			target_Y_coordinate = 0;
+			target_Theta = mon_Theta_table / 1000;
 		}
-		mon_X_table = X_table[targetpoint_table_idx];
-		mon_Y_table = Y_table[targetpoint_table_idx];
-		mon_Theta_table = Theta_table[targetpoint_table_idx];
+		else
+		{
+			mon_X_table = X_table[targetpoint_table_idx];
+			mon_Y_table = Y_table[targetpoint_table_idx];
+			mon_Theta_table = Theta_table[targetpoint_table_idx];
 
-		target_X_coordinate = mon_X_table / 10;
-		target_Y_coordinate = mon_Y_table / 10;
-		target_Theta = mon_Theta_table / 1000;
+			target_X_coordinate = mon_X_table / 10;
+			target_Y_coordinate = mon_Y_table / 10;
+			target_Theta = mon_Theta_table / 1000;
+		}
 	}
 }
 
@@ -151,7 +158,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 void Velocity_Angularvelocity(void)
 {
-	float kx = 0.00001, ky = 0.00001, kt = 0.00001;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
+	float kx = 0.0005, ky = 0.001, kt = 0.0002;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
