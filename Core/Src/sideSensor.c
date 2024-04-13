@@ -365,10 +365,10 @@ void saveLog(){
 		saveDebug(debug_now_Y);//現在のy座標
 		saveDebug(debug_now_Theta);//現在の車体角速度
 		Error_XY_Debug(debug_now_X, debug_now_Y, debug_now_Theta);//誤差の計算関数
-		saveDebug(getOutput_velocity());
-		saveDebug(getOutput_angularvelocity());
-		saveDebug(getCurrentVelocity());
-		saveDebug(getTheta10mm());
+		saveDebug(getOutput_velocity());//目標速度
+		saveDebug(getOutput_angularvelocity());//目標角速度
+		saveDebug(getCurrentVelocity());//実際の速度
+		saveDebug(getTheta10mm());//今の角速度
 	}
 }
 

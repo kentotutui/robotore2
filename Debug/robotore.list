@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00024a8a  00000000  00000000  0005aac8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000173ea  00000000  00000000  0007f552  2**0
+ 17 .debug_line   000173eb  00000000  00000000  0007f552  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb5fb  00000000  00000000  0009693c  2**0
+ 18 .debug_str    000cb5fb  00000000  00000000  0009693d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161f37  2**0
+ 19 .comment      0000007b  00000000  00000000  00161f38  2**0
                   CONTENTS, READONLY
  20 .debug_frame  000080c0  00000000  00000000  00161fb4  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -6617,7 +6617,7 @@ void updateTargetpoint()
 			clearVLT_Distance10mm();
  8003b36:	f7fd fcbf 	bl	80014b8 <clearVLT_Distance10mm>
 		}
-		if(targetpoint_table_idx >= getDistanceLogSize()){//目標の更新方法を一旦戻す
+		if(targetpoint_table_idx >= getDistanceLogSize()){
  8003b3a:	f7ff fa8b 	bl	8003054 <getDistanceLogSize>
  8003b3e:	4603      	mov	r3, r0
  8003b40:	461a      	mov	r2, r3
@@ -6642,7 +6642,7 @@ void updateTargetpoint()
  8003b68:	eef8 7ae7 	vcvt.f32.s32	s15, s15
  8003b6c:	4b2f      	ldr	r3, [pc, #188]	; (8003c2c <updateTargetpoint+0x128>)
  8003b6e:	edc3 7a00 	vstr	s15, [r3]
-			target_X_coordinate = -400;
+			target_X_coordinate = -450;
  8003b72:	4b2f      	ldr	r3, [pc, #188]	; (8003c30 <updateTargetpoint+0x12c>)
  8003b74:	4a2f      	ldr	r2, [pc, #188]	; (8003c34 <updateTargetpoint+0x130>)
  8003b76:	601a      	str	r2, [r3, #0]
@@ -6722,7 +6722,7 @@ void updateTargetpoint()
  8003c28:	20018d9c 	.word	0x20018d9c
  8003c2c:	2001bcb0 	.word	0x2001bcb0
  8003c30:	2001bc80 	.word	0x2001bc80
- 8003c34:	c3c80000 	.word	0xc3c80000
+ 8003c34:	c3e10000 	.word	0xc3e10000
  8003c38:	2001bc84 	.word	0x2001bc84
  8003c3c:	447a0000 	.word	0x447a0000
  8003c40:	2001bc88 	.word	0x2001bc88
@@ -6828,7 +6828,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 08003d48 <Velocity_Angularvelocity>:
 
-void Velocity_Angularvelocity(void)
+void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
 {
  8003d48:	b580      	push	{r7, lr}
  8003d4a:	ed2d 8b02 	vpush	{d8}
@@ -6841,10 +6841,10 @@ void Velocity_Angularvelocity(void)
  8003d58:	61bb      	str	r3, [r7, #24]
  8003d5a:	4b36      	ldr	r3, [pc, #216]	; (8003e34 <Velocity_Angularvelocity+0xec>)
  8003d5c:	617b      	str	r3, [r7, #20]
-	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限
+	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
  8003d5e:	4b36      	ldr	r3, [pc, #216]	; (8003e38 <Velocity_Angularvelocity+0xf0>)
  8003d60:	613b      	str	r3, [r7, #16]
-	float min_angularvelocity = - (8.5 / (180/M_PI));
+	float min_angularvelocity = - (8.5 / (180/M_PI));//min角速度制限
  8003d62:	4b36      	ldr	r3, [pc, #216]	; (8003e3c <Velocity_Angularvelocity+0xf4>)
  8003d64:	60fb      	str	r3, [r7, #12]
 
@@ -6897,36 +6897,38 @@ void Velocity_Angularvelocity(void)
  8003dee:	ed97 7a04 	vldr	s14, [r7, #16]
  8003df2:	eeb4 7ae7 	vcmpe.f32	s14, s15
  8003df6:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8003dfa:	d802      	bhi.n	8003e02 <Velocity_Angularvelocity+0xba>
+ 8003dfa:	d803      	bhi.n	8003e04 <Velocity_Angularvelocity+0xbc>
 	{
 		Output_angularvelocity = max_angularvelocity;
  8003dfc:	4a14      	ldr	r2, [pc, #80]	; (8003e50 <Velocity_Angularvelocity+0x108>)
  8003dfe:	693b      	ldr	r3, [r7, #16]
  8003e00:	6013      	str	r3, [r2, #0]
 	}
-	if(Output_angularvelocity <= min_angularvelocity)
- 8003e02:	4b13      	ldr	r3, [pc, #76]	; (8003e50 <Velocity_Angularvelocity+0x108>)
- 8003e04:	edd3 7a00 	vldr	s15, [r3]
- 8003e08:	ed97 7a03 	vldr	s14, [r7, #12]
- 8003e0c:	eeb4 7ae7 	vcmpe.f32	s14, s15
- 8003e10:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8003e14:	da00      	bge.n	8003e18 <Velocity_Angularvelocity+0xd0>
+	else if(Output_angularvelocity <= min_angularvelocity)
 	{
 		Output_angularvelocity = min_angularvelocity;
 	}
 }
- 8003e16:	e002      	b.n	8003e1e <Velocity_Angularvelocity+0xd6>
-		Output_angularvelocity = min_angularvelocity;
- 8003e18:	4a0d      	ldr	r2, [pc, #52]	; (8003e50 <Velocity_Angularvelocity+0x108>)
- 8003e1a:	68fb      	ldr	r3, [r7, #12]
- 8003e1c:	6013      	str	r3, [r2, #0]
+ 8003e02:	e00d      	b.n	8003e20 <Velocity_Angularvelocity+0xd8>
+	else if(Output_angularvelocity <= min_angularvelocity)
+ 8003e04:	4b12      	ldr	r3, [pc, #72]	; (8003e50 <Velocity_Angularvelocity+0x108>)
+ 8003e06:	edd3 7a00 	vldr	s15, [r3]
+ 8003e0a:	ed97 7a03 	vldr	s14, [r7, #12]
+ 8003e0e:	eeb4 7ae7 	vcmpe.f32	s14, s15
+ 8003e12:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8003e16:	da00      	bge.n	8003e1a <Velocity_Angularvelocity+0xd2>
 }
- 8003e1e:	bf00      	nop
- 8003e20:	3720      	adds	r7, #32
- 8003e22:	46bd      	mov	sp, r7
- 8003e24:	ecbd 8b02 	vpop	{d8}
- 8003e28:	bd80      	pop	{r7, pc}
- 8003e2a:	bf00      	nop
+ 8003e18:	e002      	b.n	8003e20 <Velocity_Angularvelocity+0xd8>
+		Output_angularvelocity = min_angularvelocity;
+ 8003e1a:	4a0d      	ldr	r2, [pc, #52]	; (8003e50 <Velocity_Angularvelocity+0x108>)
+ 8003e1c:	68fb      	ldr	r3, [r7, #12]
+ 8003e1e:	6013      	str	r3, [r2, #0]
+}
+ 8003e20:	bf00      	nop
+ 8003e22:	3720      	adds	r7, #32
+ 8003e24:	46bd      	mov	sp, r7
+ 8003e26:	ecbd 8b02 	vpop	{d8}
+ 8003e2a:	bd80      	pop	{r7, pc}
  8003e2c:	3a03126f 	.word	0x3a03126f
  8003e30:	3a83126f 	.word	0x3a83126f
  8003e34:	3951b717 	.word	0x3951b717
@@ -11557,10 +11559,10 @@ void saveLog(){
  8005c0c:	eef0 7a40 	vmov.f32	s15, s0
  8005c10:	eeb0 0a67 	vmov.f32	s0, s15
  8005c14:	f7fd f972 	bl	8002efc <saveTheta>
-		saveDebug(getOutput_velocity());
-		saveDebug(getOutput_angularvelocity());
-		saveDebug(getCurrentVelocity());
-		saveDebug(getTheta10mm());
+		saveDebug(getOutput_velocity());//目標速度
+		saveDebug(getOutput_angularvelocity());//目標角速度
+		saveDebug(getCurrentVelocity());//実際の速度
+		saveDebug(getTheta10mm());//今の角速度
 	}
 }
  8005c18:	e08b      	b.n	8005d32 <saveLog+0x146>
@@ -11642,22 +11644,22 @@ void saveLog(){
  8005ce6:	eef0 0a47 	vmov.f32	s1, s14
  8005cea:	eeb0 0a67 	vmov.f32	s0, s15
  8005cee:	f7fd ffb1 	bl	8003c54 <Error_XY_Debug>
-		saveDebug(getOutput_velocity());
+		saveDebug(getOutput_velocity());//目標速度
  8005cf2:	f7fe f8e7 	bl	8003ec4 <getOutput_velocity>
  8005cf6:	eef0 7a40 	vmov.f32	s15, s0
  8005cfa:	eeb0 0a67 	vmov.f32	s0, s15
  8005cfe:	f7fd f945 	bl	8002f8c <saveDebug>
-		saveDebug(getOutput_angularvelocity());
+		saveDebug(getOutput_angularvelocity());//目標角速度
  8005d02:	f7fe f8ed 	bl	8003ee0 <getOutput_angularvelocity>
  8005d06:	eef0 7a40 	vmov.f32	s15, s0
  8005d0a:	eeb0 0a67 	vmov.f32	s0, s15
  8005d0e:	f7fd f93d 	bl	8002f8c <saveDebug>
-		saveDebug(getCurrentVelocity());
+		saveDebug(getCurrentVelocity());//実際の速度
  8005d12:	f7fd fced 	bl	80036f0 <getCurrentVelocity>
  8005d16:	eef0 7a40 	vmov.f32	s15, s0
  8005d1a:	eeb0 0a67 	vmov.f32	s0, s15
  8005d1e:	f7fd f935 	bl	8002f8c <saveDebug>
-		saveDebug(getTheta10mm());
+		saveDebug(getTheta10mm());//今の角速度
  8005d22:	f7fb fdb3 	bl	800188c <getTheta10mm>
  8005d26:	eef0 7a40 	vmov.f32	s15, s0
  8005d2a:	eeb0 0a67 	vmov.f32	s0, s15

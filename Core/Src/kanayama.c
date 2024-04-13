@@ -115,10 +115,10 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
-		if(targetpoint_table_idx >= getDistanceLogSize()){//目標の更新方法を一旦戻す
+		if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 			mon_Theta_table = Theta_table[targetpoint_table_idx];
-			target_X_coordinate = -400;
+			target_X_coordinate = -450;
 			target_Y_coordinate = 0;
 			target_Theta = mon_Theta_table / 1000;
 		}
@@ -164,11 +164,11 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 	saveDebug(Theta_e);
 }
 
-void Velocity_Angularvelocity(void)
+void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
 {
 	float kx = 0.0005, ky = 0.001, kt = 0.0002;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
-	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限
-	float min_angularvelocity = - (8.5 / (180/M_PI));
+	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	float min_angularvelocity = - (8.5 / (180/M_PI));//min角速度制限
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
