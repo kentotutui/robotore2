@@ -115,7 +115,7 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
-		if(targetpoint_table_idx >= getDistanceLogSize()){
+		/*if(targetpoint_table_idx >= getDistanceLogSize()){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 			mon_Theta_table = Theta_table[targetpoint_table_idx];
 			target_X_coordinate = -400;
@@ -131,7 +131,14 @@ void updateTargetpoint()
 			target_X_coordinate = mon_X_table / 10;
 			target_Y_coordinate = mon_Y_table / 10;
 			target_Theta = mon_Theta_table / 1000;
-		}
+		}*/
+		mon_X_table = X_table[targetpoint_table_idx];
+		mon_Y_table = Y_table[targetpoint_table_idx];
+		mon_Theta_table = Theta_table[targetpoint_table_idx];
+
+		target_X_coordinate = mon_X_table / 10;
+		target_Y_coordinate = mon_Y_table / 10;
+		target_Theta = mon_Theta_table / 1000;
 	}
 }
 
