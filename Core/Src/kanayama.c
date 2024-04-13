@@ -167,8 +167,8 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
 {
 	float kx = 0.0005, ky = 0.001, kt = 0.0002;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
-	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
-	float min_angularvelocity = - (8.5 / (180/M_PI));//min角速度制限
+	float max_angularvelocity = 8 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	float min_angularvelocity = - (8 / (180/M_PI));//min角速度制限
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;

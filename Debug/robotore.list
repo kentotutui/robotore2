@@ -6841,10 +6841,10 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
  8003d58:	61bb      	str	r3, [r7, #24]
  8003d5a:	4b36      	ldr	r3, [pc, #216]	; (8003e34 <Velocity_Angularvelocity+0xec>)
  8003d5c:	617b      	str	r3, [r7, #20]
-	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	float max_angularvelocity = 8 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
  8003d5e:	4b36      	ldr	r3, [pc, #216]	; (8003e38 <Velocity_Angularvelocity+0xf0>)
  8003d60:	613b      	str	r3, [r7, #16]
-	float min_angularvelocity = - (8.5 / (180/M_PI));//min角速度制限
+	float min_angularvelocity = - (8 / (180/M_PI));//min角速度制限
  8003d62:	4b36      	ldr	r3, [pc, #216]	; (8003e3c <Velocity_Angularvelocity+0xf4>)
  8003d64:	60fb      	str	r3, [r7, #12]
 
@@ -6932,8 +6932,8 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
  8003e2c:	3a03126f 	.word	0x3a03126f
  8003e30:	3a83126f 	.word	0x3a83126f
  8003e34:	3951b717 	.word	0x3951b717
- 8003e38:	3e17e9d8 	.word	0x3e17e9d8
- 8003e3c:	be17e9d8 	.word	0xbe17e9d8
+ 8003e38:	3e0efa35 	.word	0x3e0efa35
+ 8003e3c:	be0efa35 	.word	0xbe0efa35
  8003e40:	2001bc94 	.word	0x2001bc94
  8003e44:	2001bc8c 	.word	0x2001bc8c
  8003e48:	2001bc98 	.word	0x2001bc98
