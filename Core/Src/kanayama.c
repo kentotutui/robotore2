@@ -115,7 +115,7 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
-		/*if(targetpoint_table_idx >= getDistanceLogSize()){
+		if(targetpoint_table_idx >= getDistanceLogSize()){//目標の更新方法を一旦戻す
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 			mon_Theta_table = Theta_table[targetpoint_table_idx];
 			target_X_coordinate = -400;
@@ -131,14 +131,15 @@ void updateTargetpoint()
 			target_X_coordinate = mon_X_table / 10;
 			target_Y_coordinate = mon_Y_table / 10;
 			target_Theta = mon_Theta_table / 1000;
-		}*/
+		}
+		/*
 		mon_X_table = X_table[targetpoint_table_idx];
 		mon_Y_table = Y_table[targetpoint_table_idx];
 		mon_Theta_table = Theta_table[targetpoint_table_idx];
 
 		target_X_coordinate = mon_X_table / 10;
 		target_Y_coordinate = mon_Y_table / 10;
-		target_Theta = mon_Theta_table / 1000;
+		target_Theta = mon_Theta_table / 1000;*/
 	}
 }
 
@@ -166,12 +167,23 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 void Velocity_Angularvelocity(void)
 {
 	float kx = 0.0005, ky = 0.001, kt = 0.0002;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
+	float max_angularvelocity = 8.5 / (180/M_PI);//max角速度制限
+	float min_angularvelocity = - (8.5 / (180/M_PI));
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算(m/s)
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算(rad/s)
+
+	if(Output_angularvelocity >= max_angularvelocity)
+	{
+		Output_angularvelocity = max_angularvelocity;
+	}
+	else if(Output_angularvelocity <= min_angularvelocity)
+	{
+		Output_angularvelocity = min_angularvelocity;
+	}
 }
 
 float getTotal_length()
