@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00024a8a  00000000  00000000  0005aac8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000173eb  00000000  00000000  0007f552  2**0
+ 17 .debug_line   000173e9  00000000  00000000  0007f552  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb604  00000000  00000000  0009693d  2**0
+ 18 .debug_str    000cb604  00000000  00000000  0009693b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161f41  2**0
+ 19 .comment      0000007b  00000000  00000000  00161f3f  2**0
                   CONTENTS, READONLY
  20 .debug_frame  000080c0  00000000  00000000  00161fbc  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -8129,20 +8129,16 @@ int main(void)
  8004604:	f7fe fe10 	bl	8003228 <loadSide>
 					  loadDebug();
  8004608:	f7fe fe4c 	bl	80032a4 <loadDebug>
+						 printf("%f\r\n", getSideLog(i));
 					  }*/
 
 
 					  //printf("TargetVelocity, CurrentVelocity\r\n");
-					  //printf("Target_X, Target_Y, Target_Theta, Now_X, Now_Y, Now_Theta, Error_X, Error_Y, Errr_Theta, Velocity, Angularvelocity\r\n");
 					  uint16_t size = getDebugLogSize();
  800460c:	f7fe fd46 	bl	800309c <getDebugLogSize>
  8004610:	4603      	mov	r3, r0
  8004612:	f8a7 304a 	strh.w	r3, [r7, #74]	; 0x4a
 
-					  /*
-					  for(uint16_t i = 0; i < size; i = i+9){
-						 printf("%f, %f, %f, %f, %f, %f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8));
-					  }*/
 					  for(uint16_t i = 0; i < size; i = i+13){
  8004616:	2300      	movs	r3, #0
  8004618:	f8a7 304c 	strh.w	r3, [r7, #76]	; 0x4c
@@ -8298,17 +8294,12 @@ int main(void)
  80047ee:	f8b7 304a 	ldrh.w	r3, [r7, #74]	; 0x4a
  80047f2:	429a      	cmp	r2, r3
  80047f4:	f4ff af13 	bcc.w	800461e <main+0x62e>
+					  }
 
-					  /*
-					  for(uint16_t i = 0; i < size; i = i+1){
-						 printf("%f\r\n", getDebugLog(i));
-					  }*/
 					  soiya = 0;
  80047f8:	4b10      	ldr	r3, [pc, #64]	; (800483c <main+0x84c>)
  80047fa:	2200      	movs	r2, #0
  80047fc:	801a      	strh	r2, [r3, #0]
-
-					  //printf("9999, 9999\r\n");
 				  }
 
 				  break;
