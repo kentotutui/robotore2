@@ -21,7 +21,7 @@ static float velocity_table[3000];
 #define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
 uint16_t velocity_table_idx;
-uint16_t mode;
+uint16_t Run_Mode;
 uint16_t Control_Mode;
 
 float ref_distance;
@@ -69,7 +69,7 @@ void updateSideSensorStatus(){
 }
 
 void setRunMode(uint16_t num){
-	mode = num;
+	Run_Mode = num;
 }
 
 bool isCrossLine()
@@ -147,12 +147,12 @@ void running(void)
 					  if(getSideSensorStatusR() == true){
 						  start_goal_line_cnt++;
 
-						  if(mode == 1)
+						  if(Run_Mode == 1)
 						  {
 							  Control_Mode = 2;
 							  startLogging();
 						  }
-						  else if(mode == 2 || mode == 3) startVelocityUpdate();
+						  else if(Run_Mode == 2 || Run_Mode == 3) startVelocityUpdate();
 						  else
 						  {
 							  Control_Mode = 5;
@@ -220,7 +220,7 @@ void running(void)
 		    pattern = 20;
 	    }
 
-		if(mode == 5)
+		if(Run_Mode == 5)
 		{
 			if(getTotalDistance() >= getTotal_length())
 			{
@@ -260,7 +260,7 @@ void runningFlip()
 			clearCrossLineIgnoreDistance();
 			clearSideLineIgnoreDistance();
 
-			if(mode == 1){
+			if(Run_Mode == 1){
 				correction_check_cnt_cross = 0;
 				saveCross(getTotalDistance());
 			}
@@ -290,7 +290,7 @@ void runningFlip()
 				continuous_curve_flag = false;
 				continuous_cnt_reset_flag = true;
 
-				if(mode == 1){
+				if(Run_Mode == 1){
 					correction_check_cnt_side = 0;
 					saveSide(getTotalDistance());
 				}
@@ -316,7 +316,7 @@ void runningFlip()
 
 void runningInit()
 {
-	if(mode == 1){
+	if(Run_Mode == 1){
 		setLED('W');
 		ereaseLog();
 	}
@@ -469,10 +469,10 @@ void createVelocityTable(){
 float radius2Velocity(float radius){
 	float velocity;
 
-	if(mode == 2){
+	if(Run_Mode == 2){
 		velocity = radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
 	}
-	else if(mode == 3){
+	else if(Run_Mode == 3){
 		velocity = 1e-3 * radius * radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
 	}
 
@@ -672,7 +672,7 @@ void setStraightRadius(float radius)
 
 float getRunMode()
 {
-	return mode;
+	return Run_Mode;
 }
 
 float getControl_Mode()

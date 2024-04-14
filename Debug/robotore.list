@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_line   000173eb  00000000  00000000  0007f552  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb5fb  00000000  00000000  0009693d  2**0
+ 18 .debug_str    000cb604  00000000  00000000  0009693d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00161f38  2**0
+ 19 .comment      0000007b  00000000  00000000  00161f41  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000080c0  00000000  00000000  00161fb4  2**2
+ 20 .debug_frame  000080c0  00000000  00000000  00161fbc  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -6828,7 +6828,7 @@ void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
 
 08003d48 <Velocity_Angularvelocity>:
 
-void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数
+void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1msで回している
 {
  8003d48:	b580      	push	{r7, lr}
  8003d4a:	ed2d 8b02 	vpush	{d8}
@@ -10609,7 +10609,7 @@ void setRunMode(uint16_t num){
  8005510:	af00      	add	r7, sp, #0
  8005512:	4603      	mov	r3, r0
  8005514:	80fb      	strh	r3, [r7, #6]
-	mode = num;
+	Run_Mode = num;
  8005516:	4a04      	ldr	r2, [pc, #16]	; (8005528 <setRunMode+0x1c>)
  8005518:	88fb      	ldrh	r3, [r7, #6]
  800551a:	8013      	strh	r3, [r2, #0]
@@ -10619,7 +10619,7 @@ void setRunMode(uint16_t num){
  8005520:	46bd      	mov	sp, r7
  8005522:	f85d 7b04 	ldr.w	r7, [sp], #4
  8005526:	4770      	bx	lr
- 8005528:	2001f114 	.word	0x2001f114
+ 8005528:	2001f116 	.word	0x2001f116
 
 0800552c <isCrossLine>:
 
@@ -10907,7 +10907,7 @@ void running(void)
  800577e:	4b70      	ldr	r3, [pc, #448]	; (8005940 <running+0x264>)
  8005780:	701a      	strb	r2, [r3, #0]
 
-						  if(mode == 1)
+						  if(Run_Mode == 1)
  8005782:	4b70      	ldr	r3, [pc, #448]	; (8005944 <running+0x268>)
  8005784:	881b      	ldrh	r3, [r3, #0]
  8005786:	2b01      	cmp	r3, #1
@@ -10921,7 +10921,7 @@ void running(void)
  8005790:	f000 fade 	bl	8005d50 <startLogging>
  8005794:	e00f      	b.n	80057b6 <running+0xda>
 						  }
-						  else if(mode == 2 || mode == 3) startVelocityUpdate();
+						  else if(Run_Mode == 2 || Run_Mode == 3) startVelocityUpdate();
  8005796:	4b6b      	ldr	r3, [pc, #428]	; (8005944 <running+0x268>)
  8005798:	881b      	ldrh	r3, [r3, #0]
  800579a:	2b02      	cmp	r3, #2
@@ -11122,7 +11122,7 @@ void running(void)
  80058e4:	80fb      	strh	r3, [r7, #6]
 	    }
 
-		if(mode == 5)
+		if(Run_Mode == 5)
  80058e6:	4b17      	ldr	r3, [pc, #92]	; (8005944 <running+0x268>)
  80058e8:	881b      	ldrh	r3, [r3, #0]
  80058ea:	2b05      	cmp	r3, #5
@@ -11168,8 +11168,8 @@ void running(void)
  800593a:	bf00      	nop
  800593c:	2001ebc0 	.word	0x2001ebc0
  8005940:	2001eba8 	.word	0x2001eba8
- 8005944:	2001f114 	.word	0x2001f114
- 8005948:	2001f116 	.word	0x2001f116
+ 8005944:	2001f116 	.word	0x2001f116
+ 8005948:	2001f114 	.word	0x2001f114
  800594c:	2001ebb7 	.word	0x2001ebb7
  8005950:	428c0000 	.word	0x428c0000
  8005954:	00000000 	.word	0x00000000
@@ -11246,7 +11246,7 @@ void runningFlip()
 			clearSideLineIgnoreDistance();
  80059ca:	f7fb fd3d 	bl	8001448 <clearSideLineIgnoreDistance>
 
-			if(mode == 1){
+			if(Run_Mode == 1){
  80059ce:	4b5e      	ldr	r3, [pc, #376]	; (8005b48 <runningFlip+0x1ec>)
  80059d0:	881b      	ldrh	r3, [r3, #0]
  80059d2:	2b01      	cmp	r3, #1
@@ -11260,7 +11260,7 @@ void runningFlip()
  80059e0:	eef0 7a40 	vmov.f32	s15, s0
  80059e4:	eeb0 0a67 	vmov.f32	s0, s15
  80059e8:	f7fd faa0 	bl	8002f2c <saveCross>
-			if(mode == 1){
+			if(Run_Mode == 1){
  80059ec:	e017      	b.n	8005a1e <runningFlip+0xc2>
 			}
 			else{
@@ -11270,7 +11270,7 @@ void runningFlip()
  80059f2:	801a      	strh	r2, [r3, #0]
 				correctionTotalDistanceFromCrossLine();;
  80059f4:	f000 fa76 	bl	8005ee4 <correctionTotalDistanceFromCrossLine>
-			if(mode == 1){
+			if(Run_Mode == 1){
  80059f8:	e011      	b.n	8005a1e <runningFlip+0xc2>
 			}
 		}
@@ -11361,7 +11361,7 @@ void runningFlip()
  8005aa4:	2201      	movs	r2, #1
  8005aa6:	701a      	strb	r2, [r3, #0]
 
-				if(mode == 1){
+				if(Run_Mode == 1){
  8005aa8:	4b27      	ldr	r3, [pc, #156]	; (8005b48 <runningFlip+0x1ec>)
  8005aaa:	881b      	ldrh	r3, [r3, #0]
  8005aac:	2b01      	cmp	r3, #1
@@ -11450,7 +11450,7 @@ void runningFlip()
  8005b3c:	2001ebba 	.word	0x2001ebba
  8005b40:	2001ebb9 	.word	0x2001ebb9
  8005b44:	2001ebb2 	.word	0x2001ebb2
- 8005b48:	2001f114 	.word	0x2001f114
+ 8005b48:	2001f116 	.word	0x2001f116
  8005b4c:	2001ebae 	.word	0x2001ebae
  8005b50:	42480000 	.word	0x42480000
  8005b54:	2001ebb3 	.word	0x2001ebb3
@@ -11464,7 +11464,7 @@ void runningInit()
 {
  8005b64:	b580      	push	{r7, lr}
  8005b66:	af00      	add	r7, sp, #0
-	if(mode == 1){
+	if(Run_Mode == 1){
  8005b68:	4b18      	ldr	r3, [pc, #96]	; (8005bcc <runningInit+0x68>)
  8005b6a:	881b      	ldrh	r3, [r3, #0]
  8005b6c:	2b01      	cmp	r3, #1
@@ -11530,7 +11530,7 @@ void runningInit()
  8005bc6:	bf00      	nop
  8005bc8:	bd80      	pop	{r7, pc}
  8005bca:	bf00      	nop
- 8005bcc:	2001f114 	.word	0x2001f114
+ 8005bcc:	2001f116 	.word	0x2001f116
  8005bd0:	2001eba8 	.word	0x2001eba8
  8005bd4:	2001ebb2 	.word	0x2001ebb2
  8005bd8:	2001ebb3 	.word	0x2001ebb3
@@ -12206,7 +12206,7 @@ void setStraightRadius(float radius)
 
 080060ec <getControl_Mode>:
 {
-	return mode;
+	return Run_Mode;
 }
 
 float getControl_Mode()
@@ -12223,7 +12223,7 @@ float getControl_Mode()
  8006100:	46bd      	mov	sp, r7
  8006102:	f85d 7b04 	ldr.w	r7, [sp], #4
  8006106:	4770      	bx	lr
- 8006108:	2001f116 	.word	0x2001f116
+ 8006108:	2001f114 	.word	0x2001f114
 
 0800610c <getSideSensorStatusL>:
 {
