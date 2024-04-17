@@ -152,7 +152,11 @@ void running(void)
 							  Control_Mode = 2;
 							  startLogging();
 						  }
-						  else if(Run_Mode == 2 || Run_Mode == 3) startVelocityUpdate();
+						  else if(Run_Mode == 2 || Run_Mode == 3)
+						  {
+							  Control_Mode = 2;
+						      startVelocityUpdate();
+						  }
 						  else
 						  {
 							  Control_Mode = 5;
