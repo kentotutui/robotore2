@@ -348,9 +348,9 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(1.8, 1.8);
+					      setVelocityRange(1.5, 1.5);
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1000);
 
@@ -397,11 +397,11 @@ int main(void)
 					      setRunMode(2);
 					      setrunmode(2);
 
-					      setVelocityRange(1.8, 4.5);
+					      setVelocityRange(1.5, 3.0);
 					      setAccDec(6, 2);
 					      setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1500);
 
