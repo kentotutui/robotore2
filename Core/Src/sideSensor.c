@@ -421,7 +421,6 @@ void stopVelocityUpdate()
 }
 
 void createVelocityTable(){
-	setLED2('B');
 	const float *p_distance_V, *p_theta_V;
 	p_distance_V = getDistanceArrayPointer();
 	p_theta_V = getThetaArrayPointer();
@@ -440,7 +439,6 @@ void createVelocityTable(){
 		float radius = fabs(temp_distance / temp_theta);
 		if(radius >= straight_radius) radius = straight_radius;
 		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
-		saveDebug(velocity_table[i]);
 
 		//Forced maximum speed on the crossline
 		total_distance += temp_distance;
@@ -455,15 +453,17 @@ void createVelocityTable(){
 		}
 
 	}
-	for(uint16_t i = log_size; i < 6000; i++){
+
+	for(uint16_t i = log_size; i < 3000; i++){//i < 3000は配列の数に応じて変更
 		velocity_table[i] = 3.0;
 		//velocity_table[i] = 2.0;
 	}
 
-
 	addDecelerationDistanceMergin(velocity_table, 13); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
+
+	setLED2('Y');
 
 	velocity_table[0] = min_velocity;
 
@@ -471,7 +471,7 @@ void createVelocityTable(){
 	accelerateProcessing(acceleration, p_distance_V);
 
 	//CreateAcceleration(p_distance);
-
+	setLED2('B');
 }
 
 float radius2Velocity(float radius){
@@ -497,7 +497,7 @@ void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = mergin_size;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 6000 - 1){
+	while(idx <= 3000 - 1){//3000は配列数で変更
 		if(pre_target_velocity > table[idx]){
 			float low_velocity = table[idx];
 			for(uint16_t i = idx - mergin_size; i < idx; i++){
@@ -517,7 +517,7 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = 0;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 6000 - 1 - mergin_size){
+	while(idx <= 3000 - 1 - mergin_size){//3000は配列数で変更
 		if(pre_target_velocity < table[idx]){
 			float low_velocity = pre_target_velocity;
 			for(uint16_t i = idx; i < idx + mergin_size; i++){
@@ -575,9 +575,9 @@ void updateTargetVelocity(){
 			velocity_table_idx = getDistanceLogSize() - 1;
 		}
 
-		//setTargetVelocity(velocity_table[velocity_table_idx]);
+		setTargetVelocity(velocity_table[velocity_table_idx]);
 		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
-		setTargetVelocity(1.5);
+		//setTargetVelocity(1.5);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();

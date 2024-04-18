@@ -35,8 +35,8 @@ void CreateXYcoordinates()
 	const float *p_distance, *p_theta;
 	p_distance = getDistanceArrayPointer();
 	p_theta = getThetaArrayPointer();
-
 	float temp_distance, temp_theta;
+
 	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
 
@@ -53,8 +53,6 @@ void CreateXYcoordinates()
 		X_table[i] = x * 10;
 		Y_table[i] = y * 10;
 		Theta_table[i] = th * 1000;
-
-		saveDebug(X_table[i]);
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}

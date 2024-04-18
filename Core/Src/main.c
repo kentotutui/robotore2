@@ -305,6 +305,9 @@ int main(void)
 
 				  		  //setsuctionMotor(500);
 					      setRunMode(5);
+					      setVelocityRange(1.5, 3.0);
+						  setAccDec(7, 3);
+						  setStraightRadius(1000);
 						  runningInit();
 						  soiya = 13;
 				  }
@@ -415,12 +418,14 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
+					      IMU_average();
+
 						  clearspeedcount();
 
-						  setRunMode(2);
+						  setRunMode(5);
 
-						  setVelocityRange(2.5, 5.0);
-						  setAccDec(7, 3);
+						  setVelocityRange(1.5, 3.0);
+						  setAccDec(4, 3);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
