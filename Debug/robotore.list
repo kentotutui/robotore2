@@ -6865,8 +6865,8 @@ int main(void)
  8003bf0:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  8003bf4:	f002 fa00 	bl	8005ff8 <setVelocityRange>
 
-						  setsuctionMotor(500);
- 8003bf8:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(700);
+ 8003bf8:	f44f 702f 	mov.w	r0, #700	; 0x2bc
  8003bfc:	f001 f898 	bl	8004d30 <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -6964,8 +6964,8 @@ int main(void)
  8003c94:	ed9f 0a12 	vldr	s0, [pc, #72]	; 8003ce0 <main+0x368>
  8003c98:	f002 f9de 	bl	8006058 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003c9c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(700);
+ 8003c9c:	f44f 702f 	mov.w	r0, #700	; 0x2bc
  8003ca0:	f001 f846 	bl	8004d30 <setsuctionMotor>
 
 						  HAL_Delay(1500);
@@ -9154,9 +9154,9 @@ static void MX_USART1_UART_Init(void)
  8004974:	4b11      	ldr	r3, [pc, #68]	; (80049bc <MX_USART1_UART_Init+0x4c>)
  8004976:	4a12      	ldr	r2, [pc, #72]	; (80049c0 <MX_USART1_UART_Init+0x50>)
  8004978:	601a      	str	r2, [r3, #0]
-  huart1.Init.BaudRate = 9600;
+  huart1.Init.BaudRate = 115200;
  800497a:	4b10      	ldr	r3, [pc, #64]	; (80049bc <MX_USART1_UART_Init+0x4c>)
- 800497c:	f44f 5216 	mov.w	r2, #9600	; 0x2580
+ 800497c:	f44f 32e1 	mov.w	r2, #115200	; 0x1c200
  8004980:	605a      	str	r2, [r3, #4]
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
  8004982:	4b0e      	ldr	r3, [pc, #56]	; (80049bc <MX_USART1_UART_Init+0x4c>)
