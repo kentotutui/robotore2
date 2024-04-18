@@ -298,7 +298,7 @@ int main(void)
 				  setLED('W');
 				  setLED2('R');
 				  //printf("0\r\n");
-
+				  /*
 				  if(running_flag == true){
 
 				  		  //setsuctionMotor(500);
@@ -308,7 +308,7 @@ int main(void)
 						  setStraightRadius(1000);
 						  runningInit();
 						  soiya = 13;
-				  }
+				  }*/
 
 				  break;
 
@@ -620,11 +620,11 @@ int main(void)
 					  loadSide();
 					  loadDebug();
 
-
+					  /*
 					  printf("Distance, Theta\r\n");
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }
+					  }*/
 					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
@@ -640,14 +640,13 @@ int main(void)
 					  //printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();
 
-					  /*
 					  for(uint16_t i = 0; i < size; i = i+13){
 						 printf("%f, %f, %f , %f, %f, %f , %f, %f, %f , %f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8), getDebugLog(i + 9), getDebugLog(i + 10), getDebugLog(i + 11), getDebugLog(i + 12));
-					  }*/
-
+					  }
+					  /*
 					  for(uint16_t i = 0; i < size; i++){
 						 printf("%f\r\n", getDebugLog(i));
-					  }
+					  }*/
 
 					  running_flag = false;
 					  soiya = 0;
