@@ -31,6 +31,7 @@ static float Output_angularvelocity;
 
 void CreateXYcoordinates()
 {
+	setLED2('X');
 	const float *p_distance, *p_theta;
 	p_distance = getDistanceArrayPointer();
 	p_theta = getThetaArrayPointer();
@@ -52,6 +53,8 @@ void CreateXYcoordinates()
 		X_table[i] = x * 10;
 		Y_table[i] = y * 10;
 		Theta_table[i] = th * 1000;
+
+		saveDebug(X_table[i]);
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}

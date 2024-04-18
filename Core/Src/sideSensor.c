@@ -160,6 +160,7 @@ void running(void)
 						  else
 						  {
 							  Control_Mode = 5;
+							  startVelocityUpdate();
 						      startTargetUpdate();
 						  }
 
@@ -331,7 +332,7 @@ void runningInit()
 		loadTheta();
 		loadCross();
 		loadSide();
-		//createVelocityTable();
+		createVelocityTable();
 		CreateXYcoordinates();
 	}
 
@@ -420,9 +421,10 @@ void stopVelocityUpdate()
 }
 
 void createVelocityTable(){
-	const float *p_distance, *p_theta;
-	p_distance = getDistanceArrayPointer();
-	p_theta = getThetaArrayPointer();
+	setLED2('B');
+	const float *p_distance_V, *p_theta_V;
+	p_distance_V = getDistanceArrayPointer();
+	p_theta_V = getThetaArrayPointer();
 	float temp_distance, temp_theta;
 
 	uint16_t log_size = getDistanceLogSize();
@@ -430,13 +432,15 @@ void createVelocityTable(){
 	uint16_t crossline_idx = 0;
 	float total_distance = 0;
 	for(uint16_t i = 0; i < log_size; i++){
-		temp_distance = p_distance[i];
-		temp_theta = p_theta[i];
+		setLED2('G');
+		temp_distance = p_distance_V[i];
+		temp_theta = p_theta_V[i];
 
 		if(temp_theta == 0) temp_theta = 0.00001;
 		float radius = fabs(temp_distance / temp_theta);
 		if(radius >= straight_radius) radius = straight_radius;
-		velocity_table[i] = radius2Velocity(radius);
+		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
+		saveDebug(velocity_table[i]);
 
 		//Forced maximum speed on the crossline
 		total_distance += temp_distance;
@@ -463,8 +467,8 @@ void createVelocityTable(){
 
 	velocity_table[0] = min_velocity;
 
-	decelerateProcessing(deceleration, p_distance);
-	accelerateProcessing(acceleration, p_distance);
+	decelerateProcessing(deceleration, p_distance_V);
+	accelerateProcessing(acceleration, p_distance_V);
 
 	//CreateAcceleration(p_distance);
 
@@ -473,12 +477,15 @@ void createVelocityTable(){
 float radius2Velocity(float radius){
 	float velocity;
 
+	/*
 	if(Run_Mode == 2){
 		velocity = radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
 	}
 	else if(Run_Mode == 3){
 		velocity = 1e-3 * radius * radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
-	}
+	}*/
+
+	velocity = radius * ((max_velocity - min_velocity) / straight_radius) + min_velocity;
 
 	return velocity;
 }
