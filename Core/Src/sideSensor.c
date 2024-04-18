@@ -453,7 +453,6 @@ void createVelocityTable(){
 
 	for(uint16_t i = log_size; i < 3000; i++){//i < 3000は配列の数に応じて変更
 		velocity_table[i] = 3.0;
-		//velocity_table[i] = 2.0;
 	}
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
