@@ -152,11 +152,6 @@ void running(void)
 							  Control_Mode = 2;
 							  startLogging();
 						  }
-						  else if(Run_Mode == 2 || Run_Mode == 3)
-						  {
-							  Control_Mode = 2;
-						      startVelocityUpdate();
-						  }
 						  else
 						  {
 							  Control_Mode = 5;
@@ -172,6 +167,7 @@ void running(void)
 					  {
 						  Control_Mode = 1;
 					  }
+
 					  break;
 
 				  case 5:
@@ -353,12 +349,13 @@ void saveLog(){
 		saveDistance(getDistance10mm());
 		saveTheta(getTheta10mm());
 	}
+	/*
 	else if(velocity_update_flag == true){
 		saveDebug(getTargetVelocity());
 		saveDebug(getCurrentVelocity());
 		//saveDebug(getPID());
 		//saveDebug(getTargetAcceleration());
-	}
+	}*/
 	else if(target_update_flag == true){
 		debug_now_X = CurrentXcoordinates();
 		debug_now_Y = CurrentYcoordinates();

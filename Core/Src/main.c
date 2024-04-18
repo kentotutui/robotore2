@@ -135,8 +135,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       updateSideSensorStatus();
 
       //checkCourseOut();
-
-      //resetEncoderCnt();
    }
 
    if(htim->Instance == TIM7){//0.1ms
