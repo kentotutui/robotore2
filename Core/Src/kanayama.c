@@ -31,7 +31,6 @@ static float Output_angularvelocity;
 
 void CreateXYcoordinates()
 {
-	setLED2('X');
 	const float *p_distance, *p_theta;
 	p_distance = getDistanceArrayPointer();
 	p_theta = getThetaArrayPointer();

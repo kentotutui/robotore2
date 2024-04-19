@@ -428,7 +428,6 @@ void createVelocityTable(){
 	uint16_t crossline_idx = 0;
 	float total_distance = 0;
 	for(uint16_t i = 0; i < log_size; i++){
-		setLED2('G');
 		temp_distance = p_distance_V[i];
 		temp_theta = p_theta_V[i];
 
@@ -459,15 +458,12 @@ void createVelocityTable(){
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 	//shiftVelocityTable(velocity_table, 1);
 
-	setLED2('Y');
-
 	velocity_table[0] = min_velocity;
 
 	decelerateProcessing(deceleration, p_distance_V);
 	accelerateProcessing(acceleration, p_distance_V);
 
 	//CreateAcceleration(p_distance);
-	setLED2('B');
 }
 
 float radius2Velocity(float radius){
