@@ -8,6 +8,8 @@
 #include "sideSensor.h"
 
 static float velocity_table[3000];
+//static uint16_t velocity_table[6000];
+
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[mm]
@@ -417,7 +419,7 @@ void stopVelocityUpdate()
 	velocity_update_flag = false;
 }
 
-void createVelocityTable(){
+void createVelocityTable(){//速度テーブル生成関数
 	const float *p_distance_V, *p_theta_V;
 	p_distance_V = getDistanceArrayPointer();
 	p_theta_V = getThetaArrayPointer();
@@ -569,7 +571,6 @@ void updateTargetVelocity(){
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
 		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
-		//setTargetVelocity(1.5);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();

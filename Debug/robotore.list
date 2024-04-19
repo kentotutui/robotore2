@@ -11800,7 +11800,7 @@ void stopVelocityUpdate()
 
 08005e1c <createVelocityTable>:
 
-void createVelocityTable(){
+void createVelocityTable(){//速度テーブル生成関数
  8005e1c:	b590      	push	{r4, r7, lr}
  8005e1e:	b08d      	sub	sp, #52	; 0x34
  8005e20:	af00      	add	r7, sp, #0
@@ -12588,7 +12588,6 @@ void updateTargetVelocity(){
  800645e:	eeb0 0a67 	vmov.f32	s0, s15
  8006462:	f7fd f903 	bl	800366c <setTargetVelocity>
 		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
-		//setTargetVelocity(1.5);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
  8006466:	4b0f      	ldr	r3, [pc, #60]	; (80064a4 <updateTargetVelocity+0xc0>)
