@@ -43,7 +43,7 @@ void stopTargetUpdate();
 void startVelocityUpdate();
 void stopVelocityUpdate();
 
-void createVelocityTable();
+void CreateVelocityTable();
 float radius2Velocity(float);
 void addDecelerationDistanceMergin(float *, int16_t);
 void addAccelerationDistanceMergin(float *, int16_t);

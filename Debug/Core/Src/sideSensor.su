@@ -13,7 +13,7 @@ sideSensor.c:391:6:startTargetUpdate	8	static
 sideSensor.c:401:6:stopTargetUpdate	4	static
 sideSensor.c:406:6:startVelocityUpdate	8	static
 sideSensor.c:417:6:stopVelocityUpdate	4	static
-sideSensor.c:422:6:createVelocityTable	64	static
+sideSensor.c:422:6:CreateVelocityTable	64	static
 sideSensor.c:471:7:radius2Velocity	24	static
 sideSensor.c:489:6:addDecelerationDistanceMergin	32	static
 sideSensor.c:509:6:addAccelerationDistanceMergin	32	static

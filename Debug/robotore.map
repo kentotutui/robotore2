@@ -6428,9 +6428,9 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text.stopVelocityUpdate
                 0x0000000008005e04       0x18 Core/Src/sideSensor.o
                 0x0000000008005e04                stopVelocityUpdate
- .text.createVelocityTable
+ .text.CreateVelocityTable
                 0x0000000008005e1c      0x1ac Core/Src/sideSensor.o
-                0x0000000008005e1c                createVelocityTable
+                0x0000000008005e1c                CreateVelocityTable
  .text.radius2Velocity
                 0x0000000008005fc8       0x5c Core/Src/sideSensor.o
                 0x0000000008005fc8                radius2Velocity

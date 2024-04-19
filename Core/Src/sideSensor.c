@@ -330,7 +330,7 @@ void runningInit()
 		loadTheta();
 		loadCross();
 		loadSide();
-		createVelocityTable();
+		CreateVelocityTable();
 		CreateXYcoordinates();
 	}
 
@@ -419,7 +419,7 @@ void stopVelocityUpdate()
 	velocity_update_flag = false;
 }
 
-void createVelocityTable(){//速度テーブル生成関数
+void CreateVelocityTable(){//速度テーブル生成関数
 	const float *p_distance_V, *p_theta_V;
 	p_distance_V = getDistanceArrayPointer();
 	p_theta_V = getThetaArrayPointer();

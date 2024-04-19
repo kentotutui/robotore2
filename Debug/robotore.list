@@ -11492,8 +11492,8 @@ void runningInit()
  8005bac:	f7fd fafe 	bl	80031ac <loadCross>
 		loadSide();
  8005bb0:	f7fd fb3a 	bl	8003228 <loadSide>
-		createVelocityTable();
- 8005bb4:	f000 f932 	bl	8005e1c <createVelocityTable>
+		CreateVelocityTable();
+ 8005bb4:	f000 f932 	bl	8005e1c <CreateVelocityTable>
 		CreateXYcoordinates();
  8005bb8:	f7fd fe10 	bl	80037dc <CreateXYcoordinates>
 	}
@@ -11798,9 +11798,9 @@ void stopVelocityUpdate()
  8005e16:	4770      	bx	lr
  8005e18:	2001ebbd 	.word	0x2001ebbd
 
-08005e1c <createVelocityTable>:
+08005e1c <CreateVelocityTable>:
 
-void createVelocityTable(){//速度テーブル生成関数
+void CreateVelocityTable(){//速度テーブル生成関数
  8005e1c:	b590      	push	{r4, r7, lr}
  8005e1e:	b08d      	sub	sp, #52	; 0x34
  8005e20:	af00      	add	r7, sp, #0
@@ -11827,7 +11827,7 @@ void createVelocityTable(){//速度テーブル生成関数
 	for(uint16_t i = 0; i < log_size; i++){
  8005e40:	2300      	movs	r3, #0
  8005e42:	847b      	strh	r3, [r7, #34]	; 0x22
- 8005e44:	e079      	b.n	8005f3a <createVelocityTable+0x11e>
+ 8005e44:	e079      	b.n	8005f3a <CreateVelocityTable+0x11e>
 		temp_distance = p_distance_V[i];
  8005e46:	8c7b      	ldrh	r3, [r7, #34]	; 0x22
  8005e48:	009b      	lsls	r3, r3, #2
@@ -11847,8 +11847,8 @@ void createVelocityTable(){//速度テーブル生成関数
  8005e5e:	edd7 7a0b 	vldr	s15, [r7, #44]	; 0x2c
  8005e62:	eef5 7a40 	vcmp.f32	s15, #0.0
  8005e66:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8005e6a:	d101      	bne.n	8005e70 <createVelocityTable+0x54>
- 8005e6c:	4b4d      	ldr	r3, [pc, #308]	; (8005fa4 <createVelocityTable+0x188>)
+ 8005e6a:	d101      	bne.n	8005e70 <CreateVelocityTable+0x54>
+ 8005e6c:	4b4d      	ldr	r3, [pc, #308]	; (8005fa4 <CreateVelocityTable+0x188>)
  8005e6e:	62fb      	str	r3, [r7, #44]	; 0x2c
 		float radius = fabs(temp_distance / temp_theta);
  8005e70:	edd7 6a02 	vldr	s13, [r7, #8]
@@ -11857,13 +11857,13 @@ void createVelocityTable(){//速度テーブル生成関数
  8005e7c:	eef0 7ae7 	vabs.f32	s15, s15
  8005e80:	edc7 7a07 	vstr	s15, [r7, #28]
 		if(radius >= straight_radius) radius = straight_radius;
- 8005e84:	4b48      	ldr	r3, [pc, #288]	; (8005fa8 <createVelocityTable+0x18c>)
+ 8005e84:	4b48      	ldr	r3, [pc, #288]	; (8005fa8 <CreateVelocityTable+0x18c>)
  8005e86:	edd3 7a00 	vldr	s15, [r3]
  8005e8a:	ed97 7a07 	vldr	s14, [r7, #28]
  8005e8e:	eeb4 7ae7 	vcmpe.f32	s14, s15
  8005e92:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8005e96:	db02      	blt.n	8005e9e <createVelocityTable+0x82>
- 8005e98:	4b43      	ldr	r3, [pc, #268]	; (8005fa8 <createVelocityTable+0x18c>)
+ 8005e96:	db02      	blt.n	8005e9e <CreateVelocityTable+0x82>
+ 8005e98:	4b43      	ldr	r3, [pc, #268]	; (8005fa8 <CreateVelocityTable+0x18c>)
  8005e9a:	681b      	ldr	r3, [r3, #0]
  8005e9c:	61fb      	str	r3, [r7, #28]
 		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
@@ -11871,7 +11871,7 @@ void createVelocityTable(){//速度テーブル生成関数
  8005ea0:	ed97 0a07 	vldr	s0, [r7, #28]
  8005ea4:	f000 f890 	bl	8005fc8 <radius2Velocity>
  8005ea8:	eef0 7a40 	vmov.f32	s15, s0
- 8005eac:	4a3f      	ldr	r2, [pc, #252]	; (8005fac <createVelocityTable+0x190>)
+ 8005eac:	4a3f      	ldr	r2, [pc, #252]	; (8005fac <CreateVelocityTable+0x190>)
  8005eae:	00a3      	lsls	r3, r4, #2
  8005eb0:	4413      	add	r3, r2
  8005eb2:	edc3 7a00 	vstr	s15, [r3]
@@ -11890,24 +11890,24 @@ void createVelocityTable(){//速度テーブル生成関数
  8005ece:	ed87 0a01 	vstr	s0, [r7, #4]
 		if(crossline_distance + 60 >= total_distance && total_distance >= crossline_distance - 60){
  8005ed2:	edd7 7a01 	vldr	s15, [r7, #4]
- 8005ed6:	ed9f 7a36 	vldr	s14, [pc, #216]	; 8005fb0 <createVelocityTable+0x194>
+ 8005ed6:	ed9f 7a36 	vldr	s14, [pc, #216]	; 8005fb0 <CreateVelocityTable+0x194>
  8005eda:	ee77 7a87 	vadd.f32	s15, s15, s14
  8005ede:	ed97 7a09 	vldr	s14, [r7, #36]	; 0x24
  8005ee2:	eeb4 7ae7 	vcmpe.f32	s14, s15
  8005ee6:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8005eea:	d813      	bhi.n	8005f14 <createVelocityTable+0xf8>
+ 8005eea:	d813      	bhi.n	8005f14 <CreateVelocityTable+0xf8>
  8005eec:	edd7 7a01 	vldr	s15, [r7, #4]
- 8005ef0:	ed9f 7a2f 	vldr	s14, [pc, #188]	; 8005fb0 <createVelocityTable+0x194>
+ 8005ef0:	ed9f 7a2f 	vldr	s14, [pc, #188]	; 8005fb0 <CreateVelocityTable+0x194>
  8005ef4:	ee77 7ac7 	vsub.f32	s15, s15, s14
  8005ef8:	ed97 7a09 	vldr	s14, [r7, #36]	; 0x24
  8005efc:	eeb4 7ae7 	vcmpe.f32	s14, s15
  8005f00:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8005f04:	db06      	blt.n	8005f14 <createVelocityTable+0xf8>
+ 8005f04:	db06      	blt.n	8005f14 <CreateVelocityTable+0xf8>
 			 velocity_table[i] = max_velocity;
  8005f06:	8c7b      	ldrh	r3, [r7, #34]	; 0x22
- 8005f08:	4a2a      	ldr	r2, [pc, #168]	; (8005fb4 <createVelocityTable+0x198>)
+ 8005f08:	4a2a      	ldr	r2, [pc, #168]	; (8005fb4 <CreateVelocityTable+0x198>)
  8005f0a:	6812      	ldr	r2, [r2, #0]
- 8005f0c:	4927      	ldr	r1, [pc, #156]	; (8005fac <createVelocityTable+0x190>)
+ 8005f0c:	4927      	ldr	r1, [pc, #156]	; (8005fac <CreateVelocityTable+0x190>)
  8005f0e:	009b      	lsls	r3, r3, #2
  8005f10:	440b      	add	r3, r1
  8005f12:	601a      	str	r2, [r3, #0]
@@ -11915,12 +11915,12 @@ void createVelocityTable(){//速度テーブル生成関数
 
 		if(total_distance >= crossline_distance + 60){
  8005f14:	edd7 7a01 	vldr	s15, [r7, #4]
- 8005f18:	ed9f 7a25 	vldr	s14, [pc, #148]	; 8005fb0 <createVelocityTable+0x194>
+ 8005f18:	ed9f 7a25 	vldr	s14, [pc, #148]	; 8005fb0 <CreateVelocityTable+0x194>
  8005f1c:	ee77 7a87 	vadd.f32	s15, s15, s14
  8005f20:	ed97 7a09 	vldr	s14, [r7, #36]	; 0x24
  8005f24:	eeb4 7ae7 	vcmpe.f32	s14, s15
  8005f28:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8005f2c:	db02      	blt.n	8005f34 <createVelocityTable+0x118>
+ 8005f2c:	db02      	blt.n	8005f34 <CreateVelocityTable+0x118>
 			crossline_idx++;
  8005f2e:	8d7b      	ldrh	r3, [r7, #42]	; 0x2a
  8005f30:	3301      	adds	r3, #1
@@ -11932,7 +11932,7 @@ void createVelocityTable(){//速度テーブル生成関数
  8005f3a:	8c7a      	ldrh	r2, [r7, #34]	; 0x22
  8005f3c:	89fb      	ldrh	r3, [r7, #14]
  8005f3e:	429a      	cmp	r2, r3
- 8005f40:	d381      	bcc.n	8005e46 <createVelocityTable+0x2a>
+ 8005f40:	d381      	bcc.n	8005e46 <CreateVelocityTable+0x2a>
 		}
 
 	}
@@ -11940,13 +11940,13 @@ void createVelocityTable(){//速度テーブル生成関数
 	for(uint16_t i = log_size; i < 3000; i++){//i < 3000は配列の数に応じて変更
  8005f42:	89fb      	ldrh	r3, [r7, #14]
  8005f44:	837b      	strh	r3, [r7, #26]
- 8005f46:	e008      	b.n	8005f5a <createVelocityTable+0x13e>
+ 8005f46:	e008      	b.n	8005f5a <CreateVelocityTable+0x13e>
 		velocity_table[i] = 3.0;
  8005f48:	8b7b      	ldrh	r3, [r7, #26]
- 8005f4a:	4a18      	ldr	r2, [pc, #96]	; (8005fac <createVelocityTable+0x190>)
+ 8005f4a:	4a18      	ldr	r2, [pc, #96]	; (8005fac <CreateVelocityTable+0x190>)
  8005f4c:	009b      	lsls	r3, r3, #2
  8005f4e:	4413      	add	r3, r2
- 8005f50:	4a19      	ldr	r2, [pc, #100]	; (8005fb8 <createVelocityTable+0x19c>)
+ 8005f50:	4a19      	ldr	r2, [pc, #100]	; (8005fb8 <CreateVelocityTable+0x19c>)
  8005f52:	601a      	str	r2, [r3, #0]
 	for(uint16_t i = log_size; i < 3000; i++){//i < 3000は配列の数に応じて変更
  8005f54:	8b7b      	ldrh	r3, [r7, #26]
@@ -11955,33 +11955,33 @@ void createVelocityTable(){//速度テーブル生成関数
  8005f5a:	8b7b      	ldrh	r3, [r7, #26]
  8005f5c:	f640 32b7 	movw	r2, #2999	; 0xbb7
  8005f60:	4293      	cmp	r3, r2
- 8005f62:	d9f1      	bls.n	8005f48 <createVelocityTable+0x12c>
+ 8005f62:	d9f1      	bls.n	8005f48 <CreateVelocityTable+0x12c>
 	}
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
  8005f64:	210d      	movs	r1, #13
- 8005f66:	4811      	ldr	r0, [pc, #68]	; (8005fac <createVelocityTable+0x190>)
+ 8005f66:	4811      	ldr	r0, [pc, #68]	; (8005fac <CreateVelocityTable+0x190>)
  8005f68:	f000 f85c 	bl	8006024 <addDecelerationDistanceMergin>
 	addAccelerationDistanceMergin(velocity_table, 5); //15
  8005f6c:	2105      	movs	r1, #5
- 8005f6e:	480f      	ldr	r0, [pc, #60]	; (8005fac <createVelocityTable+0x190>)
+ 8005f6e:	480f      	ldr	r0, [pc, #60]	; (8005fac <CreateVelocityTable+0x190>)
  8005f70:	f000 f8a6 	bl	80060c0 <addAccelerationDistanceMergin>
 	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;
- 8005f74:	4b11      	ldr	r3, [pc, #68]	; (8005fbc <createVelocityTable+0x1a0>)
+ 8005f74:	4b11      	ldr	r3, [pc, #68]	; (8005fbc <CreateVelocityTable+0x1a0>)
  8005f76:	681b      	ldr	r3, [r3, #0]
- 8005f78:	4a0c      	ldr	r2, [pc, #48]	; (8005fac <createVelocityTable+0x190>)
+ 8005f78:	4a0c      	ldr	r2, [pc, #48]	; (8005fac <CreateVelocityTable+0x190>)
  8005f7a:	6013      	str	r3, [r2, #0]
 
 	decelerateProcessing(deceleration, p_distance_V);
- 8005f7c:	4b10      	ldr	r3, [pc, #64]	; (8005fc0 <createVelocityTable+0x1a4>)
+ 8005f7c:	4b10      	ldr	r3, [pc, #64]	; (8005fc0 <CreateVelocityTable+0x1a4>)
  8005f7e:	edd3 7a00 	vldr	s15, [r3]
  8005f82:	6978      	ldr	r0, [r7, #20]
  8005f84:	eeb0 0a67 	vmov.f32	s0, s15
  8005f88:	f000 f8ee 	bl	8006168 <decelerateProcessing>
 	accelerateProcessing(acceleration, p_distance_V);
- 8005f8c:	4b0d      	ldr	r3, [pc, #52]	; (8005fc4 <createVelocityTable+0x1a8>)
+ 8005f8c:	4b0d      	ldr	r3, [pc, #52]	; (8005fc4 <CreateVelocityTable+0x1a8>)
  8005f8e:	edd3 7a00 	vldr	s15, [r3]
  8005f92:	6978      	ldr	r0, [r7, #20]
  8005f94:	eeb0 0a67 	vmov.f32	s0, s15
