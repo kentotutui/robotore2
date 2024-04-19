@@ -351,13 +351,6 @@ void saveLog(){
 		saveDistance(getDistance10mm());
 		saveTheta(getTheta10mm());
 	}
-	/*
-	else if(velocity_update_flag == true){
-		saveDebug(getTargetVelocity());
-		saveDebug(getCurrentVelocity());
-		//saveDebug(getPID());
-		//saveDebug(getTargetAcceleration());
-	}*/
 	else if(target_update_flag == true){
 		debug_now_X = CurrentXcoordinates();
 		debug_now_Y = CurrentYcoordinates();
@@ -458,7 +451,6 @@ void CreateVelocityTable(){//速度テーブル生成関数
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
-	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;
 
@@ -605,7 +597,6 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 	while(side_line_idx <= getSideLogSize()){
 		float temp_sideline_distance = getSideLog(side_line_idx);
 		float diff = fabs(temp_sideline_distance - getTotalDistance());
-		//if(diff <= 700){
 		if(diff <= 250){
 			correction_check_cnt_side = 0;
 			setTotalDistance(temp_sideline_distance);
