@@ -11966,7 +11966,6 @@ void CreateVelocityTable(){//速度テーブル生成関数
  8005f6c:	2105      	movs	r1, #5
  8005f6e:	480f      	ldr	r0, [pc, #60]	; (8005fac <CreateVelocityTable+0x190>)
  8005f70:	f000 f8a6 	bl	80060c0 <addAccelerationDistanceMergin>
-	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;
  8005f74:	4b11      	ldr	r3, [pc, #68]	; (8005fbc <CreateVelocityTable+0x1a0>)
@@ -12735,7 +12734,6 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
  800657e:	ee77 7ac7 	vsub.f32	s15, s15, s14
  8006582:	eef0 7ae7 	vabs.f32	s15, s15
  8006586:	edc7 7a00 	vstr	s15, [r7]
-		//if(diff <= 700){
 		if(diff <= 250){
  800658a:	edd7 7a00 	vldr	s15, [r7]
  800658e:	ed9f 7a1c 	vldr	s14, [pc, #112]	; 8006600 <correctionTotalDistanceFromSideLine+0xa4>
