@@ -144,7 +144,7 @@ void updateTargetpoint()
 	}
 }
 
-void Error_XY_Debug(const float now_X, const float now_Y, const float now_Theta)
+void Error_XY(const float now_X, const float now_Y, const float now_Theta)
 {
 	float X_e;
 	float Y_e;

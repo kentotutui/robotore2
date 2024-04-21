@@ -24,7 +24,7 @@ void CreateXYcoordinates();
 float CurrentXcoordinates(void);
 float CurrentYcoordinates(void);
 void updateTargetpoint();
-void Error_XY_Debug(const float, const float, const float);
+void Error_XY(const float, const float, const float);
 void Velocity_Angularvelocity(void);
 
 float getTotal_length();
