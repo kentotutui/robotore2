@@ -352,9 +352,9 @@ void saveLog(){
 		saveTheta(getTheta10mm());
 	}
 	else if(target_update_flag == true){
-		debug_now_X = CurrentXcoordinates();
-		debug_now_Y = CurrentYcoordinates();
-		debug_now_Theta = getaddTheta();
+		debug_now_X = CurrentXcoordinates();//現在のx座標変数
+		debug_now_Y = CurrentYcoordinates();//現在のy座標変数
+		debug_now_Theta = getaddTheta();//現在の角速度変数
 		saveDebug(getTargetpoint_X());//目標のx座標
 		saveDebug(getTargetpoint_Y());//目標のy座標
 		saveDebug(getTargetpoint_Theta());//目標の車体角速度
