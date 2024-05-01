@@ -6047,64 +6047,65 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000080038a8                HAL_TIM_PeriodElapsedCallback
  .text.init     0x0000000008003934       0x44 Core/Src/main.o
                 0x0000000008003934                init
- .text.main     0x0000000008003978      0x77c Core/Src/main.o
+ .text.main     0x0000000008003978      0x778 Core/Src/main.o
                 0x0000000008003978                main
  .text.SystemClock_Config
-                0x00000000080040f4       0xd4 Core/Src/main.o
-                0x00000000080040f4                SystemClock_Config
+                0x00000000080040f0       0xd4 Core/Src/main.o
+                0x00000000080040f0                SystemClock_Config
  .text.MX_ADC1_Init
-                0x00000000080041c8       0xc0 Core/Src/main.o
+                0x00000000080041c4       0xc0 Core/Src/main.o
  .text.MX_ADC2_Init
-                0x0000000008004288      0x1d8 Core/Src/main.o
+                0x0000000008004284      0x1d8 Core/Src/main.o
  .text.MX_I2C1_Init
-                0x0000000008004460       0x5c Core/Src/main.o
+                0x000000000800445c       0x5c Core/Src/main.o
  .text.MX_SPI3_Init
-                0x00000000080044bc       0x6c Core/Src/main.o
+                0x00000000080044b8       0x6c Core/Src/main.o
  .text.MX_TIM1_Init
-                0x0000000008004528      0x104 Core/Src/main.o
+                0x0000000008004524      0x104 Core/Src/main.o
  .text.MX_TIM3_Init
-                0x000000000800462c       0xa8 Core/Src/main.o
+                0x0000000008004628       0xa8 Core/Src/main.o
  .text.MX_TIM4_Init
-                0x00000000080046d4       0xa8 Core/Src/main.o
+                0x00000000080046d0       0xa8 Core/Src/main.o
  .text.MX_TIM6_Init
-                0x000000000800477c       0x6c Core/Src/main.o
+                0x0000000008004778       0x6c Core/Src/main.o
  .text.MX_TIM7_Init
-                0x00000000080047e8       0x68 Core/Src/main.o
+                0x00000000080047e4       0x68 Core/Src/main.o
  .text.MX_TIM8_Init
-                0x0000000008004850      0x120 Core/Src/main.o
+                0x000000000800484c      0x120 Core/Src/main.o
  .text.MX_USART1_UART_Init
-                0x0000000008004970       0x54 Core/Src/main.o
+                0x000000000800496c       0x54 Core/Src/main.o
  .text.MX_DMA_Init
-                0x00000000080049c4       0x50 Core/Src/main.o
+                0x00000000080049c0       0x50 Core/Src/main.o
  .text.MX_GPIO_Init
-                0x0000000008004a14      0x17c Core/Src/main.o
+                0x0000000008004a10      0x17c Core/Src/main.o
  .text.Error_Handler
-                0x0000000008004b90        0x8 Core/Src/main.o
-                0x0000000008004b90                Error_Handler
+                0x0000000008004b8c        0x8 Core/Src/main.o
+                0x0000000008004b8c                Error_Handler
  .text.initMotor
-                0x0000000008004b98       0x30 Core/Src/motor.o
-                0x0000000008004b98                initMotor
+                0x0000000008004b94       0x30 Core/Src/motor.o
+                0x0000000008004b94                initMotor
  .text.motorCtrlFlip
-                0x0000000008004bc8       0xc8 Core/Src/motor.o
-                0x0000000008004bc8                motorCtrlFlip
+                0x0000000008004bc4       0xc8 Core/Src/motor.o
+                0x0000000008004bc4                motorCtrlFlip
  .text.suctionmotorCtrlFlip
-                0x0000000008004c90       0x24 Core/Src/motor.o
-                0x0000000008004c90                suctionmotorCtrlFlip
+                0x0000000008004c8c       0x24 Core/Src/motor.o
+                0x0000000008004c8c                suctionmotorCtrlFlip
  .text.setMotor
-                0x0000000008004cb4       0x7c Core/Src/motor.o
-                0x0000000008004cb4                setMotor
+                0x0000000008004cb0       0x7c Core/Src/motor.o
+                0x0000000008004cb0                setMotor
  .text.setsuctionMotor
-                0x0000000008004d30       0x3c Core/Src/motor.o
-                0x0000000008004d30                setsuctionMotor
+                0x0000000008004d2c       0x3c Core/Src/motor.o
+                0x0000000008004d2c                setsuctionMotor
  .text.updateSideSensorStatus
-                0x0000000008004d6c       0x54 Core/Src/sideSensor.o
-                0x0000000008004d6c                updateSideSensorStatus
+                0x0000000008004d68       0x54 Core/Src/sideSensor.o
+                0x0000000008004d68                updateSideSensorStatus
  .text.setRunMode
-                0x0000000008004dc0       0x20 Core/Src/sideSensor.o
-                0x0000000008004dc0                setRunMode
+                0x0000000008004dbc       0x20 Core/Src/sideSensor.o
+                0x0000000008004dbc                setRunMode
  .text.isCrossLine
-                0x0000000008004de0       0x98 Core/Src/sideSensor.o
-                0x0000000008004de0                isCrossLine
+                0x0000000008004ddc       0x98 Core/Src/sideSensor.o
+                0x0000000008004ddc                isCrossLine
+ *fill*         0x0000000008004e74        0x4 
  .text.isContinuousCurvature
                 0x0000000008004e78       0xe0 Core/Src/sideSensor.o
                 0x0000000008004e78                isContinuousCurvature
