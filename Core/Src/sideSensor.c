@@ -7,9 +7,7 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[3000];
-//static uint16_t velocity_table[6000];
-
+static float velocity_table[2000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[mm]
@@ -244,7 +242,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(10) == true){
+		if(isTargetDistance(30) == true){
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -445,7 +443,7 @@ void CreateVelocityTable(){//速度テーブル生成関数
 
 	}
 
-	for(uint16_t i = log_size; i < 3000; i++){//i < 3000は配列の数に応じて変更
+	for(uint16_t i = log_size; i < 2000; i++){
 		velocity_table[i] = 3.0;
 	}
 
@@ -483,7 +481,7 @@ void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = mergin_size;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 3000 - 1){//3000は配列数で変更
+	while(idx <= 2000 - 1){
 		if(pre_target_velocity > table[idx]){
 			float low_velocity = table[idx];
 			for(uint16_t i = idx - mergin_size; i < idx; i++){
@@ -503,7 +501,7 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = 0;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 3000 - 1 - mergin_size){//3000は配列数で変更
+	while(idx <= 2000 - 1 - mergin_size){
 		if(pre_target_velocity < table[idx]){
 			float low_velocity = pre_target_velocity;
 			for(uint16_t i = idx; i < idx + mergin_size; i++){

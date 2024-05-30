@@ -8,9 +8,9 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static int16_t X_table[6000];
-static int16_t Y_table[6000];
-static int16_t Theta_table[6000];
+static int16_t X_table[2000];
+static int16_t Y_table[2000];
+static int16_t Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -112,7 +112,7 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearDistance30mm();
 		}*/
-		if(getVLT_Distance10mm() >= 10){
+		if(getVLT_Distance10mm() >= 30){
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
@@ -130,9 +130,9 @@ void updateTargetpoint()
 			mon_Y_table = Y_table[targetpoint_table_idx];
 			mon_Theta_table = Theta_table[targetpoint_table_idx];
 
-			target_X_coordinate = mon_X_table / 10;//1nt16の値を加工して元に戻す
-			target_Y_coordinate = mon_Y_table / 10;//1nt16の値を加工して元に戻す
-			target_Theta = mon_Theta_table / 1000;//1nt16の値を加工して元に戻す
+			target_X_coordinate = mon_X_table / 10;//1nt16の値を元に戻す
+			target_Y_coordinate = mon_Y_table / 10;//1nt16の値を元に戻す
+			target_Theta = mon_Theta_table / 1000;//1nt16の値を元に戻す
 		}
 		/*
 		mon_X_table = X_table[targetpoint_table_idx];
@@ -168,16 +168,16 @@ void Error_XY(const float now_X, const float now_Y, const float now_Theta)
 
 void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1msで回している
 {
-	float kx = 0.0005, ky = 0.0001, kt = 0.00005;//Kanayama Control Methodゲイン値調整 とりあえずは全部0でいいかも
-	float max_angularvelocity = 8 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
-	float min_angularvelocity = - (8 / (180/M_PI));//min角速度制限
+	float kx = 0.0005, ky = 0.0001, kt = 0.00005;//Kanayama Control Methodゲイン値調整 全て0でも走る
+	//float max_angularvelocity = 8 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	//float min_angularvelocity = - (8 / (180/M_PI));//min角速度制限
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算(m/s)
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算(rad/s)
-
+	/*
 	if(Output_angularvelocity >= max_angularvelocity)
 	{
 		Output_angularvelocity = max_angularvelocity;
@@ -185,7 +185,7 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
 	else if(Output_angularvelocity <= min_angularvelocity)
 	{
 		Output_angularvelocity = min_angularvelocity;
-	}
+	}*/
 }
 
 float getTotal_length()
