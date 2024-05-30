@@ -6856,7 +6856,7 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
  8003d8a:	ed2d 8b02 	vpush	{d8}
  8003d8e:	b086      	sub	sp, #24
  8003d90:	af00      	add	r7, sp, #0
-	float kx = 0.0005, ky = 0.0001, kt = 0.00005;//Kanayama Control Methodゲイン値調整 全て0でも走る
+	float kx = 0.0005, ky = 0.0001, kt = 0.00001;//Kanayama Control Methodゲイン値調整 全て0でも走る
  8003d92:	4b26      	ldr	r3, [pc, #152]	; (8003e2c <Velocity_Angularvelocity+0xa4>)
  8003d94:	617b      	str	r3, [r7, #20]
  8003d96:	4b26      	ldr	r3, [pc, #152]	; (8003e30 <Velocity_Angularvelocity+0xa8>)
@@ -6921,7 +6921,7 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
  8003e2a:	bd80      	pop	{r7, pc}
  8003e2c:	3a03126f 	.word	0x3a03126f
  8003e30:	38d1b717 	.word	0x38d1b717
- 8003e34:	3851b717 	.word	0x3851b717
+ 8003e34:	3727c5ac 	.word	0x3727c5ac
  8003e38:	20015d44 	.word	0x20015d44
  8003e3c:	20015d3c 	.word	0x20015d3c
  8003e40:	20015d48 	.word	0x20015d48
