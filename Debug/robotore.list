@@ -6419,7 +6419,7 @@ void CreateXYcoordinates()
  800398a:	429a      	cmp	r2, r3
  800398c:	f4ff af40 	bcc.w	8003810 <CreateXYcoordinates+0x34>
 	}
-	Total_length_of_course = Total_length_of_course + 100;
+	Total_length_of_course = Total_length_of_course + 150;
  8003990:	4b0c      	ldr	r3, [pc, #48]	; (80039c4 <CreateXYcoordinates+0x1e8>)
  8003992:	edd3 7a00 	vldr	s15, [r3]
  8003996:	ed9f 7a0c 	vldr	s14, [pc, #48]	; 80039c8 <CreateXYcoordinates+0x1ec>
@@ -6438,7 +6438,7 @@ void CreateXYcoordinates()
  80039bc:	447a0000 	.word	0x447a0000
  80039c0:	20014d8c 	.word	0x20014d8c
  80039c4:	20015d2c 	.word	0x20015d2c
- 80039c8:	42c80000 	.word	0x42c80000
+ 80039c8:	43160000 	.word	0x43160000
 
 080039cc <CurrentXcoordinates>:
 
@@ -7585,8 +7585,8 @@ int main(void)
  800424e:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  8004252:	f002 f9d5 	bl	8006600 <setVelocityRange>
 
-						  setsuctionMotor(700);
- 8004256:	f44f 702f 	mov.w	r0, #700	; 0x2bc
+						  setsuctionMotor(800);
+ 8004256:	f44f 7048 	mov.w	r0, #800	; 0x320
  800425a:	f001 f90f 	bl	800547c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7771,8 +7771,8 @@ int main(void)
 						  clearspeedcount();
  8004396:	f7fd f8d3 	bl	8001540 <clearspeedcount>
 
-						  setRunMode(2);
- 800439a:	2002      	movs	r0, #2
+						  setRunMode(5);
+ 800439a:	2005      	movs	r0, #5
  800439c:	f001 f8b6 	bl	800550c <setRunMode>
 
 						  setVelocityRange(2.0, 6.0);
@@ -7787,8 +7787,8 @@ int main(void)
  80043b8:	ed1f 0a10 	vldr	s0, [pc, #-64]	; 800437c <main+0x394>
  80043bc:	f002 f950 	bl	8006660 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 80043c0:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(800);
+ 80043c0:	f44f 7048 	mov.w	r0, #800	; 0x320
  80043c4:	f001 f85a 	bl	800547c <setsuctionMotor>
 
 						  HAL_Delay(1500);

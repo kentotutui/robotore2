@@ -55,7 +55,7 @@ void CreateXYcoordinates()
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}
-	Total_length_of_course = Total_length_of_course + 100;
+	Total_length_of_course = Total_length_of_course + 150;
 }
 
 float CurrentXcoordinates(void)
