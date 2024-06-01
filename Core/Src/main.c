@@ -326,7 +326,7 @@ int main(void)
 						  setTargetVelocity(0.0);
 						  //startVelocityControl();
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(800);
 
 						  //HAL_Delay(1500);
 
@@ -443,6 +443,8 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
+					      IMU_average();
+
 						  clearspeedcount();
 
 						  setRunMode(5);
@@ -470,13 +472,13 @@ int main(void)
 
 						  clearspeedcount();
 
-						  setRunMode(2);
+						  setRunMode(5);
 
-						  setVelocityRange(2.5, 6.0);
+						  setVelocityRange(3.0, 6.0);
 						  setAccDec(8, 5);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(800);
 
 						  HAL_Delay(1500);
 

@@ -62,11 +62,13 @@ void calculateVelocityControlFlip(void)
 
 		velocity_control_term = p + i + d;//速度制御のPIDゲイン調整の時はこのコメント文をはずす
 
-
-		/*if(mode == 1){
+		/*if(getControl_Mode() == 1){
 		    velocity_control_term = p + i + d;
 		}
-		else if(mode == 2){
+		else if(getControl_Mode() == 2){
+			velocity_control_term = p + i + d;
+		}
+		else if(getControl_Mode() == 5){
 			velocity_control_term = (p + i + d) + target_acceleration;//速度PID ＋ フィードフォワード制御 2自由度制御
 			//velocity_control_term = p + i + d;
 		}*/

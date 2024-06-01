@@ -8,6 +8,7 @@
 #include "sideSensor.h"
 
 static float velocity_table[2000];
+static uint16_t acceleration_table[2000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.01125 //[mm]
@@ -455,7 +456,7 @@ void CreateVelocityTable(){//速度テーブル生成関数
 	decelerateProcessing(deceleration, p_distance_V);
 	accelerateProcessing(acceleration, p_distance_V);
 
-	//CreateAcceleration(p_distance);
+	CreateAcceleration(p_distance_V);
 }
 
 float radius2Velocity(float radius){
@@ -560,7 +561,7 @@ void updateTargetVelocity(){
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
-		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
+		setTargetAcceleration(acceleration_table[velocity_table_idx]);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
@@ -610,7 +611,7 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 	}
 }
 
-/*void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
+void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
 {
 	uint16_t log_size = getDistanceLogSize();
     for(uint16_t i = 0; i <= log_size - 1; i++){
@@ -634,7 +635,7 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 
 		acceleration_table[i] = V_motor;
     }
-}*/
+}
 
 bool getgoalStatus()
 {
