@@ -11,8 +11,8 @@ static float velocity_table[2000];
 static uint16_t acceleration_table[2000];
 
 //↓モータ特性
-#define WHEEL_RADIUS 0.01125 //[mm]
-#define AIRCRAFT_MASS 0.139 //[kg]
+#define WHEEL_RADIUS 0.011 //[mm]
+#define AIRCRAFT_MASS 0.14 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
 #define PI 3.1415926535

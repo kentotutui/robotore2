@@ -401,7 +401,7 @@ int main(void)
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -428,7 +428,7 @@ int main(void)
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -455,7 +455,7 @@ int main(void)
 
 						  setsuctionMotor(800);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -474,13 +474,13 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(3.0, 6.0);
-						  setAccDec(8, 5);
+						  setVelocityRange(2.0, 6.0);
+						  setAccDec(4, 2);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(800);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
