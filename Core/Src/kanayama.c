@@ -103,15 +103,6 @@ void updateTargetpoint()
 	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
-		/*if(getTotalDistance() >= ref_XYdistance){
-			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
-			targetpoint_table_idx++;
-			clearDistance30mm();
-		}else if(getDistance30mm() >= 30){
-			ref_XYdistance += getDistanceLog(targetpoint_table_idx);
-			targetpoint_table_idx++;
-			clearDistance30mm();
-		}*/
 		if(getVLT_Distance10mm() >= 30){
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
