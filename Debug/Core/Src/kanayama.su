@@ -3,7 +3,7 @@ kanayama.c:61:7:CurrentXcoordinates	24	static
 kanayama.c:81:7:CurrentYcoordinates	24	static
 kanayama.c:101:6:updateTargetpoint	16	static
 kanayama.c:139:6:Error_XY	48	static
-kanayama.c:160:6:Velocity_Angularvelocity	40	static
+kanayama.c:160:6:Velocity_Angularvelocity	48	static
 kanayama.c:182:7:getTotal_length	4	static
 kanayama.c:187:7:getTargetpoint_X	4	static
 kanayama.c:192:7:getTargetpoint_Y	4	static

@@ -7,8 +7,8 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[2000];
-static uint16_t acceleration_table[2000];
+static float velocity_table[3000];
+static uint16_t acceleration_table[3000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.011 //[mm]
@@ -243,7 +243,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(30) == true){
+		if(isTargetDistance(20) == true){
 			saveLog();
 
 			if(isContinuousCurvature() == true){

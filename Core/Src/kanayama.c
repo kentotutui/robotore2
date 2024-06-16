@@ -8,9 +8,9 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static int16_t X_table[2000];
-static int16_t Y_table[2000];
-static int16_t Theta_table[2000];
+static int16_t X_table[3000];
+static int16_t Y_table[3000];
+static int16_t Theta_table[3000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -55,7 +55,7 @@ void CreateXYcoordinates()
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
 	}
-	Total_length_of_course = Total_length_of_course + 150;
+	Total_length_of_course = Total_length_of_course + 100;
 }
 
 float CurrentXcoordinates(void)
@@ -103,7 +103,7 @@ void updateTargetpoint()
 	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
-		if(getVLT_Distance10mm() >= 30){
+		if(getVLT_Distance10mm() >= 20){
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
@@ -160,15 +160,15 @@ void Error_XY(const float now_X, const float now_Y, const float now_Theta)
 void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1msで回している
 {
 	float kx = 0.0001, ky = 0.0001, kt = 0.0001;//Kanayama Control Methodゲイン値調整 全て0でも走る
-	//float max_angularvelocity = 8 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
-	//float min_angularvelocity = - (8 / (180/M_PI));//min角速度制限
+	float max_angularvelocity = 17.2 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	float min_angularvelocity = - (17.2 / (180/M_PI));//min角速度制限
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;
 
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算(m/s)
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算(rad/s)
-	/*
+
 	if(Output_angularvelocity >= max_angularvelocity)
 	{
 		Output_angularvelocity = max_angularvelocity;
@@ -176,7 +176,7 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
 	else if(Output_angularvelocity <= min_angularvelocity)
 	{
 		Output_angularvelocity = min_angularvelocity;
-	}*/
+	}
 }
 
 float getTotal_length()
