@@ -6483,7 +6483,7 @@ void CreateXYcoordinates()
  8003a3a:	429a      	cmp	r2, r3
  8003a3c:	f4ff af40 	bcc.w	80038c0 <CreateXYcoordinates+0x34>
 	}
-	Total_length_of_course = Total_length_of_course + 100;
+	Total_length_of_course = Total_length_of_course + 150;
  8003a40:	4b0c      	ldr	r3, [pc, #48]	; (8003a74 <CreateXYcoordinates+0x1e8>)
  8003a42:	edd3 7a00 	vldr	s15, [r3]
  8003a46:	ed9f 7a0c 	vldr	s14, [pc, #48]	; 8003a78 <CreateXYcoordinates+0x1ec>
@@ -6502,7 +6502,7 @@ void CreateXYcoordinates()
  8003a6c:	447a0000 	.word	0x447a0000
  8003a70:	20017e00 	.word	0x20017e00
  8003a74:	20019570 	.word	0x20019570
- 8003a78:	42c80000 	.word	0x42c80000
+ 8003a78:	43160000 	.word	0x43160000
 
 08003a7c <CurrentXcoordinates>:
 
@@ -7926,9 +7926,9 @@ int main(void)
  80044f2:	eef1 0a02 	vmov.f32	s1, #18	; 0x40900000  4.5
  80044f6:	eeb0 0a04 	vmov.f32	s0, #4	; 0x40200000  2.5
  80044fa:	f002 fa29 	bl	8006950 <setVelocityRange>
-						  setAccDec(3, 2);
- 80044fe:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
- 8004502:	eeb0 0a08 	vmov.f32	s0, #8	; 0x40400000  3.0
+						  setAccDec(6, 3);
+ 80044fe:	eef0 0a08 	vmov.f32	s1, #8	; 0x40400000  3.0
+ 8004502:	eeb1 0a08 	vmov.f32	s0, #24	; 0x40c00000  6.0
  8004506:	f002 fa3b 	bl	8006980 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
  800450a:	ed1f 0a27 	vldr	s0, [pc, #-156]	; 8004470 <main+0x398>
@@ -11561,10 +11561,10 @@ void runningInit()
  8005c74:	f7fd fa9a 	bl	80031ac <loadCross>
 		loadSide();
  8005c78:	f7fd fad6 	bl	8003228 <loadSide>
-		CreateVelocityTable();
- 8005c7c:	f000 f932 	bl	8005ee4 <CreateVelocityTable>
 		CreateXYcoordinates();
- 8005c80:	f7fd fe04 	bl	800388c <CreateXYcoordinates>
+ 8005c7c:	f7fd fe06 	bl	800388c <CreateXYcoordinates>
+		CreateVelocityTable();
+ 8005c80:	f000 f930 	bl	8005ee4 <CreateVelocityTable>
 	}
 
 	clearCrossLineIgnoreDistance();
