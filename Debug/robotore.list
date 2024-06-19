@@ -11634,7 +11634,7 @@ void saveLog(){
  8005d00:	eeb0 0a67 	vmov.f32	s0, s15
  8005d04:	f7fd f8fa 	bl	8002efc <saveTheta>
 		saveDebug(getOutput_velocity());//目標速度
-		saveDebug(getOutput_angularvelocity());//目標角速度
+		saveDebug(getOutput_angularvelocity());//目標車体角速度(ローカル座標系)
 		saveDebug(getCurrentVelocity());//実際の速度
 		saveDebug(getTheta10mm());//今の角速度
 	}
@@ -11685,7 +11685,7 @@ void saveLog(){
  8005d7c:	edd3 7a00 	vldr	s15, [r3]
  8005d80:	eeb0 0a67 	vmov.f32	s0, s15
  8005d84:	f7fd f902 	bl	8002f8c <saveDebug>
-		saveDebug(debug_now_Theta);//現在の車体角速度
+		saveDebug(debug_now_Theta);//現在の車体角速度(絶対座標系)
  8005d88:	4b20      	ldr	r3, [pc, #128]	; (8005e0c <saveLog+0x130>)
  8005d8a:	edd3 7a00 	vldr	s15, [r3]
  8005d8e:	eeb0 0a67 	vmov.f32	s0, s15
@@ -11706,7 +11706,7 @@ void saveLog(){
  8005dbc:	eef0 7a40 	vmov.f32	s15, s0
  8005dc0:	eeb0 0a67 	vmov.f32	s0, s15
  8005dc4:	f7fd f8e2 	bl	8002f8c <saveDebug>
-		saveDebug(getOutput_angularvelocity());//目標角速度
+		saveDebug(getOutput_angularvelocity());//目標車体角速度(ローカル座標系)
  8005dc8:	f7fe f8fe 	bl	8003fc8 <getOutput_angularvelocity>
  8005dcc:	eef0 7a40 	vmov.f32	s15, s0
  8005dd0:	eeb0 0a67 	vmov.f32	s0, s15
