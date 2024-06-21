@@ -298,8 +298,8 @@ int main(void)
 				  setLED('W');
 				  setLED2('R');
 				  //printf("0\r\n");
-				  /*
-				  if(running_flag == true){
+
+				  /*if(running_flag == true){
 
 				  		  //setsuctionMotor(500);
 					      setRunMode(5);
@@ -326,11 +326,11 @@ int main(void)
 						  setTargetVelocity(0.0);
 						  //startVelocityControl();
 
-						  setsuctionMotor(800);
+						  //setsuctionMotor(800);
 
 						  //HAL_Delay(1500);
 
-						  //running();
+						  running();
 				  }
 
 				  break;
@@ -348,7 +348,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(1.5, 1.5);
+					      setVelocityRange(1.0, 1.0);
 
 						  setsuctionMotor(800);
 
@@ -449,7 +449,7 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(1.8, 6.0);
+						  setVelocityRange(2.0, 4.0);
 						  setAccDec(4, 2);
 						  setStraightRadius(1000); //Do Not Change
 
