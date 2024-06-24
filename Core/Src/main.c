@@ -299,8 +299,8 @@ int main(void)
 				  setLED2('R');
 				  //printf("0\r\n");
 
-				  /*if(running_flag == true){
-
+				  if(running_flag == true){
+					  /*
 				  		  //setsuctionMotor(500);
 					      setRunMode(5);
 					      setVelocityRange(1.5, 3.0);
@@ -308,7 +308,8 @@ int main(void)
 						  setStraightRadius(1000);
 						  runningInit();
 						  soiya = 13;
-				  }*/
+						  */
+				  }
 
 				  break;
 
@@ -650,6 +651,10 @@ int main(void)
 					  /*
 					  for(uint16_t i = 0; i < size; i++){
 						 printf("%f\r\n", getDebugLog(i));
+					  }*/
+					  /*
+					  for(uint16_t i = 0; i < size; i = i+3){
+						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2));
 					  }*/
 
 					  running_flag = false;

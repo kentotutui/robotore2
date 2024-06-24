@@ -35,6 +35,9 @@ void CreateXYcoordinates()
 	p_distance = getDistanceArrayPointer();
 	p_theta = getThetaArrayPointer();
 	float temp_distance, temp_theta;
+	float deltaX = 0, deltaY = 0;
+	float prev_x = 0, prev_y = 0, prev_atan2 = 0;
+	float atan2th = 0;
 
 	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
@@ -45,15 +48,36 @@ void CreateXYcoordinates()
 
 		if(temp_theta == 0) temp_theta = 0.00001;
 
+		prev_x = x;
+		prev_y = y;
+
 		x = x + temp_distance * cos(th + temp_theta/2);
 		y = y + temp_distance * sin(th + temp_theta/2);
 		th = th + temp_theta;
 
+		deltaX = x - prev_x;
+		deltaY = y - prev_y;
+		atan2th = atan2(deltaY, deltaX);
+
+		if(i > 0){
+			prev_atan2 = Theta_table[i-1] / 1000;
+
+			if(fabs(atan2th - prev_atan2) > M_PI){
+				if(atan2th > prev_atan2){
+					atan2th = atan2th - 2 * M_PI;
+				}
+				else{
+					atan2th = atan2th + 2 * M_PI;
+				}
+			}
+		}
+
 		X_table[i] = x * 10;//int16で保存するために値を加工
 		Y_table[i] = y * 10;//int16で保存するために値を加工
-		Theta_table[i] = th * 1000;//int16で保存するために値を加工
+		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 
 		Total_length_of_course = temp_distance + Total_length_of_course;
+
 	}
 	Total_length_of_course = Total_length_of_course + 150;
 }
