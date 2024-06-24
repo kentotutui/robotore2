@@ -482,7 +482,7 @@ void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = mergin_size;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 2000 - 1){
+	while(idx <= 3000 - 1){
 		if(pre_target_velocity > table[idx]){
 			float low_velocity = table[idx];
 			for(uint16_t i = idx - mergin_size; i < idx; i++){
@@ -502,7 +502,7 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = 0;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 2000 - 1 - mergin_size){
+	while(idx <= 3000 - 1 - mergin_size){
 		if(pre_target_velocity < table[idx]){
 			float low_velocity = pre_target_velocity;
 			for(uint16_t i = idx; i < idx + mergin_size; i++){
