@@ -42,6 +42,7 @@ void CreateXYcoordinates()
 	float deltaX = 0, deltaY = 0;
 	float prev_x = 0, prev_y = 0, prev_atan2 = 0;
 	float atan2th = 0;
+	float EuclideanDistance = 0;
 
 	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
@@ -61,7 +62,10 @@ void CreateXYcoordinates()
 
 		deltaX = x - prev_x;
 		deltaY = y - prev_y;
-		atan2th = atan2(deltaY, deltaX);
+		atan2th = atan2(deltaY, deltaX);//角度を座標から計算
+
+		EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
+		Total_length_of_course += EuclideanDistance;
 
 		if(i > 0){
 			prev_atan2 = Theta_table[i-1] / 1000;
@@ -79,12 +83,6 @@ void CreateXYcoordinates()
 		X_table[i] = x * 10;//int16で保存するために値を加工
 		Y_table[i] = y * 10;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-
-		SC_X_table[i] = x * 10;//int16で保存するために値を加工
-		SC_Y_table[i] = y * 10;//int16で保存するために値を加工
-		SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-
-		Total_length_of_course = temp_distance + Total_length_of_course;
 
 	}
 	Total_length_of_course = Total_length_of_course + 150;
