@@ -8,9 +8,13 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static int16_t X_table[3000];
-static int16_t Y_table[3000];
-static int16_t Theta_table[3000];
+static int16_t X_table[2000];
+static int16_t Y_table[2000];
+static int16_t Theta_table[2000];
+
+static int16_t SC_X_table[2000];
+static int16_t SC_Y_table[2000];
+static int16_t SC_Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
 uint16_t debug_table_idx;
@@ -76,6 +80,10 @@ void CreateXYcoordinates()
 		Y_table[i] = y * 10;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 
+		SC_X_table[i] = x * 10;//int16で保存するために値を加工
+		SC_Y_table[i] = y * 10;//int16で保存するために値を加工
+		SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+
 		Total_length_of_course = temp_distance + Total_length_of_course;
 
 	}
@@ -127,7 +135,7 @@ void updateTargetpoint()
 	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
-		if(getVLT_Distance10mm() >= 20){
+		if(getVLT_Distance10mm() >= 30){
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
