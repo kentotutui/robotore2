@@ -300,7 +300,7 @@ int main(void)
 				  //printf("0\r\n");
 
 				  if(running_flag == true){
-					  /*
+
 				  		  //setsuctionMotor(500);
 					      setRunMode(5);
 					      setVelocityRange(1.5, 3.0);
@@ -308,7 +308,7 @@ int main(void)
 						  setStraightRadius(1000);
 						  runningInit();
 						  soiya = 13;
-						  */
+
 				  }
 
 				  break;

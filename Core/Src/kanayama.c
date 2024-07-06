@@ -43,6 +43,7 @@ void CreateXYcoordinates()
 	float prev_x = 0, prev_y = 0, prev_atan2 = 0;
 	float atan2th = 0;
 	float EuclideanDistance = 0;
+	float delta_ang = 0;
 
 	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
@@ -64,25 +65,35 @@ void CreateXYcoordinates()
 		deltaY = y - prev_y;
 		atan2th = atan2(deltaY, deltaX);//角度を座標から計算
 
+		if(i > 0){
+			prev_atan2 = Theta_table[i-1] / 1000;
+			delta_ang = atan2th - prev_atan2;
+
+			if(delta_ang > M_PI){
+				while(delta_ang > M_PI){
+				    atan2th -= 2 * M_PI;
+				    delta_ang = atan2th - prev_atan2;
+				}
+				}
+			else if(delta_ang < -M_PI){
+				while(delta_ang < -M_PI){
+					atan2th += 2 * M_PI;
+					delta_ang = atan2th - prev_atan2;
+				}
+				}
+		}
+
+
 		EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
 		Total_length_of_course += EuclideanDistance;
 
-		if(i > 0){
-			prev_atan2 = Theta_table[i-1] / 1000;
-
-			if(fabs(atan2th - prev_atan2) > M_PI){
-				if(atan2th > prev_atan2){
-					atan2th = atan2th - 2 * M_PI;
-				}
-				else{
-					atan2th = atan2th + 2 * M_PI;
-				}
-			}
-		}
-
-		X_table[i] = x * 10;//int16で保存するために値を加工
-		Y_table[i] = y * 10;//int16で保存するために値を加工
+		X_table[i] = x;//int16で保存するために値を加工
+		Y_table[i] = y;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+
+		//saveDebug(X_table[i]);//目標のx座標
+		//saveDebug(Y_table[i]);//目標のy座標
+		//saveDebug(Theta_table[i]/1000);//目標の車体角速度
 
 	}
 	Total_length_of_course = Total_length_of_course + 150;
@@ -149,20 +160,20 @@ void updateTargetpoint()
 		{
 			mon_X_table = X_table[targetpoint_table_idx];
 			mon_Y_table = Y_table[targetpoint_table_idx];
-			mon_Theta_table = Theta_table[targetpoint_table_idx];
+			mon_Theta_table = Theta_table[targetpoint_table_idx + 1];
 
 			target_X_coordinate = mon_X_table / 10;//1nt16の値を元に戻す
 			target_Y_coordinate = mon_Y_table / 10;//1nt16の値を元に戻す
 			target_Theta = mon_Theta_table / 1000;//1nt16の値を元に戻す
 		}
-		/*
-		mon_X_table = X_table[targetpoint_table_idx];
-		mon_Y_table = Y_table[targetpoint_table_idx];
-		mon_Theta_table = Theta_table[targetpoint_table_idx];
 
-		target_X_coordinate = mon_X_table / 10;
-		target_Y_coordinate = mon_Y_table / 10;
-		target_Theta = mon_Theta_table / 1000;*/
+		/*mon_X_table = X_table[targetpoint_table_idx];
+		mon_Y_table = Y_table[targetpoint_table_idx];
+		mon_Theta_table = Theta_table[targetpoint_table_idx];*/
+
+		target_X_coordinate = mon_X_table;
+		target_Y_coordinate = mon_Y_table;
+		target_Theta = mon_Theta_table / 1000;
 	}
 }
 
@@ -199,14 +210,14 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
 	Output_velocity = Target_velocity * cosf(now_error_theta) + kx * now_error_x;//車速計算(m/s)
 	Output_angularvelocity = Target_angularvelocity + Target_velocity * (ky * now_error_y + kt * sinf(now_error_theta));//車体の角速度計算(rad/s)
 
-	if(Output_angularvelocity >= max_angularvelocity)
+	/*if(Output_angularvelocity >= max_angularvelocity)
 	{
 		Output_angularvelocity = max_angularvelocity;
 	}
 	else if(Output_angularvelocity <= min_angularvelocity)
 	{
 		Output_angularvelocity = min_angularvelocity;
-	}
+	}*/
 }
 
 float getTotal_length()
