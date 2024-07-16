@@ -400,7 +400,7 @@ int main(void)
 
 						  setVelocityRange(1.5, 1.5);
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(800);
 
 						  HAL_Delay(1000);
 
