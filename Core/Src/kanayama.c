@@ -93,7 +93,7 @@ void CreateXYcoordinates()
 		X_table[i] = x;//int16で保存するために値を加工
 		Y_table[i] = y;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-		EuclideanDistance_table[i] = EuclideanDistance * 1000;
+		EuclideanDistance_table[i] = EuclideanDistance * 100;
 
 		//SC_X_table[i] = x;//int16で保存するために値を加工
 		//SC_Y_table[i] = y;//int16で保存するために値を加工
@@ -102,7 +102,7 @@ void CreateXYcoordinates()
 		//saveDebug(X_table[i]);//目標のx座標
 		//saveDebug(Y_table[i]);//目標のy座標
 		//saveDebug(Theta_table[i]/1000);//目標の車体角速度
-		saveDebug(EuclideanDistance_table[i]/1000);
+		//saveDebug(EuclideanDistance_table[i]/1000);
 
 	}
 	Total_length_of_course = Total_length_of_course + 150;
@@ -153,7 +153,7 @@ void updateTargetpoint()
 	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
-		if(getVLT_Distance10mm() >= EuclideanDistance_table[euclideandistance_idx] / 1000){
+		if(getVLT_Distance10mm() >= EuclideanDistance_table[euclideandistance_idx] / 100){
 			euclideandistance_idx++;
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
