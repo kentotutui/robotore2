@@ -7,8 +7,8 @@
 
 #include "Logger.h"
 
-static float log_cross[100];
-static float log_side[100];
+static float log_cross[50];
+static float log_side[50];
 static float log_debug[18000];
 static float log_distance[2000];//int16_tにできるならしたい
 static float log_theta[2000];//int16_tにできるならしたい

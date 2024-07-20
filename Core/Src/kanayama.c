@@ -12,11 +12,14 @@ static int16_t X_table[2000];
 static int16_t Y_table[2000];
 static int16_t Theta_table[2000];
 
+static uint16_t EuclideanDistance_table[2000];
+
 static int16_t SC_X_table[2000];
 static int16_t SC_Y_table[2000];
 static int16_t SC_Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
+uint16_t euclideandistance_idx = 0;
 uint16_t debug_table_idx;
 float ref_XYdistance;
 
@@ -73,13 +76,13 @@ void CreateXYcoordinates()
 				while(delta_ang > M_PI){
 				    atan2th -= 2 * M_PI;
 				    delta_ang = atan2th - prev_atan2;
-				}
+				    }
 				}
 			else if(delta_ang < -M_PI){
 				while(delta_ang < -M_PI){
 					atan2th += 2 * M_PI;
 					delta_ang = atan2th - prev_atan2;
-				}
+				    }
 				}
 		}
 
@@ -90,10 +93,16 @@ void CreateXYcoordinates()
 		X_table[i] = x;//int16で保存するために値を加工
 		Y_table[i] = y;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+		EuclideanDistance_table[i] = EuclideanDistance * 1000;
+
+		//SC_X_table[i] = x;//int16で保存するために値を加工
+		//SC_Y_table[i] = y;//int16で保存するために値を加工
+		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 
 		//saveDebug(X_table[i]);//目標のx座標
 		//saveDebug(Y_table[i]);//目標のy座標
 		//saveDebug(Theta_table[i]/1000);//目標の車体角速度
+		saveDebug(EuclideanDistance_table[i]/1000);
 
 	}
 	Total_length_of_course = Total_length_of_course + 150;
@@ -144,7 +153,8 @@ void updateTargetpoint()
 	static float mon_X_table, mon_Y_table, mon_Theta_table;
 
 	if(getTargetUpdateflag() == true){
-		if(getVLT_Distance10mm() >= 30){
+		if(getVLT_Distance10mm() >= EuclideanDistance_table[euclideandistance_idx] / 1000){
+			euclideandistance_idx++;
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
@@ -160,7 +170,7 @@ void updateTargetpoint()
 		{
 			mon_X_table = X_table[targetpoint_table_idx];
 			mon_Y_table = Y_table[targetpoint_table_idx];
-			mon_Theta_table = Theta_table[targetpoint_table_idx + 1];
+			mon_Theta_table = Theta_table[targetpoint_table_idx];
 
 			target_X_coordinate = mon_X_table / 10;//1nt16の値を元に戻す
 			target_Y_coordinate = mon_Y_table / 10;//1nt16の値を元に戻す
