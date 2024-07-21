@@ -6555,8 +6555,8 @@ void CreateXYcoordinates()
  8003ada:	2b00      	cmp	r3, #0
  8003adc:	d1dc      	bne.n	8003a98 <CreateXYcoordinates+0x210>
  8003ade:	e02e      	b.n	8003b3e <CreateXYcoordinates+0x2b6>
-				    }
 				}
+			}
 			else if(delta_ang < -M_PI){
  8003ae0:	6bf8      	ldr	r0, [r7, #60]	; 0x3c
  8003ae2:	f7fc fd31 	bl	8000548 <__aeabi_f2d>
@@ -6595,8 +6595,8 @@ void CreateXYcoordinates()
  8003b38:	4603      	mov	r3, r0
  8003b3a:	2b00      	cmp	r3, #0
  8003b3c:	d1dc      	bne.n	8003af8 <CreateXYcoordinates+0x270>
-				    }
 				}
+			}
 		}
 
 

@@ -76,14 +76,14 @@ void CreateXYcoordinates()
 				while(delta_ang > M_PI){
 				    atan2th -= 2 * M_PI;
 				    delta_ang = atan2th - prev_atan2;
-				    }
 				}
+			}
 			else if(delta_ang < -M_PI){
 				while(delta_ang < -M_PI){
 					atan2th += 2 * M_PI;
 					delta_ang = atan2th - prev_atan2;
-				    }
 				}
+			}
 		}
 
 
