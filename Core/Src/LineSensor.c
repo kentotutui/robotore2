@@ -40,8 +40,21 @@ static uint8_t L_index = 1;
 
 void initADC()
 {
+	loadSensor();
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t *) side_adc_value, SIDE_LINESENSOR_ADC_NUM);
 	HAL_ADC_Start_DMA(&hadc2, (uint32_t *) adc_value, LINESENSOR_ADC_NUM);
+
+	const float *p_sensor;
+	p_sensor = getSensorArrayPointer();
+
+	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i += 2){
+		sensor_coefficient[i] = p_sensor[i] - p_sensor[i + 1];
+		offset_values[i] = p_sensor[i + 1];
+	}
+	for(uint16_t i = LINESENSOR_ADC_NUM; i < LINESENSOR_ADC_NUM + SIDE_LINESENSOR_ADC_NUM; i += 2){
+		side_sensor_coefficient[i - LINESENSOR_ADC_NUM] = p_sensor[i] - p_sensor[i + 1];
+		side_offset_values[i - LINESENSOR_ADC_NUM] = side_min_values[i + 1];
+	}
 }
 
 void storeAnalogSensorBuffer(void)
