@@ -53,7 +53,7 @@ void initADC()
 	}
 	for(uint16_t i = LINESENSOR_ADC_NUM; i < LINESENSOR_ADC_NUM + SIDE_LINESENSOR_ADC_NUM; i += 2){
 		side_sensor_coefficient[i - LINESENSOR_ADC_NUM] = p_sensor[i] - p_sensor[i + 1];
-		side_offset_values[i - LINESENSOR_ADC_NUM] = side_min_values[i + 1];
+		side_offset_values[i - LINESENSOR_ADC_NUM] = p_sensor[i + 1];
 	}
 }
 
