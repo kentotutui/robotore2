@@ -15,7 +15,7 @@ float max_values[LINESENSOR_ADC_NUM];
 float min_values[LINESENSOR_ADC_NUM] = {1000};
 
 float side_max_values[SIDE_LINESENSOR_ADC_NUM];
-float side_min_values[SIDE_LINESENSOR_ADC_NUM];
+float side_min_values[SIDE_LINESENSOR_ADC_NUM] = {1000};
 
 static uint16_t adc_value[LINESENSOR_ADC_NUM];
 static uint16_t side_adc_value[SIDE_LINESENSOR_ADC_NUM];

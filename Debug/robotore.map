@@ -247,7 +247,6 @@ timer1              0x4               Core/Src/main.o
 sensor              0x18              Core/Src/AngleCtrl.o
 omega               0x4               Core/Src/IMU.o
 readAdd_4           0x4               Core/Src/AngleCtrl.o
-side_min_values     0x8               Core/Src/LineSensor.o
 hdma_adc2           0x60              Core/Src/main.o
 yg                  0x2               Core/Src/MPU6500.o
 writeAdd_0          0x4               Core/Src/AngleCtrl.o
@@ -7430,7 +7429,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008012d58                . = ALIGN (0x4)
                 0x0000000008012d58                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x210 load address 0x0000000008012d58
+.data           0x0000000020000000      0x218 load address 0x0000000008012d58
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -7438,334 +7437,336 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .data.min_values
                 0x0000000020000000       0x30 Core/Src/LineSensor.o
                 0x0000000020000000                min_values
- .data.L_index  0x0000000020000030        0x1 Core/Src/LineSensor.o
- *fill*         0x0000000020000031        0x3 
+ .data.side_min_values
+                0x0000000020000030        0x8 Core/Src/LineSensor.o
+                0x0000000020000030                side_min_values
+ .data.L_index  0x0000000020000038        0x1 Core/Src/LineSensor.o
+ *fill*         0x0000000020000039        0x3 
  .data.SystemCoreClock
-                0x0000000020000034        0x4 Core/Src/system_stm32f4xx.o
-                0x0000000020000034                SystemCoreClock
+                0x000000002000003c        0x4 Core/Src/system_stm32f4xx.o
+                0x000000002000003c                SystemCoreClock
  .data.uwTickPrio
-                0x0000000020000038        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020000038                uwTickPrio
+                0x0000000020000040        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020000040                uwTickPrio
  .data.uwTickFreq
-                0x000000002000003c        0x1 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x000000002000003c                uwTickFreq
+                0x0000000020000044        0x1 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020000044                uwTickFreq
  .data.__fdlib_version
-                0x000000002000003d        0x1 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libm.a(lib_a-s_lib_ver.o)
-                0x000000002000003d                __fdlib_version
- *fill*         0x000000002000003e        0x2 
+                0x0000000020000045        0x1 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libm.a(lib_a-s_lib_ver.o)
+                0x0000000020000045                __fdlib_version
+ *fill*         0x0000000020000046        0x2 
  .data._impure_ptr
-                0x0000000020000040        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
-                0x0000000020000040                _impure_ptr
+                0x0000000020000048        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+                0x0000000020000048                _impure_ptr
  .data.impure_data
-                0x0000000020000044       0x60 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
+                0x000000002000004c       0x60 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-impure.o)
  .data.__global_locale
-                0x00000000200000a4      0x16c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-locale.o)
-                0x00000000200000a4                __global_locale
+                0x00000000200000ac      0x16c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-locale.o)
+                0x00000000200000ac                __global_locale
  *(.RamFunc)
  *(.RamFunc*)
-                0x0000000020000210                . = ALIGN (0x4)
-                0x0000000020000210                _edata = .
+                0x0000000020000218                . = ALIGN (0x4)
+                0x0000000020000218                _edata = .
 
-.igot.plt       0x0000000020000210        0x0 load address 0x0000000008012f68
- .igot.plt      0x0000000020000210        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x0000000020000210                . = ALIGN (0x4)
+.igot.plt       0x0000000020000218        0x0 load address 0x0000000008012f70
+ .igot.plt      0x0000000020000218        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x0000000020000218                . = ALIGN (0x4)
 
-.bss            0x0000000020000210    0x1cef4 load address 0x0000000008012f68
-                0x0000000020000210                _sbss = .
-                0x0000000020000210                __bss_start__ = _sbss
+.bss            0x0000000020000218    0x1ceec load address 0x0000000008012f70
+                0x0000000020000218                _sbss = .
+                0x0000000020000218                __bss_start__ = _sbss
  *(.bss)
- .bss           0x0000000020000210       0x1c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .bss           0x0000000020000218       0x1c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  *(.bss*)
  .bss.Angle_control_enable_flag
-                0x000000002000022c        0x2 Core/Src/AngleCtrl.o
+                0x0000000020000234        0x2 Core/Src/AngleCtrl.o
  .bss.i_clear_flag
-                0x000000002000022e        0x2 Core/Src/AngleCtrl.o
+                0x0000000020000236        0x2 Core/Src/AngleCtrl.o
  .bss.Angle_diff
-                0x0000000020000230        0x4 Core/Src/AngleCtrl.o
+                0x0000000020000238        0x4 Core/Src/AngleCtrl.o
  .bss.Angle_control_term
-                0x0000000020000234        0x4 Core/Src/AngleCtrl.o
- .bss.i.9646    0x0000000020000238        0x4 Core/Src/AngleCtrl.o
- .bss.pre_diff.9651
                 0x000000002000023c        0x4 Core/Src/AngleCtrl.o
+ .bss.i.9646    0x0000000020000240        0x4 Core/Src/AngleCtrl.o
+ .bss.pre_diff.9651
+                0x0000000020000244        0x4 Core/Src/AngleCtrl.o
  .bss.enc_l_cnt
-                0x0000000020000240        0x2 Core/Src/Encoder.o
+                0x0000000020000248        0x2 Core/Src/Encoder.o
  .bss.enc_r_cnt
-                0x0000000020000242        0x2 Core/Src/Encoder.o
+                0x000000002000024a        0x2 Core/Src/Encoder.o
  .bss.enc_l_total
-                0x0000000020000244        0x2 Core/Src/Encoder.o
+                0x000000002000024c        0x2 Core/Src/Encoder.o
  .bss.enc_r_total
-                0x0000000020000246        0x2 Core/Src/Encoder.o
+                0x000000002000024e        0x2 Core/Src/Encoder.o
  .bss.distance_1ms
-                0x0000000020000248        0x4 Core/Src/Encoder.o
- .bss.distance_10mm
-                0x000000002000024c        0x4 Core/Src/Encoder.o
- .bss.VLT_distance_10mm
                 0x0000000020000250        0x4 Core/Src/Encoder.o
- .bss.sab_distance_10mm
+ .bss.distance_10mm
                 0x0000000020000254        0x4 Core/Src/Encoder.o
- .bss.total_distance
+ .bss.VLT_distance_10mm
                 0x0000000020000258        0x4 Core/Src/Encoder.o
- .bss.goal_judge_distance
+ .bss.sab_distance_10mm
                 0x000000002000025c        0x4 Core/Src/Encoder.o
- .bss.side_line_judge_distance
+ .bss.total_distance
                 0x0000000020000260        0x4 Core/Src/Encoder.o
- .bss.distance_cross_line_ignore
+ .bss.goal_judge_distance
                 0x0000000020000264        0x4 Core/Src/Encoder.o
- .bss.distance_side_line_ignore
+ .bss.side_line_judge_distance
                 0x0000000020000268        0x4 Core/Src/Encoder.o
- .bss.speed_cnt
+ .bss.distance_cross_line_ignore
                 0x000000002000026c        0x4 Core/Src/Encoder.o
+ .bss.distance_side_line_ignore
+                0x0000000020000270        0x4 Core/Src/Encoder.o
+ .bss.speed_cnt
+                0x0000000020000274        0x4 Core/Src/Encoder.o
  .bss.ang_average
-                0x0000000020000270        0x4 Core/Src/IMU.o
-                0x0000000020000270                ang_average
+                0x0000000020000278        0x4 Core/Src/IMU.o
+                0x0000000020000278                ang_average
  .bss.pre_zg.9649
-                0x0000000020000274        0x2 Core/Src/IMU.o
+                0x000000002000027c        0x2 Core/Src/IMU.o
  .bss.line_trace_enable_flag
-                0x0000000020000276        0x1 Core/Src/LineChase.o
+                0x000000002000027e        0x1 Core/Src/LineChase.o
  .bss.i_clear_flag
-                0x0000000020000277        0x1 Core/Src/LineChase.o
+                0x000000002000027f        0x1 Core/Src/LineChase.o
  .bss.line_following_term
-                0x0000000020000278        0x4 Core/Src/LineChase.o
+                0x0000000020000280        0x4 Core/Src/LineChase.o
  .bss.dark_flag
-                0x000000002000027c        0x1 Core/Src/LineChase.o
- *fill*         0x000000002000027d        0x3 
- .bss.pre_diff  0x0000000020000280        0x4 Core/Src/LineChase.o
- .bss.i.9650    0x0000000020000284        0x4 Core/Src/LineChase.o
+                0x0000000020000284        0x1 Core/Src/LineChase.o
+ *fill*         0x0000000020000285        0x3 
+ .bss.pre_diff  0x0000000020000288        0x4 Core/Src/LineChase.o
+ .bss.i.9650    0x000000002000028c        0x4 Core/Src/LineChase.o
  .bss.adc_value
-                0x0000000020000288       0x18 Core/Src/LineSensor.o
+                0x0000000020000290       0x18 Core/Src/LineSensor.o
  .bss.side_adc_value
-                0x00000000200002a0        0x4 Core/Src/LineSensor.o
+                0x00000000200002a8        0x4 Core/Src/LineSensor.o
  .bss.sensor0_buffer
-                0x00000000200002a4       0x14 Core/Src/LineSensor.o
+                0x00000000200002ac       0x14 Core/Src/LineSensor.o
  .bss.sensor1_buffer
-                0x00000000200002b8       0x14 Core/Src/LineSensor.o
+                0x00000000200002c0       0x14 Core/Src/LineSensor.o
  .bss.sensor2_buffer
-                0x00000000200002cc       0x14 Core/Src/LineSensor.o
+                0x00000000200002d4       0x14 Core/Src/LineSensor.o
  .bss.sensor3_buffer
-                0x00000000200002e0       0x14 Core/Src/LineSensor.o
+                0x00000000200002e8       0x14 Core/Src/LineSensor.o
  .bss.sensor4_buffer
-                0x00000000200002f4       0x14 Core/Src/LineSensor.o
+                0x00000000200002fc       0x14 Core/Src/LineSensor.o
  .bss.sensor5_buffer
-                0x0000000020000308       0x14 Core/Src/LineSensor.o
+                0x0000000020000310       0x14 Core/Src/LineSensor.o
  .bss.sensor6_buffer
-                0x000000002000031c       0x14 Core/Src/LineSensor.o
+                0x0000000020000324       0x14 Core/Src/LineSensor.o
  .bss.sensor7_buffer
-                0x0000000020000330       0x14 Core/Src/LineSensor.o
+                0x0000000020000338       0x14 Core/Src/LineSensor.o
  .bss.sensor8_buffer
-                0x0000000020000344       0x14 Core/Src/LineSensor.o
+                0x000000002000034c       0x14 Core/Src/LineSensor.o
  .bss.sensor9_buffer
-                0x0000000020000358       0x14 Core/Src/LineSensor.o
+                0x0000000020000360       0x14 Core/Src/LineSensor.o
  .bss.sensor10_buffer
-                0x000000002000036c       0x14 Core/Src/LineSensor.o
+                0x0000000020000374       0x14 Core/Src/LineSensor.o
  .bss.sensor11_buffer
-                0x0000000020000380       0x14 Core/Src/LineSensor.o
+                0x0000000020000388       0x14 Core/Src/LineSensor.o
  .bss.side_sensorR_buffer
-                0x0000000020000394       0x14 Core/Src/LineSensor.o
+                0x000000002000039c       0x14 Core/Src/LineSensor.o
  .bss.side_sensorL_buffer
-                0x00000000200003a8       0x14 Core/Src/LineSensor.o
+                0x00000000200003b0       0x14 Core/Src/LineSensor.o
  .bss.log_sensor
-                0x00000000200003bc       0x78 Core/Src/Logger.o
+                0x00000000200003c4       0x78 Core/Src/Logger.o
  .bss.log_cross
-                0x0000000020000434       0xc8 Core/Src/Logger.o
- .bss.log_side  0x00000000200004fc       0xc8 Core/Src/Logger.o
+                0x000000002000043c       0xc8 Core/Src/Logger.o
+ .bss.log_side  0x0000000020000504       0xc8 Core/Src/Logger.o
  .bss.log_debug
-                0x00000000200005c4    0x11940 Core/Src/Logger.o
+                0x00000000200005cc    0x11940 Core/Src/Logger.o
  .bss.log_distance
-                0x0000000020011f04     0x1f40 Core/Src/Logger.o
+                0x0000000020011f0c     0x1f40 Core/Src/Logger.o
  .bss.log_theta
-                0x0000000020013e44     0x1f40 Core/Src/Logger.o
+                0x0000000020013e4c     0x1f40 Core/Src/Logger.o
  .bss.log_sensor_cnt
-                0x0000000020015d84        0x2 Core/Src/Logger.o
- .bss.log_distance_cnt
-                0x0000000020015d86        0x2 Core/Src/Logger.o
- .bss.log_theta_cnt
-                0x0000000020015d88        0x2 Core/Src/Logger.o
- .bss.log_cross_cnt
-                0x0000000020015d8a        0x2 Core/Src/Logger.o
- .bss.log_side_cnt
                 0x0000000020015d8c        0x2 Core/Src/Logger.o
- .bss.log_debug_cnt
+ .bss.log_distance_cnt
                 0x0000000020015d8e        0x2 Core/Src/Logger.o
+ .bss.log_theta_cnt
+                0x0000000020015d90        0x2 Core/Src/Logger.o
+ .bss.log_cross_cnt
+                0x0000000020015d92        0x2 Core/Src/Logger.o
+ .bss.log_side_cnt
+                0x0000000020015d94        0x2 Core/Src/Logger.o
+ .bss.log_debug_cnt
+                0x0000000020015d96        0x2 Core/Src/Logger.o
  .bss.velocity_control_enable_flag
-                0x0000000020015d90        0x1 Core/Src/Velocity_Ctrl.o
+                0x0000000020015d98        0x1 Core/Src/Velocity_Ctrl.o
  .bss.i_clear_flag
-                0x0000000020015d91        0x1 Core/Src/Velocity_Ctrl.o
- *fill*         0x0000000020015d92        0x2 
+                0x0000000020015d99        0x1 Core/Src/Velocity_Ctrl.o
+ *fill*         0x0000000020015d9a        0x2 
  .bss.velocity_control_term
-                0x0000000020015d94        0x4 Core/Src/Velocity_Ctrl.o
- .bss.target_velocity
-                0x0000000020015d98        0x4 Core/Src/Velocity_Ctrl.o
- .bss.target_acceleration
                 0x0000000020015d9c        0x4 Core/Src/Velocity_Ctrl.o
- .bss.variable_speed
+ .bss.target_velocity
                 0x0000000020015da0        0x4 Core/Src/Velocity_Ctrl.o
- .bss.i.9654    0x0000000020015da4        0x4 Core/Src/Velocity_Ctrl.o
- .bss.pre_diff.9659
+ .bss.target_acceleration
+                0x0000000020015da4        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.variable_speed
                 0x0000000020015da8        0x4 Core/Src/Velocity_Ctrl.o
- .bss.X_table   0x0000000020015dac      0xfa0 Core/Src/kanayama.o
- .bss.Y_table   0x0000000020016d4c      0xfa0 Core/Src/kanayama.o
+ .bss.i.9654    0x0000000020015dac        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.pre_diff.9659
+                0x0000000020015db0        0x4 Core/Src/Velocity_Ctrl.o
+ .bss.X_table   0x0000000020015db4      0xfa0 Core/Src/kanayama.o
+ .bss.Y_table   0x0000000020016d54      0xfa0 Core/Src/kanayama.o
  .bss.Theta_table
-                0x0000000020017cec      0xfa0 Core/Src/kanayama.o
+                0x0000000020017cf4      0xfa0 Core/Src/kanayama.o
  .bss.EuclideanDistance_table
-                0x0000000020018c8c      0xfa0 Core/Src/kanayama.o
+                0x0000000020018c94      0xfa0 Core/Src/kanayama.o
  .bss.euclideandistance_idx
-                0x0000000020019c2c        0x2 Core/Src/kanayama.o
-                0x0000000020019c2c                euclideandistance_idx
- *fill*         0x0000000020019c2e        0x2 
+                0x0000000020019c34        0x2 Core/Src/kanayama.o
+                0x0000000020019c34                euclideandistance_idx
+ *fill*         0x0000000020019c36        0x2 
  .bss.Total_length_of_course
-                0x0000000020019c30        0x4 Core/Src/kanayama.o
- .bss.target_X_coordinate
-                0x0000000020019c34        0x4 Core/Src/kanayama.o
- .bss.target_Y_coordinate
                 0x0000000020019c38        0x4 Core/Src/kanayama.o
- .bss.target_Theta
+ .bss.target_X_coordinate
                 0x0000000020019c3c        0x4 Core/Src/kanayama.o
- .bss.now_error_x
+ .bss.target_Y_coordinate
                 0x0000000020019c40        0x4 Core/Src/kanayama.o
- .bss.now_error_y
+ .bss.target_Theta
                 0x0000000020019c44        0x4 Core/Src/kanayama.o
- .bss.now_error_theta
+ .bss.now_error_x
                 0x0000000020019c48        0x4 Core/Src/kanayama.o
- .bss.Output_velocity
+ .bss.now_error_y
                 0x0000000020019c4c        0x4 Core/Src/kanayama.o
- .bss.Output_angularvelocity
+ .bss.now_error_theta
                 0x0000000020019c50        0x4 Core/Src/kanayama.o
- .bss.pre_th.9689
+ .bss.Output_velocity
                 0x0000000020019c54        0x4 Core/Src/kanayama.o
- .bss.pre_x.9688
+ .bss.Output_angularvelocity
                 0x0000000020019c58        0x4 Core/Src/kanayama.o
- .bss.pre_th.9698
+ .bss.pre_th.9689
                 0x0000000020019c5c        0x4 Core/Src/kanayama.o
- .bss.pre_y.9697
+ .bss.pre_x.9688
                 0x0000000020019c60        0x4 Core/Src/kanayama.o
- .bss.mon_Y_table.9706
+ .bss.pre_th.9698
                 0x0000000020019c64        0x4 Core/Src/kanayama.o
- .bss.mon_Theta_table.9707
+ .bss.pre_y.9697
                 0x0000000020019c68        0x4 Core/Src/kanayama.o
- .bss.mon_X_table.9705
+ .bss.mon_Y_table.9706
                 0x0000000020019c6c        0x4 Core/Src/kanayama.o
- .bss.sw2       0x0000000020019c70        0x2 Core/Src/main.o
-                0x0000000020019c70                sw2
- .bss.soiya     0x0000000020019c72        0x2 Core/Src/main.o
-                0x0000000020019c72                soiya
- .bss.motor_l   0x0000000020019c74        0x2 Core/Src/motor.o
- .bss.motor_r   0x0000000020019c76        0x2 Core/Src/motor.o
+ .bss.mon_Theta_table.9707
+                0x0000000020019c70        0x4 Core/Src/kanayama.o
+ .bss.mon_X_table.9705
+                0x0000000020019c74        0x4 Core/Src/kanayama.o
+ .bss.sw2       0x0000000020019c78        0x2 Core/Src/main.o
+                0x0000000020019c78                sw2
+ .bss.soiya     0x0000000020019c7a        0x2 Core/Src/main.o
+                0x0000000020019c7a                soiya
+ .bss.motor_l   0x0000000020019c7c        0x2 Core/Src/motor.o
+ .bss.motor_r   0x0000000020019c7e        0x2 Core/Src/motor.o
  .bss.suction_motor
-                0x0000000020019c78        0x2 Core/Src/motor.o
- *fill*         0x0000000020019c7a        0x2 
+                0x0000000020019c80        0x2 Core/Src/motor.o
+ *fill*         0x0000000020019c82        0x2 
  .bss.velocity_table
-                0x0000000020019c7c     0x1f40 Core/Src/sideSensor.o
+                0x0000000020019c84     0x1f40 Core/Src/sideSensor.o
  .bss.acceleration_table
-                0x000000002001bbbc      0xfa0 Core/Src/sideSensor.o
+                0x000000002001bbc4      0xfa0 Core/Src/sideSensor.o
  .bss.start_goal_line_cnt
-                0x000000002001cb5c        0x1 Core/Src/sideSensor.o
- *fill*         0x000000002001cb5d        0x1 
+                0x000000002001cb64        0x1 Core/Src/sideSensor.o
+ *fill*         0x000000002001cb65        0x1 
  .bss.cross_line_idx
-                0x000000002001cb5e        0x2 Core/Src/sideSensor.o
+                0x000000002001cb66        0x2 Core/Src/sideSensor.o
  .bss.side_line_idx
-                0x000000002001cb60        0x2 Core/Src/sideSensor.o
+                0x000000002001cb68        0x2 Core/Src/sideSensor.o
  .bss.correction_check_cnt_cross
-                0x000000002001cb62        0x2 Core/Src/sideSensor.o
+                0x000000002001cb6a        0x2 Core/Src/sideSensor.o
  .bss.correction_check_cnt_side
-                0x000000002001cb64        0x2 Core/Src/sideSensor.o
+                0x000000002001cb6c        0x2 Core/Src/sideSensor.o
  .bss.cross_line_ignore_flag
-                0x000000002001cb66        0x1 Core/Src/sideSensor.o
+                0x000000002001cb6e        0x1 Core/Src/sideSensor.o
  .bss.side_line_judge_flag
-                0x000000002001cb67        0x1 Core/Src/sideSensor.o
- .bss.side_sensor_l
-                0x000000002001cb68        0x1 Core/Src/sideSensor.o
- .bss.side_sensor_r
-                0x000000002001cb69        0x1 Core/Src/sideSensor.o
- .bss.goal_flag
-                0x000000002001cb6a        0x1 Core/Src/sideSensor.o
- .bss.goal_judge_flag
-                0x000000002001cb6b        0x1 Core/Src/sideSensor.o
- .bss.continuous_cnt_reset_flag
-                0x000000002001cb6c        0x1 Core/Src/sideSensor.o
- .bss.continuous_curve_flag
-                0x000000002001cb6d        0x1 Core/Src/sideSensor.o
- .bss.run_flag  0x000000002001cb6e        0x1 Core/Src/sideSensor.o
- .bss.logging_flag
                 0x000000002001cb6f        0x1 Core/Src/sideSensor.o
- .bss.target_update_flag
+ .bss.side_sensor_l
                 0x000000002001cb70        0x1 Core/Src/sideSensor.o
- .bss.velocity_update_flag
+ .bss.side_sensor_r
                 0x000000002001cb71        0x1 Core/Src/sideSensor.o
- *fill*         0x000000002001cb72        0x2 
+ .bss.goal_flag
+                0x000000002001cb72        0x1 Core/Src/sideSensor.o
+ .bss.goal_judge_flag
+                0x000000002001cb73        0x1 Core/Src/sideSensor.o
+ .bss.continuous_cnt_reset_flag
+                0x000000002001cb74        0x1 Core/Src/sideSensor.o
+ .bss.continuous_curve_flag
+                0x000000002001cb75        0x1 Core/Src/sideSensor.o
+ .bss.run_flag  0x000000002001cb76        0x1 Core/Src/sideSensor.o
+ .bss.logging_flag
+                0x000000002001cb77        0x1 Core/Src/sideSensor.o
+ .bss.target_update_flag
+                0x000000002001cb78        0x1 Core/Src/sideSensor.o
+ .bss.velocity_update_flag
+                0x000000002001cb79        0x1 Core/Src/sideSensor.o
+ *fill*         0x000000002001cb7a        0x2 
  .bss.min_velocity
-                0x000000002001cb74        0x4 Core/Src/sideSensor.o
- .bss.max_velocity
-                0x000000002001cb78        0x4 Core/Src/sideSensor.o
- .bss.acceleration
                 0x000000002001cb7c        0x4 Core/Src/sideSensor.o
- .bss.deceleration
+ .bss.max_velocity
                 0x000000002001cb80        0x4 Core/Src/sideSensor.o
- .bss.straight_radius
+ .bss.acceleration
                 0x000000002001cb84        0x4 Core/Src/sideSensor.o
- .bss.debug_now_X
+ .bss.deceleration
                 0x000000002001cb88        0x4 Core/Src/sideSensor.o
- .bss.debug_now_Y
+ .bss.straight_radius
                 0x000000002001cb8c        0x4 Core/Src/sideSensor.o
- .bss.debug_now_Theta
+ .bss.debug_now_X
                 0x000000002001cb90        0x4 Core/Src/sideSensor.o
- .bss.V_motor   0x000000002001cb94        0x2 Core/Src/sideSensor.o
- .bss.cnt.9676  0x000000002001cb96        0x2 Core/Src/sideSensor.o
+ .bss.debug_now_Y
+                0x000000002001cb94        0x4 Core/Src/sideSensor.o
+ .bss.debug_now_Theta
+                0x000000002001cb98        0x4 Core/Src/sideSensor.o
+ .bss.V_motor   0x000000002001cb9c        0x2 Core/Src/sideSensor.o
+ .bss.cnt.9676  0x000000002001cb9e        0x2 Core/Src/sideSensor.o
  .bss.flag.9679
-                0x000000002001cb98        0x1 Core/Src/sideSensor.o
- *fill*         0x000000002001cb99        0x3 
+                0x000000002001cba0        0x1 Core/Src/sideSensor.o
+ *fill*         0x000000002001cba1        0x3 
  .bss.pre_theta.9682
-                0x000000002001cb9c        0x4 Core/Src/sideSensor.o
- .bss.continuous_cnt.9683
-                0x000000002001cba0        0x4 Core/Src/sideSensor.o
- .bss.pre_target_velocity.9797
                 0x000000002001cba4        0x4 Core/Src/sideSensor.o
+ .bss.continuous_cnt.9683
+                0x000000002001cba8        0x4 Core/Src/sideSensor.o
+ .bss.pre_target_velocity.9797
+                0x000000002001cbac        0x4 Core/Src/sideSensor.o
  .bss.__sbrk_heap_end
-                0x000000002001cba8        0x4 Core/Src/sysmem.o
+                0x000000002001cbb0        0x4 Core/Src/sysmem.o
  .bss.__malloc_free_list
-                0x000000002001cbac        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-nano-mallocr.o)
-                0x000000002001cbac                __malloc_free_list
+                0x000000002001cbb4        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-nano-mallocr.o)
+                0x000000002001cbb4                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x000000002001cbb0        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-nano-mallocr.o)
-                0x000000002001cbb0                __malloc_sbrk_start
+                0x000000002001cbb8        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard\libc_nano.a(lib_a-nano-mallocr.o)
+                0x000000002001cbb8                __malloc_sbrk_start
  *(COMMON)
- COMMON         0x000000002001cbb4       0xc0 Core/Src/AngleCtrl.o
-                0x000000002001cbb4                writeAdd_4
-                0x000000002001cbb8                readAdd_0
-                0x000000002001cbbc                writeAdd_1
-                0x000000002001cbc0                side_sensorR
-                0x000000002001cbc4                readAdd_1
-                0x000000002001cbc8                writeAdd_5
-                0x000000002001cbcc                writeAdd_3
-                0x000000002001cbd0                readAdd_2
-                0x000000002001cbd4                side_offset_values
-                0x000000002001cbdc                offset_values
-                0x000000002001cc0c                readAdd_5
-                0x000000002001cc10                writeAdd_2
-                0x000000002001cc14                side_sensor_coefficient
-                0x000000002001cc1c                sensor
-                0x000000002001cc34                readAdd_4
-                0x000000002001cc38                writeAdd_0
-                0x000000002001cc3c                side_sensorL
-                0x000000002001cc40                readAdd_3
-                0x000000002001cc44                sensor_coefficient
- COMMON         0x000000002001cc74       0x80 Core/Src/Encoder.o
-                0x000000002001cc74                htim4
-                0x000000002001ccb4                htim3
- COMMON         0x000000002001ccf4       0x14 Core/Src/IMU.o
-                0x000000002001ccf4                zg_
-                0x000000002001ccf6                yg_
-                0x000000002001ccf8                xg_
-                0x000000002001ccfc                theta_10mm
-                0x000000002001cd00                add_theta
-                0x000000002001cd04                omega
- COMMON         0x000000002001cd08        0x4 Core/Src/LineChase.o
-                0x000000002001cd08                mon_velo_term
- COMMON         0x000000002001cd0c       0xd0 Core/Src/LineSensor.o
-                0x000000002001cd0c                hadc2
-                0x000000002001cd54                side_max_values
-                0x000000002001cd5c                hadc1
-                0x000000002001cda4                max_values
-                0x000000002001cdd4                side_min_values
+ COMMON         0x000000002001cbbc       0xc0 Core/Src/AngleCtrl.o
+                0x000000002001cbbc                writeAdd_4
+                0x000000002001cbc0                readAdd_0
+                0x000000002001cbc4                writeAdd_1
+                0x000000002001cbc8                side_sensorR
+                0x000000002001cbcc                readAdd_1
+                0x000000002001cbd0                writeAdd_5
+                0x000000002001cbd4                writeAdd_3
+                0x000000002001cbd8                readAdd_2
+                0x000000002001cbdc                side_offset_values
+                0x000000002001cbe4                offset_values
+                0x000000002001cc14                readAdd_5
+                0x000000002001cc18                writeAdd_2
+                0x000000002001cc1c                side_sensor_coefficient
+                0x000000002001cc24                sensor
+                0x000000002001cc3c                readAdd_4
+                0x000000002001cc40                writeAdd_0
+                0x000000002001cc44                side_sensorL
+                0x000000002001cc48                readAdd_3
+                0x000000002001cc4c                sensor_coefficient
+ COMMON         0x000000002001cc7c       0x80 Core/Src/Encoder.o
+                0x000000002001cc7c                htim4
+                0x000000002001ccbc                htim3
+ COMMON         0x000000002001ccfc       0x14 Core/Src/IMU.o
+                0x000000002001ccfc                zg_
+                0x000000002001ccfe                yg_
+                0x000000002001cd00                xg_
+                0x000000002001cd04                theta_10mm
+                0x000000002001cd08                add_theta
+                0x000000002001cd0c                omega
+ COMMON         0x000000002001cd10        0x4 Core/Src/LineChase.o
+                0x000000002001cd10                mon_velo_term
+ COMMON         0x000000002001cd14       0xc8 Core/Src/LineSensor.o
+                0x000000002001cd14                hadc2
+                0x000000002001cd5c                side_max_values
+                0x000000002001cd64                hadc1
+                0x000000002001cdac                max_values
  COMMON         0x000000002001cddc        0xc Core/Src/MPU6500.o
                 0x000000002001cddc                zg
                 0x000000002001cdde                za
@@ -7821,7 +7822,7 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002001d104                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002001d104      0x604 load address 0x0000000008012f68
+                0x000000002001d104      0x604 load address 0x0000000008012f70
                 0x000000002001d108                . = ALIGN (0x8)
  *fill*         0x000000002001d104        0x4 
                 [!provide]                        PROVIDE (end = .)
