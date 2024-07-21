@@ -7,24 +7,32 @@
 
 #include "Logger.h"
 
+static float log_sensor[30];
 static float log_cross[50];
 static float log_side[50];
 static float log_debug[18000];
 static float log_distance[2000];//int16_tにできるならしたい
 static float log_theta[2000];//int16_tにできるならしたい
-static uint16_t log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
+static uint16_t log_sensor_cnt, log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
 
 void initLog(){
+	writeAdd_0 = start_adress_sector6;
 	writeAdd_1 = start_adress_sector7;
 	writeAdd_2 = start_adress_sector8;
 	writeAdd_3 = start_adress_sector9;
 	writeAdd_4 = start_adress_sector10;
 	writeAdd_5 = start_adress_sector11;
+	readAdd_0 = start_adress_sector6;
 	readAdd_1 = start_adress_sector7;
 	readAdd_2 = start_adress_sector8;
 	readAdd_3 = start_adress_sector9;
 	readAdd_4 = start_adress_sector10;
 	readAdd_5 = start_adress_sector11;
+}
+
+void saveSensor(float sensor){
+	FLASH_Write_Word_F(writeAdd_0, sensor);
+	writeAdd_0 += 0x04;
 }
 
 void saveDistance(float distance){
@@ -74,6 +82,16 @@ void ereaseDebugLog(){
 	writeAdd_5= start_adress_sector11;
 }
 
+void ereaseSensorLog(){
+	FLASH_EreaseSector(FLASH_SECTOR_6);
+
+	writeAdd_0= start_adress_sector6;
+}
+
+uint16_t getSensorLogSize(){
+	return log_sensor_cnt;
+}
+
 uint16_t getDistanceLogSize(){
 	return log_distance_cnt;
 }
@@ -90,6 +108,23 @@ uint16_t getDebugLogSize(){
 	return log_debug_cnt;
 }
 
+void loadSensor(){
+	uint16_t i = 0;
+	readAdd_0 = start_adress_sector6;
+	log_sensor_cnt = 0;
+
+	while(1){
+		log_sensor[i] = *(float*)readAdd_0;
+		if(isnan(log_sensor[i]) != 0){
+			break;
+		}
+		else{
+			log_sensor_cnt++;
+		}
+		readAdd_0 += 0x04;
+		i++;
+	}
+}
 
 void loadDistance(){
 	uint16_t i = 0;
@@ -181,6 +216,9 @@ void loadDebug(){
 	}
 }
 
+const float *getSensorArrayPointer(){
+	return log_sensor;
+}
 
 const float *getDistanceArrayPointer(){
 	return log_distance;
@@ -196,6 +234,10 @@ const float *getCrossArrayPointer(){
 
 const float *getSideArrayPointer(){
 	return log_side;
+}
+
+float getSensorLog(uint16_t idx){
+	return log_sensor[idx];
 }
 
 float getDistanceLog(uint16_t idx){

@@ -154,8 +154,9 @@ void sensorCalibration()//センサキャリブレーションはノムさんに
 		side_min_values[i] = 1500;
 	}
 
-	while(getSwitchStatus('L') == 1){                       //sw3
+	while(getSwitchStatus('L') == 1){                       //sw2
 
+		ereaseSensorLog();
 		setLED2('X');
 
 		for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
@@ -196,5 +197,14 @@ void sensorCalibration()//センサキャリブレーションはノムさんに
 	}
 	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
 		side_offset_values[i] = side_min_values[i];
+	}
+
+	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
+		saveSensor(max_values[i]);
+		saveSensor(min_values[i]);
+	}
+	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
+		saveSensor(side_max_values[i]);
+		saveSensor(side_min_values[i]);
 	}
 }

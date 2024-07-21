@@ -47,6 +47,21 @@ void FLASH_WaitBusy(void)
 	while(FLASH->SR & FLASH_SR_BSY);//BSYがクリアされるまで待機
 }
 
+void FLASH_Erease6(void)
+{
+	FLASH_Unlock();
+
+	FLASH_WaitBusy();
+
+	FLASH->CR |= FLASH_CR_SER;//SER Bitset
+	FLASH->CR |= FLASH_SECTOR6 & FLASH_CR_SNB_Msk;//セクタ選択
+	FLASH->CR |= FLASH_CR_STRT;//STRT Bitset
+
+	FLASH_WaitBusy();
+
+	FLASH_Lock();
+}
+
 void FLASH_Erease7(void)
 {
 	FLASH_Unlock();

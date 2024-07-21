@@ -26,6 +26,7 @@ extern const uint32_t start_adress_sector11; //sector11 start address
 extern const uint32_t end_adress_sector11;
 
 void FLASH_WaitBusy(void);
+void FLASH_Erease6(void);
 void FLASH_Erease7(void);
 void FLASH_Erease9(void);
 void FLASH_Erease10(void);
