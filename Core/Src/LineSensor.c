@@ -40,20 +40,20 @@ static uint8_t L_index = 1;
 
 void initADC()
 {
-	loadSensor();
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t *) side_adc_value, SIDE_LINESENSOR_ADC_NUM);
 	HAL_ADC_Start_DMA(&hadc2, (uint32_t *) adc_value, LINESENSOR_ADC_NUM);
 
+	loadSensor();
 	const float *p_sensor;
 	p_sensor = getSensorArrayPointer();
 
-	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i += 2){
-		sensor_coefficient[i] = p_sensor[i] - p_sensor[i + 1];
-		offset_values[i] = p_sensor[i + 1];
+	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
+		sensor_coefficient[i] = p_sensor[i*2] - p_sensor[i*2 + 1];
+		offset_values[i] = p_sensor[i*2 + 1];
 	}
-	for(uint16_t i = LINESENSOR_ADC_NUM; i < LINESENSOR_ADC_NUM + SIDE_LINESENSOR_ADC_NUM; i += 2){
-		side_sensor_coefficient[i - LINESENSOR_ADC_NUM] = p_sensor[i] - p_sensor[i + 1];
-		side_offset_values[i - LINESENSOR_ADC_NUM] = p_sensor[i + 1];
+	for(uint16_t i = LINESENSOR_ADC_NUM; i < LINESENSOR_ADC_NUM + SIDE_LINESENSOR_ADC_NUM; i++){
+		side_sensor_coefficient[i - LINESENSOR_ADC_NUM] = p_sensor[i*2] - p_sensor[i*2 + 1];
+		side_offset_values[i - LINESENSOR_ADC_NUM] = p_sensor[i*2 + 1];
 	}
 }
 
@@ -196,28 +196,28 @@ void sensorCalibration()//センサキャリブレーションはノムさんに
 				side_min_values[i] = side_adc_value[i];
 			}
 		}
-	}
 
-	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
-		sensor_coefficient[i] = max_values[i] - min_values[i];
-	}
-	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
-		offset_values[i] = min_values[i];
-	}
+		for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
+			sensor_coefficient[i] = max_values[i] - min_values[i];
+		}
+		for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
+			offset_values[i] = min_values[i];
+		}
 
-	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
-		side_sensor_coefficient[i] = side_max_values[i] - side_min_values[i];
-	}
-	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
-		side_offset_values[i] = side_min_values[i];
-	}
+		for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
+			side_sensor_coefficient[i] = side_max_values[i] - side_min_values[i];
+		}
+		for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
+			side_offset_values[i] = side_min_values[i];
+		}
 
-	for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
-		saveSensor(max_values[i]);
-		saveSensor(min_values[i]);
-	}
-	for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
-		saveSensor(side_max_values[i]);
-		saveSensor(side_min_values[i]);
+		for(uint16_t i = 0; i < LINESENSOR_ADC_NUM; i++){
+			saveSensor(max_values[i]);
+			saveSensor(min_values[i]);
+		}
+		for(uint16_t i = 0; i < SIDE_LINESENSOR_ADC_NUM; i++){
+			saveSensor(side_max_values[i]);
+			saveSensor(side_min_values[i]);
+		}
 	}
 }
