@@ -134,7 +134,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       suctionmotorCtrlFlip();
       updateSideSensorStatus();
 
-      //checkCourseOut();
+      //checkCourseOut();//コースアウト判定
+      checkAngularvelocity();
    }
 
    if(htim->Instance == TIM7){//0.1ms
@@ -423,7 +424,7 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(1.5, 3.0);
+						  setVelocityRange(1.5, 2.5);
 						  setAccDec(4, 3);
 						  setStraightRadius(1000); //Do Not Change
 

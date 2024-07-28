@@ -34,4 +34,8 @@ float getTargetpoint_Theta();
 float getOutput_velocity();
 float getOutput_angularvelocity();
 
+void checkAngularvelocity(void);
+
+bool getcheckAngularvelocityFlag();
+
 #endif /* INC_KANAYAMA_H_ */

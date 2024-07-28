@@ -36,6 +36,8 @@ static float now_error_theta;
 static float Output_velocity;
 static float Output_angularvelocity;
 
+static bool check_flag;
+
 void CreateXYcoordinates()
 {
 	const float *p_distance, *p_theta;
@@ -230,6 +232,17 @@ void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1ms�
 	}*/
 }
 
+void checkAngularvelocity(void)
+{
+	static float checkangularvelocity = 30 / (180/M_PI);
+
+	if(checkangularvelocity <= now_error_theta){
+		check_flag = true;
+	}
+	else check_flag = false;
+
+}
+
 float getTotal_length()
 {
 	return Total_length_of_course;
@@ -258,4 +271,9 @@ float getOutput_velocity()
 float getOutput_angularvelocity()
 {
 	return Output_angularvelocity;
+}
+
+bool getcheckAngularvelocityFlag()
+{
+	return check_flag;
 }

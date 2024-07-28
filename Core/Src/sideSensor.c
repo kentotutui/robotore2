@@ -222,6 +222,15 @@ void running(void)
 		    pattern = 20;
 	    }
 
+		if(getcheckAngularvelocityFlag() == true)
+		{
+			stopLogging();
+			stopVelocityUpdate();
+			stopTargetUpdate();
+			stopAngleControl();
+			pattern = 20;
+		}
+
 		if(Run_Mode == 5)
 		{
 			if(getTotalDistance() >= getTotal_length())
