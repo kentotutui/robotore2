@@ -327,11 +327,11 @@ int main(void)
 						  //setTargetVelocity(0.0);
 						  //startVelocityControl();
 
-						  setsuctionMotor(800);
+						  //setsuctionMotor(800);
 
 						  //HAL_Delay(1500);
 
-						  //running();
+						  running();
 				  }
 
 				  break;

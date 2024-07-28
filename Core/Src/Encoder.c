@@ -14,7 +14,7 @@
 #define PI 3.1415926535
 #define ENCODER_RESOLUTION 2048
 
-#define REDUCTION_RATIO 0.4 //Gear reduction ratio 減速比
+#define REDUCTION_RATIO 0.33333 //Gear reduction ratio 減速比
 
 #define DISTANCE_PER_CNT (2 * PI * WHEEL_RADIUS * REDUCTION_RATIO / ENCODER_RESOLUTION) //[mm per cnt]
 
