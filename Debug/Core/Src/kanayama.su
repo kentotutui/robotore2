@@ -1,7 +1,7 @@
 kanayama.c:41:6:CreateXYcoordinates	96	static
 kanayama.c:113:7:CurrentXcoordinates	24	static
 kanayama.c:133:7:CurrentYcoordinates	24	static
-kanayama.c:153:6:updateTargetpoint	16	static
+kanayama.c:153:6:updateTargetpoint	8	static
 kanayama.c:192:6:Error_XY	48	static
 kanayama.c:213:6:Velocity_Angularvelocity	48	static
 kanayama.c:235:6:checkAngularvelocity	4	static

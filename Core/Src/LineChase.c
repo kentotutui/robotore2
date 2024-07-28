@@ -82,8 +82,6 @@ void lineTraceFlip(void)
 		velocity_control_term -= exceeded;
 		line_following_term += exceeded;*/
 
-
-
 		if(getControl_Mode() == 1){
 		    motor_l = velocity_control_term + line_following_term;//ライントレース時のモータ出力
 			motor_r = velocity_control_term - line_following_term;

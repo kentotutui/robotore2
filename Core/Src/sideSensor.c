@@ -203,7 +203,7 @@ void running(void)
 
 				  case 20:
 
-					  setTargetVelocity(1.0);
+					  setTargetVelocity(0.5);
 					  HAL_Delay(100);
 					  setTargetVelocity(0);
 					  HAL_Delay(500);
@@ -235,6 +235,7 @@ void running(void)
 		{
 			if(getTotalDistance() >= getTotal_length())
 			{
+				setLED2('A');
 				stopLogging();
 				stopVelocityUpdate();
 				stopTargetUpdate();
