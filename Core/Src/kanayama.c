@@ -14,9 +14,9 @@ static int16_t Theta_table[2000];
 
 static uint16_t EuclideanDistance_table[2000];
 
-static int16_t SC_X_table[2000];
-static int16_t SC_Y_table[2000];
-static int16_t SC_Theta_table[2000];
+//static int16_t SC_X_table[2000];
+//static int16_t SC_Y_table[2000];
+//static int16_t SC_Theta_table[2000];
 
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
@@ -76,14 +76,14 @@ void CreateXYcoordinates()
 				while(delta_ang > M_PI){
 				    atan2th -= 2 * M_PI;
 				    delta_ang = atan2th - prev_atan2;
-				    }
 				}
+			}
 			else if(delta_ang < -M_PI){
 				while(delta_ang < -M_PI){
 					atan2th += 2 * M_PI;
 					delta_ang = atan2th - prev_atan2;
-				    }
 				}
+			}
 		}
 
 

@@ -1,4 +1,4 @@
-LineSensor.c:41:6:initADC	8	static
-LineSensor.c:47:6:storeAnalogSensorBuffer	4	static
-LineSensor.c:100:6:updateAnalogSensor	16	static
-LineSensor.c:138:6:sensorCalibration	136	static
+LineSensor.c:41:6:initADC	16	static
+LineSensor.c:60:6:storeAnalogSensorBuffer	4	static
+LineSensor.c:113:6:updateAnalogSensor	16	static
+LineSensor.c:151:6:sensorCalibration	144	static
