@@ -348,7 +348,7 @@ int main(void)
 
 					      setRunMode(1);
 
-					      setVelocityRange(1.5, 1.5);
+					      setVelocityRange(1.3, 1.3);
 
 						  setsuctionMotor(700);
 
@@ -423,11 +423,11 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.5, 5.0);//changeパラメータ
+						  setVelocityRange(1.8, 5.0);//changeパラメータ
 						  setAccDec(7, 3);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1500);
 
@@ -453,7 +453,7 @@ int main(void)
 						  setAccDec(8, 5);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1500);
 
@@ -479,7 +479,7 @@ int main(void)
 						  setAccDec(8, 5);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1500);
 
@@ -505,7 +505,7 @@ int main(void)
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1500);
 
@@ -556,7 +556,7 @@ int main(void)
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1000);
 
@@ -582,7 +582,7 @@ int main(void)
 						  setAccDec(10, 5);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1000);
 
@@ -607,7 +607,7 @@ int main(void)
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(700);
 
 						  HAL_Delay(1000);
 

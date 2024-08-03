@@ -7,7 +7,7 @@
 
 #include "VelocityCtrl.h"
 
-#define WHEEL_RADIUS 11.25 //[mm]
+#define WHEEL_RADIUS 11 //[mm]
 #define PI 3.1415926535
 #define ENCODER_RESOLUTION 2048
 #define REDUCTION_RATIO 0.33333
@@ -34,7 +34,7 @@ void calculateVelocityControlFlip(void)
 	float p, d;
 	static float i;
 
-	float kp = 1500, ki = 20000, kd = 0.0;//kp = 1550, ki = 20000, kd = 0.0;
+	float kp = 2400, ki = 30000, kd = 0.0;//kp = 1550, ki = 20000, kd = 0.0;
 
 	float diff = 0.;
 	static float pre_diff = 0.;

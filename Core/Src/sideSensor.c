@@ -11,7 +11,7 @@ static float velocity_table[5500];
 static int16_t acceleration_table[5500];
 
 //↓モータ特性
-#define WHEEL_RADIUS 0.01125 //[m]
+#define WHEEL_RADIUS 0.011 //[m]
 #define AIRCRAFT_MASS 0.139 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
@@ -162,12 +162,12 @@ void running(void)
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 70){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 40){
 						  goal_judge_flag = true;
 						  clearGoalJudgeDistance();
 					  }
 
-					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 70){
+					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 40){
 						  start_goal_line_cnt++;
 						  goal_judge_flag = false;
 						  clearGoalJudgeDistance();
