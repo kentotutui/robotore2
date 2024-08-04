@@ -10,7 +10,7 @@
 #define MAX_ENCODER_CNT 65535
 #define CNT_OFFSET 10000 //32768
 
-#define WHEEL_RADIUS 11.25 //[mm] ホイール半径
+#define WHEEL_RADIUS 11 //[mm] ホイール半径
 #define PI 3.1415926535
 #define ENCODER_RESOLUTION 2048
 

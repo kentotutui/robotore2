@@ -12,7 +12,7 @@ static int16_t acceleration_table[5500];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.011 //[m]
-#define AIRCRAFT_MASS 0.139 //[kg]
+#define AIRCRAFT_MASS 0.138 //[kg]
 #define TORQUE_CONSTANT 0.00352 //[Nm/A]
 #define RWSISTANCE_BETWEEN_TERMINALS 2.7 //[Ω]
 #define PI 3.1415926535
@@ -162,12 +162,12 @@ void running(void)
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 40){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true &&  getGoalJudgeDistance() >= 30){
 						  goal_judge_flag = true;
 						  clearGoalJudgeDistance();
 					  }
 
-					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 40){
+					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 30){
 						  start_goal_line_cnt++;
 						  goal_judge_flag = false;
 						  clearGoalJudgeDistance();
@@ -391,13 +391,13 @@ void createVelocityTable(){
 
 	}
 	for(uint16_t i = log_size; i < 6000; i++){
-		velocity_table[i] = 3.0;
+		velocity_table[i] = 2.0;
 		//velocity_table[i] = 2.0;
 	}
 
 
-	addDecelerationDistanceMergin(velocity_table, 13); //8
-	addAccelerationDistanceMergin(velocity_table, 5); //15
+	addDecelerationDistanceMergin(velocity_table, 10); //8
+	addAccelerationDistanceMergin(velocity_table, 10); //15
 	//shiftVelocityTable(velocity_table, 1);
 
 	velocity_table[0] = min_velocity;

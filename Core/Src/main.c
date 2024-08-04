@@ -303,7 +303,7 @@ int main(void)
 			  case 0:
 				  setLED('W');
 				  setLED2('R');
-				  printf("0\r\n");
+				  //printf("0\r\n");
 
 				  if(running_flag == true){
 
@@ -373,7 +373,7 @@ int main(void)
 						  setRunMode(1);
 						  setrunmode(1);
 
-						  setVelocityRange(2.0, 2.0);
+						  setVelocityRange(1.5, 1.5);
 
 						  setsuctionMotor(700);
 
@@ -403,7 +403,7 @@ int main(void)
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -429,7 +429,7 @@ int main(void)
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -449,13 +449,13 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.0, 6.0);
-						  setAccDec(8, 5);
+						  setVelocityRange(1.8, 5.5);
+						  setAccDec(8, 3);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -475,13 +475,13 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.5, 6.0);
-						  setAccDec(8, 5);
+						  setVelocityRange(1.8, 6.0);
+						  setAccDec(8, 3);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -501,13 +501,13 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.3, 6.5);
-						  setAccDec(7, 4);
+						  setVelocityRange(2.0, 7.0);
+						  setAccDec(7, 2);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -527,13 +527,13 @@ int main(void)
 						  setRunMode(3);
 						  setrunmode(2);
 
-						  setVelocityRange(2.3, 6.5);
-						  setAccDec(8, 6);
+						  setVelocityRange(2.2, 6.5);
+						  setAccDec(8, 2);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
 
-						  HAL_Delay(1500);
+						  HAL_Delay(1000);
 
 						  running();
 				  }
@@ -552,11 +552,11 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.5, 7.5);
-						  setAccDec(7, 4);
+						  setVelocityRange(2.2, 7.0);
+						  setAccDec(8, 2);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(800);
 
 						  HAL_Delay(1000);
 
@@ -619,7 +619,7 @@ int main(void)
 			  case 13:
 				  setLED('M');
 				  setLED2('A');
-				  printf("6\r\n");
+				  //printf("6\r\n");
 
 				  if(running_flag == true){
 					  loadDistance();
@@ -653,6 +653,7 @@ int main(void)
 					  for(uint16_t i = 0; i < size; i = i+2){
 						 printf("%f, %f\r\n", getDebugLog(i), getDebugLog(i + 1));
 					  }
+					  soiya = 0;
 
 					  printf("9999, 9999\r\n");
 				  }

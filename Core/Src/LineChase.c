@@ -30,7 +30,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 2.2, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
+	float kp = 2.7, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
 	float diff = 0.;
 
 	if(line_trace_enable_flag == 1){
@@ -63,7 +63,7 @@ void lineTraceFlip(void)
 
 		float velocity_control_term = getVelocityControlTerm();
 
-		float limit = MAX_COUNTER_PERIOD * 0.85;
+		float limit = MAX_COUNTER_PERIOD * 0.8;
 
 		if(velocity_control_term >= limit) velocity_control_term = limit;
 		else if(velocity_control_term <= -limit) velocity_control_term = -limit;
