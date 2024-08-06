@@ -307,7 +307,7 @@ int main(void)
 
 				  if(running_flag == true){
 
-				  		  setsuctionMotor(500);
+				  		  setsuctionMotor(700);
 				  }
 
 				  break;

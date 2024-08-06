@@ -6787,8 +6787,8 @@ int main(void)
  8003b7e:	2b00      	cmp	r3, #0
  8003b80:	f000 828e 	beq.w	80040a0 <main+0x728>
 
-				  		  setsuctionMotor(500);
- 8003b84:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				  		  setsuctionMotor(700);
+ 8003b84:	f44f 702f 	mov.w	r0, #700	; 0x2bc
  8003b88:	f001 f8ce 	bl	8004d28 <setsuctionMotor>
 				  }
 
