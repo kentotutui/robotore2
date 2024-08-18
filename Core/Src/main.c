@@ -135,7 +135,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       updateSideSensorStatus();
 
       //checkCourseOut();//コースアウト判定
-      checkAngularvelocity();
+      //checkAngularvelocity();//角速度のフェイルセーフ
    }
 
    if(htim->Instance == TIM7){//0.1ms
@@ -263,19 +263,6 @@ int main(void)
 		  cnt = 0;
 		  //setLED2('Y');
 	  }
-
-	  /*
-	  if(running_flag == true){
-		  //setVelocityRange(0, 0);
-		  //startLineTrace();
-
-		  setTargetVelocity(0.7);
-		  //startVelocityControl();
-
-		  running();
-		  //setMotor(500, 500);
-		  //while(1);
-	  }*/
 
 	  if(running_flag == false){
 		  stopLineTrace();

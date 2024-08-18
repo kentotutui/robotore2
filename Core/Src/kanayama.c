@@ -62,13 +62,13 @@ void CreateXYcoordinates()
 		prev_x = x;
 		prev_y = y;
 
-		x = x + temp_distance * cos(th + temp_theta/2);
-		y = y + temp_distance * sin(th + temp_theta/2);
-		th = th + temp_theta;
+		x = x + temp_distance * cos(th + temp_theta/2);//distanceとthetaからx座標を計算
+		y = y + temp_distance * sin(th + temp_theta/2);//distanceとthetaからy座標を計算
+		th = th + temp_theta;//累積角度を計算
 
 		deltaX = x - prev_x;
 		deltaY = y - prev_y;
-		atan2th = atan2(deltaY, deltaX);//角度を座標から計算
+		atan2th = atan2(deltaY, deltaX);//座標から角度を計算
 
 		if(i > 0){
 			prev_atan2 = Theta_table[i-1] / 1000;

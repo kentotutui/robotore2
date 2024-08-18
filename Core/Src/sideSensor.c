@@ -180,12 +180,12 @@ void running(void)
 						  clearGoalJudgeDistance();
 					  }
 
-					  if(goal_judge_flag == false && getSideSensorStatusR() == true && getGoalJudgeDistance() >= 70 && Control_Mode == 2){
+					  if(goal_judge_flag == false && getSideSensorStatusR() == true && getGoalJudgeDistance() >= 30 && Control_Mode == 2){
 						  goal_judge_flag = true;
 						  clearGoalJudgeDistance();
 					  }
 
-					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 70 && Control_Mode == 2){
+					  else if(goal_judge_flag == true && getGoalJudgeDistance() >= 30 && Control_Mode == 2){
 						  start_goal_line_cnt++;
 						  goal_judge_flag = false;
 						  clearGoalJudgeDistance();
