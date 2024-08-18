@@ -8,15 +8,15 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static int16_t X_table[2000];
-static int16_t Y_table[2000];
-static int16_t Theta_table[2000];
+static int16_t X_table[1800];
+static int16_t Y_table[1800];
+static int16_t Theta_table[1800];
 
-static uint16_t EuclideanDistance_table[2000];
+static uint16_t EuclideanDistance_table[1800];
 
-//static int16_t SC_X_table[2000];
-//static int16_t SC_Y_table[2000];
-//static int16_t SC_Theta_table[2000];
+static int16_t SC_X_table[1800];
+static int16_t SC_Y_table[1800];
+static int16_t SC_Theta_table[1800];
 
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
@@ -97,9 +97,9 @@ void CreateXYcoordinates()
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 		EuclideanDistance_table[i] = EuclideanDistance * 100;
 
-		//SC_X_table[i] = x;//int16で保存するために値を加工
-		//SC_Y_table[i] = y;//int16で保存するために値を加工
-		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+		SC_X_table[i] = x;//int16で保存するために値を加工
+		SC_Y_table[i] = y;//int16で保存するために値を加工
+		SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 
 		//saveDebug(X_table[i]);//目標のx座標
 		//saveDebug(Y_table[i]);//目標のy座標
