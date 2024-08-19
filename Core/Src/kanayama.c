@@ -18,6 +18,8 @@ static int16_t SC_X_table[1800];
 static int16_t SC_Y_table[1800];
 static int16_t SC_Theta_table[1800];
 
+uint8_t Variable_Window_Moving_Average = 10;// 可変窓移動平均の調整関数ログを見ながら値を変えていく
+
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
 uint16_t debug_table_idx;
@@ -113,7 +115,7 @@ void CreateXYcoordinates()
 	}
 
 	for(uint16_t i = 1; i < X_tablesize; i++){
-		int windowSize = (i < 10) ? i : 10;//windowSizeの変更ログを確認しながら行う　将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
+		int windowSize = (i < Variable_Window_Moving_Average) ? i : Variable_Window_Moving_Average;//将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
 
 		float temp_x, temp_y;
 
