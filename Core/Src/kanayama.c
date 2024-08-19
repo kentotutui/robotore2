@@ -112,7 +112,7 @@ void CreateXYcoordinates()
 
 	}
 
-	for(uint16_t i = 0; i < X_tablesize; i++){
+	for(uint16_t i = 1; i < X_tablesize; i++){
 		int windowSize = (i < 10) ? i : 10;//windowSizeの変更ログを確認しながら行う　将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
 
 		float temp_x, temp_y;
