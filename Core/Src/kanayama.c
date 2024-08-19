@@ -49,6 +49,7 @@ void CreateXYcoordinates()
 	float atan2th = 0;
 	float EuclideanDistance = 0;
 	float delta_ang = 0;
+	int16_t X_tablesize = 0;
 
 	float x = 0, y = 0, th = 0;
 	uint16_t log_size = getDistanceLogSize();
@@ -88,7 +89,6 @@ void CreateXYcoordinates()
 			}
 		}
 
-
 		EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
 		Total_length_of_course += EuclideanDistance;
 
@@ -97,9 +97,13 @@ void CreateXYcoordinates()
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 		EuclideanDistance_table[i] = EuclideanDistance * 100;
 
-		SC_X_table[i] = x;//int16で保存するために値を加工
-		SC_Y_table[i] = y;//int16で保存するために値を加工
-		SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+		if(i != 0){
+			X_tablesize++;
+		}
+
+		//SC_X_table[i] = x;//int16で保存するために値を加工
+		//SC_Y_table[i] = y;//int16で保存するために値を加工
+		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 
 		//saveDebug(X_table[i]);//目標のx座標
 		//saveDebug(Y_table[i]);//目標のy座標
@@ -107,6 +111,39 @@ void CreateXYcoordinates()
 		//saveDebug(EuclideanDistance_table[i]/1000);
 
 	}
+
+	for(uint16_t i = 0; i < X_tablesize; i++){
+		int windowSize = (i < 10) ? i : 10;//windowSizeの変更ログを確認しながら行う　将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
+
+		float temp_x, temp_y;
+
+		 if (i <= windowSize) {
+			float sum_x = 0, sum_y = 0;
+			for (int j = 0; j < i; j++) {
+				sum_x += X_table[j];
+				sum_y += Y_table[j];
+			}
+			temp_x = sum_x / i;
+			temp_y = sum_y / i;
+		}
+		else
+		{
+			float sum_x = 0, sum_y = 0;
+			for (int j = i - windowSize; j < i; j++) {
+				sum_x += X_table[j];
+				sum_y += Y_table[j];
+			}
+			temp_x = sum_x / windowSize;
+			temp_y = sum_y / windowSize;
+		}
+		SC_X_table[i] = temp_x;//int16で保存するために値を加工
+		SC_Y_table[i] = temp_y;//int16で保存するために値を加工
+		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+
+		saveDebug(SC_X_table[i]);//目標のx座標
+		saveDebug(SC_Y_table[i]);//目標のy座標
+	}
+
 	Total_length_of_course = Total_length_of_course + 100;
 }
 
