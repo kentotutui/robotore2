@@ -103,10 +103,6 @@ void CreateXYcoordinates()
 			X_tablesize++;
 		}
 
-		//SC_X_table[i] = x;//int16で保存するために値を加工
-		//SC_Y_table[i] = y;//int16で保存するために値を加工
-		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-
 		//saveDebug(X_table[i]);//目標のx座標
 		//saveDebug(Y_table[i]);//目標のy座標
 		//saveDebug(Theta_table[i]/1000);//目標の車体角速度
@@ -115,13 +111,17 @@ void CreateXYcoordinates()
 	}
 
 	for(uint16_t i = 1; i < X_tablesize; i++){
-		int windowSize = (i < Variable_Window_Moving_Average) ? i : Variable_Window_Moving_Average;//将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
+		int windowSize;
+		int remaining_points = X_tablesize - i + 1;
+
+		windowSize = (i < remaining_points) ? i : remaining_points;
+		windowSize = (windowSize < Variable_Window_Moving_Average) ? windowSize : Variable_Window_Moving_Average;//将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
 
 		float temp_x, temp_y;
 
 		 if (i <= windowSize) {
 			float sum_x = 0, sum_y = 0;
-			for (int j = 0; j < i; j++) {
+			for (int j = 0; j < i; j++){
 				sum_x += X_table[j];
 				sum_y += Y_table[j];
 			}
@@ -131,13 +131,14 @@ void CreateXYcoordinates()
 		else
 		{
 			float sum_x = 0, sum_y = 0;
-			for (int j = i - windowSize; j < i; j++) {
+			for (int j = i - windowSize; j < i; j++){
 				sum_x += X_table[j];
 				sum_y += Y_table[j];
 			}
 			temp_x = sum_x / windowSize;
 			temp_y = sum_y / windowSize;
 		}
+
 		SC_X_table[i] = temp_x;//int16で保存するために値を加工
 		SC_Y_table[i] = temp_y;//int16で保存するために値を加工
 		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
