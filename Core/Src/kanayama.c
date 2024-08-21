@@ -49,6 +49,7 @@ void CreateXYcoordinates()
 	float temp_distance, temp_theta;
 	float deltaX = 0, deltaY = 0;
 	float prev_x = 0, prev_y = 0, prev_atan2 = 0;
+	float prev_x2 = 0, prev_y2 = 0;
 	float atan2th = 0;
 	float EuclideanDistance = 0;
 	float EuclideanDistance_count = 0;
@@ -146,6 +147,10 @@ void CreateXYcoordinates()
 			EuclideanDistance_count += EuclideanDistance;
 
 			if(EuclideanDistance_count > Distance_threshold){
+
+				prev_x2 = SC_X_table[i-1];
+				prev_y2 = SC_X_table[i-1];
+
 				SC_X_table[i] = temp_x;//int16で保存するために値を加工
 				SC_Y_table[i] = temp_y;//int16で保存するために値を加工
 
@@ -156,11 +161,11 @@ void CreateXYcoordinates()
 				saveDebug(SC_Y_table[i]);//目標のy座標
 				saveDebug(EuclideanDistance_table[i]/100);
 
-				deltaX = temp_x - prev_x;
-				deltaY = temp_y - prev_y;
+				deltaX = temp_x - prev_x2;
+				deltaY = temp_y - prev_y2;
 				atan2th = atan2(deltaY, deltaX);//座標から角度を計算
 
-				prev_atan2 = Theta_table[i-1] / 1000;
+				prev_atan2 = SC_Theta_table[i-1] / 1000;
 				delta_ang = atan2th - prev_atan2;
 
 				if(delta_ang > M_PI){
@@ -177,12 +182,14 @@ void CreateXYcoordinates()
 				}
 
 				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-				saveDebug(SC_Theta_table[i]);//目標の車体角速度
+				saveDebug(SC_Theta_table[i] / 1000);
 				EuclideanDistance_count = 0;
 			}
 		}
 		else{
-			Theta_table[1] = 0.0;
+			SC_X_table[1] = temp_x;
+			SC_X_table[1] = temp_y;
+			SC_Theta_table[1] = 0.0;
 		}
 	}
 
