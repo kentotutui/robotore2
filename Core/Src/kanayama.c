@@ -156,8 +156,33 @@ void CreateXYcoordinates()
 				saveDebug(SC_Y_table[i]);//目標のy座標
 				saveDebug(EuclideanDistance_table[i]/100);
 
+				deltaX = temp_x - prev_x;
+				deltaY = temp_y - prev_y;
+				atan2th = atan2(deltaY, deltaX);//座標から角度を計算
+
+				prev_atan2 = Theta_table[i-1] / 1000;
+				delta_ang = atan2th - prev_atan2;
+
+				if(delta_ang > M_PI){
+					while(delta_ang > M_PI){
+						atan2th -= 2 * M_PI;
+						delta_ang = atan2th - prev_atan2;
+					}
+				}
+				else if(delta_ang < -M_PI){
+					while(delta_ang < -M_PI){
+						atan2th += 2 * M_PI;
+						delta_ang = atan2th - prev_atan2;
+					}
+				}
+
+				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+				saveDebug(SC_Theta_table[i]);//目標の車体角速度
 				EuclideanDistance_count = 0;
 			}
+		}
+		else{
+			Theta_table[1] = 0.0;
 		}
 	}
 
