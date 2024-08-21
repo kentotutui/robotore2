@@ -68,7 +68,7 @@ void CreateXYcoordinates()
 		y = y + temp_distance * sin(th + temp_theta/2);//distanceとthetaからy座標を計算
 		th = th + temp_theta;//累積角度を計算
 
-		deltaX = x - prev_x;
+		/*deltaX = x - prev_x;
 		deltaY = y - prev_y;
 		atan2th = atan2(deltaY, deltaX);//座標から角度を計算
 
@@ -88,14 +88,14 @@ void CreateXYcoordinates()
 					delta_ang = atan2th - prev_atan2;
 				}
 			}
-		}
+		}*/
 
 		//EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
 		//Total_length_of_course += EuclideanDistance;
 
 		X_table[i] = x;//int16で保存するために値を加工
 		Y_table[i] = y;//int16で保存するために値を加工
-		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+		//Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 		//EuclideanDistance_table[i] = EuclideanDistance * 100;
 
 		if(i != 0){
@@ -148,7 +148,7 @@ void CreateXYcoordinates()
 			if(EuclideanDistance_count > Distance_threshold){
 				SC_X_table[i] = temp_x;//int16で保存するために値を加工
 				SC_Y_table[i] = temp_y;//int16で保存するために値を加工
-				//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+
 				Total_length_of_course += EuclideanDistance_count;
 				EuclideanDistance_table[i] = EuclideanDistance_count * 100;
 
