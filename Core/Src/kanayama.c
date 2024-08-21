@@ -19,6 +19,7 @@ static int16_t SC_Y_table[1800];
 static int16_t SC_Theta_table[1800];
 
 uint8_t Variable_Window_Moving_Average = 10;// 可変窓移動平均の調整関数ログを見ながら値を変えていく
+uint8_t Distance_threshold = 28;// ユークリッド距離と比較して座標を間引くための数値
 
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
@@ -50,6 +51,7 @@ void CreateXYcoordinates()
 	float prev_x = 0, prev_y = 0, prev_atan2 = 0;
 	float atan2th = 0;
 	float EuclideanDistance = 0;
+	float EuclideanDistance_count = 0;
 	float delta_ang = 0;
 	int16_t X_tablesize = 0;
 
@@ -61,9 +63,6 @@ void CreateXYcoordinates()
 		temp_theta = p_theta[i];
 
 		if(temp_theta == 0) temp_theta = 0.00001;
-
-		prev_x = x;
-		prev_y = y;
 
 		x = x + temp_distance * cos(th + temp_theta/2);//distanceとthetaからx座標を計算
 		y = y + temp_distance * sin(th + temp_theta/2);//distanceとthetaからy座標を計算
@@ -91,13 +90,13 @@ void CreateXYcoordinates()
 			}
 		}
 
-		EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
-		Total_length_of_course += EuclideanDistance;
+		//EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
+		//Total_length_of_course += EuclideanDistance;
 
 		X_table[i] = x;//int16で保存するために値を加工
 		Y_table[i] = y;//int16で保存するために値を加工
 		Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-		EuclideanDistance_table[i] = EuclideanDistance * 100;
+		//EuclideanDistance_table[i] = EuclideanDistance * 100;
 
 		if(i != 0){
 			X_tablesize++;
@@ -119,6 +118,9 @@ void CreateXYcoordinates()
 
 		float temp_x, temp_y;
 
+		prev_x = temp_x;
+		prev_y = temp_y;
+
 		 if (i <= windowSize) {
 			float sum_x = 0, sum_y = 0;
 			for (int j = 0; j < i; j++){
@@ -139,12 +141,24 @@ void CreateXYcoordinates()
 			temp_y = sum_y / windowSize;
 		}
 
-		SC_X_table[i] = temp_x;//int16で保存するために値を加工
-		SC_Y_table[i] = temp_y;//int16で保存するために値を加工
-		//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+		if(i > 0){
+			EuclideanDistance = sqrt((temp_x - prev_x) * (temp_x - prev_x) + (temp_y - prev_y) * (temp_y - prev_y));//ユークリッド距離の計算
+			EuclideanDistance_count += EuclideanDistance;
 
-		saveDebug(SC_X_table[i]);//目標のx座標
-		saveDebug(SC_Y_table[i]);//目標のy座標
+			if(EuclideanDistance_count > Distance_threshold){
+				SC_X_table[i] = temp_x;//int16で保存するために値を加工
+				SC_Y_table[i] = temp_y;//int16で保存するために値を加工
+				//SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+				Total_length_of_course += EuclideanDistance_count;
+				EuclideanDistance_table[i] = EuclideanDistance_count * 100;
+
+				saveDebug(SC_X_table[i]);//目標のx座標
+				saveDebug(SC_Y_table[i]);//目標のy座標
+				saveDebug(EuclideanDistance_table[i]/100);
+
+				EuclideanDistance_count = 0;
+			}
+		}
 	}
 
 	Total_length_of_course = Total_length_of_course + 100;
