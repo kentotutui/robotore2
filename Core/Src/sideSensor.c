@@ -467,6 +467,10 @@ void CreateVelocityTable(){//速度テーブル生成関数
 	accelerateProcessing(acceleration, p_distance_V);
 
 	CreateAcceleration(p_distance_V);
+	/*
+	for(uint16_t i = 0; i < log_size; i++){
+		saveDebug(velocity_table[i]);
+	}*/
 }
 
 float radius2Velocity(float radius){
