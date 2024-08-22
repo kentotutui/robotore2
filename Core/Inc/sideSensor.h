@@ -47,12 +47,12 @@ void CreateVelocityTable();
 float radius2Velocity(float);
 void addDecelerationDistanceMergin(float *, int16_t);
 void addAccelerationDistanceMergin(float *, int16_t);
-void decelerateProcessing(const float, const float *);
-void accelerateProcessing(const float, const float *);
+void decelerateProcessing(const float, const uint16_t *);
+void accelerateProcessing(const float, const uint16_t *);
 void updateTargetVelocity();
 void correctionTotalDistanceFromCrossLine();
 void correctionTotalDistanceFromSideLine();
-void CreateAcceleration(const float *);
+void CreateAcceleration(const uint16_t *);
 void CreateXYcoordinates();
 
 void setVelocityRange(float, float);

@@ -8,7 +8,7 @@
 #include "sideSensor.h"
 
 static float velocity_table[2000];
-static uint16_t acceleration_table[2000];
+//static uint16_t acceleration_table[2000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.011 //[mm]
@@ -253,7 +253,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(30) == true){
+		if(isTargetDistance(30) == true){// 距離をユークリッド距離の配列から参照できるようにしないと走らん
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -278,7 +278,7 @@ void runningFlip()
 			}
 			else{
 				correction_check_cnt_cross = 0;
-				correctionTotalDistanceFromCrossLine();;
+				//correctionTotalDistanceFromCrossLine();//クロスでの距離補正
 			}
 		}
 		else if(cross_line_ignore_flag == true && getCrossLineIgnoreDistance() >= 50){ //50
@@ -307,7 +307,7 @@ void runningFlip()
 					saveSide(getTotalDistance());
 				}
 				else{
-					correctionTotalDistanceFromSideLine();
+					//correctionTotalDistanceFromSideLine();//連続曲率の距離補正
 				}
 			}
 		}
@@ -422,51 +422,62 @@ void stopVelocityUpdate()
 }
 
 void CreateVelocityTable(){//速度テーブル生成関数
-	const float *p_distance_V, *p_theta_V;
-	p_distance_V = getDistanceArrayPointer();
-	p_theta_V = getThetaArrayPointer();
+	const uint16_t *p_Euclideandistance_V;
+	const int16_t *p_theta_V;
+	p_Euclideandistance_V = getEuclideanDistanceArrayPointer();// /100して使う
+	p_theta_V = getSC_Theta_tableArrayPointer();// /1000して使う
+
 	float temp_distance, temp_theta;
 
-	uint16_t log_size = getDistanceLogSize();
+	uint16_t log_size = getSC_X_tablesize();
 
 	uint16_t crossline_idx = 0;
 	float total_distance = 0;
 	for(uint16_t i = 0; i < log_size; i++){
-		temp_distance = p_distance_V[i];
-		temp_theta = p_theta_V[i];
+		if(i > 0){
+			temp_distance = p_Euclideandistance_V[i] / 100;
+			temp_theta = (p_theta_V[i] - p_theta_V[i-1]) / 1000;
 
-		if(temp_theta == 0) temp_theta = 0.00001;
-		float radius = fabs(temp_distance / temp_theta);
-		if(radius >= straight_radius) radius = straight_radius;
-		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
+			//saveDebug(temp_distance);
+			//saveDebug(temp_theta);
 
-		//Forced maximum speed on the crossline
-		total_distance += temp_distance;
+			if(temp_theta == 0) temp_theta = 0.00001;
+			float radius = fabs(temp_distance / temp_theta);
+			if(radius >= straight_radius) radius = straight_radius;
+			velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
 
-		float crossline_distance = getCrossLog(crossline_idx);
-		if(crossline_distance + 60 >= total_distance && total_distance >= crossline_distance - 60){
-			 velocity_table[i] = max_velocity;
+			//Forced maximum speed on the crossline
+			total_distance += temp_distance;
+
+			/*float crossline_distance = getCrossLog(crossline_idx);
+			if(crossline_distance + 60 >= total_distance && total_distance >= crossline_distance - 60){
+				 velocity_table[i] = max_velocity;
+			}
+
+			if(total_distance >= crossline_distance + 60){
+				crossline_idx++;
+			}*/
 		}
-
-		if(total_distance >= crossline_distance + 60){
-			crossline_idx++;
+		else{
+			velocity_table[0] = min_velocity;
 		}
-
 	}
 
 	for(uint16_t i = log_size; i < 2000; i++){
-		velocity_table[i] = 3.0;
+		velocity_table[i] = max_velocity;
 	}
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
 	addAccelerationDistanceMergin(velocity_table, 5); //15
 
-	velocity_table[0] = min_velocity;
+	decelerateProcessing(deceleration, p_Euclideandistance_V);
+	accelerateProcessing(acceleration, p_Euclideandistance_V);
 
-	decelerateProcessing(deceleration, p_distance_V);
-	accelerateProcessing(acceleration, p_distance_V);
+	//CreateAcceleration(p_Euclideandistance_V);
 
-	CreateAcceleration(p_distance_V);
+	for(uint16_t i = 0; i < log_size; i++){
+		saveDebug(velocity_table[i]);
+	}
 }
 
 float radius2Velocity(float radius){
@@ -528,31 +539,31 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 	}
 }
 
-void decelerateProcessing(const float am, const float *p_distance){
-	uint16_t log_size = getDistanceLogSize();
+void decelerateProcessing(const float am, const uint16_t *p_distance){
+	uint16_t log_size = getSC_X_tablesize();
 	for(uint16_t i = log_size - 1; i >= 1; i--){
 		float v_diff = velocity_table[i-1] - velocity_table[i];
 
 		if(v_diff > 0){
-			float t = p_distance[i]*1e-3 / v_diff;
+			float t = p_distance[i] / 100 *1e-3 / v_diff;
 			float a = v_diff / t;
 			if(a > am){
-				velocity_table[i-1] = velocity_table[i] + am * p_distance[i]*1e-3;
+				velocity_table[i-1] = velocity_table[i] + am * p_distance[i] / 100 *1e-3;
 			}
 		}
 	}
 }
 
-void accelerateProcessing(const float am, const float *p_distance){
-	uint16_t log_size = getDistanceLogSize();
+void accelerateProcessing(const float am, const uint16_t *p_distance){
+	uint16_t log_size = getSC_X_tablesize();
 	for(uint16_t i = 0; i <= log_size - 1; i++){
 		float v_diff = velocity_table[i+1] - velocity_table[i];
 
 		if(v_diff > 0){
-			float t = p_distance[i]*1e-3 / v_diff;
+			float t = (p_distance[i] / 100) *1e-3 / v_diff;
 			float a = v_diff / t;
 			if(a > am){
-				velocity_table[i+1] = velocity_table[i] + am * p_distance[i]*1e-3;
+				velocity_table[i+1] = velocity_table[i] + am * (p_distance[i] / 100) *1e-3;
 			}
 		}
 	}
@@ -571,7 +582,7 @@ void updateTargetVelocity(){
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);
-		setTargetAcceleration(acceleration_table[velocity_table_idx]);
+		//setTargetAcceleration(acceleration_table[velocity_table_idx]);
 
 		if(pre_target_velocity > velocity_table[velocity_table_idx]){
 			setClearFlagOfVelocityControlI();
@@ -621,13 +632,13 @@ void correctionTotalDistanceFromSideLine()//連続曲率後の距離補正
 	}
 }
 
-void CreateAcceleration(const float *p_distance)//フィードフォワード制御計算
+/*void CreateAcceleration(const uint16_t *p_distance)//フィードフォワード制御計算
 {
 	uint16_t log_size = getDistanceLogSize();
     for(uint16_t i = 0; i <= log_size - 1; i++){
 		float v_diff = velocity_table[i+1] - velocity_table[i];//目標速度ー今の速度  Δv [m/s]
 
-		float t = p_distance[i]*1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m Δt [s]
+		float t = p_distance[i] / 100 *1e-3 / velocity_table[i];//時間を求める mm*1e-3 → m Δt [s]
 		float a = v_diff / t;//加速度計算 [m/s^2]
 
 		float n = (60*velocity_table[i]*REDUCTION_RATIO) / (2*PI*WHEEL_RADIUS);//回転数 [rpm]
@@ -645,7 +656,7 @@ void CreateAcceleration(const float *p_distance)//フィードフォワード制
 
 		acceleration_table[i] = V_motor;
     }
-}
+}*/
 
 bool getgoalStatus()
 {
