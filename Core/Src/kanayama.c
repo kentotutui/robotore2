@@ -18,9 +18,8 @@ static int16_t SC_X_table[1800];
 static int16_t SC_Y_table[1800];
 static int16_t SC_Theta_table[1800];
 
-uint8_t Variable_Window_Moving_Average = 10;// 可変窓移動平均の調整関数ログを見ながら値を変えていく
-uint8_t Distance_threshold = 28;// ユークリッド距離と比較して座標を間引くための数値
-
+uint8_t Variable_Window_Moving_Average = 10;// 可変窓移動平均の調整関数ログを見ながら値を変えていく　モードで変更できるようにする
+uint8_t Distance_threshold = 1;// ユークリッド距離と比較して座標を間引くための数値
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
 uint16_t debug_table_idx;
@@ -102,12 +101,6 @@ void CreateXYcoordinates()
 		if(i != 0){
 			X_tablesize++;
 		}
-
-		//saveDebug(X_table[i]);//目標のx座標
-		//saveDebug(Y_table[i]);//目標のy座標
-		//saveDebug(Theta_table[i]/1000);//目標の車体角速度
-		//saveDebug(EuclideanDistance_table[i]/1000);
-
 	}
 
 	for(uint16_t i = 1; i < X_tablesize; i++){
@@ -149,17 +142,13 @@ void CreateXYcoordinates()
 			if(EuclideanDistance_count > Distance_threshold){
 
 				prev_x2 = SC_X_table[i-1];
-				prev_y2 = SC_X_table[i-1];
+				prev_y2 = SC_Y_table[i-1];
 
 				SC_X_table[i] = temp_x;//int16で保存するために値を加工
 				SC_Y_table[i] = temp_y;//int16で保存するために値を加工
 
 				Total_length_of_course += EuclideanDistance_count;
 				EuclideanDistance_table[i] = EuclideanDistance_count * 100;
-
-				saveDebug(SC_X_table[i]);//目標のx座標
-				saveDebug(SC_Y_table[i]);//目標のy座標
-				saveDebug(EuclideanDistance_table[i]/100);
 
 				deltaX = temp_x - prev_x2;
 				deltaY = temp_y - prev_y2;
@@ -182,6 +171,9 @@ void CreateXYcoordinates()
 				}
 
 				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+				saveDebug(SC_X_table[i]);//目標のx座標
+				saveDebug(SC_Y_table[i]);//目標のy座標
+				saveDebug(EuclideanDistance_table[i]/100);
 				saveDebug(SC_Theta_table[i] / 1000);
 				EuclideanDistance_count = 0;
 			}

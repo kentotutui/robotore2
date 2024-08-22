@@ -6348,111 +6348,110 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008003aec                setClearFlagOfVelocityControlI
  *fill*         0x0000000008003b04        0x4 
  .text.CreateXYcoordinates
-                0x0000000008003b08      0x738 Core/Src/kanayama.o
+                0x0000000008003b08      0x73c Core/Src/kanayama.o
                 0x0000000008003b08                CreateXYcoordinates
  .text.CurrentXcoordinates
-                0x0000000008004240       0xa8 Core/Src/kanayama.o
-                0x0000000008004240                CurrentXcoordinates
+                0x0000000008004244       0xa8 Core/Src/kanayama.o
+                0x0000000008004244                CurrentXcoordinates
  .text.CurrentYcoordinates
-                0x00000000080042e8       0xa8 Core/Src/kanayama.o
-                0x00000000080042e8                CurrentYcoordinates
+                0x00000000080042ec       0xa8 Core/Src/kanayama.o
+                0x00000000080042ec                CurrentYcoordinates
  .text.updateTargetpoint
-                0x0000000008004390      0x1cc Core/Src/kanayama.o
-                0x0000000008004390                updateTargetpoint
+                0x0000000008004394      0x1cc Core/Src/kanayama.o
+                0x0000000008004394                updateTargetpoint
  .text.Error_XY
-                0x000000000800455c       0xf4 Core/Src/kanayama.o
-                0x000000000800455c                Error_XY
+                0x0000000008004560       0xf4 Core/Src/kanayama.o
+                0x0000000008004560                Error_XY
  .text.Velocity_Angularvelocity
-                0x0000000008004650       0xd0 Core/Src/kanayama.o
-                0x0000000008004650                Velocity_Angularvelocity
+                0x0000000008004654       0xd0 Core/Src/kanayama.o
+                0x0000000008004654                Velocity_Angularvelocity
  .text.getTotal_length
-                0x0000000008004720       0x1c Core/Src/kanayama.o
-                0x0000000008004720                getTotal_length
+                0x0000000008004724       0x1c Core/Src/kanayama.o
+                0x0000000008004724                getTotal_length
  .text.getTargetpoint_X
-                0x000000000800473c       0x1c Core/Src/kanayama.o
-                0x000000000800473c                getTargetpoint_X
+                0x0000000008004740       0x1c Core/Src/kanayama.o
+                0x0000000008004740                getTargetpoint_X
  .text.getTargetpoint_Y
-                0x0000000008004758       0x1c Core/Src/kanayama.o
-                0x0000000008004758                getTargetpoint_Y
+                0x000000000800475c       0x1c Core/Src/kanayama.o
+                0x000000000800475c                getTargetpoint_Y
  .text.getTargetpoint_Theta
-                0x0000000008004774       0x1c Core/Src/kanayama.o
-                0x0000000008004774                getTargetpoint_Theta
+                0x0000000008004778       0x1c Core/Src/kanayama.o
+                0x0000000008004778                getTargetpoint_Theta
  .text.getOutput_velocity
-                0x0000000008004790       0x1c Core/Src/kanayama.o
-                0x0000000008004790                getOutput_velocity
+                0x0000000008004794       0x1c Core/Src/kanayama.o
+                0x0000000008004794                getOutput_velocity
  .text.getOutput_angularvelocity
-                0x00000000080047ac       0x1c Core/Src/kanayama.o
-                0x00000000080047ac                getOutput_angularvelocity
+                0x00000000080047b0       0x1c Core/Src/kanayama.o
+                0x00000000080047b0                getOutput_angularvelocity
  .text.getcheckAngularvelocityFlag
-                0x00000000080047c8       0x18 Core/Src/kanayama.o
-                0x00000000080047c8                getcheckAngularvelocityFlag
+                0x00000000080047cc       0x18 Core/Src/kanayama.o
+                0x00000000080047cc                getcheckAngularvelocityFlag
  .text.__io_putchar
-                0x00000000080047e0       0x24 Core/Src/main.o
-                0x00000000080047e0                __io_putchar
+                0x00000000080047e4       0x24 Core/Src/main.o
+                0x00000000080047e4                __io_putchar
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008004804       0x8c Core/Src/main.o
-                0x0000000008004804                HAL_TIM_PeriodElapsedCallback
- .text.init     0x0000000008004890       0x44 Core/Src/main.o
-                0x0000000008004890                init
- .text.main     0x00000000080048d4      0x714 Core/Src/main.o
-                0x00000000080048d4                main
+                0x0000000008004808       0x8c Core/Src/main.o
+                0x0000000008004808                HAL_TIM_PeriodElapsedCallback
+ .text.init     0x0000000008004894       0x44 Core/Src/main.o
+                0x0000000008004894                init
+ .text.main     0x00000000080048d8      0x714 Core/Src/main.o
+                0x00000000080048d8                main
  .text.SystemClock_Config
-                0x0000000008004fe8       0xd4 Core/Src/main.o
-                0x0000000008004fe8                SystemClock_Config
+                0x0000000008004fec       0xd4 Core/Src/main.o
+                0x0000000008004fec                SystemClock_Config
  .text.MX_ADC1_Init
-                0x00000000080050bc       0xc0 Core/Src/main.o
+                0x00000000080050c0       0xc0 Core/Src/main.o
  .text.MX_ADC2_Init
-                0x000000000800517c      0x1d8 Core/Src/main.o
+                0x0000000008005180      0x1d8 Core/Src/main.o
  .text.MX_I2C1_Init
-                0x0000000008005354       0x5c Core/Src/main.o
+                0x0000000008005358       0x5c Core/Src/main.o
  .text.MX_SPI3_Init
-                0x00000000080053b0       0x6c Core/Src/main.o
+                0x00000000080053b4       0x6c Core/Src/main.o
  .text.MX_TIM1_Init
-                0x000000000800541c      0x104 Core/Src/main.o
+                0x0000000008005420      0x104 Core/Src/main.o
  .text.MX_TIM3_Init
-                0x0000000008005520       0xa8 Core/Src/main.o
+                0x0000000008005524       0xa8 Core/Src/main.o
  .text.MX_TIM4_Init
-                0x00000000080055c8       0xa8 Core/Src/main.o
+                0x00000000080055cc       0xa8 Core/Src/main.o
  .text.MX_TIM6_Init
-                0x0000000008005670       0x6c Core/Src/main.o
+                0x0000000008005674       0x6c Core/Src/main.o
  .text.MX_TIM7_Init
-                0x00000000080056dc       0x68 Core/Src/main.o
+                0x00000000080056e0       0x68 Core/Src/main.o
  .text.MX_TIM8_Init
-                0x0000000008005744      0x120 Core/Src/main.o
+                0x0000000008005748      0x120 Core/Src/main.o
  .text.MX_USART1_UART_Init
-                0x0000000008005864       0x54 Core/Src/main.o
+                0x0000000008005868       0x54 Core/Src/main.o
  .text.MX_DMA_Init
-                0x00000000080058b8       0x50 Core/Src/main.o
+                0x00000000080058bc       0x50 Core/Src/main.o
  .text.MX_GPIO_Init
-                0x0000000008005908      0x17c Core/Src/main.o
+                0x000000000800590c      0x17c Core/Src/main.o
  .text.Error_Handler
-                0x0000000008005a84        0x8 Core/Src/main.o
-                0x0000000008005a84                Error_Handler
+                0x0000000008005a88        0x8 Core/Src/main.o
+                0x0000000008005a88                Error_Handler
  .text.initMotor
-                0x0000000008005a8c       0x30 Core/Src/motor.o
-                0x0000000008005a8c                initMotor
+                0x0000000008005a90       0x30 Core/Src/motor.o
+                0x0000000008005a90                initMotor
  .text.motorCtrlFlip
-                0x0000000008005abc       0xc8 Core/Src/motor.o
-                0x0000000008005abc                motorCtrlFlip
+                0x0000000008005ac0       0xc8 Core/Src/motor.o
+                0x0000000008005ac0                motorCtrlFlip
  .text.suctionmotorCtrlFlip
-                0x0000000008005b84       0x24 Core/Src/motor.o
-                0x0000000008005b84                suctionmotorCtrlFlip
+                0x0000000008005b88       0x24 Core/Src/motor.o
+                0x0000000008005b88                suctionmotorCtrlFlip
  .text.setMotor
-                0x0000000008005ba8       0x7c Core/Src/motor.o
-                0x0000000008005ba8                setMotor
+                0x0000000008005bac       0x7c Core/Src/motor.o
+                0x0000000008005bac                setMotor
  .text.setsuctionMotor
-                0x0000000008005c24       0x3c Core/Src/motor.o
-                0x0000000008005c24                setsuctionMotor
+                0x0000000008005c28       0x3c Core/Src/motor.o
+                0x0000000008005c28                setsuctionMotor
  .text.updateSideSensorStatus
-                0x0000000008005c60       0x54 Core/Src/sideSensor.o
-                0x0000000008005c60                updateSideSensorStatus
+                0x0000000008005c64       0x54 Core/Src/sideSensor.o
+                0x0000000008005c64                updateSideSensorStatus
  .text.setRunMode
-                0x0000000008005cb4       0x20 Core/Src/sideSensor.o
-                0x0000000008005cb4                setRunMode
+                0x0000000008005cb8       0x20 Core/Src/sideSensor.o
+                0x0000000008005cb8                setRunMode
  .text.isCrossLine
-                0x0000000008005cd4       0x98 Core/Src/sideSensor.o
-                0x0000000008005cd4                isCrossLine
- *fill*         0x0000000008005d6c        0x4 
+                0x0000000008005cd8       0x98 Core/Src/sideSensor.o
+                0x0000000008005cd8                isCrossLine
  .text.isContinuousCurvature
                 0x0000000008005d70       0xe0 Core/Src/sideSensor.o
                 0x0000000008005d70                isContinuousCurvature
@@ -8419,7 +8418,7 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_macro   0x0000000000024673      0x20b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
  .debug_macro   0x000000000002487e      0x20c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_line     0x0000000000000000    0x175af
+.debug_line     0x0000000000000000    0x175ae
  .debug_line    0x0000000000000000      0x99e Core/Src/AngleCtrl.o
  .debug_line    0x000000000000099e      0x8b1 Core/Src/Encoder.o
  .debug_line    0x000000000000124f      0xaa3 Core/Src/Flash_F405.o
@@ -8430,30 +8429,30 @@ OUTPUT(robotore.elf elf32-littlearm)
  .debug_line    0x00000000000043e7      0xbda Core/Src/Logger.o
  .debug_line    0x0000000000004fc1      0x9b7 Core/Src/MPU6500.o
  .debug_line    0x0000000000005978      0xa42 Core/Src/Velocity_Ctrl.o
- .debug_line    0x00000000000063ba      0xb39 Core/Src/kanayama.o
- .debug_line    0x0000000000006ef3      0xd7e Core/Src/main.o
- .debug_line    0x0000000000007c71      0x7bb Core/Src/motor.o
- .debug_line    0x000000000000842c      0xe58 Core/Src/sideSensor.o
- .debug_line    0x0000000000009284      0xb38 Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000009dbc      0xa52 Core/Src/stm32f4xx_it.o
- .debug_line    0x000000000000a80e      0x742 Core/Src/switch.o
- .debug_line    0x000000000000af50      0x73e Core/Src/syscalls.o
- .debug_line    0x000000000000b68e      0x4c7 Core/Src/sysmem.o
- .debug_line    0x000000000000bb55      0x755 Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000c2aa       0x85 Core/Startup/startup_stm32f405rgtx.o
- .debug_line    0x000000000000c32f      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000000000000cc6e      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x000000000000d812      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x000000000000e275      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x000000000000ec82      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
- .debug_line    0x000000000000f5a7      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
- .debug_line    0x000000000000feb8      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x00000000000107d6     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_line    0x00000000000123c3      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000012d5a     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x0000000000013e55     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x000000000001580d      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000000000016562     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_line    0x00000000000063ba      0xb38 Core/Src/kanayama.o
+ .debug_line    0x0000000000006ef2      0xd7e Core/Src/main.o
+ .debug_line    0x0000000000007c70      0x7bb Core/Src/motor.o
+ .debug_line    0x000000000000842b      0xe58 Core/Src/sideSensor.o
+ .debug_line    0x0000000000009283      0xb38 Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000009dbb      0xa52 Core/Src/stm32f4xx_it.o
+ .debug_line    0x000000000000a80d      0x742 Core/Src/switch.o
+ .debug_line    0x000000000000af4f      0x73e Core/Src/syscalls.o
+ .debug_line    0x000000000000b68d      0x4c7 Core/Src/sysmem.o
+ .debug_line    0x000000000000bb54      0x755 Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000c2a9       0x85 Core/Startup/startup_stm32f405rgtx.o
+ .debug_line    0x000000000000c32e      0x93f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x000000000000cc6d      0xba4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x000000000000d811      0xa63 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x000000000000e274      0xa0d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x000000000000ec81      0x925 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o
+ .debug_line    0x000000000000f5a6      0x911 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o
+ .debug_line    0x000000000000feb7      0x91e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000107d5     0x1bed Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_line    0x00000000000123c2      0x997 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000012d59     0x10fb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x0000000000013e54     0x19b8 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x000000000001580c      0xd55 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0000000000016561     0x104d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_str      0x0000000000000000    0xcb870
  .debug_str     0x0000000000000000    0xc2965 Core/Src/AngleCtrl.o
