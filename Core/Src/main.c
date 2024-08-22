@@ -411,7 +411,7 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(1.0, 2.0);
+						  setVelocityRange(0.5, 1.0);
 						  setAccDec(4, 3);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -635,17 +635,17 @@ int main(void)
 					  uint16_t size = getDebugLogSize();
 					  uint16_t sensorsize = getSensorLogSize();
 
-					  /*for(uint16_t i = 0; i < size; i = i+13){
+					  for(uint16_t i = 0; i < size; i = i+13){
 						 printf("%f, %f, %f , %f, %f, %f , %f, %f, %f , %f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i + 1), getDebugLog(i + 2), getDebugLog(i + 3), getDebugLog(i + 4), getDebugLog(i + 5), getDebugLog(i + 6), getDebugLog(i + 7), getDebugLog(i + 8), getDebugLog(i + 9), getDebugLog(i + 10), getDebugLog(i + 11), getDebugLog(i + 12));
-					  }*/
+					  }
 					  /*
 					  for(uint16_t i = 0; i < sensorsize; i++){
 						 printf("%f\r\n", getSensorLog(i));
 					  }*/
-
+					  /*
 					  for(uint16_t i = 0; i < size; i = i+4){
 						 printf("%f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2), getDebugLog(i+3));
-					  }
+					  }*/
 
 					  running_flag = false;
 					  soiya = 0;

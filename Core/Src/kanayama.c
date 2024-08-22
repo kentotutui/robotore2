@@ -171,10 +171,10 @@ void CreateXYcoordinates()
 				}
 
 				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
-				saveDebug(SC_X_table[i]);//目標のx座標
-				saveDebug(SC_Y_table[i]);//目標のy座標
-				saveDebug(EuclideanDistance_table[i]/100);
-				saveDebug(SC_Theta_table[i] / 1000);
+				//saveDebug(SC_X_table[i]);//目標のx座標
+				//saveDebug(SC_Y_table[i]);//目標のy座標
+				//saveDebug(EuclideanDistance_table[i]/100);
+				//saveDebug(SC_Theta_table[i] / 1000);
 				EuclideanDistance_count = 0;
 			}
 		}
@@ -240,20 +240,21 @@ void updateTargetpoint()
 		}
 		if(targetpoint_table_idx >= getDistanceLogSize() ){
 			targetpoint_table_idx = getDistanceLogSize() - 1;
-			mon_Y_table = Y_table[targetpoint_table_idx];
-			mon_Theta_table = Theta_table[targetpoint_table_idx];
+			mon_Y_table = SC_Y_table[targetpoint_table_idx];
+			mon_Theta_table = SC_Theta_table[targetpoint_table_idx];
+
 			target_X_coordinate = -450;
-			target_Y_coordinate = mon_Y_table / 10;
+			target_Y_coordinate = mon_Y_table;
 			target_Theta = mon_Theta_table / 1000;
 		}
 		else
 		{
-			mon_X_table = X_table[targetpoint_table_idx];
-			mon_Y_table = Y_table[targetpoint_table_idx];
-			mon_Theta_table = Theta_table[targetpoint_table_idx];
+			mon_X_table = SC_X_table[targetpoint_table_idx];
+			mon_Y_table = SC_Y_table[targetpoint_table_idx];
+			mon_Theta_table = SC_Theta_table[targetpoint_table_idx];
 
-			target_X_coordinate = mon_X_table / 10;//1nt16の値を元に戻す
-			target_Y_coordinate = mon_Y_table / 10;//1nt16の値を元に戻す
+			target_X_coordinate = mon_X_table;//1nt16の値を元に戻す
+			target_Y_coordinate = mon_Y_table;//1nt16の値を元に戻す
 			target_Theta = mon_Theta_table / 1000;//1nt16の値を元に戻す
 		}
 
@@ -261,9 +262,9 @@ void updateTargetpoint()
 		mon_Y_table = Y_table[targetpoint_table_idx];
 		mon_Theta_table = Theta_table[targetpoint_table_idx];*/
 
-		target_X_coordinate = mon_X_table;
+		/*target_X_coordinate = mon_X_table;
 		target_Y_coordinate = mon_Y_table;
-		target_Theta = mon_Theta_table / 1000;
+		target_Theta = mon_Theta_table / 1000;*/
 	}
 }
 
