@@ -203,11 +203,13 @@ void running(void)
 					  break;
 
 				  case 20:
-
+					  /*
 					  setTargetVelocity(0.5);
 					  HAL_Delay(100);
 					  setTargetVelocity(0);
-					  HAL_Delay(500);
+					  HAL_Delay(500);*/
+					  setTargetVelocity(0);
+					  HAL_Delay(10);
 
 					  goal_flag = true;
 
@@ -590,8 +592,8 @@ void updateTargetVelocity(){
 			ref_distance += Distance;
 			velocity_table_idx++;
 		}
-		if(velocity_table_idx >= getDistanceLogSize()){
-			velocity_table_idx = getDistanceLogSize() - 1;
+		if(velocity_table_idx >= getSC_X_tablesize()){
+			velocity_table_idx = getSC_X_tablesize() - 1;
 		}
 
 		setTargetVelocity(velocity_table[velocity_table_idx]);

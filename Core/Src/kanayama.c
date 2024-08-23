@@ -94,7 +94,6 @@ void CreateXYcoordinates()
 		}*/
 
 		//EuclideanDistance = sqrt((x - prev_x) * (x - prev_x) + (y - prev_y) * (y - prev_y));//ユークリッド距離の計算
-		//Total_length_of_course += EuclideanDistance;
 
 		X_table[i] = x;//int16で保存するために値を加工
 		Y_table[i] = y;//int16で保存するために値を加工
@@ -139,7 +138,50 @@ void CreateXYcoordinates()
 			temp_y = sum_y / windowSize;
 		}
 
-		if(i > 0){
+		EuclideanDistance = sqrt((temp_x - prev_x) * (temp_x - prev_x) + (temp_y - prev_y) * (temp_y - prev_y));//ユークリッド距離の計算
+		EuclideanDistance_count += EuclideanDistance;
+
+		if(EuclideanDistance_count > Distance_threshold){
+
+			prev_x2 = SC_X_table[i-1];
+			prev_y2 = SC_Y_table[i-1];
+
+			SC_X_table[i] = temp_x;//int16で保存するために値を加工
+			SC_Y_table[i] = temp_y;//int16で保存するために値を加工
+
+			Total_length_of_course += EuclideanDistance_count;
+			EuclideanDistance_table[i] = EuclideanDistance_count * 100;
+
+			deltaX = temp_x - prev_x2;
+			deltaY = temp_y - prev_y2;
+			atan2th = atan2(deltaY, deltaX);//座標から角度を計算
+
+			prev_atan2 = SC_Theta_table[i-1] / 1000;
+			delta_ang = atan2th - prev_atan2;
+
+			if(delta_ang > M_PI){
+				while(delta_ang > M_PI){
+					atan2th -= 2 * M_PI;
+					delta_ang = atan2th - prev_atan2;
+				}
+			}
+			else if(delta_ang < -M_PI){
+				while(delta_ang < -M_PI){
+					atan2th += 2 * M_PI;
+					delta_ang = atan2th - prev_atan2;
+				}
+			}
+
+			SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+			mon_theta_table = SC_Theta_table[i];
+			//saveDebug(SC_X_table[i]);//目標のx座標
+			//saveDebug(SC_Y_table[i]);//目標のy座標
+			//saveDebug(EuclideanDistance_table[i] / 100);
+			//saveDebug(mon_theta_table / 1000);
+			EuclideanDistance_count = 0;
+		}
+
+		/*if(i > 0){
 			EuclideanDistance = sqrt((temp_x - prev_x) * (temp_x - prev_x) + (temp_y - prev_y) * (temp_y - prev_y));//ユークリッド距離の計算
 			EuclideanDistance_count += EuclideanDistance;
 
@@ -176,24 +218,20 @@ void CreateXYcoordinates()
 
 				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
 				mon_theta_table = SC_Theta_table[i];
-				//saveDebug(SC_X_table[i]);//目標のx座標
-				//saveDebug(SC_Y_table[i]);//目標のy座標
-				//saveDebug(EuclideanDistance_table[i] / 100);
-				//saveDebug(mon_theta_table / 1000);
+				saveDebug(SC_X_table[i]);//目標のx座標
+				saveDebug(SC_Y_table[i]);//目標のy座標
+				saveDebug(EuclideanDistance_table[i] / 100);
+				saveDebug(mon_theta_table / 1000);
 				EuclideanDistance_count = 0;
 			}
-		}
-		else{
-			SC_X_table[1] = temp_x;
-			SC_X_table[1] = temp_y;
-			SC_Theta_table[1] = 0.0;
-		}
+		}*/
+
 		if(i != 0){
 			SC_X_tablesize++;
 		}
 	}
 
-	Total_length_of_course = Total_length_of_course + 100;
+	Total_length_of_course = Total_length_of_course;
 }
 
 float CurrentXcoordinates(void)
@@ -246,12 +284,12 @@ void updateTargetpoint()
 			targetpoint_table_idx++;
 			clearVLT_Distance10mm();
 		}
-		if(targetpoint_table_idx >= getDistanceLogSize() ){
-			targetpoint_table_idx = getDistanceLogSize() - 1;
+		if(targetpoint_table_idx >= getSC_X_tablesize() ){
+			targetpoint_table_idx = getSC_X_tablesize() - 1;
 			mon_Y_table = SC_Y_table[targetpoint_table_idx];
 			mon_Theta_table = SC_Theta_table[targetpoint_table_idx];
 
-			target_X_coordinate = -450;
+			target_X_coordinate = -350;
 			target_Y_coordinate = mon_Y_table;
 			target_Theta = mon_Theta_table / 1000;
 		}
@@ -327,7 +365,6 @@ void checkAngularvelocity(void)
 		check_flag = true;
 	}
 	else check_flag = false;
-
 }
 
 float getTotal_length()
