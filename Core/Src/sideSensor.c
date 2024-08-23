@@ -21,6 +21,7 @@ static float velocity_table[2000];
 
 #define Power_supply_voltage 12.0 //[V] 仮定電源電圧
 
+uint16_t idx;
 uint16_t velocity_table_idx;
 uint16_t Run_Mode;
 uint16_t Control_Mode;
@@ -253,7 +254,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(30) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
+		if(isTargetDistance(getEuclideanDistance_table(idx)) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -262,6 +263,7 @@ void runningFlip()
 
 			clearDistance10mm();
 			clearTheta10mm();
+			idx++;
 		}
 
 		//--- Cross Line Process ---//
@@ -441,15 +443,15 @@ void CreateVelocityTable(){//速度テーブル生成関数
 
 			temp_theta = mon_temp_theta/1000;
 
-			saveDebug(temp_distance);
-			saveDebug(temp_theta);
+			//saveDebug(temp_distance);
+			//saveDebug(temp_theta);
 
 			if(temp_theta == 0) temp_theta = 0.00001;
 			float radius = fabs(temp_distance / temp_theta);
 			if(radius >= straight_radius) radius = straight_radius;
 			velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
 
-			saveDebug(radius);
+			//saveDebug(radius);
 
 			//Forced maximum speed on the crossline
 			total_distance += temp_distance;
@@ -579,7 +581,7 @@ void updateTargetVelocity(){
 
 	if(velocity_update_flag == true){
 		if(getTotalDistance() >= ref_distance){
-			ref_distance += getDistanceLog(velocity_table_idx);// ユークリッド距離から参照できるようにする
+			ref_distance += getEuclideanDistance_table(velocity_table_idx);
 			velocity_table_idx++;
 		}
 		if(velocity_table_idx >= getDistanceLogSize()){

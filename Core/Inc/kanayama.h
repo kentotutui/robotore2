@@ -35,6 +35,7 @@ float getOutput_velocity();
 float getOutput_angularvelocity();
 
 uint16_t getSC_X_tablesize();
+uint16_t getEuclideanDistance_table(uint16_t);
 
 const uint16_t *getEuclideanDistanceArrayPointer();
 const int16_t *getSC_Theta_tableArrayPointer();

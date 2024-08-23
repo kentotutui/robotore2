@@ -109,6 +109,7 @@ void CreateXYcoordinates()
 	for(uint16_t i = 1; i < X_tablesize; i++){
 		int windowSize;
 		int remaining_points = X_tablesize - i + 1;
+		float mon_theta_table;
 
 		windowSize = (i < remaining_points) ? i : remaining_points;
 		windowSize = (windowSize < Variable_Window_Moving_Average) ? windowSize : Variable_Window_Moving_Average;//将来的には，ラインから?mmズレるみたいな選択ができるようにしたい
@@ -174,10 +175,11 @@ void CreateXYcoordinates()
 				}
 
 				SC_Theta_table[i] = atan2th * 1000;//int16で保存するために値を加工
+				mon_theta_table = SC_Theta_table[i];
 				//saveDebug(SC_X_table[i]);//目標のx座標
 				//saveDebug(SC_Y_table[i]);//目標のy座標
 				//saveDebug(EuclideanDistance_table[i] / 100);
-				//saveDebug(SC_Theta_table[i] / 1000);
+				//saveDebug(mon_theta_table / 1000);
 				EuclideanDistance_count = 0;
 			}
 		}
@@ -368,6 +370,10 @@ const uint16_t *getEuclideanDistanceArrayPointer(){
 
 const int16_t *getSC_Theta_tableArrayPointer(){
 	return SC_Theta_table;//1000倍の値が入っているため /1000して使う
+}
+
+uint16_t getEuclideanDistance_table(uint16_t idx){
+	return EuclideanDistance_table[idx];
 }
 
 bool getcheckAngularvelocityFlag()
