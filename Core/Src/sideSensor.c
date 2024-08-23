@@ -424,6 +424,7 @@ void stopVelocityUpdate()
 void CreateVelocityTable(){//速度テーブル生成関数
 	const uint16_t *p_Euclideandistance_V;
 	const int16_t *p_theta_V;
+    float mon_temp_theta;
 	p_Euclideandistance_V = getEuclideanDistanceArrayPointer();// /100して使う
 	p_theta_V = getSC_Theta_tableArrayPointer();// /1000して使う
 
@@ -436,7 +437,9 @@ void CreateVelocityTable(){//速度テーブル生成関数
 	for(uint16_t i = 0; i < log_size; i++){
 		if(i > 0){
 			temp_distance = p_Euclideandistance_V[i] / 100;
-			temp_theta = (p_theta_V[i] - p_theta_V[i-1]) / 1000;
+			mon_temp_theta = (p_theta_V[i] - p_theta_V[i-1]);
+
+			temp_theta = mon_temp_theta/1000;
 
 			//saveDebug(temp_distance);
 			//saveDebug(temp_theta);
@@ -446,7 +449,7 @@ void CreateVelocityTable(){//速度テーブル生成関数
 			if(radius >= straight_radius) radius = straight_radius;
 			velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
 
-			saveDebug(radius);
+			//saveDebug(radius);
 
 			//Forced maximum speed on the crossline
 			total_distance += temp_distance;
@@ -476,10 +479,10 @@ void CreateVelocityTable(){//速度テーブル生成関数
 	accelerateProcessing(acceleration, p_Euclideandistance_V);
 
 	//CreateAcceleration(p_Euclideandistance_V);
-
+	/*
 	for(uint16_t i = 0; i < log_size; i++){
 		saveDebug(velocity_table[i]);
-	}
+	}*/
 }
 
 float radius2Velocity(float radius){
