@@ -440,7 +440,9 @@ void CreateVelocityTable(){//速度テーブル生成関数
 		if(radius >= straight_radius) radius = straight_radius;
 		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
 
-		//saveDebug(radius);
+		saveDebug(temp_distance);
+		saveDebug(temp_theta);
+		saveDebug(radius);
 
 		//Forced maximum speed on the crossline
 		total_distance += temp_distance;

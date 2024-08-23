@@ -643,12 +643,16 @@ int main(void)
 						 printf("%f\r\n", getSensorLog(i));
 					  }*/
 					  /*
+					  for(uint16_t i = 0; i < size; i = i+4){
+						 printf("%f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2), getDebugLog(i+2));
+					  }*/
 					  for(uint16_t i = 0; i < size; i = i+3){
 						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2));
-					  }*/
+					  }
+					  /*
 					  for(uint16_t i = 0; i < size; i++){
 						 printf("%f\r\n", getDebugLog(i));
-					  }
+					  }*/
 
 					  running_flag = false;
 					  soiya = 0;
