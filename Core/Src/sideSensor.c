@@ -249,12 +249,16 @@ void running(void)
 
 void runningFlip()
 {
+	static float run_Distance;
+
 	if(run_flag == true){
 		setLED('G');
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(getEuclideanDistance_table(idx)) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
+		run_Distance = getEuclideanDistance_table(idx) / 100;
+
+		if(isTargetDistance(run_Distance) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -578,10 +582,12 @@ void accelerateProcessing(const float am, const uint16_t *p_distance){
 
 void updateTargetVelocity(){
 	static float pre_target_velocity;
+	static float Distance;
 
 	if(velocity_update_flag == true){
 		if(getTotalDistance() >= ref_distance){
-			ref_distance += getEuclideanDistance_table(velocity_table_idx);
+			Distance = getEuclideanDistance_table(velocity_table_idx) / 100;
+			ref_distance += Distance;
 			velocity_table_idx++;
 		}
 		if(velocity_table_idx >= getDistanceLogSize()){
