@@ -203,8 +203,11 @@ void running(void)
 
 				  case 20:
 
-					  setTargetVelocity(0.5);
+					  /*setTargetVelocity(0.5);
 					  HAL_Delay(100);
+					  setTargetVelocity(0);
+					  HAL_Delay(500);*/
+
 					  setTargetVelocity(0);
 					  HAL_Delay(500);
 
