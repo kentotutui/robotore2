@@ -231,7 +231,7 @@ void CreateXYcoordinates()
 		}
 	}
 
-	Total_length_of_course = Total_length_of_course;
+	Total_length_of_course = Total_length_of_course + 30;
 }
 
 float CurrentXcoordinates(void)
@@ -289,7 +289,7 @@ void updateTargetpoint()
 			mon_Y_table = SC_Y_table[targetpoint_table_idx];
 			mon_Theta_table = SC_Theta_table[targetpoint_table_idx];
 
-			target_X_coordinate = -350;
+			target_X_coordinate = -300;
 			target_Y_coordinate = mon_Y_table;
 			target_Theta = mon_Theta_table / 1000;
 		}
