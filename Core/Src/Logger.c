@@ -10,9 +10,9 @@
 static float log_sensor[30];
 static float log_cross[50];
 static float log_side[50];
-static float log_debug[18000];
-static float log_distance[2000];//int16_tにできるならしたい
-static float log_theta[2000];//int16_tにできるならしたい
+static float log_debug[9000];
+static float log_distance[4000];//int16_tにできるならしたい
+static float log_theta[4000];//int16_tにできるならしたい
 static uint16_t log_sensor_cnt, log_distance_cnt, log_theta_cnt, log_cross_cnt, log_side_cnt, log_debug_cnt;
 
 void initLog(){

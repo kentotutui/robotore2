@@ -8,11 +8,11 @@
 #include "kanayama.h"
 #include "math.h"//M_PI
 
-static int16_t X_table[2000];
-static int16_t Y_table[2000];
-static int16_t Theta_table[2000];
+static int16_t X_table[4000];
+static int16_t Y_table[4000];
+static int16_t Theta_table[4000];
 
-static uint16_t EuclideanDistance_table[2000];
+static uint16_t EuclideanDistance_table[4000];
 
 uint16_t targetpoint_table_idx;
 uint16_t euclideandistance_idx = 0;
@@ -156,6 +156,7 @@ void updateTargetpoint()
 			targetpoint_table_idx = getDistanceLogSize() - 1;
 			mon_Y_table = Y_table[targetpoint_table_idx];
 			mon_Theta_table = Theta_table[targetpoint_table_idx];
+
 			target_X_coordinate = -300;
 			target_Y_coordinate = mon_Y_table;
 			target_Theta = mon_Theta_table / 1000;
@@ -168,7 +169,7 @@ void updateTargetpoint()
 
 			target_X_coordinate = mon_X_table;
 			target_Y_coordinate = mon_Y_table;
-			target_Theta = mon_Theta_table / 1000;//1nt16の値を元に戻す
+			target_Theta = mon_Theta_table / 1000;//int16の値を元に戻す
 		}
 
 		/*mon_X_table = X_table[targetpoint_table_idx];
@@ -205,8 +206,8 @@ void Error_XY(const float now_X, const float now_Y, const float now_Theta)
 void Velocity_Angularvelocity(void)//Kanayama Control Methodの計算関数 1msで回している
 {
 	float kx = 0.0001, ky = 0.0003, kt = 0.0003;//Kanayama Control Methodゲイン値調整 全て0でも走る
-	float max_angularvelocity = 17.2 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
-	float min_angularvelocity = - (17.2 / (180/M_PI));//min角速度制限
+	//float max_angularvelocity = 17.2 / (180/M_PI);//max角速度制限　式　制限角度(deg)/(180/π)
+	//float min_angularvelocity = - (17.2 / (180/M_PI));//min角速度制限
 
 	float Target_velocity = getTargetVelocity();
 	float Target_angularvelocity = now_error_theta;

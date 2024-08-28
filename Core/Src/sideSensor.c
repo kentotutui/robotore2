@@ -7,8 +7,8 @@
 
 #include "sideSensor.h"
 
-static float velocity_table[2000];
-static uint16_t acceleration_table[2000];
+static float velocity_table[4000];
+static uint16_t acceleration_table[4000];
 
 //↓モータ特性
 #define WHEEL_RADIUS 0.011 //[mm]
@@ -203,13 +203,13 @@ void running(void)
 
 				  case 20:
 
-					  /*setTargetVelocity(0.5);
-					  HAL_Delay(100);
+					  setTargetVelocity(0.5);
+					  HAL_Delay(250);
 					  setTargetVelocity(0);
-					  HAL_Delay(500);*/
-
+					  HAL_Delay(200);
+					  /*
 					  setTargetVelocity(0);
-					  HAL_Delay(500);
+					  HAL_Delay(100);*/
 
 					  goal_flag = true;
 
@@ -256,7 +256,7 @@ void runningFlip()
 		updateTargetVelocity();//速度の更新
 		updateTargetpoint();//座標の更新
 
-		if(isTargetDistance(30) == true){
+		if(isTargetDistance(15) == true){
 			saveLog();
 
 			if(isContinuousCurvature() == true){
@@ -443,9 +443,9 @@ void CreateVelocityTable(){//速度テーブル生成関数
 		if(radius >= straight_radius) radius = straight_radius;
 		velocity_table[i] = radius2Velocity(radius);//速度計画の計算部分
 
-		saveDebug(temp_distance);
-		saveDebug(temp_theta);
-		saveDebug(radius);
+		//saveDebug(temp_distance);
+		//saveDebug(temp_theta);
+		//saveDebug(radius);
 
 		//Forced maximum speed on the crossline
 		total_distance += temp_distance;
@@ -462,7 +462,7 @@ void CreateVelocityTable(){//速度テーブル生成関数
 	}
 
 	for(uint16_t i = log_size; i < 2000; i++){
-		velocity_table[i] = 3.0;
+		velocity_table[i] = max_velocity;
 	}
 
 	addDecelerationDistanceMergin(velocity_table, 13); //8
@@ -503,7 +503,7 @@ void addDecelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = mergin_size;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 2000 - 1){
+	while(idx <= 4000 - 1){
 		if(pre_target_velocity > table[idx]){
 			float low_velocity = table[idx];
 			for(uint16_t i = idx - mergin_size; i < idx; i++){
@@ -523,7 +523,7 @@ void addAccelerationDistanceMergin(float *table, int16_t mergin_size)
 	uint16_t idx = 0;
 	float pre_target_velocity = table[idx];
 
-	while(idx <= 2000 - 1 - mergin_size){
+	while(idx <= 4000 - 1 - mergin_size){
 		if(pre_target_velocity < table[idx]){
 			float low_velocity = pre_target_velocity;
 			for(uint16_t i = idx; i < idx + mergin_size; i++){

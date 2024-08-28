@@ -309,17 +309,17 @@ int main(void)
 						  //setVelocityRange(0, 0);
 						  //startLineTrace();
 
-					      clearspeedcount();
+					      //clearspeedcount();
 
 					      //setVelocityRange(0, 0);
 						  //setTargetVelocity(0.0);
 						  //startVelocityControl();
 
-						  //setsuctionMotor(800);
+						  setsuctionMotor(800);
 
 						  //HAL_Delay(1500);
 
-						  running();
+						  //running();
 				  }
 
 				  break;
@@ -411,7 +411,7 @@ int main(void)
 
 						  setRunMode(5);
 
-						  setVelocityRange(1.0, 2.0);
+						  setVelocityRange(0.5, 1.0);
 						  setAccDec(4, 3);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -615,10 +615,10 @@ int main(void)
 					  loadDebug();
 
 					  //printf("Distance, Theta\r\n");
-					  /*
+
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
-					  }*/
+					  }
 					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
@@ -646,9 +646,10 @@ int main(void)
 					  for(uint16_t i = 0; i < size; i = i+4){
 						 printf("%f, %f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2), getDebugLog(i+2));
 					  }*/
+					  /*
 					  for(uint16_t i = 0; i < size; i = i+3){
 						 printf("%f, %f, %f\r\n", getDebugLog(i), getDebugLog(i+1), getDebugLog(i+2));
-					  }
+					  }*/
 					  /*
 					  for(uint16_t i = 0; i < size; i++){
 						 printf("%f\r\n", getDebugLog(i));
