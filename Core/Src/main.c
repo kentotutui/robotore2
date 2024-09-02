@@ -619,6 +619,7 @@ int main(void)
 					  for(uint16_t i = 0; i < getDistanceLogSize(); i++){
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
 					  }*/
+
 					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){

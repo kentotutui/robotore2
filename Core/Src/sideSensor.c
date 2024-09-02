@@ -260,16 +260,30 @@ void runningFlip()
 
 		run_Distance = getEuclideanDistance_table(idx) / 100;
 
-		if(isTargetDistance(run_Distance) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
-			saveLog();
+		if(logging_flag == true){
+			if(isTargetDistance(30) == true){
+				saveLog();
 
-			if(isContinuousCurvature() == true){
-				continuous_curve_flag = true;
+				if(isContinuousCurvature() == true){
+					continuous_curve_flag = true;
+				}
+
+				clearDistance10mm();
+				clearTheta10mm();
 			}
+		}
+		else if(target_update_flag == true){
+			if(isTargetDistance(run_Distance) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
+				saveLog();
 
-			clearDistance10mm();
-			clearTheta10mm();
-			idx++;
+				if(isContinuousCurvature() == true){
+					continuous_curve_flag = true;
+				}
+
+				clearDistance10mm();
+				clearTheta10mm();
+				idx++;
+			}
 		}
 
 		//--- Cross Line Process ---//
