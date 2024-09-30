@@ -7,7 +7,7 @@
 
 #include "VelocityCtrl.h"
 
-#define WHEEL_RADIUS 11.25 //[mm]
+#define WHEEL_RADIUS 11 //[mm]
 #define PI 3.1415926535
 #define ENCODER_RESOLUTION 2048
 #define REDUCTION_RATIO 0.33333
