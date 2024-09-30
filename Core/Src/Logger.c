@@ -9,7 +9,7 @@
 
 static float log_sensor[30];
 static float log_cross[50];
-static float log_side[50];
+static float log_side[250];
 static float log_debug[18000];
 static float log_distance[2000];//int16_tにできるならしたい
 static float log_theta[2000];//int16_tにできるならしたい

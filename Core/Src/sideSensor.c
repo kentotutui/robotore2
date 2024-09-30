@@ -209,7 +209,7 @@ void running(void)
 					  setTargetVelocity(0);
 					  HAL_Delay(500);*/
 					  setTargetVelocity(0);
-					  HAL_Delay(10);
+					  HAL_Delay(100);
 
 					  goal_flag = true;
 
@@ -260,7 +260,7 @@ void runningFlip()
 
 		run_Distance = getEuclideanDistance_table(idx) / 100;
 
-		if(logging_flag == true){
+		if(logging_flag == true){//探索走行のモード
 			if(isTargetDistance(30) == true){
 				saveLog();
 
@@ -272,8 +272,8 @@ void runningFlip()
 				clearTheta10mm();
 			}
 		}
-		else if(target_update_flag == true){
-			if(isTargetDistance(run_Distance) == true){// ユークリッド距離の配列から参照できるようにしないと走らん
+		else if(target_update_flag == true){//2次走行のモード
+			if(isTargetDistance(run_Distance) == true){//リアルタイムでユークリッド距離を計算できるようにしたら良くなりそう
 				saveLog();
 
 				if(isContinuousCurvature() == true){
