@@ -636,7 +636,7 @@ int main(void)
 					  }
 
 
-					  /*
+
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
@@ -645,7 +645,7 @@ int main(void)
 					  printf("Side\r\n");
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
-					  }*/
+					  }
 
 
 					  printf("TargetVelocity, CurrentVelocity\r\n");
