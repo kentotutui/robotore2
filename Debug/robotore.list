@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_line   000175d0  00000000  00000000  0007fd8a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000cb873  00000000  00000000  0009735a  2**0
+ 18 .debug_str    000cb883  00000000  00000000  0009735a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  00162bcd  2**0
+ 19 .comment      0000007b  00000000  00000000  00162bdd  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000083f4  00000000  00000000  00162c48  2**2
+ 20 .debug_frame  000083f4  00000000  00000000  00162c58  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -6469,8 +6469,8 @@ float getCurrentVelocity(void)
  80039ec:	bd90      	pop	{r4, r7, pc}
  80039ee:	bf00      	nop
  80039f0:	2001d750 	.word	0x2001d750
- 80039f4:	2df331e5 	.word	0x2df331e5
- 80039f8:	3f878fcc 	.word	0x3f878fcc
+ 80039f4:	f40a3c2a 	.word	0xf40a3c2a
+ 80039f8:	3f8709c1 	.word	0x3f8709c1
 
 080039fc <getTargetVelocity>:
 
