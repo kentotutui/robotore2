@@ -10506,7 +10506,7 @@ void runningFlip()
 			clearSideLineJudgeDistance();
  80052be:	f7fc f879 	bl	80013b4 <clearSideLineJudgeDistance>
 		}
-		if(side_line_judge_flag == false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 60){
+		if(side_line_judge_flag == false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 35){
  80052c2:	4b48      	ldr	r3, [pc, #288]	; (80053e4 <runningFlip+0x1f4>)
  80052c4:	781b      	ldrb	r3, [r3, #0]
  80052c6:	f083 0301 	eor.w	r3, r3, #1
@@ -10531,7 +10531,7 @@ void runningFlip()
  80052f6:	f7fc f85d 	bl	80013b4 <clearSideLineJudgeDistance>
  80052fa:	e02f      	b.n	800535c <runningFlip+0x16c>
 		}
-		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 60){ //Detect side line
+		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 35){ //Detect side line
  80052fc:	4b39      	ldr	r3, [pc, #228]	; (80053e4 <runningFlip+0x1f4>)
  80052fe:	781b      	ldrb	r3, [r3, #0]
  8005300:	2b00      	cmp	r3, #0
@@ -10656,7 +10656,7 @@ void runningFlip()
  80053dc:	2001ef5e 	.word	0x2001ef5e
  80053e0:	42480000 	.word	0x42480000
  80053e4:	2001ef63 	.word	0x2001ef63
- 80053e8:	42700000 	.word	0x42700000
+ 80053e8:	420c0000 	.word	0x420c0000
  80053ec:	2001ef68 	.word	0x2001ef68
  80053f0:	2001ef60 	.word	0x2001ef60
 

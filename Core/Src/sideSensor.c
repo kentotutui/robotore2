@@ -251,11 +251,11 @@ void runningFlip()
 			side_line_judge_flag = false;
 			clearSideLineJudgeDistance();
 		}
-		if(side_line_judge_flag == false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 60){
+		if(side_line_judge_flag == false && getSideSensorStatusL() == true && getSideLineJudgeDistance() >= 35){
 			side_line_judge_flag = true;
 			clearSideLineJudgeDistance();
 		}
-		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 60){ //Detect side line
+		else if(side_line_judge_flag == true && getSideLineJudgeDistance() >= 35){ //Detect side line
 			clearSideLineJudgeDistance();
 			side_line_judge_flag= false;
 
