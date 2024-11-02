@@ -307,7 +307,7 @@ int main(void)
 
 				  if(running_flag == true){
 
-				  		  setsuctionMotor(700);
+				  		  //setsuctionMotor(700);
 				  }
 
 				  break;
@@ -475,8 +475,8 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(1.8, 6.0);
-						  setAccDec(8, 3);
+						  setVelocityRange(2.0, 6.0);
+						  setAccDec(6, 3);
 						  setStraightRadius(1000); //Do Not Change
 
 						  setsuctionMotor(700);
@@ -552,7 +552,7 @@ int main(void)
 						  setRunMode(2);
 						  setrunmode(2);
 
-						  setVelocityRange(2.2, 7.0);
+						  setVelocityRange(2.2, 6.0);
 						  setAccDec(8, 2);
 						  setStraightRadius(1000); //Do Not Change
 
@@ -635,24 +635,24 @@ int main(void)
 						 printf("%f, %f\r\n", getDistanceLog(i), getThetaLog(i));
 					  }
 
-
-
+					  /*
 					  printf("Cross\r\n");
 					  for(uint16_t i = 0; i < getCrossLogSize(); i++){
 						 printf("%f\r\n", getCrossLog(i));
-					  }
+					  }*/
 
+					  /*
 					  printf("Side\r\n");
 					  for(uint16_t i = 0; i < getSideLogSize(); i++){
 						 printf("%f\r\n", getSideLog(i));
-					  }
+					  }*/
 
-
+					  /*
 					  printf("TargetVelocity, CurrentVelocity\r\n");
 					  uint16_t size = getDebugLogSize();
 					  for(uint16_t i = 0; i < size; i = i+2){
 						 printf("%f, %f\r\n", getDebugLog(i), getDebugLog(i + 1));
-					  }
+					  }*/
 					  soiya = 0;
 
 					  printf("9999, 9999\r\n");
