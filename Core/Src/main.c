@@ -307,7 +307,7 @@ int main(void)
 
 				  if(running_flag == true){
 
-				  		  //setsuctionMotor(700);
+				  		  setsuctionMotor(400);
 				  }
 
 				  break;
@@ -326,7 +326,7 @@ int main(void)
 						  setTargetVelocity(0.0);
 						  //startVelocityControl();
 
-						  setsuctionMotor(500);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1500);
 
@@ -350,7 +350,7 @@ int main(void)
 
 					      setVelocityRange(1.3, 1.3);
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -375,7 +375,7 @@ int main(void)
 
 						  setVelocityRange(1.5, 1.5);
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -401,7 +401,7 @@ int main(void)
 					      setAccDec(6, 2);
 					      setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -427,7 +427,7 @@ int main(void)
 						  setAccDec(7, 3);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -453,7 +453,7 @@ int main(void)
 						  setAccDec(8, 3);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -479,7 +479,7 @@ int main(void)
 						  setAccDec(6, 3);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -505,7 +505,7 @@ int main(void)
 						  setAccDec(7, 2);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -531,7 +531,7 @@ int main(void)
 						  setAccDec(8, 2);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -556,7 +556,7 @@ int main(void)
 						  setAccDec(8, 2);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(800);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -582,7 +582,7 @@ int main(void)
 						  setAccDec(10, 5);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
@@ -607,7 +607,7 @@ int main(void)
 						  setAccDec(7, 4);
 						  setStraightRadius(1000); //Do Not Change
 
-						  setsuctionMotor(700);
+						  setsuctionMotor(400);
 
 						  HAL_Delay(1000);
 
