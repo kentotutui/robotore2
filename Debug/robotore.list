@@ -2986,7 +2986,7 @@ void calculateLineFollowingTermFlip(void){
 	float p, d;
 	static float i;
 
-	float kp = 2.5, kd = 0.022;//taiya良くないやつ kp = 3.2, kd = 0.018
+	float kp = 2.8, kd = 0.025;//taiya良くないやつ kp = 3.2, kd = 0.018
  8001cc0:	4bb3      	ldr	r3, [pc, #716]	; (8001f90 <calculateLineFollowingTermFlip+0x2d8>)
  8001cc2:	617b      	str	r3, [r7, #20]
  8001cc4:	4bb3      	ldr	r3, [pc, #716]	; (8001f94 <calculateLineFollowingTermFlip+0x2dc>)
@@ -3276,8 +3276,8 @@ void calculateLineFollowingTermFlip(void){
  8001f84:	3ff26666 	.word	0x3ff26666
  8001f88:	d2f1a9fc 	.word	0xd2f1a9fc
  8001f8c:	3f50624d 	.word	0x3f50624d
- 8001f90:	40200000 	.word	0x40200000
- 8001f94:	3cb43958 	.word	0x3cb43958
+ 8001f90:	40333333 	.word	0x40333333
+ 8001f94:	3ccccccd 	.word	0x3ccccccd
  8001f98:	20000276 	.word	0x20000276
  8001f9c:	20000277 	.word	0x20000277
  8001fa0:	20000284 	.word	0x20000284
@@ -6872,8 +6872,8 @@ int main(void)
  8003bec:	eeb7 0a08 	vmov.f32	s0, #120	; 0x3fc00000  1.5
  8003bf0:	f002 f9a6 	bl	8005f40 <setVelocityRange>
 
-						  setsuctionMotor(400);
- 8003bf4:	f44f 70c8 	mov.w	r0, #400	; 0x190
+						  setsuctionMotor(300);
+ 8003bf4:	f44f 7096 	mov.w	r0, #300	; 0x12c
  8003bf8:	f001 f840 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7125,8 +7125,8 @@ int main(void)
 						  clearspeedcount();
  8003db6:	f7fd fb77 	bl	80014a8 <clearspeedcount>
 
-						  setRunMode(3);
- 8003dba:	2003      	movs	r0, #3
+						  setRunMode(2);
+ 8003dba:	2002      	movs	r0, #2
  8003dbc:	f000 ffa6 	bl	8004d0c <setRunMode>
 						  setrunmode(2);
  8003dc0:	2002      	movs	r0, #2
@@ -7184,9 +7184,9 @@ int main(void)
  8003e1a:	2002      	movs	r0, #2
  8003e1c:	f7ff fcfe 	bl	800381c <setrunmode>
 
-						  setVelocityRange(2.2, 6.5);
- 8003e20:	eef1 0a0a 	vmov.f32	s1, #26	; 0x40d00000  6.5
- 8003e24:	ed1f 0a68 	vldr	s0, [pc, #-416]	; 8003c88 <main+0x358>
+						  setVelocityRange(2.0, 6.0);
+ 8003e20:	eef1 0a08 	vmov.f32	s1, #24	; 0x40c00000  6.0
+ 8003e24:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8003e28:	f002 f88a 	bl	8005f40 <setVelocityRange>
 						  setAccDec(8, 2);
  8003e2c:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
@@ -7287,8 +7287,8 @@ int main(void)
  8003ece:	2002      	movs	r0, #2
  8003ed0:	f7ff fca4 	bl	800381c <setrunmode>
 
-						  setVelocityRange(2.5, 8.5);
- 8003ed4:	eef2 0a01 	vmov.f32	s1, #33	; 0x41080000  8.5
+						  setVelocityRange(2.5, 6.0);
+ 8003ed4:	eef1 0a08 	vmov.f32	s1, #24	; 0x40c00000  6.0
  8003ed8:	eeb0 0a04 	vmov.f32	s0, #4	; 0x40200000  2.5
  8003edc:	f002 f830 	bl	8005f40 <setVelocityRange>
 						  setAccDec(10, 5);
