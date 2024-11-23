@@ -6749,8 +6749,8 @@ int main(void)
  8003b36:	2b00      	cmp	r3, #0
  8003b38:	f000 825d 	beq.w	8003ff6 <main+0x6c6>
 
-				  		  setsuctionMotor(500);
- 8003b3c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				  		  setsuctionMotor(400);
+ 8003b3c:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003b40:	f001 f89c 	bl	8004c7c <setsuctionMotor>
 				  }
 
@@ -6781,8 +6781,8 @@ int main(void)
  8003b62:	f7ff fd93 	bl	800368c <setTargetVelocity>
 						  //startVelocityControl();
 
-						  setsuctionMotor(500);
- 8003b66:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003b66:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003b6a:	f001 f887 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1500);
@@ -6825,8 +6825,8 @@ int main(void)
  8003ba2:	ed9f 0a37 	vldr	s0, [pc, #220]	; 8003c80 <main+0x350>
  8003ba6:	f002 f9cb 	bl	8005f40 <setVelocityRange>
 
-						  setsuctionMotor(500);
- 8003baa:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003baa:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003bae:	f001 f865 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -6924,8 +6924,8 @@ int main(void)
  8003c46:	ed9f 0a12 	vldr	s0, [pc, #72]	; 8003c90 <main+0x360>
  8003c4a:	f002 f9a9 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003c4e:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003c4e:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003c52:	f001 f813 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -6988,8 +6988,8 @@ int main(void)
  8003cd0:	ed1f 0a11 	vldr	s0, [pc, #-68]	; 8003c90 <main+0x360>
  8003cd4:	f002 f964 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003cd8:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003cd8:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003cdc:	f000 ffce 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7040,8 +7040,8 @@ int main(void)
  8003d2a:	ed1f 0a27 	vldr	s0, [pc, #-156]	; 8003c90 <main+0x360>
  8003d2e:	f002 f937 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003d32:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003d32:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003d36:	f000 ffa1 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7144,8 +7144,8 @@ int main(void)
  8003dde:	ed1f 0a54 	vldr	s0, [pc, #-336]	; 8003c90 <main+0x360>
  8003de2:	f002 f8dd 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003de6:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003de6:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003dea:	f000 ff47 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7196,8 +7196,8 @@ int main(void)
  8003e38:	ed1f 0a6b 	vldr	s0, [pc, #-428]	; 8003c90 <main+0x360>
  8003e3c:	f002 f8b0 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003e40:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003e40:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003e44:	f000 ff1a 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7247,8 +7247,8 @@ int main(void)
  8003e92:	ed1f 0a81 	vldr	s0, [pc, #-516]	; 8003c90 <main+0x360>
  8003e96:	f002 f883 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003e9a:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003e9a:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003e9e:	f000 feed 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7299,8 +7299,8 @@ int main(void)
  8003eec:	ed1f 0a98 	vldr	s0, [pc, #-608]	; 8003c90 <main+0x360>
  8003ef0:	f002 f856 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003ef4:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003ef4:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003ef8:	f000 fec0 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
@@ -7350,8 +7350,8 @@ int main(void)
  8003f46:	ed1f 0aae 	vldr	s0, [pc, #-696]	; 8003c90 <main+0x360>
  8003f4a:	f002 f829 	bl	8005fa0 <setStraightRadius>
 
-						  setsuctionMotor(500);
- 8003f4e:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+						  setsuctionMotor(400);
+ 8003f4e:	f44f 70c8 	mov.w	r0, #400	; 0x190
  8003f52:	f000 fe93 	bl	8004c7c <setsuctionMotor>
 
 						  HAL_Delay(1000);
