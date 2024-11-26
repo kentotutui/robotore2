@@ -7132,13 +7132,13 @@ int main(void)
  8003dc0:	2002      	movs	r0, #2
  8003dc2:	f7ff fd2b 	bl	800381c <setrunmode>
 
-						  setVelocityRange(2.0, 7.0);
- 8003dc6:	eef1 0a0c 	vmov.f32	s1, #28	; 0x40e00000  7.0
+						  setVelocityRange(2.0, 6.0);
+ 8003dc6:	eef1 0a08 	vmov.f32	s1, #24	; 0x40c00000  6.0
  8003dca:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8003dce:	f002 f8b7 	bl	8005f40 <setVelocityRange>
-						  setAccDec(7, 2);
- 8003dd2:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
- 8003dd6:	eeb1 0a0c 	vmov.f32	s0, #28	; 0x40e00000  7.0
+						  setAccDec(10, 3);
+ 8003dd2:	eef0 0a08 	vmov.f32	s1, #8	; 0x40400000  3.0
+ 8003dd6:	eeb2 0a04 	vmov.f32	s0, #36	; 0x41200000  10.0
  8003dda:	f002 f8c9 	bl	8005f70 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
  8003dde:	ed1f 0a54 	vldr	s0, [pc, #-336]	; 8003c90 <main+0x360>
@@ -7188,9 +7188,9 @@ int main(void)
  8003e20:	eef1 0a08 	vmov.f32	s1, #24	; 0x40c00000  6.0
  8003e24:	eeb0 0a00 	vmov.f32	s0, #0	; 0x40000000  2.0
  8003e28:	f002 f88a 	bl	8005f40 <setVelocityRange>
-						  setAccDec(8, 2);
- 8003e2c:	eef0 0a00 	vmov.f32	s1, #0	; 0x40000000  2.0
- 8003e30:	eeb2 0a00 	vmov.f32	s0, #32	; 0x41000000  8.0
+						  setAccDec(10, 1);
+ 8003e2c:	eef7 0a00 	vmov.f32	s1, #112	; 0x3f800000  1.0
+ 8003e30:	eeb2 0a04 	vmov.f32	s0, #36	; 0x41200000  10.0
  8003e34:	f002 f89c 	bl	8005f70 <setAccDec>
 						  setStraightRadius(1000); //Do Not Change
  8003e38:	ed1f 0a6b 	vldr	s0, [pc, #-428]	; 8003c90 <main+0x360>
